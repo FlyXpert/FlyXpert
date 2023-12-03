@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="container" prefHeight="408.0" prefWidth="710.0" style="-fx-border-radius: 4px;;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
+    <children>
+        <Label fx:id="FlyXpertLabel" prefHeight="48.0" prefWidth="600.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" textFill="#605eeb" wrapText="true">
+            <font>
+                <Font name="Microsoft Sans Serif" size="31.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="437.0" fitWidth="710.0" layoutX="1.0" layoutY="-2.0" pickOnBounds="true">
+        </ImageView>
+        <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="218.0" layoutY="67.0" prefHeight="117.0" prefWidth="275.0" style="-fx-bold: 800;" text="Welcome to FlyXpert" textAlignment="CENTER" textFill="#5555fa" wrapText="true">
+            <font>
+                <Font name="Lucida Bright" size="42.0" />
+            </font>
+        </Label>
+        <Button fx:id="signInButton" layoutX="393.0" layoutY="263.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #FFF; -fx-border-color: #605DEC; -fx-border-radius: 4px;" text="Sign In" textFill="#605dec" />
+        <Button fx:id="signUpButton" layoutX="187.0" layoutY="263.0" mnemonicParsing="false" onAction="#onSignUp" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #605DEC; -fx-border-radius: 4px;" text="Sign Up" textFill="WHITE" />
+    </children>
+</AnchorPane>
