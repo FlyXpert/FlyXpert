@@ -1,9 +1,9 @@
 package flyxpert.flyxpert;
 
 public class Airport {
-    protected String code;
-    protected String name;
-    protected String location;
+    private String code;
+    private String name;
+    private String location;
     public Airport(String code, String name, String location){
         setCode(code);
         setName(name);
