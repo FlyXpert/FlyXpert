@@ -7,8 +7,10 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 public class Main extends Application {
     public static void main(String[] args) throws FileNotFoundException {
+
         Reader reader = new Reader();
         reader.readAllFiles();
         launch(args);

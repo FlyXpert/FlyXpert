@@ -2,36 +2,40 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="378.0" prefWidth="516.0" style="-fx-border-size: 4px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
+<AnchorPane prefHeight="514.0" prefWidth="544.0" style="-fx-border-size: 4px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
     <children>
-        <Button layoutX="28.0" layoutY="299.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="462.0" style="-fx-background-color: #605DEC; -fx-border-size: 4px;" text="Create account" textFill="WHITE" />
-        <Label layoutX="38.0" layoutY="29.0" text="Sign Up for FlyXpert">
+        <Button fx:id="signUpButton" layoutX="28.0" layoutY="391.0" mnemonicParsing="false" onAction="#onSignUpButton" prefHeight="40.0" prefWidth="462.0" style="-fx-background-color: #605DEC; -fx-border-size: 4px;" text="Create account" textFill="WHITE" />
+        <Label fx:id="signUpLabel" layoutX="38.0" layoutY="48.0" text="Sign Up for FlyXpert">
             <font>
                 <Font size="28.0" />
             </font>
         </Label>
-        <VBox layoutX="28.0" layoutY="89.0" prefHeight="205.0" prefWidth="462.0" spacing="30.0">
+        <VBox layoutX="28.0" layoutY="137.0" prefHeight="198.0" prefWidth="462.0" spacing="5.0">
             <children>
-                <TextField prefHeight="33.0" prefWidth="371.0" promptText="Email">
+                <TextField fx:id="signUpEmailTextField" prefHeight="33.0" prefWidth="371.0" promptText="Email">
                     <font>
                         <Font size="11.0" />
                     </font>
                 </TextField>
-                <TextField prefHeight="33.0" prefWidth="371.0" promptText="Username">
+            <Label fx:id="emailVaidatorLabel" prefHeight="17.0" prefWidth="461.0" />
+                <TextField fx:id="signUpUsernameTextField" prefHeight="33.0" prefWidth="371.0" promptText="Username">
                     <font>
                         <Font size="11.0" />
                     </font>
                 </TextField>
-                <TextField prefHeight="33.0" prefWidth="371.0" promptText="Password">
+            <Label prefHeight="17.0" prefWidth="463.0" />
+                <PasswordField fx:id="signUpPasswordTextField" prefHeight="33.0" prefWidth="462.0" promptText="Password">
                     <font>
                         <Font size="11.0" />
                     </font>
-                </TextField>
+                </PasswordField>
+            <Label fx:id="passwordValidatorLabel" prefHeight="17.0" prefWidth="463.0" />
             </children>
         </VBox>
     </children>
