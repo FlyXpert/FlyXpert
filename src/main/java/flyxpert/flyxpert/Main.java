@@ -15,26 +15,16 @@ public class Main extends Application {
         Writer writer = new Writer();
         writer.writeToAllFiles();
     }
-    public void start(Stage stage) throws IOException {
 
-        try{
+    public void start(Stage stage) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/HomePage/HomePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Hello!");
+        stage.setResizable(false);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SearchFlightPage.fxml"));
-
-            Scene scene = new Scene(fxmlLoader.load());
-
-            FlightInformationController controller = fxmlLoader.getController();
-            controller.fillDataOfFlights();
-
-            scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-            stage.setTitle("Flight Search Page");
-            stage.setScene(scene);
-            stage.setResizable(false);
-            stage.show();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
