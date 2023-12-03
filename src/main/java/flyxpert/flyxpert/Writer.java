@@ -8,12 +8,11 @@ public class Writer {
         writeToAFile();
     }
 
-    // this is an example for writing your data to a file
+    // This an example for writing data to a file (Remove this and add your own functions to write Users, Flights, etc.)
     public void writeToAFile(){
-        //PrintWriter writer = new PrintWriter("");
-        //writer.println();
-        //writer.close();
+        // PrintWriter writer = new PrintWriter("");
+        // writer.println();
+        // Do writing here!
+        // writer.close();
     }
-
-
 }

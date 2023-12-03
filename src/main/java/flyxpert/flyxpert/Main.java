@@ -9,7 +9,11 @@ import java.io.IOException;
 
 public class Main extends Application {
     public static void main(String[] args) {
+        Reader reader = new Reader();
+        reader.readAllFiles();
         launch(args);
+        Writer writer = new Writer();
+        writer.writeToAllFiles();
     }
 
     public void start(Stage stage) throws IOException {
