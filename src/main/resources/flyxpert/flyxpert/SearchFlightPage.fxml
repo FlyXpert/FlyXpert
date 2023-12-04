@@ -5,100 +5,88 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="800.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label layoutX="14.0" text="FlyXpert">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
             <font>
                 <Font name="System Bold" size="64.0" />
             </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
         </Label>
-        <Label layoutX="1684.0" layoutY="31.0" text="Flights">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Label>
-        <Label layoutX="1794.0" layoutY="33.0" text="Log out">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font size="24.0" />
-            </font>
-        </Label>
-        <MenuButton layoutX="95.0" layoutY="106.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="From Where ?">
+        <MenuButton layoutX="70.0" layoutY="111.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="245.0" text="From Where ?">
             <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
             </items>
             <font>
-                <Font size="36.0" />
+                <Font size="26.0" />
             </font>
         </MenuButton>
-        <MenuButton layoutX="497.0" layoutY="108.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="400.0" text="Where to ?">
+        <MenuButton layoutX="315.0" layoutY="111.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="245.0" text="Where to ?">
             <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
             </items>
             <font>
-                <Font size="36.0" />
+                <Font size="26.0" />
             </font>
         </MenuButton>
-        <DatePicker layoutX="1026.0" layoutY="128.0" prefHeight="50.0" prefWidth="400.0" promptText="Depart" />
-        <Button layoutX="1586.0" layoutY="107.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Search">
-            <font>
-                <Font size="36.0" />
-            </font>
-        </Button>
+        <DatePicker layoutX="560.0" layoutY="111.0" prefHeight="56.0" prefWidth="245.0" promptText="Depart" />
+      <Spinner layoutX="805.0" layoutY="111.0" prefHeight="56.0" prefWidth="245.0" />
+      <Button layoutX="1050.0" layoutY="111.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="245.0" text="Search">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+      <Button layoutX="1310.0" layoutY="32.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="82.0" text="Flights" />
+      <Button layoutX="1392.0" layoutY="32.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="82.0" text="Log out" />
+      <TextField layoutX="70.0" layoutY="220.0" prefHeight="35.0" prefWidth="125.0" promptText="Max price " />
+      <MenuButton layoutX="220.0" layoutY="220.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Max deaprture time">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="670.0" layoutY="220.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" text="Air lines">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="820.0" layoutY="220.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="125.0" text=" Seat class">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
+      <MenuButton layoutX="445.0" layoutY="220.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Max arrival time">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+      </MenuButton>
     </children>
 </AnchorPane>
