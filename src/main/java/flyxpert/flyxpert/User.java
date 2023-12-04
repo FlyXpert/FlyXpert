@@ -23,16 +23,17 @@ public class User
         }
         return null;
     }
+
     public static boolean exists(String userName)
     {
         for(User user : userList)
-            if(user.userName.equals(userName))
+            if(user.userName.equals(userName) || user.email.equals(userName))
                 return true;
         return false;
     }
     public boolean equals(User u)
     {
-        return this.userName.equals(u.userName) || this.email.equals(u.userName) && this.password.equals(u.password);
+        return (this.userName.equals(u.userName) || this.email.equals(u.userName)) && this.password.equals(u.password);
     }
     public String getUserName()
     {

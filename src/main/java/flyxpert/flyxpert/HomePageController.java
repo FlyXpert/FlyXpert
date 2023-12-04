@@ -21,7 +21,7 @@ public class HomePageController
     @FXML
     private Button signUpButton;
     @FXML
-    private Label signUpLabel, emailVaidatorLabel, passwordValidatorLabel;
+    private Label signUpLabel, emailVaidatorLabel, passwordValidatorLabel, signInPasswordValidator, signInUsernameValidator;
 
     public void onSignUp(ActionEvent event) throws IOException
     {
@@ -61,10 +61,24 @@ public class HomePageController
         String userName = signInUsernameTextField.getText();
         String password = signInPasswordTextField.getText();
         User user = new User(userName, password, null);
-        if(User.isFound(user) != null)
-            System.out.println("Successfully signed in!");
+        if(User.isFound(user) == null && User.exists(userName))
+        {
+            signInPasswordValidator.setText("Incorrect Password!");
+            signInPasswordValidator.setTextFill(Color.RED);
+            signInPasswordTextField.setText("");
+        }
+        else if(User.isFound(user) != null)
+        {
+            signInPasswordValidator.setText("");
+            signInUsernameValidator.setText("");
+            System.out.println("You've successfully logged in");
+        }
         else
+        {
+            signInUsernameValidator.setText("Incorrect username/email");
+            signInUsernameValidator.setTextFill(Color.RED);
             System.out.println("User not found");
+        }
 
         System.out.println(signInUsernameTextField.getText());
         System.out.println(signInPasswordTextField.getText());
@@ -81,11 +95,15 @@ public class HomePageController
             emailVaidatorLabel.setText("Incorrect email, follow this format [John-Doe@gmail.com]");
             emailVaidatorLabel.setTextFill(Color.RED);
         }
+        else
+            emailVaidatorLabel.setText("");
         if(password.length() < 12)
         {
             passwordValidatorLabel.setTextFill(Color.RED);
             passwordValidatorLabel.setText("Password length MUST be at least 12 characters long");
         }
+        else
+            passwordValidatorLabel.setText("");
         if(password.length() >= 12 && email.endsWith(".com") && email.contains("@"))
         {
             System.out.println(signUpEmailTextField.getText());
