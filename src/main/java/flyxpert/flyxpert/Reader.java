@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Reader {
+
     public void readAllFiles() throws FileNotFoundException {
         readFlightInformationFile();
+        readUsers();
     }
 
 
@@ -58,6 +60,20 @@ public class Reader {
 
     public void readUsers()
     {
-
+        try {
+            File file = new File("users.txt");
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()) {
+                String user = scan.nextLine();
+                System.out.println(user);
+                String[] splits = user.split(" ");
+                 User.userList.add(new User(splits[0], splits[1], splits[2]));
+            }
+            scan.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

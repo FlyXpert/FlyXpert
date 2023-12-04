@@ -2,10 +2,12 @@ package flyxpert.flyxpert;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Writer {
     public void writeToAllFiles() throws FileNotFoundException {
+        writeUsers();
         writeToFlightInformationFile();
     }
 
@@ -16,7 +18,7 @@ public class Writer {
         for(Flight flight : Flight.flights) {
 
             if(firstElement)
-            writer.print(",");
+                writer.print(",");
 
             writer.print(flight.getDepartureAirport().getCode()+ "," + flight.getDepartureAirport().getName() + "," + flight.getDepartureAirport().getLocation() + ","
                     + flight.getArrivalAirport().getCode()+ "," + flight.getArrivalAirport().getName() + "," + flight.getArrivalAirport().getLocation() + ","
@@ -32,14 +34,32 @@ public class Writer {
 
                     writer.print(flight.getSeatsAvailability()[i][j]);
                     if(i == 11 && j == 3)
-                    writer.println();
+                        writer.println();
                     else
-                    writer.print(",");
+                        writer.print(",");
                 }
             }
 
             firstElement = true;
         }
         writer.close();
+    }
+
+    public void writeUsers() throws FileNotFoundException {
+
+        try {
+             PrintWriter writer = new PrintWriter(new FileWriter("users.txt"));
+            for(User user : User.userList)
+            {
+                System.out.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
+                writer.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
+            }
+            writer.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }

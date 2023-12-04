@@ -2,23 +2,71 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="container" prefHeight="800" prefWidth="1536" style="-fx-border-radius: 4px;;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
     <children>
-        <Label fx:id="FlyXpertLabel" prefHeight="48.0" prefWidth="600.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" textFill="#415aff" wrapText="true">
+        <Label fx:id="FlyXpertLabel" prefHeight="93.0" prefWidth="263.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" wrapText="true">
             <font>
-                <Font name="Microsoft Sans Serif" size="62.0" />
+                <Font name="System Bold" size="64.0" />
             </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6941176652908325" green="0.0784313753247261" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9932885906040269">
+                     <color>
+                        <Color red="0.37720000743865967" green="0.36800000071525574" blue="0.9200000166893005" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4493333399295807" green="0.4399999976158142" blue="1.0" opacity="0.8969465494155884" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
         </Label>
         <ImageView fitHeight="800.0" fitWidth="1536.0" layoutX="1.0" layoutY="-2.0" pickOnBounds="true">
-        </ImageView>
-        <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="578.0" layoutY="154.0" prefHeight="244.0" prefWidth="420.0" style="-fx-bold: 800;" text="Welcome to FlyXpert" textAlignment="CENTER" textFill="#5555fa" wrapText="true">
+         <image>
+            <Image url="@HomePageBG.png" />
+         </image></ImageView>
+        <Label fx:id="welcomeLabel" alignment="CENTER" layoutX="578.0" layoutY="154.0" prefHeight="244.0" prefWidth="420.0" style="-fx-bold: 800;" text="Welcome to FlyXpert" textAlignment="CENTER" wrapText="true">
             <font>
-                <Font name="Lucida Bright" size="62.0" />
+                <Font name="System Bold" size="64.0" />
             </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6941176652908325" green="0.0784313753247261" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9932885906040269">
+                     <color>
+                        <Color red="0.37720000743865967" green="0.36800000071525574" blue="0.9200000166893005" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4493333399295807" green="0.4399999976158142" blue="1.0" opacity="0.8969465494155884" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
         </Label>
         <Button fx:id="signInButton" layoutX="919.0" layoutY="485.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="48.0" prefWidth="175.0" style="-fx-background-color: #FFF; -fx-border-color: #605DEC; -fx-border-radius: 4px;" text="Sign In" textFill="#605dec">
          <font>
