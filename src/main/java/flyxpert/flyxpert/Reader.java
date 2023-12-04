@@ -15,4 +15,9 @@ public class Reader {
         // Do Reading Here!
         // scan.close();
     }
+
+    public void readUsers()
+    {
+
+    }
 }
