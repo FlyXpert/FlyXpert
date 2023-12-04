@@ -2,17 +2,35 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="408.0" prefWidth="710.0" style="-fx-border-radius: 4px;;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
+<AnchorPane fx:id="container" prefHeight="800" prefWidth="1536" style="-fx-border-radius: 4px;;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
     <children>
-        <Label fx:id="FlyXpertLabel" prefHeight="48.0" prefWidth="600.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" textFill="#605eeb" wrapText="true">
+        <Label fx:id="FlyXpertLabel" prefHeight="48.0" prefWidth="600.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" wrapText="true">
             <font>
                 <Font name="Microsoft Sans Serif" size="31.0" />
             </font>
+         <textFill>
+            <LinearGradient endX="1.0" startX="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
         </Label>
         <ImageView fitHeight="437.0" fitWidth="710.0" layoutX="1.0" layoutY="-2.0" pickOnBounds="true">
         </ImageView>
