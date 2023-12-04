@@ -21,7 +21,7 @@ public class HomePageController
     @FXML
     private Button signUpButton;
     @FXML
-    private Label signUpLabel, emailVaidatorLabel, passwordValidatorLabel, signInPasswordValidator, signInUsernameValidator;
+    private Label signUpLabel, signUpUsernameValidator, emailVaidatorLabel, passwordValidatorLabel, signInPasswordValidator, signInUsernameValidator;
 
     public void onSignUp(ActionEvent event) throws IOException
     {
@@ -60,7 +60,7 @@ public class HomePageController
     {
         String userName = signInUsernameTextField.getText();
         String password = signInPasswordTextField.getText();
-        User user = new User(userName, password, null);
+        User user = new User(userName, null, password);
         if(User.isFound(user) == null && User.exists(userName))
         {
             signInPasswordValidator.setText("Incorrect Password!");
@@ -95,6 +95,10 @@ public class HomePageController
             emailVaidatorLabel.setText("Incorrect email, follow this format [John-Doe@gmail.com]");
             emailVaidatorLabel.setTextFill(Color.RED);
         }
+        else if(User.exists(email)) {
+            emailVaidatorLabel.setText("Email already exist, choose another");
+            emailVaidatorLabel.setTextFill(Color.RED);
+        }
         else
             emailVaidatorLabel.setText("");
         if(password.length() < 12)
@@ -104,7 +108,24 @@ public class HomePageController
         }
         else
             passwordValidatorLabel.setText("");
-        if(password.length() >= 12 && email.endsWith(".com") && email.contains("@"))
+
+        if(userName.isEmpty())
+        {
+            System.out.println("IT's empty");
+            signUpUsernameValidator.setTextFill(Color.RED);
+            signUpUsernameValidator.setText("Username cannot be empty");
+        }
+
+        else if(User.exists(userName))
+        {
+            signUpUsernameValidator.setTextFill(Color.RED);
+            signUpUsernameValidator.setText("Username already exist, choose another");
+        }
+        else
+            signUpUsernameValidator.setText("");
+
+        if(!User.exists(email) && !User.exists(userName) && password.length() >= 12
+                && email.endsWith(".com") && email.contains("@") && !userName.isEmpty())
         {
             System.out.println(signUpEmailTextField.getText());
             System.out.println(signUpUsernameTextField.getText());
@@ -113,7 +134,7 @@ public class HomePageController
 
 
             ((Stage) signUpButton.getScene().getWindow()).close();
-            User user = new User(userName, password, email);
+            User user = new User(userName, email, password);
             User.userList.add(user);
         }
 
