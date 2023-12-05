@@ -3,6 +3,7 @@ package flyxpert.flyxpert;
 import java.util.Date;
 
 public class Flight {
+    private String airlineName;
     private int flightNumber;
     private Airport departureAirport;
     private Airport arrivalAirport;
@@ -10,13 +11,24 @@ public class Flight {
     private Date arrivalTime;
     private int availableSeats;
 
-    public Flight(int flightNumber, Airport departureAirport, Airport arrivalAirport, Date departureTime, Date arrivalTime, int availableSeats) {
-        this.flightNumber = flightNumber;
+    private Date arrivalDay;
+    private int economyPrice;
+    private int businessPrice;
+    private int firstClassPrice;
+
+
+    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Date departureTime, Date arrivalTime, Date arrivalDay, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
+        this.airlineName = airlineName;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.arrivalDay = arrivalDay;
+        this.economyPrice = economyPrice;
+        this.businessPrice = businessPrice;
+        this.firstClassPrice = firstClassPrice;
         this.availableSeats = availableSeats;
+        this.flightNumber = flightNumber;
     }
 
     public int getFlightNumber() {
@@ -67,4 +79,35 @@ public class Flight {
         this.availableSeats = availableSeats;
     }
 
+    public String getAirlineName() {
+        return airlineName;
+    }
+
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
+    }
+
+    public int getEconomyPrice() {
+        return economyPrice;
+    }
+
+    public void setEconomyPrice(int economyPrice) {
+        this.economyPrice = economyPrice;
+    }
+
+    public int getBusinessPrice() {
+        return businessPrice;
+    }
+
+    public void setBusinessPrice(int businessPrice) {
+        this.businessPrice = businessPrice;
+    }
+
+    public int getFirstClassPrice() {
+        return firstClassPrice;
+    }
+
+    public void setFirstClassPrice(int firstClassPrice) {
+        this.firstClassPrice = firstClassPrice;
+    }
 }
