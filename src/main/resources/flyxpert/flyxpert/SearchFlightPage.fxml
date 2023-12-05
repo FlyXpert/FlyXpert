@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -95,5 +96,10 @@
          </items>
       </MenuButton>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="245.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
+      <ScrollPane layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="519.0" prefWidth="1404.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
     </children>
 </AnchorPane>

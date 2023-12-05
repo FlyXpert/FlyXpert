@@ -1,8 +1,10 @@
 package flyxpert.flyxpert;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Flight {
+    public static ArrayList<Flight>flights;
     private String airlineName;
     private int flightNumber;
     private Airport departureAirport;
@@ -109,5 +111,13 @@ public class Flight {
 
     public void setFirstClassPrice(int firstClassPrice) {
         this.firstClassPrice = firstClassPrice;
+    }
+
+    public Date getArrivalDay() {
+        return arrivalDay;
+    }
+
+    public void setArrivalDay(Date arrivalDay) {
+        this.arrivalDay = arrivalDay;
     }
 }
