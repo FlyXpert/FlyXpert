@@ -11,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -96,10 +97,10 @@
          </items>
       </MenuButton>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="245.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
-      <ScrollPane layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="519.0" prefWidth="1404.0">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
-      </ScrollPane>
+        <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="498.0"
+                    prefWidth="1404.0">
+            <VBox fx:id="vbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="496.0"
+                  prefWidth="1403.0"/>
+        </ScrollPane>
     </children>
 </AnchorPane>

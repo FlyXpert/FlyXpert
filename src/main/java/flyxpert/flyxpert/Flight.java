@@ -1,25 +1,23 @@
 package flyxpert.flyxpert;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 public class Flight {
-    public static ArrayList<Flight>flights;
-    private String airlineName;
-    private int flightNumber;
     private Airport departureAirport;
     private Airport arrivalAirport;
-    private Date departureTime;
-    private Date arrivalTime;
-    private int availableSeats;
-
-    private Date arrivalDay;
+    private String airlineName;
+    private Time departureTime;
+    private Time arrivalTime;
+    private NewDate arrivalDay;
     private int economyPrice;
     private int businessPrice;
     private int firstClassPrice;
+    private int availableSeats;
+    private int flightNumber;
 
 
-    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Date departureTime, Date arrivalTime, Date arrivalDay, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber) {
+    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate arrivalDay, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.airlineName = airlineName;
@@ -33,6 +31,7 @@ public class Flight {
         this.flightNumber = flightNumber;
     }
 
+    public static ArrayList<Flight>flights = new ArrayList<>();
     public int getFlightNumber() {
         return flightNumber;
     }
@@ -57,19 +56,19 @@ public class Flight {
         this.arrivalAirport = arrivalAirport;
     }
 
-    public Date getDepartureTime() {
+    public Time getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Date departureTime) {
+    public void setDepartureTime(Time departureTime) {
         this.departureTime = departureTime;
     }
 
-    public Date getArrivalTime() {
+    public Time getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Date arrivalTime) {
+    public void setArrivalTime(Time arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
@@ -113,11 +112,11 @@ public class Flight {
         this.firstClassPrice = firstClassPrice;
     }
 
-    public Date getArrivalDay() {
+    public NewDate getArrivalDay() {
         return arrivalDay;
     }
 
-    public void setArrivalDay(Date arrivalDay) {
+    public void setArrivalDay(NewDate arrivalDay) {
         this.arrivalDay = arrivalDay;
     }
 }

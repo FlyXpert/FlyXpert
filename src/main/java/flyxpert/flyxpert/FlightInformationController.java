@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 import java.io.File;
 import java.net.URL;
@@ -19,4 +20,7 @@ public class FlightInformationController implements Initializable {
         Image image = new Image(file.toURI().toString());
         worldImageView.setImage(image);
     }
+
+
+
 }
