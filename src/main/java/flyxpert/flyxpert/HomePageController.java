@@ -38,7 +38,7 @@ public class HomePageController {
         signUpStage.setResizable(false);
         signUpStage.setScene(scene);
         signUpStage.show();
-        System.out.println("Signed up");
+        //System.out.println("Signed up");
     }
     public void homePageOnSignIn(ActionEvent event) throws IOException {
         signInStage = new Stage();
@@ -54,7 +54,7 @@ public class HomePageController {
         signInStage.setScene(scene);
         signInStage.show();
 
-        System.out.println("Signed In");
+        //System.out.println("Signed In");
     }
     public void internalOnSignInButton(ActionEvent e) {
         String userName = signInUsernameTextField.getText();
@@ -68,17 +68,17 @@ public class HomePageController {
         else if(User.searchForUser(user) != null) {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
-            System.out.println("You've successfully logged in");
+            //System.out.println("You've successfully logged in");
         }
         else {
             signInUsernameValidator.setText("Incorrect username/email");
             signInUsernameValidator.setTextFill(ERROR_COLOR);
-            System.out.println("User not found");
+            //System.out.println("User not found");
         }
 
-        System.out.println(signInUsernameTextField.getText());
-        System.out.println(signInPasswordTextField.getText());
-        System.out.println("Working");
+        //System.out.println(signInUsernameTextField.getText());
+        //System.out.println(signInPasswordTextField.getText());
+        //System.out.println("Working");
     }
     public void internalOnSignUpButton(ActionEvent e) {
         String userName = signUpUsernameTextField.getText();
@@ -103,7 +103,7 @@ public class HomePageController {
             passwordValidatorLabel.setText("");
 
         if(userName.isEmpty()) {
-            System.out.println("IT's empty");
+            //System.out.println("IT's empty");
             signUpUsernameValidator.setTextFill(ERROR_COLOR);
             signUpUsernameValidator.setText("Username cannot be empty");
         }
@@ -117,9 +117,9 @@ public class HomePageController {
 
         if(!User.exists(email) && !User.exists(userName) && password.length() >= 12
                 && email.endsWith(".com") && email.contains("@") && !userName.isEmpty()) {
-            System.out.println(signUpEmailTextField.getText());
-            System.out.println(signUpUsernameTextField.getText());
-            System.out.println(signUpPasswordTextField.getText());
+            //System.out.println(signUpEmailTextField.getText());
+            //System.out.println(signUpUsernameTextField.getText());
+            //System.out.println(signUpPasswordTextField.getText());
             signUpLabel.setText("You have successfully signed up!");
 
             ((Stage) internalSignUpButton.getScene().getWindow()).close();
@@ -131,19 +131,17 @@ public class HomePageController {
                 signUpSuccessLabel.setTextFill(Color.GREEN);
             }
             catch (NullPointerException exception) {
-                System.out.println("Null..");
+                //System.out.println("Null..");
             }
-
         }
-
     }
 
     public void onSignInButtonHoverEnter(MouseEvent e) {
-        System.out.println("HOVER ON");
+        //System.out.println("HOVER ON");
         homePageSignInButton.setStyle("-fx-background-color: #e2e2e2");
     }
     public void onSignInButtonHoverExit(MouseEvent e) {
-        System.out.println("HOVER OFF");
+        //System.out.println("HOVER OFF");
         homePageSignInButton.setStyle("-fx-background-color: #FFF; -fx-border-color: #605DEC; -fx-border-radius: 4px");
     }
 
@@ -174,9 +172,4 @@ public class HomePageController {
         internalSignUpButton.setTextFill(Color.WHITE);
         internalSignUpButton.setStyle("-fx-background-color: #605DEC; -fx-border-radius: 4px");
     }
-
-
-
-
-
 }
