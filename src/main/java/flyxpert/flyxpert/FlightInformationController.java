@@ -42,19 +42,38 @@ public class FlightInformationController implements Initializable {
 
     private HBox createFlight(Flight flight){
         HBox hbox = new HBox();
-        hbox.setStyle("-fx-border-color: black; -fx-border-width: 0.5");
+        hbox.setStyle("-fx-border-color: black;");
 
-        hbox.getChildren().add(new Label(flight.getAirlineName()));
+        Label label1 = new Label(flight.getAirlineName());
 
-        hbox.getChildren().add(new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
-                + "-" + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes()));
+        label1 = FlightInformationController.setLabelStyle(label1);
+        hbox.getChildren().add(label1);
 
-        hbox.getChildren().add(new Label(flight.getArrivalDay().getDay()
+        Label label2 = new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
+                + "-" + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes());
+
+        label2 = FlightInformationController.setLabelStyle(label2);
+        hbox.getChildren().add(label2);
+
+        Label label3 = new Label(flight.getArrivalDay().getDay()
                 + "-" + flight.getArrivalDay().getMonth()
-                + "-" + flight.getArrivalDay().getYear()));
+                + "-" + flight.getArrivalDay().getYear());
 
-        hbox.getChildren().add(new Label(Integer.toString(flight.getEconomyPrice())));
+
+        label3 = FlightInformationController.setLabelStyle(label3);
+        hbox.getChildren().add(label3);
+
+        Label label4 = new Label(Integer.toString(flight.getEconomyPrice()));
+
+        label4 = FlightInformationController.setLabelStyle(label4);
+        hbox.getChildren().add(label4);
 
         return hbox;
+    }
+
+    private static Label setLabelStyle(Label label) {
+        label.setStyle("-fx-padding: 20;");
+
+        return label;
     }
 }
