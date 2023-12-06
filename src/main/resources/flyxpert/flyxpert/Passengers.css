@@ -7,3 +7,13 @@
 {
     -fx-background-color: #ededed;
 }
+
+#button1
+{
+    -fx-background-color: #7135ff;
+    -fx-border-width: 0;
+}
+#button1:hover
+{
+    -fx-background-color: #5c2ccf;
+}
