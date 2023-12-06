@@ -1,0 +1,20 @@
+
+.default-seat {
+    -fx-background-color: linear-gradient(to bottom, #8a2be2, #4b0082); /* Purple-Blue Gradient */
+    -fx-text-fill: white;
+}
+
+.hover-seat {
+    -fx-background-color: #483d8b; /* Dark Slate Blue (Darker Purple) */
+    -fx-text-fill: white;
+}
+
+.selected-seat {
+    -fx-background-color: linear-gradient(to bottom, #ffc0cb, #ff69b4); /* Pink Gradient */
+    -fx-text-fill: white;
+}
+.selected-seat .checkmark {
+    -fx-text-fill: white;
+    -fx-font-size: 18;
+    -fx-padding: 0 0 0 5; /* Adjust padding as needed */
+}

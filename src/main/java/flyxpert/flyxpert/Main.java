@@ -35,11 +35,6 @@ public class Main extends Application {
         catch (Exception e){
             e.printStackTrace();
         }
-       /* stage.setTitle("Passenger Information");
-        Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Passengers.fxml")));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();*/
     }
 
 }
