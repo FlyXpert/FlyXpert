@@ -1,0 +1,13 @@
+#cardPaymentButton{
+    -fx-background-color: #605dff;
+    -fx-text-fill: white;
+    -fx-border-color: #605dff;
+    -fx-border-radius: 5px;
+}
+
+#paypalPaymentButton{
+    -fx-background-color: white;
+    -fx-text-fill: #605dff;
+    -fx-border-color: #605dff;
+    -fx-border-radius: 5px;
+}
