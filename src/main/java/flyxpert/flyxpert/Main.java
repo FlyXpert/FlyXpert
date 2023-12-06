@@ -20,9 +20,7 @@ public class Main extends Application {
     public static void main(String[] args) throws FileNotFoundException {
         Reader reader = new Reader();
         reader.readAllFiles();
-        FlightInformationController controller = new FlightInformationController();
-        controller.fillDataOfFlights();
-        //launch(args);
+        launch(args);
         Writer writer = new Writer();
         writer.writeToAllFiles();
     }
@@ -30,8 +28,14 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
 
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("SearchFlightPage.fxml"));
-            Scene scene = new Scene(root);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SearchFlightPage.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+
+            FlightInformationController controller = fxmlLoader.getController();
+            controller.fillDataOfFlights();
+
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
             stage.setScene(scene);
             stage.show();

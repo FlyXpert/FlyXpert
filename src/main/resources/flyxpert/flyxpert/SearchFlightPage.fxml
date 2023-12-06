@@ -99,7 +99,7 @@
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="245.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
         <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="498.0" prefWidth="1404.0">
          <content>
-            <VBox fx:id="vbox" prefHeight="200.0" prefWidth="100.0" />
+            <VBox fx:id="vbox" alignment="CENTER" prefHeight="497.0" prefWidth="1398.0" />
          </content>
         </ScrollPane>
     </children>
