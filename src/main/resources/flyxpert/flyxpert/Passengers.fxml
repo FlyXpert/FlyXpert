@@ -117,47 +117,15 @@
       <TextField fx:id="middleNameTextField" layoutX="326.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Middle Name" />
       <TextField fx:id="DOBTextField" layoutX="108.0" layoutY="480.0" prefHeight="44.0" prefWidth="201.0" promptText="Date of Birth*" />
       <TextField fx:id="phoneNumberTextField" layoutX="326.0" layoutY="480.0" prefHeight="44.0" prefWidth="201.0" promptText="Phone Number" />
-      <Button id="button" fx:id="nextPassengerButton" layoutX="108.0" layoutY="583.0" mnemonicParsing="false" onAction="#NextPassengerButtonPress" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Next Passenger">
+      <Button id="button1" fx:id="nextPassengerButton" layoutX="108.0" layoutY="583.0" mnemonicParsing="false" onAction="#NextPassengerButtonPress" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Next Passenger" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
       </Button>
-      <Button id="button" layoutX="276.0" layoutY="583.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Select Seats">
+      <Button id="button1" layoutX="276.0" layoutY="583.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Select Seats" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
       </Button>
       <ImageView fitHeight="583.0" fitWidth="486.0" layoutX="1050.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
          <image>

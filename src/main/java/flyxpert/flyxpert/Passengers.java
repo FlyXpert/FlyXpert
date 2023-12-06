@@ -40,6 +40,7 @@ public class Passengers {
     private int phoneNumber;
     static public int passengersToBeAdded = 2;
     static private int curPassenger = 0;
+    private Passengers[] passengerArr = new Passengers[1000];
 
     public void setName(String name) {
         this.name = name;
@@ -65,40 +66,65 @@ public class Passengers {
         return phoneNumber;
     }
 
-    public void NextPassengerButtonPress(ActionEvent event)
-    {
-        if(passengersToBeAdded > 0)
+    public void NextPassengerButtonPress(ActionEvent event) throws ParseException {
+        if(passengersToBeAdded > 0 && AddPassenger())
         {
-            AddPassenger();
             passengersToBeAdded--;
             numOfPassengersDisplay.setText("Passenger " + (curPassenger + 1));
         }
     }
-    public void AddPassenger()
-    {
-        Passengers tmpPassenger = new Passengers();
-        tmpPassenger.name = firstNameTextField.getText();
-        tmpPassenger.name += " ";
-        tmpPassenger.name += middleNameTextField.getText();
-        tmpPassenger.name += " ";
-        tmpPassenger.name += lastNameTextField.getText();
+    public Boolean AddPassenger() throws ParseException {
+
+        passengerArr[curPassenger] = new Passengers();
+
+        if(firstNameTextField.getText() != null)
+        {
+            passengerArr[curPassenger].name = firstNameTextField.getText();
+            passengerArr[curPassenger].name += " ";
+        }
+        else
+        {
+            return false;
+        }
+
+        if(middleNameTextField.getText() != null)
+        {
+            passengerArr[curPassenger].name = middleNameTextField.getText();
+            passengerArr[curPassenger].name += " ";
+        }
+        else
+        {
+            return false;
+        }
+
+        if(lastNameTextField.getText() != null)
+        {
+            passengerArr[curPassenger].name = lastNameTextField.getText();
+        }
+        else
+        {
+            return false;
+        }
+
         try
         {
-            tmpPassenger.DOB = DOBFormat.parse(DOBTextField.getText());
+            passengerArr[curPassenger].DOB = DOBFormat.parse(DOBTextField.getText());
         }
-        catch (ParseException ignored)
+        catch(ParseException e)
         {
-
+            return false;
         }
-        tmpPassenger.phoneNumber = Integer.parseInt(phoneNumberTextField.getText());
+
+        if(phoneNumberTextField.getText() != null)
+        {
+            passengerArr[curPassenger].phoneNumber = Integer.parseInt(phoneNumberTextField.getText());
+        }
+        else
+        {
+            return false;
+        }
         curPassenger++;
+        return true;
     }
 
-    public void start(Stage stage) throws IOException {
-        stage.setTitle("Passenger Information");
-        Parent root  = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Passengers.fxml")));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }
