@@ -12,32 +12,6 @@
 
 <AnchorPane fx:id="container" prefHeight="800" prefWidth="1536" style="-fx-border-radius: 4px;;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
     <children>
-        <Label fx:id="FlyXpertLabel" prefHeight="93.0" prefWidth="263.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" wrapText="true">
-            <font>
-                <Font name="System Bold" size="64.0" />
-            </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6941176652908325" green="0.0784313753247261" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9932885906040269">
-                     <color>
-                        <Color red="0.37720000743865967" green="0.36800000071525574" blue="0.9200000166893005" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.4493333399295807" green="0.4399999976158142" blue="1.0" opacity="0.8969465494155884" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-        </Label>
         <ImageView fitHeight="800.0" fitWidth="1536.0" layoutX="1.0" layoutY="-2.0" pickOnBounds="true">
          <image>
             <Image url="@HomePageBG.png" />
@@ -68,13 +42,44 @@
             </LinearGradient>
          </textFill>
         </Label>
-        <Button fx:id="signInButton" layoutX="919.0" layoutY="485.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="48.0" prefWidth="175.0" style="-fx-background-color: #FFF; -fx-border-color: #605DEC; -fx-border-radius: 4px;" text="Sign In" textFill="#605dec">
+        <Button fx:id="homePageSignInButton" layoutX="919.0" layoutY="485.0" mnemonicParsing="false" onAction="#homePageOnSignIn" onMouseEntered="#onSignInButtonHoverEnter" onMouseExited="#onSignInButtonHoverExit" prefHeight="48.0" prefWidth="175.0" style="-fx-background-color: #FFF; -fx-border-color: #605DEC; -fx-border-radius: 4px;" text="Sign In" textFill="#605dec">
          <font>
             <Font size="23.0" />
          </font></Button>
-        <Button fx:id="signUpButton" layoutX="502.0" layoutY="485.0" mnemonicParsing="false" onAction="#onSignUp" prefHeight="48.0" prefWidth="175.0" style="-fx-background-color: #605DEC; -fx-border-radius: 4px;" text="Sign Up" textFill="WHITE">
+        <Button fx:id="homePageSignUpButton" layoutX="502.0" layoutY="485.0" mnemonicParsing="false" onAction="#homePageOnSignUp" onMouseEntered="#onSignUpButtonHoverEnter" onMouseExited="#onSignUpButtonHoverExit" prefHeight="48.0" prefWidth="175.0" style="-fx-background-color: #605DEC; -fx-border-radius: 4px;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font></Button>
+        <Label fx:id="FlyXpertLabel" layoutX="31.0" layoutY="14.0" prefHeight="93.0" prefWidth="263.0" style="-fx-text-alignment: center;" text="FlyXpert" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="64.0" />
+            </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6941176652908325" green="0.0784313753247261" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9932885906040269">
+                     <color>
+                        <Color red="0.37720000743865967" green="0.36800000071525574" blue="0.9200000166893005" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.4493333399295807" green="0.4399999976158142" blue="1.0" opacity="0.8969465494155884" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+        </Label>
+      <Label fx:id="signUpSuccessLabel" layoutY="616.0" prefHeight="17.0" prefWidth="1537.0" style="-fx-alignment: center;" textAlignment="CENTER">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

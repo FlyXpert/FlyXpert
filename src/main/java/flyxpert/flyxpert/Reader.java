@@ -4,23 +4,20 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Reader {
-    public void readAllFiles()
-    {
+    public void readAllFiles() {
         readAFile();
         readUsers();
     }
 
     // This an example for reading data from a file (Remove this and add your own functions to read Users, Flights, etc.)
-    public void readAFile()
-    {
+    public void readAFile() {
         // File file = new File("");
         // Scanner scan = new Scanner(file);
         // Do Reading Here!
         // scan.close();
     }
 
-    public void readUsers()
-    {
+    public void readUsers() {
         try {
             File file = new File("users.txt");
             Scanner scan = new Scanner(file);
@@ -32,8 +29,7 @@ public class Reader {
             }
             scan.close();
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             e.printStackTrace();
         }
     }

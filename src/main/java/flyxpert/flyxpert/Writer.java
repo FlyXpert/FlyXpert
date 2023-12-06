@@ -10,8 +10,7 @@ public class Writer {
     }
 
     // This an example for writing data to a file (Remove this and add your own functions to write Users, Flights, etc.)
-    public void writeToAFile()
-    {
+    public void writeToAFile() {
         // PrintWriter writer = new PrintWriter("");
         // writer.println();
         // Do writing here!
@@ -22,15 +21,13 @@ public class Writer {
 
         try {
              PrintWriter writer = new PrintWriter(new FileWriter("users.txt"));
-            for(User user : User.userList)
-            {
+            for(User user : User.userList) {
                 System.out.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
                 writer.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
             }
             writer.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
 
