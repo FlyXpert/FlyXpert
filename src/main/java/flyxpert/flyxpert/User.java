@@ -29,23 +29,19 @@ public class User {
     public boolean equals(User u) {
         return (this.userName.equals(u.userName) || this.email.equals(u.userName)) && this.password.equals(u.password);
     }
-    public String getUserName()
-    {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName)
-    {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public String getPassword()
-    {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password)
-    {
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -53,10 +49,7 @@ public class User {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
-
-
 }

@@ -20,9 +20,9 @@ public class Writer {
     public void writeUsers() throws IOException {
 
         try {
-             PrintWriter writer = new PrintWriter(new FileWriter("users.txt"));
+            PrintWriter writer = new PrintWriter(new FileWriter("users.txt"));
             for(User user : User.userList) {
-                System.out.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
+                //System.out.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
                 writer.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
             }
             writer.close();
@@ -30,6 +30,5 @@ public class Writer {
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 }

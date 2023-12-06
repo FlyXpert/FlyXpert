@@ -17,15 +17,16 @@ public class Reader {
         // scan.close();
     }
 
+    // User data is written in which each line contains all the data for one user, seperated by spaces (Username Email Password)
     public void readUsers() {
         try {
             File file = new File("users.txt");
             Scanner scan = new Scanner(file);
             while (scan.hasNextLine()) {
                 String user = scan.nextLine();
-                System.out.println(user);
-                String[] splits = user.split(" ");
-                 User.userList.add(new User(splits[0], splits[1], splits[2]));
+                //System.out.println(user);
+                String[] userCredentials = user.split(" ");
+                User.userList.add(new User(userCredentials[0], userCredentials[1], userCredentials[2]));
             }
             scan.close();
         }
