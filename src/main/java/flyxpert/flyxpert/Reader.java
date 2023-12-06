@@ -55,11 +55,9 @@ public class Reader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-    public void readUsers()
-    {
+    public void readUsers() {
         try {
             File file = new File("users.txt");
             Scanner scan = new Scanner(file);
@@ -71,8 +69,7 @@ public class Reader {
             }
             scan.close();
         }
-        catch(Exception e)
-        {
+        catch(Exception e) {
             e.printStackTrace();
         }
     }

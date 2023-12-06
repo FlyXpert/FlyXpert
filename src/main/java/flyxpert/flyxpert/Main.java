@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class Main extends Application {
     public static void main(String[] args) throws FileNotFoundException {
-
         Reader reader = new Reader();
         reader.readAllFiles();
         launch(args);
@@ -18,11 +17,10 @@ public class Main extends Application {
         writer.writeToAllFiles();
     }
 
-    public void start(Stage stage) throws IOException
-    {
+    public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/HomePage/HomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("FlyXpert!");
         stage.setResizable(false);
 
         stage.setScene(scene);
