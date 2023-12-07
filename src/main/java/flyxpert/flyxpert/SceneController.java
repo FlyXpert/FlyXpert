@@ -18,8 +18,8 @@ public class SceneController {
         static Stage stage = new Stage();
         static Scene scene;
         static Parent root;
-        public void switchToSeatSelection(ActionEvent event, ArrayList<Passengers> passengers) throws IOException, ParseException {
-                // the right controller ?
+        public static void switchToSeatSelection(ActionEvent event) throws IOException, ParseException {
+
                 root = FXMLLoader.load(SeatSelectionPageController.class.getResource("SeatSelectionPage.fxml"));
                 stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);

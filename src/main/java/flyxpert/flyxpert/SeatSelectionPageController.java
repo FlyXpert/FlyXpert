@@ -19,7 +19,7 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
-import jdk.internal.access.JavaNetHttpCookieAccess;
+//import jdk.internal.access.JavaNetHttpCookieAccess;
 
 import java.io.IOException;
 import java.net.URL;
@@ -43,31 +43,25 @@ public class SeatSelectionPageController implements Initializable {
         private Seat[][] businessSeats = new Seat[4][4];
         private Seat[][] firstClassSeats = new Seat[4][4];
 
-        private ArrayList<Passengers> passengers = new ArrayList<>();
 
-        private int size = 0;
+        private int size = Passengers.passengers.size();
         private int index = 0;
 
-        void setData() throws ParseException {
-                this.passengers = Passengers.passengers;
-                if (this.passengers.isEmpty()) {
-                        for (int i = 0; i < 2; i++)
-                                creatArbitrary(i);
-                }
-                size = passengers.size();
-        }
 
         // for manual tests
-        void creatArbitrary(int i) throws ParseException {
-                Passengers arbitraryPassenger = new Passengers();
+        void creatArbitrary() throws ParseException {
+                for (int i = 0; i < 3; i++) {
+                        Passengers arbitraryPassenger = new Passengers();
 
-                arbitraryPassenger.setName("Arbitrary Passenger" + i);
-                SimpleDateFormat DOBFormat = new SimpleDateFormat("dd/MM/yy");;
-                arbitraryPassenger.setDOB(DOBFormat.parse("01/01/90"));
-                arbitraryPassenger.setPhoneNumber("123-456-7890");
+                        arbitraryPassenger.setName("Arbitrary Passenger" + i);
+                        SimpleDateFormat DOBFormat = new SimpleDateFormat("dd/MM/yy");;
+                        arbitraryPassenger.setDOB(DOBFormat.parse("01/01/90"));
+                        arbitraryPassenger.setPhoneNumber("123-456-7890");
 
-                this.passengers.add(arbitraryPassenger);
-           //     System.out.println(passengers.size());
+                        Passengers.passengers.add(arbitraryPassenger);
+                        //     System.out.println(passengers.size());
+                }
+
         }
 
 
@@ -101,12 +95,12 @@ public class SeatSelectionPageController implements Initializable {
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
                 nextSeat.setBorder(createPurpleBorder());
-                try {
-                        setData();
+              /*  try {
+                        creatArbitrary();
                 }
                 catch (ParseException e) {
                         throw new RuntimeException(e);
-                }
+                }*/
                 fillSeatMap();
         }
 
@@ -172,19 +166,19 @@ public class SeatSelectionPageController implements Initializable {
         }
 
         public void change(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
-                if (passengers.isEmpty()) {
+                if (Passengers.passengers.isEmpty()) {
                         System.out.println("empty asshole");
                         return;
                 }
-                if (s[row][col].getRec().getFill().equals(cmp) && passengers.get(index).getSeat() == null) {
+                if (s[row][col].getRec().getFill().equals(cmp) && Passengers.passengers.get(index).getSeat() == null) {
 
                         s[row][col].getRec().setFill(Color.GRAY);
-                        passengers.get(index).setSeat(seat);
+                        Passengers.passengers.get(index).setSeat(seat);
                 }
-                else if (s[row][col].getRec().getFill().equals(Color.GRAY) && passengers.get(index).getSeat() != null && passengers.get(index).getSeat().getPrimaryKey().equals(s[row][col].getPrimaryKey())) {
+                else if (s[row][col].getRec().getFill().equals(Color.GRAY) && Passengers.passengers.get(index).getSeat() != null && Passengers.passengers.get(index).getSeat().getPrimaryKey().equals(s[row][col].getPrimaryKey())) {
 
                         s[row][col].getRec().setFill(cmp);
-                        passengers.get(index).setSeat(null);
+                        Passengers.passengers.get(index).setSeat(null);
                 }
         }
         public void seatClicked(Seat seat) {
@@ -210,7 +204,7 @@ public class SeatSelectionPageController implements Initializable {
 
         public void nextSeatClicked() {
                 // can't do if hadn't chosen a seat
-                if (passengers.get(index).getSeat() == null) {
+                if (Passengers.passengers.get(index).getSeat() == null) {
                         // show warning
                         noSeatChosen.setVisible(true);
                         return;
@@ -227,7 +221,7 @@ public class SeatSelectionPageController implements Initializable {
                 passengerCount.setText("Passenger" + (index + 1));
 
                 // display next passenger name
-                passengerName.setText(passengers.get(index).getName());
+                passengerName.setText(Passengers.passengers.get(index).getName());
 
                 if (index == size - 1) {
                         nextSeat.setText("Proceed to Payment");
