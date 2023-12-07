@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.TestBookingClass">
+   <children>
+      <TextField fx:id="destination" layoutX="446.0" layoutY="138.0" />
+      <TextField fx:id="airLineName" layoutX="446.0" layoutY="186.0" />
+      <TextField fx:id="bookingNumber" layoutX="446.0" layoutY="245.0" />
+      <TextField fx:id="cardNumber" layoutX="446.0" layoutY="300.0" />
+      <TextField fx:id="expirationDate" layoutX="446.0" layoutY="350.0" />
+      <TextField fx:id="nameOnCard" layoutX="446.0" layoutY="400.0" />
+      <TextField fx:id="passengerName" layoutX="446.0" layoutY="446.0" />
+      <TextField fx:id="paymentMethood" layoutX="446.0" layoutY="494.0" />
+      <TextField fx:id="price" layoutX="446.0" layoutY="546.0" />
+      <Text layoutX="349.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dest" />
+      <Text layoutX="361.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="airline" />
+      <Text layoutX="325.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BookingNUm" />
+      <Text layoutX="325.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CardNumb" />
+      <Text layoutX="332.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ExpDate" />
+      <Text layoutX="327.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NameOnCard" />
+      <Text layoutX="324.0" layoutY="463.0" strokeType="OUTSIDE" strokeWidth="0.0" text="passName" />
+      <Text layoutX="333.0" layoutY="511.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PaymentMethod" wrappingWidth="55.037109375" />
+      <Text layoutX="333.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price" wrappingWidth="55.037109375" />
+      <Button layoutX="495.0" layoutY="635.0" mnemonicParsing="false" onAction="#test" text="Button" />
+   </children>
+</AnchorPane>
