@@ -4,9 +4,12 @@ public class Time {
     private String hour;
     private String minutes;
 
-    public Time(String hour,String minutes){
+    private String period;
+
+    public Time(String hour,String minutes,String period){
         this.hour = hour;
         this.minutes = minutes;
+        this.period = period;
     }
 
     public String getHour() {
@@ -23,5 +26,13 @@ public class Time {
 
     public void setMinutes(String minutes) {
         this.minutes = minutes;
+    }
+
+    public String getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
     }
 }

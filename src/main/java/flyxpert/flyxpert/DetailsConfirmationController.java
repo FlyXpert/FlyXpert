@@ -12,30 +12,36 @@ import java.io.IOException;
 
 public class DetailsConfirmationController {
     @FXML
-    private Label airlineLabel;
+    private  Label airlineLabel;
     @FXML
-    private Label dayLabel;
+    private  Label dayLabel;
     @FXML
     private Label timeLabel;
-    public void handleHBoxClick(Flight flight) throws IOException {
+    public static void handleHBoxClick(Flight flight) throws IOException {
+
 
         Stage newStage = new Stage();
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.initStyle(StageStyle.UTILITY);
         newStage.setTitle("Flight Details");
         newStage.setResizable(false);
+        newStage.setX(593.0);
+        newStage.setY(312.5);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DetailsConfirmation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DetailsConfirmationController.class.getResource("DetailsConfirmation.fxml"));
         Scene newScene = new Scene(fxmlLoader.load());
         DetailsConfirmationController controller = fxmlLoader.getController();
 
-        airlineLabel.setText(flight.getAirlineName());
+        controller.airlineLabel.setText(flight.getAirlineName() + " Airlines");
 
-        dayLabel.setText(flight.getArrivalDay().getDay()
+        controller.dayLabel.setText(flight.getArrivalDay().getDay()
                 + "-" + flight.getArrivalDay().getMonth()
                 + "-" + flight.getArrivalDay().getYear());
-        timeLabel.setText(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
-                + "-" + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes());
+
+        controller.timeLabel.setText(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
+                + " " + flight.getDepartureTime().getPeriod()
+                + " - " + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes()
+                + " " + flight.getArrivalTime().getPeriod());
 
 
         newStage.setScene(newScene);

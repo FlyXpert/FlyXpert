@@ -22,8 +22,8 @@ public class Reader {
                 Airport departureAirport = new Airport(scan.next(), scan.next(), scan.next());
                 Airport arrivalAirport = new Airport(scan.next(), scan.next(), scan.next());
                 String airlineName = scan.next();
-                Time departureTime = new Time(scan.next(), scan.next());
-                Time arrivalTime = new Time(scan.next(), scan.next());
+                Time departureTime = new Time(scan.next(), scan.next(),scan.next());
+                Time arrivalTime = new Time(scan.next(), scan.next(),scan.next());
                 NewDate arrivalDay = new NewDate(scan.next(), scan.next(), scan.next());
                 int economyPrice = Integer.parseInt(scan.next());
                 int businessPrice = Integer.parseInt(scan.next());

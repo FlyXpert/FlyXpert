@@ -49,13 +49,15 @@ public class FlightInformationController implements Initializable {
         HBox hbox = new HBox();
         hbox.setStyle("-fx-border-color: black;");
 
-        Label airLineLabel = new Label(flight.getAirlineName());
+        Label airLineLabel = new Label(flight.getAirlineName() + " Airlines");
 
         FlightInformationController.setLabelStyle(airLineLabel);
         hbox.getChildren().add(airLineLabel);
 
         Label timeLabel = new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
-                + "-" + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes());
+                + " " + flight.getDepartureTime().getPeriod()
+                + " - " + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes()
+                + " " + flight.getArrivalTime().getPeriod());
 
         FlightInformationController.setLabelStyle(timeLabel);
         hbox.getChildren().add(timeLabel);
@@ -75,15 +77,7 @@ public class FlightInformationController implements Initializable {
 
         hbox.setOnMouseClicked(event -> {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DetailsConfirmation.fxml"));
-                DetailsConfirmationController controller = fxmlLoader.getController();
-                //DetailsConfirmationController controller = new DetailsConfirmationController();
-                if(controller == null)
-                System.out.println(-1);
-                else
-                System.out.println(100);
-
-                //controller.handleHBoxClick(flight);
+                DetailsConfirmationController.handleHBoxClick(flight);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
