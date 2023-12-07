@@ -32,15 +32,15 @@ import java.util.ResourceBundle;
 
 public class SeatSelectionPageController implements Initializable {
 
-        private static String lightPurple = new String("#E9E8FC");
-        private static String darkPurple = new String("#3F3CE0");
-        private static String lightBlue = new String("#66E4D9");
-        private static String darkBlue = new String("#4682E4");
-        private static String lightYellow = new String("#E9F108");
-        private static String darkYellow = new String("#FDC506");
+        private static final String lightPurple = new String("#E9E8FC");
+        private static final String darkPurple = new String("#3F3CE0");
+        private static final String lightBlue = new String("#66E4D9");
+        private static final String darkBlue = new String("#4682E4");
+        private static final String lightYellow = new String("#E9F108");
+        private static final String darkYellow = new String("#FDC506");
 
         private Seat[][] economySeats = new Seat[4][4];
-        private Seat[][] busiSeats = new Seat[4][4];
+        private Seat[][] businessSeats = new Seat[4][4];
         private Seat[][] firstClassSeats = new Seat[4][4];
 
         private ArrayList<Passengers> passengers = new ArrayList<>();
@@ -57,6 +57,7 @@ public class SeatSelectionPageController implements Initializable {
                 size = passengers.size();
         }
 
+        // for manual tests
         void creatArbitrary(int i) throws ParseException {
                 Passengers arbitraryPassenger = new Passengers();
 
@@ -131,7 +132,7 @@ public class SeatSelectionPageController implements Initializable {
                 s[row][column].getRec().setArcWidth(12);
                 s[row][column].getRec().setArcHeight(12);
 
-                String fstHalf = String.valueOf(row + 1 + 4 * (type.equals("busi") ? 1 : 0) + 8 * (type.equals("first") ? 1 : 0));
+                String fstHalf = String.valueOf(row + 1 + 4 * (type.equals("business") ? 1 : 0) + 8 * (type.equals("first") ? 1 : 0));
                 s[row][column].setPrimaryKey(fstHalf + (char) (column + 'A'));
 
                 s[row][column].getRec().setOnMouseClicked(event -> seatClicked(s[row][column]));
@@ -156,10 +157,10 @@ public class SeatSelectionPageController implements Initializable {
                                 fillCell(gp2, economySeats, j, i, r, "economy", 2);
 
                                 r = getRandomString(lightBlue, darkBlue);
-                                fillCell(bus1, busiSeats, j, i, r, "busi", 0);
+                                fillCell(bus1, businessSeats, j, i, r, "business", 0);
 
                                 r = getRandomString(lightBlue, darkBlue);
-                                fillCell(bus2, busiSeats, j, i, r, "busi", 2);
+                                fillCell(bus2, businessSeats, j, i, r, "business", 2);
 
                                 r = getRandomString(lightYellow, darkYellow);
                                 fillCell(fir1, firstClassSeats, j, i, r, "first", 0);
@@ -194,10 +195,10 @@ public class SeatSelectionPageController implements Initializable {
                         // here, set passenger seat to this only if it is his seat i.e. his turn
                         change(row, col, economySeats, cmp, seat);
                 }
-                else if (seat.getType().equals("busi")) {
+                else if (seat.getType().equals("business")) {
                         Paint cmp = Color.web(darkBlue);
 
-                        change(row, col, busiSeats, cmp, seat);
+                        change(row, col, businessSeats, cmp, seat);
                 } else {
                         Paint cmp = Color.web(darkYellow);
 
@@ -217,8 +218,10 @@ public class SeatSelectionPageController implements Initializable {
                 ++index;
                 noSeatChosen.setVisible(false);
                 if (index == size) {
-                        // TODO switch to next scene
-                       // System.out.println("hello");
+
+                      // TODO switch to next scene
+
+                      // System.out.println("hello");
                         return;
                 }
                 passengerCount.setText("Passenger" + (index + 1));
