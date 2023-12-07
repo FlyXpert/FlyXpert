@@ -17,3 +17,6 @@
 {
     -fx-background-color: #5c2ccf;
 }
+.anchor-pane {
+    -fx-background-color: #ffffff; /* Hexadecimal color for white */
+}

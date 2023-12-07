@@ -45,7 +45,7 @@ public class Passengers {
         private String phoneNumber;
         static public int passengersToBeAdded = 2;
         static private int curPassenger = 0;
-        private ArrayList<Passengers> passengers = new ArrayList<>();
+        static ArrayList<Passengers> passengers = new ArrayList<>();
 
         private Seat seat;
 
@@ -127,13 +127,10 @@ public class Passengers {
                 return true;
         }
 
-        private Stage stage;
-        private Scene scene;
-        private Parent root;
         @FXML
         private SeatSelectionPageController SeatSelectionPageController;
 
-        public void switchToSeatSelection(ActionEvent event) throws IOException {
+        public void switchToSeatSelection(ActionEvent event) throws IOException, ParseException {
 
                 SceneController s = new SceneController();
                 s.switchToSeatSelection(event, passengers);
