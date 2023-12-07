@@ -39,12 +39,14 @@ public class SeatSelectionPageController implements Initializable {
         private Seat[][] busiSeats = new Seat[4][4];
         private Seat[][] firstClassSeats = new Seat[4][4];
 
-      /*  void getData () {
+        private ArrayList<Passengers> passengers = new ArrayList<>();
+        void setData(ArrayList<Passengers> passengers) {
+                this.passengers = passengers;
+                System.out.println("got it");
+        }
 
-        }*/
-
-        int idx = 0;
-        ArrayList<Integer> tmp;
+        private int size = passengers.size();
+        private int index = 0;
 
 
         @FXML
@@ -174,15 +176,15 @@ public class SeatSelectionPageController implements Initializable {
                 seatNumber.setText(seat.getPrimaryKey());
         }
         void nextSeatClicked() {
-                ++idx;
-                if (idx == tmp.size()) {
+                ++index;
+                if (index == size) {
                         // switch to next scene
                         return;
                 }
 
                 // display next passenger name
 
-                if (idx == tmp.size() - 1)
+                if (index == size - 1)
                         nextSeat.setText("Proceed to Payment");
         }
 }

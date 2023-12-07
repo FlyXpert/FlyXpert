@@ -122,7 +122,7 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <Button id="button1" layoutX="276.0" layoutY="583.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Select Seats" textFill="WHITE">
+      <Button id="button1" fx:id="SelectSeats" layoutX="276.0" layoutY="583.0" mnemonicParsing="false" onAction="#switchToSeatSelection" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Select Seats" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
