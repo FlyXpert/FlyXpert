@@ -1,51 +1,13 @@
 package flyxpert.flyxpert;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.*;
-import javafx.scene.control.skin.MenuButtonSkin;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 public class FlightInformationController{
-    @FXML
-    private ImageView worldImageView;
-    @FXML
-    private ImageView airplaneLanding;
-
-
-
-    /*@Override
-    public void initialize(URL location, ResourceBundle resources) {
-        File file = new File("src/world.png");
-        Image image = new Image(file.toURI().toString());
-        worldImageView.setImage(image);
-
-
-        File file1 = new File("src/icons8-airplane-landing-24.png");
-        Image image1 = new Image(file1.toURI().toString());
-        airplaneLanding.setImage(image1);
-
-    }*/
-
     @FXML
     private VBox vbox;
 
@@ -108,48 +70,90 @@ public class FlightInformationController{
 
 
 
-
-
-
-
-
     @FXML
     private MenuButton fromWhereMenuButton;
     @FXML
-    private void setMenuButtonText(ActionEvent e) {
+    private MenuButton whereToMenuButton;
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private TextField numOfPassengers;
+    @FXML
+    private Label invalidInputMsg;
+    @FXML
+    private MenuButton maxDepartTimeButton;
+    @FXML
+    private MenuButton maxArrivalTimeButton;
+    @FXML
+    private MenuButton airlinesButton;
+    @FXML
+    private MenuButton seatClassButton;
+    @FXML
+    private Button searchButton;
+
+    public boolean validNum(TextField numOfPassengers) {
+
+        String text = numOfPassengers.getText().trim();
+
+        if (!text.isEmpty()) {
+            try {
+                int value = Integer.parseInt(text);
+                invalidInputMsg.setVisible(false);
+                return value > 0 && value < 100;
+
+            } catch (NumberFormatException e) {
+                invalidInputMsg.setVisible(true);
+                return false;
+            }
+        }
+        return false;
+    }
+    public void enableSearchButton() {
+        boolean isDatePickerUsed = datePicker.getValue() != null;
+        boolean isFromWhereSelected = !fromWhereMenuButton.getText().equals("From Where ?");
+        boolean isWhereToSelected = !whereToMenuButton.getText().equals("Where to ?");
+        boolean isValidNumOfPassengers = validNum(numOfPassengers);
+        if (isDatePickerUsed && isFromWhereSelected && isWhereToSelected && isValidNumOfPassengers) {
+            searchButton.setDisable(false);
+        }
+        else {
+            searchButton.setDisable(true);
+        }
+    }
+    @FXML
+    private void setFromWhereMenuButtonText(ActionEvent e) {
         Object source = e.getSource();
         MenuItem menuItem = (MenuItem) source;
         fromWhereMenuButton.setText(menuItem.getText());
     }
-
-
     @FXML
-    private TextField numOfPassengers;
-    @FXML
-    private Label invalidInput;
-    @FXML
-    private void checkInput() {
-        try {
-            int val = Integer.parseInt(numOfPassengers.getText());
-            invalidInput.setVisible(false);
-        }
-        catch (NumberFormatException e) {
-
-            // This is thrown when the String
-            // contains characters other than digits
-            // System.out.println("Invalid String");
-            invalidInput.setVisible(true);
-        }
+    private void setWhereToMenuButtonText(ActionEvent e) {
+        Object source = e.getSource();
+        MenuItem menuItem = (MenuItem) source;
+        whereToMenuButton.setText(menuItem.getText());
     }
     @FXML
-    private void increment() {
-        if(!(numOfPassengers.getText().equals("100"))) numOfPassengers.setText(Integer.toString(Integer.parseInt(numOfPassengers.getText())+1));
+    private void setMaxDepartTimeButtonText(ActionEvent e) {
+        Object source = e.getSource();
+        MenuItem menuItem = (MenuItem) source;
+        maxDepartTimeButton.setText(menuItem.getText());
     }
     @FXML
-    private void decrement() {
-        if(!(numOfPassengers.getText().equals("1"))) numOfPassengers.setText(Integer.toString(Integer.parseInt(numOfPassengers.getText())-1));
+    private void setMaxArrivalTimeButtonText(ActionEvent e) {
+        Object source = e.getSource();
+        MenuItem menuItem = (MenuItem) source;
+        maxArrivalTimeButton.setText(menuItem.getText());
     }
-
-
-
+    @FXML
+    private void setAirlinesButtonText(ActionEvent e) {
+        Object source = e.getSource();
+        MenuItem menuItem = (MenuItem) source;
+        airlinesButton.setText(menuItem.getText());
+    }
+    @FXML
+    private void setSeatClassButtonText(ActionEvent e) {
+        Object source = e.getSource();
+        MenuItem menuItem = (MenuItem) source;
+        seatClassButton.setText(menuItem.getText());
+    }
 }

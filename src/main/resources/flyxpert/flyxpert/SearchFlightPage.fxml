@@ -22,7 +22,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.FlightInformationController">
     <children>
-      <ImageView fx:id="worldImageView" fitHeight="873.0" fitWidth="1536.0" layoutX="-12.0" layoutY="34.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="worldImageView" fitHeight="873.0" fitWidth="1536.0" layoutX="-12.0" layoutY="20.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@world.png" />
          </image></ImageView>
@@ -49,10 +49,10 @@
         </Label>
       <Pane layoutX="70.0" layoutY="130.0" prefHeight="48.0" prefWidth="1200.0">
          <children>
-              <MenuButton fx:id="fromWhereMenuButton" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" stylesheets="@styles.css" text="From Where ?">
+              <MenuButton fx:id="fromWhereMenuButton" mnemonicParsing="false" onAction="#enableSearchButton" prefHeight="48.0" prefWidth="300.0" stylesheets="@styles.css" text="From Where ?">
                   <items>
-                      <MenuItem fx:id="cairo" mnemonicParsing="false" onAction="#setMenuButtonText" text="Cairo" />
-                      <MenuItem fx:id="alex" mnemonicParsing="false" onAction="#setMenuButtonText" text="Alex" />
+                      <MenuItem fx:id="cairo" mnemonicParsing="false" onAction="#setFromWhereMenuButtonText" text="Cairo" />
+                      <MenuItem fx:id="alex" mnemonicParsing="false" onAction="#setFromWhereMenuButtonText" text="Alex" />
                   </items>
                   <font>
                       <Font size="22.0" />
@@ -69,10 +69,10 @@
                </graphic>
               </MenuButton>
             <Separator layoutX="298.0" orientation="VERTICAL" prefHeight="48.0" prefWidth="0.0" />
-              <MenuButton fx:id="wheretoMenuButton" layoutX="300.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="300.0" stylesheets="@styles.css" text="Where to ?">
+              <MenuButton fx:id="whereToMenuButton" layoutX="300.0" mnemonicParsing="false" onAction="#enableSearchButton" prefHeight="48.0" prefWidth="300.0" stylesheets="@styles.css" text="Where to ?">
                   <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                      <MenuItem mnemonicParsing="false" onAction="#setWhereToMenuButtonText" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" onAction="#setWhereToMenuButtonText" text="Action 2" />
                   </items>
                   <font>
                       <Font size="22.0" />
@@ -88,54 +88,51 @@
                   </ImageView>
                </graphic>
               </MenuButton>
-              <DatePicker fx:id="calendarButton" layoutX="600.0" prefHeight="48.0" prefWidth="200.0" promptText="Depart" style="-fx-background-insets: 0;" stylesheets="@styles.css">
+              <DatePicker fx:id="datePicker" layoutX="600.0" layoutY="-4.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Depart" style="-fx-background-insets: 0;" stylesheets="@styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </DatePicker>
-            <TextField fx:id="numOfPassengers" layoutX="800.0" onAction="#checkInput" prefHeight="48.0" prefWidth="200.0" promptText="Number of passengers" style="-fx-background-insets: 0;" />
-            <Button fx:id="searchButton" layoutX="1000.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
+            <TextField fx:id="numOfPassengers" layoutX="800.0" layoutY="-3.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Number of passengers" style="-fx-background-insets: 0;" />
+            <Button fx:id="searchButton" disable="true" layoutX="1000.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
                <font>
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button fx:id="upButton" layoutX="973.0" layoutY="-1.0" mnemonicParsing="false" onAction="#increment" prefHeight="25.0" prefWidth="26.0" stylesheets="@styles.css" text="▲" />
-            <Button fx:id="downButton" layoutX="973.0" layoutY="24.0" mnemonicParsing="false" onAction="#decrement" stylesheets="@styles.css" text="▼" />
          </children>
       </Pane>
       <Pane layoutX="70.0" layoutY="220.0" prefHeight="35.0" prefWidth="800.0">
          <children>
-            <MenuButton contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Max departure time">
+            <MenuButton fx:id="maxDepartTimeButton" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Max departure time">
               <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
+                <MenuItem mnemonicParsing="false" onAction="#setMaxDepartTimeButtonText" text="Action 1" />
+                <MenuItem mnemonicParsing="false" onAction="#setMaxDepartTimeButtonText" text="Action 2" />
               </items>
             </MenuButton>
             <Separator layoutX="158.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton layoutX="160.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: white;" text="Max arrival time">
+            <MenuButton fx:id="maxArrivalTimeButton" layoutX="160.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Max arrival time">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#setMaxArrivalTimeButtonText" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#setMaxArrivalTimeButtonText" text="Action 2" />
                </items>
             </MenuButton>
             <Separator layoutX="318.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton layoutX="320.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Air lines">
+            <MenuButton fx:id="airlinesButton" layoutX="320.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Airlines">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#setAirlinesButtonText" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#setAirlinesButtonText" text="Action 2" />
                </items>
             </MenuButton>
             <Separator layoutX="478.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton layoutX="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text=" Seat class">
+            <MenuButton fx:id="seatClassButton" layoutX="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text=" Seat class">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                  <MenuItem mnemonicParsing="false" text="Action 2" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassButtonText" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassButtonText" text="Action 2" />
                </items>
             </MenuButton>
-            <TextField layoutX="640.0" prefHeight="35.0" prefWidth="160.0" promptText="Max price " style="-fx-background-insets: 0;" />
+            <TextField layoutX="640.0" layoutY="-2.0" prefHeight="38.0" prefWidth="160.0" promptText="Max price " style="-fx-background-insets: 0;" />
          </children>
       </Pane>
->>>>>>> 66abd6a (Added Buttons CSS styling)
         <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="498.0" prefWidth="1404.0">
          <content>
             <VBox fx:id="vbox" prefHeight="498.0" prefWidth="1390.0" style="-fx-padding: 10; -fx-background-color: white;">
@@ -168,6 +165,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Pane>
-      <Label fx:id="invalidInput" layoutX="872.0" layoutY="178.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" />
+      <Label fx:id="invalidInputMsg" layoutX="872.0" layoutY="178.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
     </children>
 </AnchorPane>
