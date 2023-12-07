@@ -1,4 +1,48 @@
 #searchButton {
     -fx-background-color: #605DEC; /* Green color */
     -fx-text-fill: white; /* Text color */
+    -fx-border-color: black;
+}
+#searchButton:hover {
+    -fx-background-color: #4422ac;
+    -fx-text-fill: white;
+    -fx-border-color: black;
+}
+#searchButton:pressed {
+    -fx-background-color: #4422ac;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
+#fromWhereMenuButton {
+    -fx-background-color: white;
+}
+#wheretoMenuButton {
+    -fx-background-color: white;
+}
+#calendarButton {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+.calenderPicker .text-field {
+    -fx-font-size: 30px;
+}
+#upButton {
+    -fx-background-color: white;
+}
+#upButton:hover {
+    -fx-background-color: darkgrey;
+}
+#upButton:pressed {
+    -fx-background-color: grey;
+}
+#downButton {
+    -fx-background-color: white;
+}
+#downButton:hover {
+    -fx-background-color: darkgrey;
+}
+#downButton:pressed {
+    -fx-background-color: grey;
 }
