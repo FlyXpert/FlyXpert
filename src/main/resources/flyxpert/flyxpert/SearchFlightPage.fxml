@@ -97,10 +97,9 @@
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
       </MenuButton>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="245.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true" />
         <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="498.0" prefWidth="1404.0">
          <content>
-            <VBox fx:id="vbox" prefHeight="498.0" prefWidth="1390.0" style="-fx-spacing: 10; -fx-padding: 10; -fx-background-color: white;">
+            <VBox fx:id="vbox" prefHeight="498.0" prefWidth="1390.0" style="-fx-padding: 10; -fx-background-color: white;">
                <opaqueInsets>
                   <Insets top="10.0" />
                </opaqueInsets></VBox>

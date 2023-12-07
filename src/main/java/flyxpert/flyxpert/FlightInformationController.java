@@ -1,15 +1,22 @@
 package flyxpert.flyxpert;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,8 +31,6 @@ public class FlightInformationController implements Initializable {
         worldImageView.setImage(image);
     }
 
-    @FXML
-    private ScrollPane scrollPane;
     @FXML
     private VBox vbox;
 
@@ -44,30 +49,45 @@ public class FlightInformationController implements Initializable {
         HBox hbox = new HBox();
         hbox.setStyle("-fx-border-color: black;");
 
-        Label label1 = new Label(flight.getAirlineName());
+        Label airLineLabel = new Label(flight.getAirlineName());
 
-        label1 = FlightInformationController.setLabelStyle(label1);
-        hbox.getChildren().add(label1);
+        FlightInformationController.setLabelStyle(airLineLabel);
+        hbox.getChildren().add(airLineLabel);
 
-        Label label2 = new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
+        Label timeLabel = new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
                 + "-" + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes());
 
-        label2 = FlightInformationController.setLabelStyle(label2);
-        hbox.getChildren().add(label2);
+        FlightInformationController.setLabelStyle(timeLabel);
+        hbox.getChildren().add(timeLabel);
 
-        Label label3 = new Label(flight.getArrivalDay().getDay()
+        Label dayLabel = new Label(flight.getArrivalDay().getDay()
                 + "-" + flight.getArrivalDay().getMonth()
                 + "-" + flight.getArrivalDay().getYear());
 
 
-        label3 = FlightInformationController.setLabelStyle(label3);
-        hbox.getChildren().add(label3);
+        FlightInformationController.setLabelStyle(dayLabel);
+        hbox.getChildren().add(dayLabel);
 
-        Label label4 = new Label(Integer.toString(flight.getEconomyPrice()));
+        Label priceLabel = new Label(Integer.toString(flight.getEconomyPrice()));
 
-        label4 = FlightInformationController.setLabelStyle(label4);
-        hbox.getChildren().add(label4);
+        FlightInformationController.setLabelStyle(priceLabel);
+        hbox.getChildren().add(priceLabel);
 
+        hbox.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DetailsConfirmation.fxml"));
+                DetailsConfirmationController controller = fxmlLoader.getController();
+                //DetailsConfirmationController controller = new DetailsConfirmationController();
+                if(controller == null)
+                System.out.println(-1);
+                else
+                System.out.println(100);
+
+                //controller.handleHBoxClick(flight);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
         return hbox;
     }
 
@@ -76,4 +96,6 @@ public class FlightInformationController implements Initializable {
 
         return label;
     }
+
+
 }

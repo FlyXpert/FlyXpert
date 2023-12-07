@@ -38,6 +38,7 @@ public class Main extends Application {
 
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
 
         }
