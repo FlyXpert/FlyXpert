@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,17 +17,21 @@
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1536.0" stylesheets="@Passengers.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.SeatSelectionPageController">
     <children>
-      <ImageView fitHeight="688.0" fitWidth="1196.0" layoutX="343.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fitHeight="800.0" fitWidth="1307.0" layoutX="334.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../airport.jpg" />
+            <Image url="@../../white2.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="262.0" fitWidth="507.0" layoutX="423.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../whilte.jpg" />
-         </image>
-      </ImageView>
-      <Button id="button" blendMode="MULTIPLY" layoutX="1399.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+      <ScrollPane fx:id="scrollPane" hbarPolicy="ALWAYS" hmax="3.0" hvalue="1.0" pannable="true" prefHeight="800.0" prefWidth="868.0" vbarPolicy="ALWAYS" vmax="3.0">
+         <content>
+            <AnchorPane prefHeight="789.0" prefWidth="856.0" />
+         </content>
+      </ScrollPane>
+      <Button id="button" blendMode="MULTIPLY" layoutX="1299.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
+         <font>
+            <Font size="20.0" />
+         </font>
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -43,36 +48,13 @@
                </stops>
             </LinearGradient>
          </textFill>
-         <font>
-            <Font size="20.0" />
-         </font>
       </Button>
-      <ImageView fx:id="plane1" fitHeight="664.0" fitWidth="714.0" layoutX="-18.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sts" cache="true" fitHeight="627.0" fitWidth="618.0" layoutX="977.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../plane.jpg" />
+            <Image url="@../../flightWithPaleButtonCropped.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="281.0" fitWidth="183.0" layoutX="244.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../downPart.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="278.0" fitWidth="177.0" layoutX="248.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../downPart.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="269.0" fitWidth="189.0" layoutX="248.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../downPart.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="sts" cache="true" fitHeight="688.0" fitWidth="561.0" layoutX="694.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../hell2.png" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="17.0" arcWidth="20.0" fill="#fafafe" height="124.0" layoutX="698.0" layoutY="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="838.0" />
+      <Rectangle arcHeight="17.0" arcWidth="20.0" fill="#fafafe" height="124.0" layoutX="867.0" layoutY="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="669.0" />
         <Label layoutX="13.0" layoutY="7.0" text="FlyXpert">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
@@ -99,27 +81,27 @@
             <Font size="17.0" />
          </font>
       </Button>
-      <Label layoutX="1083.0" layoutY="688.0" prefHeight="51.0" prefWidth="111.0" text="Seat number" textFill="#6e7491">
+      <Label layoutX="1142.0" layoutY="688.0" prefHeight="51.0" prefWidth="111.0" text="Seat number" textFill="#6e7491">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="seatNumber" layoutX="1094.0" layoutY="735.0" prefHeight="51.0" prefWidth="98.0" text="9F" textFill="#6e7491">
+      <Label fx:id="seatNumber" layoutX="1153.0" layoutY="724.0" prefHeight="51.0" prefWidth="98.0" text="-------" textFill="#6e7491">
          <font>
             <Font name="Calibri" size="37.0" />
          </font>
       </Label>
-      <Label fx:id="passengerCount" layoutX="802.0" layoutY="687.0" prefHeight="51.0" prefWidth="155.0" text="Passernger 1" textFill="#6e7491">
+      <Label fx:id="passengerCount" layoutX="911.0" layoutY="688.0" prefHeight="51.0" prefWidth="155.0" text="Passernger 1" textFill="#6e7491">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="passengerName" layoutX="783.0" layoutY="734.0" prefHeight="54.0" prefWidth="255.0" text="Passenger1" textFill="#6e7491">
+      <Label fx:id="passengerName" layoutX="881.0" layoutY="723.0" prefHeight="54.0" prefWidth="255.0" text="Mahmoud Bassem" textFill="#6e7491">
          <font>
-            <Font name="Arial" size="25.0" />
+            <Font name="Calibri" size="25.0" />
          </font>
       </Label>
-      <GridPane fx:id="gp" hgap="5.0" layoutX="260.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
+      <GridPane fx:id="economyGridPane1" hgap="5.0" layoutX="260.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -131,7 +113,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <GridPane fx:id="gp2" hgap="5.0" layoutX="345.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
+      <GridPane fx:id="economyGridPane2" hgap="5.0" layoutX="345.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -143,7 +125,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="bus2" hgap="5.0" layoutX="345.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
+      <GridPane fx:id="businessGridPane1" hgap="5.0" layoutX="260.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -155,7 +137,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="bus1" hgap="5.0" layoutX="260.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
+      <GridPane fx:id="businessGridPane2" hgap="5.0" layoutX="345.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -167,12 +149,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <ImageView fitHeight="281.0" fitWidth="183.0" layoutX="244.0" layoutY="523.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../downPart.jpg" />
-         </image>
-      </ImageView>
-      <GridPane fx:id="fir1" hgap="5.0" layoutX="260.0" layoutY="550.0" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
+      <GridPane fx:id="firstClassGridPane1" hgap="5.0" layoutX="260.0" layoutY="550.0" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -184,7 +161,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <GridPane fx:id="fir2" hgap="5.0" layoutX="345.0" layoutY="550.0" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
+      <GridPane fx:id="firstClassGridPane2" hgap="5.0" layoutX="345.0" layoutY="550.0" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -197,10 +174,7 @@
          </rowConstraints>
       </GridPane>
       <Label fx:id="noSeatChosen" layoutX="1341.0" layoutY="686.0" prefHeight="17.0" prefWidth="98.0" text="No seat chosen !" textFill="RED" visible="false" />
-      <Button id="button" blendMode="MULTIPLY" layoutX="1299.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
-         <font>
-            <Font size="20.0" />
-         </font>
+      <Button id="button" blendMode="MULTIPLY" layoutX="1399.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -217,7 +191,11 @@
                </stops>
             </LinearGradient>
          </textFill>
+         <font>
+            <Font size="20.0" />
+         </font>
       </Button>
+      <ImageView fitHeight="784.0" fitWidth="856.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 
 </AnchorPane>

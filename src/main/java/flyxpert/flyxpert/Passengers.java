@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,13 +34,17 @@ public class Passengers {
         @FXML
         private TextField phoneNumberTextField;
         @FXML
-        private Label informationWarningText;
+        private Label nextPassengerWarningText;
+        @FXML
+        private Label selectSeatsWarningText;
+
+
 
         private String name;
         private final SimpleDateFormat DOBFormat  = new SimpleDateFormat("dd/MM/yy");
         private Date DOB = new Date();
         private String phoneNumber;
-        static public int passengersToBeAdded = 2;
+        static public int passengersToBeAdded = 1;
         static private int curPassenger = 0;
         public static ArrayList<Passengers> passengers = new ArrayList<>();
 
@@ -83,7 +88,7 @@ public class Passengers {
                 }
                 else
                 {
-                        informationWarningText.setText("Please Enter All the Information Correctly");
+                        nextPassengerWarningText.setText("Please Enter All the Information Correctly");
                 }
         }
         public Boolean AddPassenger() throws ParseException {
@@ -142,7 +147,7 @@ public class Passengers {
                 DOBTextField.setText("");
                 phoneNumberTextField.setText("");
                 curPassenger++;
-                informationWarningText.setText("");
+                nextPassengerWarningText.setText("");
                 return true;
         }
 
@@ -152,7 +157,7 @@ public class Passengers {
                 if (passengersToBeAdded > 0) {
                         // show warning
 
-                        informationWarningText.setText("Missing passengers information");
+                        selectSeatsWarningText.setText("Missing passengers information");
                         return;
                 }
                 SceneController.switchToSeatSelection(event);

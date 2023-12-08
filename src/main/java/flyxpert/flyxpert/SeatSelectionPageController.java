@@ -8,21 +8,21 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 //import jdk.internal.access.JavaNetHttpCookieAccess;
 
 import java.io.IOException;
+import java.net.CookiePolicy;
 import java.net.URL;
+import java.security.spec.PSSParameterSpec;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,10 +34,11 @@ public class SeatSelectionPageController implements Initializable {
 
         private static final String lightPurple = new String("#E9E8FC");
         private static final String darkPurple = new String("#3F3CE0");
-        private static final String lightBlue = new String("#66E4D9");
-        private static final String darkBlue = new String("#4682E4");
-        private static final String lightYellow = new String("#E9F108");
+       // private static final String lightBlue = new String("#66E4D9");
+        private static final String green = new String("#4AD0B8");
+       // private static final String lightYellow = new String("#E9F108");
         private static final String darkYellow = new String("#FDC506");
+        private static final String red = new String("#F2588C");
 
         private Seat[][] economySeats = new Seat[4][4];
         private Seat[][] businessSeats = new Seat[4][4];
@@ -66,17 +67,17 @@ public class SeatSelectionPageController implements Initializable {
 
 
         @FXML
-        GridPane gp;
+        GridPane economyGridPane1 = new GridPane();
         @FXML
-        GridPane gp2;
+        GridPane economyGridPane2 = new GridPane();
         @FXML
-        GridPane bus1;
+        GridPane businessGridPane1 = new GridPane();
         @FXML
-        GridPane bus2;
+        GridPane businessGridPane2 = new GridPane();
+         @FXML
+        GridPane firstClassGridPane1 = new GridPane();
         @FXML
-        GridPane fir1;
-        @FXML
-        GridPane fir2;
+        GridPane firstClassGridPane2 = new GridPane();
 
         @FXML
         Button nextSeat;
@@ -90,32 +91,80 @@ public class SeatSelectionPageController implements Initializable {
         @FXML
         Label passengerCount;
 
+        @FXML
+        ScrollPane scrollPane;
+
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-                nextSeat.setBorder(createPurpleBorder());
-              /*  try {
-                        creatArbitrary();
+                try {
+                        seatNumber.setText("--");
+                        passengerName.setText(Passengers.passengers.get(0).getName());
                 }
-                catch (ParseException e) {
-                        throw new RuntimeException(e);
-                }*/
-                fillSeatMap();
+                catch (ArrayIndexOutOfBoundsException e) {
+                        System.out.println("Exception caught: " + e.getMessage());
+                }
+
+                Pane overlay = new Pane();
+                overlay.getChildren().add(imageView("totPlane.jpg"));
+
+                dfsAddSeats(overlay, 960, 540, 0, 0);
+
+
+                scrollPane.setContent(overlay);
+
         }
 
-        private javafx.scene.layout.Border createPurpleBorder() {
-                javafx.scene.layout.BorderStroke borderStroke = new javafx.scene.layout.BorderStroke(
-                        Color.web(darkPurple),
-                        BorderStrokeStyle.DASHED,
-                        null,
-                        new javafx.scene.layout.BorderWidths(1),
-                        null
-                );
-                return new javafx.scene.layout.Border(borderStroke);
+
+        private Seat[][] seats = new Seat[200][200];
+        private boolean[][] vis = new boolean[200][200];
+        private void dfsAddSeats(Pane overlay, int x, int y, int i, int j) {
+                vis[i][j] = true;
+                if (i >= 24 || j >= 4)
+                        return;
+                Rectangle rec = new Rectangle(30, 40);
+                rec.setArcWidth(12);
+                rec.setArcHeight(12);
+                rec.setLayoutX(x);
+                rec.setLayoutY(y);
+
+                int d = i / 4;
+                Paint toBe = Color.web(darkPurple);
+
+                switch (d) {
+                        case 0 : toBe = Color.web(green); break;
+                        case 1, 2, 3, 4 : toBe = Color.web(darkPurple); break;
+                        case 5 : toBe = Color.web(red); break;
+                }
+
+                rec.setFill(toBe);
+                rec.setOnMouseClicked(event -> seatClicked(seats[i][j]));
+
+                seats[i][j] = new Seat();
+                seats[i][j].setRec(rec);
+
+                overlay.getChildren().add(rec);
+
+                int add = 0;
+
+                if (i + 1 < 100 && !vis[i + 1][j]) {
+                        if ((i + 1) % 4 == 0) {
+                                add = 30;
+                                if (i == 3)
+                                        add = 60;
+                        }
+                        dfsAddSeats(overlay, x, y + 50 + add, i + 1, j);
+                }
+                add = 0;
+                if (j + 1 < 100 && !vis[i][j + 1]) {
+                        if (j + 1 == 2)
+                                add = 25;
+                        dfsAddSeats(overlay, x + 40 + add, y, i, j + 1);
+                }
         }
 
-        public void fillCell(GridPane g, Seat[][] s, int col, int row, String colCode, String type, int val) {
+        /*public void makeSeat(GridPane g, Seat[][] s, int col, int row, String colCode, String type, int val) {
                 int column = col + val;
                 s[row][column] = new Seat();
                 s[row][column].setRec(new Rectangle(30, 40, Color.web(colCode)));
@@ -131,41 +180,42 @@ public class SeatSelectionPageController implements Initializable {
 
                 s[row][column].getRec().setOnMouseClicked(event -> seatClicked(s[row][column]));
                 g.add(s[row][column].getRec(), col, row);
-        }
+        }*/
 
-        private static String getRandomString(String option1, String option2) {
+        // shall be replaced with real info coming
+       /* private static String getRandomString(String option1, String option2) {
                 Random random = new Random();
                 boolean randomBoolean = random.nextBoolean();
                 return randomBoolean ? option1 : option2;
-        }
+        }*/
 
-        public void fillSeatMap() {
+        /*public void fillSeatMap() {
                 for (int i = 0; i < 4; i++) {
                         for (int j = 0; j < 2; j++) {
 
                                 String r = getRandomString(lightPurple, darkPurple);
 
-                                fillCell(gp, economySeats, j, i, r, "economy", 0);
+                                makeSeat(economyGridPane1, economySeats, j, i, r, "economy", 0);
 
                                 r = getRandomString(lightPurple, darkPurple);
-                                fillCell(gp2, economySeats, j, i, r, "economy", 2);
+                                makeSeat(economyGridPane2, economySeats, j, i, r, "economy", 2);
 
-                                r = getRandomString(lightBlue, darkBlue);
-                                fillCell(bus1, businessSeats, j, i, r, "business", 0);
+                                r = getRandomString(lightPurple, green);
+                                makeSeat(businessGridPane1, businessSeats, j, i, r, "business", 0);
 
-                                r = getRandomString(lightBlue, darkBlue);
-                                fillCell(bus2, businessSeats, j, i, r, "business", 2);
+                                r = getRandomString(lightPurple, green);
+                                makeSeat(businessGridPane2, businessSeats, j, i, r, "business", 2);
 
-                                r = getRandomString(lightYellow, darkYellow);
-                                fillCell(fir1, firstClassSeats, j, i, r, "first", 0);
+                                r = getRandomString(lightPurple, darkYellow);
+                                makeSeat(firstClassGridPane1, firstClassSeats, j, i, r, "first", 0);
 
-                                r = getRandomString(lightYellow, darkYellow);
-                                fillCell(fir2, firstClassSeats, j, i, r, "first", 2);
+                                r = getRandomString(lightPurple, darkYellow);
+                                makeSeat(firstClassGridPane2, firstClassSeats, j, i, r, "first", 2);
                         }
                 }
-        }
+        }*/
 
-        public void change(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
+        public void changeSeatColorAndAssignSeatToPassenger(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
                 if (Passengers.passengers.isEmpty()) {
                         System.out.println("empty asshole");
                         return;
@@ -174,11 +224,13 @@ public class SeatSelectionPageController implements Initializable {
 
                         s[row][col].getRec().setFill(Color.GRAY);
                         Passengers.passengers.get(index).setSeat(seat);
+                        seatNumber.setText(seat.getPrimaryKey());
                 }
                 else if (s[row][col].getRec().getFill().equals(Color.GRAY) && Passengers.passengers.get(index).getSeat() != null && Passengers.passengers.get(index).getSeat().getPrimaryKey().equals(s[row][col].getPrimaryKey())) {
 
                         s[row][col].getRec().setFill(cmp);
                         Passengers.passengers.get(index).setSeat(null);
+                        seatNumber.setText("--");
                 }
         }
         public void seatClicked(Seat seat) {
@@ -187,19 +239,25 @@ public class SeatSelectionPageController implements Initializable {
                 if (seat.getType().equals("economy")) {
                         Paint cmp = Color.web(darkPurple);
                         // here, set passenger seat to this only if it is his seat i.e. his turn
-                        change(row, col, economySeats, cmp, seat);
+                        changeSeatColorAndAssignSeatToPassenger(row, col, economySeats, cmp, seat);
                 }
                 else if (seat.getType().equals("business")) {
-                        Paint cmp = Color.web(darkBlue);
+                        Paint cmp = Color.web(green);
 
-                        change(row, col, businessSeats, cmp, seat);
-                } else {
+                        changeSeatColorAndAssignSeatToPassenger(row, col, businessSeats, cmp, seat);
+                }
+                else {
                         Paint cmp = Color.web(darkYellow);
 
-                        change(row, col, firstClassSeats, cmp, seat);
+                        changeSeatColorAndAssignSeatToPassenger(row, col, firstClassSeats, cmp, seat);
                 }
 
-                seatNumber.setText(seat.getPrimaryKey());
+        }
+
+        private ImageView imageView(String image) {
+                Image i = new Image(image);
+                ImageView iv = new ImageView(i);
+                return iv;
         }
 
         public void nextSeatClicked() {
@@ -218,7 +276,7 @@ public class SeatSelectionPageController implements Initializable {
                       // System.out.println("hello");
                         return;
                 }
-                passengerCount.setText("Passenger" + (index + 1));
+                passengerCount.setText("Passenger " + (index + 1));
 
                 // display next passenger name
                 passengerName.setText(Passengers.passengers.get(index).getName());
