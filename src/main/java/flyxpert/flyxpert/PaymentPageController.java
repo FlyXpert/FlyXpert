@@ -1,59 +1,190 @@
 package flyxpert.flyxpert;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import javafx.scene.input.MouseEvent;
 public class PaymentPageController {
 
     @FXML
-    Button cardPaymentButton, paypalPaymentButton;
+    Button cardPaymentButton;
     @FXML
-    ImageView cardIcon, paypalIcon;
+    Button paypalPaymentButton;
     @FXML
-    TextField cardOwnerNameTextField, cardNumberTextField, expirationDateTextField, ccvTextField, emailTextField;
+    Button payButton;
     @FXML
-    Label expirationDateLabel;
+    ImageView cardIcon;
+    @FXML
+    ImageView paypalIcon;
+    @FXML
+    TextField cardOwnerNameTextField;
+    @FXML
+    TextField cardNumberTextField;
+    @FXML
+    TextField cardExpirationDateTextField;
+    @FXML
+    TextField cardCcvTextField;
+    @FXML
+    TextField paypalEmailTextField;
+    @FXML
+    Label cardExpirationDateLabel;
+    @FXML
+    Label cardNameOrPaypalEmailError;
+    @FXML
+    Label cardNumberError;
+    @FXML
+    Label cardExpirationDateError;
+    @FXML
+    Label cardCcvError;
 
-    public void onCardButtonClick(ActionEvent e){
-        cardPaymentButton.setStyle("-fx-background-color: #605dff; -fx-text-fill: white;");
-        paypalPaymentButton.setStyle("-fx-background-color: white; -fx-text-fill: #605dff;");
-        Image cardWhite = new Image("CardWhite.png");
-        cardIcon.setImage(cardWhite);
+    private String currentPaymentMethod = "card";
+
+    final Image CARD_LOGO_WHITE = new Image("CardIconWhite.png");
+    final Image CARD_LOGO_PURPLE = new Image("CardIconPurple.png");
+    final Image PAYPAL_LOGO_WHITE = new Image("PayPalIconWhite.png");
+    final Image PAYPAL_LOGO_PURPLE = new Image("PayPalIconPurple.png");
+    final String MAIN_BLUE_COLOR = "#605dff";
+    final String MAIN_WHITE_COLOR = "white";
+    final String HOVER_BLUE_COLOR = "#4743d1";
+    final String HOVER_GREY_COLOR = "#e0e0e0";
+
+    public void onCardButtonClick(MouseEvent e){
+        currentPaymentMethod = "card";
+        cardPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_BLUE_COLOR, MAIN_WHITE_COLOR));
+        paypalPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_WHITE_COLOR, MAIN_BLUE_COLOR));
+        cardIcon.setImage(CARD_LOGO_WHITE);
         cardIcon.setFitWidth(20);
         cardIcon.setFitHeight(15);
-        Image paypalPurple = new Image("PaypalPurple.png");
-        paypalIcon.setImage(paypalPurple);
+        paypalIcon.setImage(PAYPAL_LOGO_PURPLE);
         paypalIcon.setFitWidth(19);
         paypalIcon.setFitHeight(20);
         cardOwnerNameTextField.setVisible(true);
         cardNumberTextField.setVisible(true);
-        expirationDateTextField.setVisible(true);
-        expirationDateLabel.setVisible(true);
-        ccvTextField.setVisible(true);
-        emailTextField.setVisible(false);
+        cardExpirationDateTextField.setVisible(true);
+        cardExpirationDateLabel.setVisible(true);
+        cardCcvTextField.setVisible(true);
+        paypalEmailTextField.setVisible(false);
+        cardCcvError.setVisible(false);
+        cardNumberError.setVisible(false);
+        cardExpirationDateError.setVisible(false);
+        cardNameOrPaypalEmailError.setVisible(false);
     }
 
-    public void onPaypalButtonClick(ActionEvent e){
-        paypalPaymentButton.setStyle("-fx-background-color: #605dff; -fx-text-fill: white;");
-        cardPaymentButton.setStyle("-fx-background-color: white; -fx-text-fill: #605dff;");
-        Image cardPurple = new Image("CardPurple.png");
-        cardIcon.setImage(cardPurple);
+    public void onPaypalButtonClick(MouseEvent e){
+        currentPaymentMethod = "paypal";
+        paypalPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_BLUE_COLOR, MAIN_WHITE_COLOR));
+        cardPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_WHITE_COLOR, MAIN_BLUE_COLOR));
+        cardIcon.setImage(CARD_LOGO_PURPLE);
         cardIcon.setFitWidth(26);
         cardIcon.setFitHeight(22);
-        Image paypalWhite = new Image("PaypalWhite.png");
-        paypalIcon.setImage(paypalWhite);
+        paypalIcon.setImage(PAYPAL_LOGO_WHITE);
         paypalIcon.setFitWidth(24);
         paypalIcon.setFitHeight(22);
         cardOwnerNameTextField.setVisible(false);
         cardNumberTextField.setVisible(false);
-        expirationDateTextField.setVisible(false);
-        expirationDateLabel.setVisible(false);
-        ccvTextField.setVisible(false);
-        emailTextField.setVisible(true);
+        cardExpirationDateTextField.setVisible(false);
+        cardExpirationDateLabel.setVisible(false);
+        cardCcvTextField.setVisible(false);
+        cardCcvError.setVisible(false);
+        cardNumberError.setVisible(false);
+        cardExpirationDateError.setVisible(false);
+        cardNameOrPaypalEmailError.setVisible(false);
+        paypalEmailTextField.setVisible(true);
+    }
+
+    // Regex patterns for validation on user inputs
+    final String CARD_NAME_PATTERN = "[A-Z a-z]+";
+    final String CARD_NUMBER_PATTERN = "\\d{16}";
+    final String CARD_EXPIRATION_DATE_PATTERN = "\\d{2}/\\d{2}";
+    final String CARD_CCV_PATTERN = "\\d{3}";
+    final String EMAIL_PATTERN = "\\w+@\\w+\\.com";
+
+    public void onPayButtonClick(MouseEvent e){
+        if(currentPaymentMethod.equals("card")){
+            if(!cardOwnerNameTextField.getText().matches(CARD_NAME_PATTERN)){
+                cardNameOrPaypalEmailError.setText("Please don't leave this field empty or enter a valid name with no special characters (Ex: Fly Xpert)");
+                cardNameOrPaypalEmailError.setVisible(true);
+            }
+            else{
+                cardNameOrPaypalEmailError.setVisible(false);
+            }
+
+            if(!cardNumberTextField.getText().matches(CARD_NUMBER_PATTERN)){
+                cardNumberError.setVisible(true);
+            }
+            else{
+                cardNumberError.setVisible(false);
+            }
+
+            if(!cardExpirationDateTextField.getText().matches(CARD_EXPIRATION_DATE_PATTERN)){
+                cardExpirationDateError.setVisible(true);
+            }
+            else{
+                cardExpirationDateError.setVisible(false);
+            }
+
+            if(!cardCcvTextField.getText().matches(CARD_CCV_PATTERN)){
+                cardCcvError.setVisible(true);
+            }
+            else{
+                cardCcvError.setVisible(false);
+            }
+        }
+        else{
+            if(!paypalEmailTextField.getText().matches(EMAIL_PATTERN)){
+                cardNameOrPaypalEmailError.setText("Please don't leave this field empty or enter a valid email (Ex: FlyXpert@gmail.com)");
+                cardNameOrPaypalEmailError.setVisible(true);
+            }
+            else{
+                cardNameOrPaypalEmailError.setVisible(false);
+            }
+        }
+    }
+
+    public void onPayButtonMouseEntered(MouseEvent e) {
+        payButton.setStyle(String.format("-fx-background-color: %s", HOVER_BLUE_COLOR));
+    }
+
+    public void onPayButtonMouseExited(MouseEvent e) {
+        payButton.setStyle(String.format("-fx-background-color: %s", MAIN_BLUE_COLOR));
+    }
+
+    public void onCardButtonMouseEntered(MouseEvent e) {
+        if(currentPaymentMethod.equals("card")){
+            cardPaymentButton.setStyle(String.format("-fx-background-color: %s", HOVER_BLUE_COLOR));
+        }
+        else{
+            cardPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", HOVER_GREY_COLOR, MAIN_BLUE_COLOR));
+        }
+    }
+
+    public void onCardButtonMouseExited(MouseEvent e) {
+        if(currentPaymentMethod.equals("card")){
+            cardPaymentButton.setStyle(String.format("-fx-background-color: %s", HOVER_BLUE_COLOR));
+        }
+        else{
+            cardPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_WHITE_COLOR, MAIN_BLUE_COLOR));
+        }
+    }
+
+    public void onPaypalButtonMouseEntered(MouseEvent e) {
+        if(currentPaymentMethod.equals("paypal")){
+            paypalPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", HOVER_BLUE_COLOR, MAIN_WHITE_COLOR));
+        }
+        else{
+            paypalPaymentButton.setStyle(String.format("-fx-background-color: %s", HOVER_GREY_COLOR));
+        }
+    }
+
+    public void onPaypalButtonMouseExited(MouseEvent e) {
+        if(currentPaymentMethod.equals("paypal")){
+            paypalPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_BLUE_COLOR, MAIN_WHITE_COLOR));
+        }
+        else{
+            paypalPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_WHITE_COLOR, MAIN_BLUE_COLOR));
+        }
     }
 }

@@ -59,17 +59,17 @@
             <Font name="Arial" size="17.0" />
          </font>
       </Label>
-      <Button fx:id="cardPaymentButton" layoutX="79.0" layoutY="277.0" mnemonicParsing="false" onAction="#onCardButtonClick" prefHeight="40.0" prefWidth="230.0" text="    Credit/Debit Card">
+      <Button fx:id="cardPaymentButton" layoutX="79.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#onCardButtonClick" onMouseEntered="#onCardButtonMouseEntered" onMouseExited="#onCardButtonMouseExited" prefHeight="40.0" prefWidth="230.0" text="    Credit/Debit Card">
          <font>
             <Font name="Arial" size="22.0" />
          </font>
       </Button>
-      <Button fx:id="paypalPaymentButton" layoutX="316.0" layoutY="277.0" mnemonicParsing="false" onAction="#onPaypalButtonClick" prefHeight="40.0" prefWidth="126.0" text="    Paypal">
+      <Button fx:id="paypalPaymentButton" layoutX="316.0" layoutY="277.0" mnemonicParsing="false" onMouseClicked="#onPaypalButtonClick" onMouseEntered="#onPaypalButtonMouseEntered" onMouseExited="#onPaypalButtonMouseExited" prefHeight="40.0" prefWidth="126.0" text="    Paypal">
          <font>
             <Font name="Arial" size="22.0" />
          </font>
       </Button>
-      <TextField fx:id="emailTextField" layoutX="78.0" layoutY="369.0" prefHeight="46.0" prefWidth="521.0" promptText="Paypal Email">
+      <TextField fx:id="paypalEmailTextField" layoutX="78.0" layoutY="369.0" prefHeight="46.0" prefWidth="521.0" promptText="Paypal Email">
          <font>
             <Font size="19.0" />
          </font>
@@ -79,40 +79,44 @@
             <Font size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="cardNumberTextField" layoutX="79.0" layoutY="437.0" prefHeight="46.0" prefWidth="521.0" promptText="Card number">
+      <TextField fx:id="cardNumberTextField" layoutX="79.0" layoutY="442.0" prefHeight="46.0" prefWidth="521.0" promptText="Card number">
          <font>
             <Font size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="expirationDateTextField" layoutX="79.0" layoutY="503.0" prefHeight="46.0" prefWidth="245.0" promptText="Expiration date">
+      <TextField fx:id="cardExpirationDateTextField" layoutX="79.0" layoutY="510.0" prefHeight="46.0" prefWidth="245.0" promptText="Expiration date">
          <font>
             <Font size="19.0" />
          </font>
       </TextField>
-      <TextField fx:id="ccvTextField" layoutX="355.0" layoutY="503.0" prefHeight="46.0" prefWidth="245.0" promptText="CCV">
+      <TextField fx:id="cardCcvTextField" layoutX="355.0" layoutY="510.0" prefHeight="46.0" prefWidth="245.0" promptText="CCV">
          <font>
             <Font size="19.0" />
          </font>
       </TextField>
-      <Label fx:id="expirationDateLabel" layoutX="82.0" layoutY="552.0" text="MM/YY" textFill="#7f8797">
+      <Label fx:id="cardExpirationDateLabel" layoutX="82.0" layoutY="557.0" text="MM/YY" textFill="#7f8797">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="1247.0" layoutY="605.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="211.0" text="Confirm and pay">
+      <Button fx:id="payButton" layoutX="1247.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#onPayButtonClick" onMouseEntered="#onPayButtonMouseEntered" onMouseExited="#onPayButtonMouseExited" prefHeight="46.0" prefWidth="211.0" text="Confirm and pay">
          <font>
             <Font name="Arial" size="22.0" />
          </font>
       </Button>
       <ImageView fx:id="cardIcon" fitHeight="15.0" fitWidth="20.0" layoutX="94.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../CardWhite.png" />
+            <Image url="@../../../CardIconWhite.png" />
          </image>
       </ImageView>
       <ImageView fx:id="paypalIcon" fitHeight="20.0" fitWidth="19.0" layoutX="329.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../PaypalPurple.png" />
+            <Image url="@../../../PaypalIconPurple.png" />
          </image>
       </ImageView>
+      <Label fx:id="cardNameOrPaypalEmailError" layoutX="80.0" layoutY="346.0" text="Please don't leave this field empty or enter a valid name with no special characters (Ex: Fly Xpert)" textFill="RED" visible="false" />
+      <Label fx:id="cardNumberError" layoutX="80.0" layoutY="422.0" text="Please don't leave this field empty or enter a valid card number (Ex: 1222414156789107)" textFill="RED" visible="false" />
+      <Label fx:id="cardExpirationDateError" layoutX="80.0" layoutY="493.0" text="Please enter a valid date (Ex: 01/27)" textFill="RED" visible="false" />
+      <Label fx:id="cardCcvError" layoutX="355.0" layoutY="493.0" text="Please enter a valid CCV, which can be found at the back of your card (Ex: 339)" textFill="RED" visible="false" />
    </children>
 </AnchorPane>

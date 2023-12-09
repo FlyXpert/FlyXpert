@@ -11,3 +11,11 @@
     -fx-border-color: #605dff;
     -fx-border-radius: 5px;
 }
+
+#payButton{
+    -fx-background-color: #605dff;
+    -fx-text-fill: white;
+    -fx-border-color: #605dff;
+    -fx-border-radius: 5px;
+}
+
