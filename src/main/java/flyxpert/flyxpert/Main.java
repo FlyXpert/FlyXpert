@@ -10,9 +10,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     public static void main(String[] args) {
-        BookingConfirmation bookingConfirmation = new BookingConfirmation("Mohsen", 123, "JAPAN", "patpal");
         Reader reader = new Reader();
-        System.out.println("$" + (200 + 300));
         reader.readAllFiles();
         ReadExternalConfig externalConfig = new ReadExternalConfig();
         launch(args);
