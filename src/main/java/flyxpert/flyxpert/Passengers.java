@@ -126,11 +126,11 @@ public class Passengers {
                         return false;
                 }
 
-                if (phoneNumberTextField.getText() != null && validatePhoneNumber(phoneNumberTextField.getText())) {
+                /*if (phoneNumberTextField.getText() != null && validatePhoneNumber(phoneNumberTextField.getText())) {
                         passengers.get(curPassenger).phoneNumber = phoneNumberTextField.getText();
                 } else {
                         return false;
-                }
+                }*/
                 firstNameTextField.setText("");
                 middleNameTextField.setText("");
                 lastNameTextField.setText("");

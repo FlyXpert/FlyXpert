@@ -137,15 +137,10 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="nextPassengerWarningText" layoutX="108.0" layoutY="567.0" prefHeight="16.0" prefWidth="221.0" textFill="RED" wrapText="true">
+        <Label fx:id="informationWarningText" layoutX="108.0" layoutY="567.0" prefHeight="16.0" prefWidth="221.0" textFill="RED" wrapText="true">
             <font>
                 <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-      <Label fx:id="selectSeatsWarningText" layoutX="237.0" layoutY="575.0" prefHeight="16.0" prefWidth="221.0" textFill="RED" wrapText="true">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
     </children>
 </AnchorPane>
