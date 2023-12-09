@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -23,37 +24,19 @@
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ScrollPane fx:id="scrollPane" hbarPolicy="ALWAYS" hmax="3.0" hvalue="1.0" pannable="true" prefHeight="800.0" prefWidth="868.0" vbarPolicy="ALWAYS" vmax="3.0">
+      <ScrollPane fx:id="scrollPane" hmax="3.0" hvalue="1.0" pannable="true" prefHeight="800.0" prefWidth="868.0" vmax="3.0">
          <content>
-            <AnchorPane prefHeight="789.0" prefWidth="856.0" />
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="seatSelectionPlane" fitHeight="2500.0" fitWidth="2081.0" layoutX="-552.0" layoutY="-312.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../totPlane.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </content>
       </ScrollPane>
-      <Button id="button" blendMode="MULTIPLY" layoutX="1299.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Button>
-      <ImageView fx:id="sts" cache="true" fitHeight="627.0" fitWidth="618.0" layoutX="977.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../flightWithPaleButtonCropped.jpg" />
-         </image>
-      </ImageView>
       <Rectangle arcHeight="17.0" arcWidth="20.0" fill="#fafafe" height="124.0" layoutX="867.0" layoutY="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="669.0" />
         <Label layoutX="13.0" layoutY="7.0" text="FlyXpert">
             <textFill>
@@ -76,7 +59,7 @@
                 <Font name="System Bold" size="56.0" />
             </font>
         </Label>
-      <Button fx:id="nextSeat" blendMode="MULTIPLY" layoutX="1314.0" layoutY="716.0" mnemonicParsing="false" onAction="#nextSeatClicked" prefHeight="54.0" prefWidth="183.0" text="Next Seat" textFill="#3f3ce0">
+      <Button fx:id="nextSeat" blendMode="MULTIPLY" layoutX="1314.0" layoutY="716.0" mnemonicParsing="false" onAction="#nextSeatClicked" opacity="0.75" prefHeight="54.0" prefWidth="183.0" stylesheets="@Plane.css" text="Next Seat" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
@@ -94,11 +77,6 @@
       <Label fx:id="passengerCount" layoutX="911.0" layoutY="688.0" prefHeight="51.0" prefWidth="155.0" text="Passernger 1" textFill="#6e7491">
          <font>
             <Font name="System Bold" size="17.0" />
-         </font>
-      </Label>
-      <Label fx:id="passengerName" layoutX="881.0" layoutY="723.0" prefHeight="54.0" prefWidth="255.0" text="Mahmoud Bassem" textFill="#6e7491">
-         <font>
-            <Font name="Calibri" size="25.0" />
          </font>
       </Label>
       <GridPane fx:id="economyGridPane1" hgap="5.0" layoutX="260.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
@@ -174,6 +152,16 @@
          </rowConstraints>
       </GridPane>
       <Label fx:id="noSeatChosen" layoutX="1341.0" layoutY="686.0" prefHeight="17.0" prefWidth="98.0" text="No seat chosen !" textFill="RED" visible="false" />
+      <Label fx:id="passengerName" layoutX="881.0" layoutY="723.0" prefHeight="54.0" prefWidth="255.0" text="Mahmoud Bassem" textFill="#6e7491">
+         <font>
+            <Font name="Calibri" size="25.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="sts" blendMode="MULTIPLY" cache="true" fitHeight="627.0" fitWidth="618.0" layoutX="977.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../flightWithPaleButtonCropped.jpg" />
+         </image>
+      </ImageView>
       <Button id="button" blendMode="MULTIPLY" layoutX="1399.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
          <textFill>
             <LinearGradient endX="1.0" endY="1.0">
@@ -195,7 +183,27 @@
             <Font size="20.0" />
          </font>
       </Button>
-      <ImageView fitHeight="784.0" fitWidth="856.0" pickOnBounds="true" preserveRatio="true" />
+      <Button id="button" blendMode="MULTIPLY" layoutX="1299.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Button>
     </children>
 
 </AnchorPane>

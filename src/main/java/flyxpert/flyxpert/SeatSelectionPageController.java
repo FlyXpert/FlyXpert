@@ -40,9 +40,9 @@ public class SeatSelectionPageController implements Initializable {
         private static final String darkYellow = new String("#FDC506");
         private static final String red = new String("#F2588C");
 
-        private Seat[][] economySeats = new Seat[4][4];
-        private Seat[][] businessSeats = new Seat[4][4];
-        private Seat[][] firstClassSeats = new Seat[4][4];
+        private Seat[][] economySeats = new Seat[200][200];
+        private Seat[][] businessSeats = new Seat[200][200];
+        private Seat[][] firstClassSeats = new Seat[200][200];
 
 
         private int size = Passengers.passengers.size();
@@ -50,7 +50,7 @@ public class SeatSelectionPageController implements Initializable {
 
 
         // for manual tests
-        void creatArbitrary() throws ParseException {
+        /*void creatArbitrary() throws ParseException {
                 for (int i = 0; i < 3; i++) {
                         Passengers arbitraryPassenger = new Passengers();
 
@@ -63,21 +63,7 @@ public class SeatSelectionPageController implements Initializable {
                         //     System.out.println(passengers.size());
                 }
 
-        }
-
-
-        @FXML
-        GridPane economyGridPane1 = new GridPane();
-        @FXML
-        GridPane economyGridPane2 = new GridPane();
-        @FXML
-        GridPane businessGridPane1 = new GridPane();
-        @FXML
-        GridPane businessGridPane2 = new GridPane();
-         @FXML
-        GridPane firstClassGridPane1 = new GridPane();
-        @FXML
-        GridPane firstClassGridPane2 = new GridPane();
+        }*/
 
         @FXML
         Button nextSeat;
@@ -101,6 +87,9 @@ public class SeatSelectionPageController implements Initializable {
                 try {
                         seatNumber.setText("--");
                         passengerName.setText(Passengers.passengers.get(0).getName());
+                        if (index >= size - 2) {
+                                nextSeat.setText("Proceed to Payment");
+                        }
                 }
                 catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Exception caught: " + e.getMessage());
@@ -123,28 +112,54 @@ public class SeatSelectionPageController implements Initializable {
                 vis[i][j] = true;
                 if (i >= 24 || j >= 4)
                         return;
-                Rectangle rec = new Rectangle(30, 40);
-                rec.setArcWidth(12);
-                rec.setArcHeight(12);
-                rec.setLayoutX(x);
-                rec.setLayoutY(y);
-
-                int d = i / 4;
-                Paint toBe = Color.web(darkPurple);
-
-                switch (d) {
-                        case 0 : toBe = Color.web(green); break;
-                        case 1, 2, 3, 4 : toBe = Color.web(darkPurple); break;
-                        case 5 : toBe = Color.web(red); break;
-                }
-
-                rec.setFill(toBe);
-                rec.setOnMouseClicked(event -> seatClicked(seats[i][j]));
 
                 seats[i][j] = new Seat();
-                seats[i][j].setRec(rec);
+                seats[i][j].setRec(new Rectangle(30, 40));
+                seats[i][j].setRow(i);
+                seats[i][j].setCol(j);
 
-                overlay.getChildren().add(rec);
+                seats[i][j].getRec().setArcWidth(12);
+                seats[i][j].getRec().setArcHeight(12);
+                seats[i][j].getRec().setLayoutX(x);
+                seats[i][j].getRec().setLayoutY(y);
+                seats[i][j].getRec().setOnMouseClicked(event -> seatClicked(seats[i][j]));
+
+                int d = i / 4;
+                Paint toBe = null;
+
+                switch (d) {
+                        case 0 :  {
+                                toBe = Color.web(green);
+                                seats[i][j].setType("business");
+                                seats[i][j].getRec().setFill(toBe);
+                                String fstHalf = String.valueOf(i + 1 + 4);
+                                seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
+                                businessSeats[i][j] = seats[i][j];
+                                break;
+                        }
+                        case 1, 2, 3, 4 :  {
+                                toBe = Color.web(darkPurple);
+                                seats[i][j].setType("economy");
+                                seats[i][j].getRec().setFill(toBe);
+                                String fstHalf = String.valueOf(i + 1);
+                                seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
+                                economySeats[i][j] = seats[i][j];
+
+                                break;
+                        }
+                        case 5 :  {
+                                toBe = Color.web(red);
+                                seats[i][j].setType("firstClass");
+                                seats[i][j].getRec().setFill(toBe);
+                                String fstHalf = String.valueOf(i + 1 + 8);
+                                seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
+                                firstClassSeats[i][j] = seats[i][j];
+
+                                break;
+                        }
+                }
+
+                overlay.getChildren().add(seats[i][j].getRec());
 
                 int add = 0;
 
@@ -216,24 +231,28 @@ public class SeatSelectionPageController implements Initializable {
         }*/
 
         public void changeSeatColorAndAssignSeatToPassenger(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
-                if (Passengers.passengers.isEmpty()) {
-                        System.out.println("empty asshole");
-                        return;
-                }
-                if (s[row][col].getRec().getFill().equals(cmp) && Passengers.passengers.get(index).getSeat() == null) {
+                try {
+                        if (s[row][col].getRec().getFill().equals(cmp) && Passengers.passengers.get(index).getSeat() == null) {
 
-                        s[row][col].getRec().setFill(Color.GRAY);
-                        Passengers.passengers.get(index).setSeat(seat);
-                        seatNumber.setText(seat.getPrimaryKey());
-                }
-                else if (s[row][col].getRec().getFill().equals(Color.GRAY) && Passengers.passengers.get(index).getSeat() != null && Passengers.passengers.get(index).getSeat().getPrimaryKey().equals(s[row][col].getPrimaryKey())) {
+                                s[row][col].getRec().setFill(Color.GRAY);
+                                Passengers.passengers.get(index).setSeat(seat);
+                                seatNumber.setText(seat.getPrimaryKey());
+                                nextSeat.setOpacity(1);
+                        }
+                        else if (s[row][col].getRec().getFill().equals(Color.GRAY) && Passengers.passengers.get(index).getSeat() != null && Passengers.passengers.get(index).getSeat().getPrimaryKey().equals(s[row][col].getPrimaryKey())) {
 
-                        s[row][col].getRec().setFill(cmp);
-                        Passengers.passengers.get(index).setSeat(null);
-                        seatNumber.setText("--");
+                                s[row][col].getRec().setFill(cmp);
+                                Passengers.passengers.get(index).setSeat(null);
+                                seatNumber.setText("--");
+                                nextSeat.setOpacity(.75);
+                        }
+                }
+                catch(Exception e) {
+                        System.out.println("No more passengers!");
                 }
         }
         public void seatClicked(Seat seat) {
+                System.out.println("hellllllllll");
                 int row = seat.getRow();
                 int col = seat.getCol();
                 if (seat.getType().equals("economy")) {
@@ -247,11 +266,10 @@ public class SeatSelectionPageController implements Initializable {
                         changeSeatColorAndAssignSeatToPassenger(row, col, businessSeats, cmp, seat);
                 }
                 else {
-                        Paint cmp = Color.web(darkYellow);
+                        Paint cmp = Color.web(red);
 
                         changeSeatColorAndAssignSeatToPassenger(row, col, firstClassSeats, cmp, seat);
                 }
-
         }
 
         private ImageView imageView(String image) {
@@ -262,28 +280,41 @@ public class SeatSelectionPageController implements Initializable {
 
         public void nextSeatClicked() {
                 // can't do if hadn't chosen a seat
-                if (Passengers.passengers.get(index).getSeat() == null) {
-                        // show warning
-                        noSeatChosen.setVisible(true);
+
+                if (nextSeat.getOpacity() != 1)
+                        return;
+
+                if (index == size - 2) {
+                        nextSeat.setText("Proceed to Payment");
+                        nextSeat.setOpacity(.75);
+                        ++index;
                         return;
                 }
-                ++index;
+
+                try {
+                        if (Passengers.passengers.get(index).getSeat() == null) {
+                                // show warning
+                                noSeatChosen.setVisible(true);
+                                return;
+                        }
+                }
+                catch(Exception e) {
+                        System.out.println("No more passengers!");
+                }
+
                 noSeatChosen.setVisible(false);
-                if (index == size) {
+                if (index == size - 1) {
 
                       // TODO switch to next scene
 
-                      // System.out.println("hello");
-                        return;
+                      // System.out.println("don't click me, shithead");
+                       return;
                 }
                 passengerCount.setText("Passenger " + (index + 1));
 
                 // display next passenger name
                 passengerName.setText(Passengers.passengers.get(index).getName());
-
-                if (index == size - 1) {
-                        nextSeat.setText("Proceed to Payment");
-                }
+                nextSeat.setOpacity(.75);
         }
 
         // TODO logic for proceedToPaymentClicked
