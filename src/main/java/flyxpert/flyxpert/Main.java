@@ -16,11 +16,11 @@ public class Main extends Application {
 
         Reader reader = new Reader();
         reader.readAllFiles();
+        ReadExternalConfig externalConfig = new ReadExternalConfig();
         launch(args);
         Writer writer = new Writer();
         writer.writeToAllFiles();
     }
-
     public void start(Stage stage) throws IOException
     {
         HomePageController.homePageScene(stage);
