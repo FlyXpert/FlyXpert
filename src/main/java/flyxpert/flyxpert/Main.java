@@ -12,6 +12,7 @@ import java.io.IOException;
 public class Main extends Application {
     public static void main(String[] args) throws FileNotFoundException {
         Reader reader = new Reader();
+        System.out.println("$" + (200 + 300));
         reader.readAllFiles();
         ReadExternalConfig externalConfig = new ReadExternalConfig();
         launch(args);
