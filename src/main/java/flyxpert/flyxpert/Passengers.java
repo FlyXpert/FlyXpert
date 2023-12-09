@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,40 +19,29 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Passengers {
-        @FXML
-        private Label numOfPassengersDisplay;
-        @FXML
-        private TextField firstNameTextField;
-        @FXML
-        private TextField middleNameTextField;
-        @FXML
-        private TextField lastNameTextField;
-        @FXML
-        private TextField DOBTextField;
-        @FXML
-        private TextField phoneNumberTextField;
-        @FXML
-        private Label informationWarningText;
 
-        private String name;
-        private final SimpleDateFormat DOBFormat = new SimpleDateFormat("dd/MM/yy");
-
+        private String firstName;
+        private String middleName;
+        private String lastName;
         private Date DOB = new Date();
         private String phoneNumber;
-        static public int passengersToBeAdded = 2;
-        static public int initialPassengersToBeAdded = 2;
-        static private int curPassenger = 0;
+        private Seat seat;
         public static ArrayList<Passengers> passengers = new ArrayList<>();
 
-        private Seat seat;
 
         public void setSeat(Seat seat) {
                 this.seat = seat;
         }
 
-        public void setName(String name) {
-                this.name = name;
+        public void setFirstName(String name) {
+                this.firstName = name;
         }
+
+        public void setMiddleName(String name) {
+                this.middleName = name;
+        }
+
+        public void setLastName(String name) { this.lastName = name; }
 
         public void setDOB(Date DOB) {
                 this.DOB = DOB;
@@ -63,8 +51,15 @@ public class Passengers {
                 this.phoneNumber = phoneNumber;
         }
 
-        public String getName() {
-                return name;
+
+        public String getFirstName() { return firstName; }
+
+        public String getMiddleName() {
+                return middleName;
+        }
+
+        public String getLastName() {
+                return lastName;
         }
 
         public Date getDOB() {
@@ -79,79 +74,5 @@ public class Passengers {
                 return seat;
         }
 
-        public void NextPassengerButtonPress(ActionEvent event) throws ParseException {
-                if (passengersToBeAdded > 0 && AddPassenger()) {
-                        passengersToBeAdded--;
-                        if (curPassenger != initialPassengersToBeAdded) {
-                                numOfPassengersDisplay.setText("Passenger " + (curPassenger + 1));
-                        }
-                } else {
-                        if (passengersToBeAdded == 0) {
-                                informationWarningText.setText("Max Number of Passengers Reached");
-                        } else {
-                                informationWarningText.setText("Please Enter All the Information Correctly");
-                        }
-                }
-        }
 
-        public Boolean AddPassenger() throws ParseException {
-
-                passengers.add(new Passengers());
-                if (firstNameTextField.getText() != null) {
-                        passengers.get(curPassenger).name = firstNameTextField.getText();
-                        passengers.get(curPassenger).name += " ";
-                } else {
-                        return false;
-                }
-
-                if (middleNameTextField.getText() != null) {
-                        passengers.get(curPassenger).name = middleNameTextField.getText();
-                        passengers.get(curPassenger).name += " ";
-                } else {
-                        return false;
-                }
-
-                if (lastNameTextField.getText() != null) {
-                        passengers.get(curPassenger).name += lastNameTextField.getText();
-                } else {
-                        return false;
-                }
-
-                DOBFormat.setLenient(false);
-                try {
-                        DOBFormat.parse(DOBTextField.getText());
-                        passengers.get(curPassenger).DOB = DOBFormat.parse(DOBTextField.getText());
-                } catch (ParseException e) {
-                        informationWarningText.setText("Please Enter the Date in the Correct Format");
-                        return false;
-                }
-
-                /*if (phoneNumberTextField.getText() != null && validatePhoneNumber(phoneNumberTextField.getText())) {
-                        passengers.get(curPassenger).phoneNumber = phoneNumberTextField.getText();
-                } else {
-                        return false;
-                }*/
-                firstNameTextField.setText("");
-                middleNameTextField.setText("");
-                lastNameTextField.setText("");
-                DOBTextField.setText("");
-                phoneNumberTextField.setText("");
-                curPassenger++;
-                informationWarningText.setText("");
-                return true;
-        }
-
-
-        public void switchToSeatSelection(ActionEvent event) throws IOException, ParseException {
-
-                if (passengersToBeAdded > 0) {
-                        informationWarningText.setText("Missing passengers information");
-                        return;
-                }
-                SceneController.switchToSeatSelection(event);
-        }
-
-        private static Boolean validatePhoneNumber(String phoneNumber) {
-                return (phoneNumber.matches("\\d+")) && (phoneNumber.length() == 11);
-        }
 }

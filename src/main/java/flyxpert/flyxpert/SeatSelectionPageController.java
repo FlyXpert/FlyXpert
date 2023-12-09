@@ -86,7 +86,7 @@ public class SeatSelectionPageController implements Initializable {
 
                 try {
                         seatNumber.setText("--");
-                        passengerName.setText(Passengers.passengers.get(0).getName());
+                        passengerName.setText(Passengers.passengers.get(0).getFirstName());
                         if (index >= size - 2) {
                                 nextSeat.setText("Proceed to Payment");
                         }
@@ -306,7 +306,7 @@ public class SeatSelectionPageController implements Initializable {
                 passengerCount.setText("Passenger " + (index + 1));
 
                 // display next passenger name
-                passengerName.setText(Passengers.passengers.get(index).getName());
+                passengerName.setText(Passengers.passengers.get(index).getFirstName());
                 nextSeat.setOpacity(.75);
         }
 }

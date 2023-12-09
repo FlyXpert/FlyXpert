@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Passengers">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.PassengersController">
     <children>
         <Label layoutX="14.0" text="FlyXpert">
             <font>
@@ -137,7 +137,7 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="informationWarningText" layoutX="108.0" layoutY="567.0" prefHeight="16.0" prefWidth="221.0" textFill="RED" wrapText="true">
+        <Label fx:id="informationWarningText" layoutX="108.0" layoutY="567.0" prefHeight="16.0" prefWidth="278.0" textFill="RED" wrapText="true">
             <font>
                 <Font name="System Bold" size="11.0" />
             </font>
