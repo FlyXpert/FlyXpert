@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,17 +33,15 @@ public class Passengers {
         @FXML
         private TextField phoneNumberTextField;
         @FXML
-        private Label nextPassengerWarningText;
-        @FXML
-        private Label selectSeatsWarningText;
-
-
+        private Label informationWarningText;
 
         private String name;
-        private final SimpleDateFormat DOBFormat  = new SimpleDateFormat("dd/MM/yy");
+        private final SimpleDateFormat DOBFormat = new SimpleDateFormat("dd/MM/yy");
+
         private Date DOB = new Date();
         private String phoneNumber;
-        static public int passengersToBeAdded = 1;
+        static public int passengersToBeAdded = 2;
+        static public int initialPassengersToBeAdded = 2;
         static private int curPassenger = 0;
         public static ArrayList<Passengers> passengers = new ArrayList<>();
 
@@ -53,6 +50,7 @@ public class Passengers {
         public void setSeat(Seat seat) {
                 this.seat = seat;
         }
+
         public void setName(String name) {
                 this.name = name;
         }
@@ -76,69 +74,61 @@ public class Passengers {
         public String getPhoneNumber() {
                 return phoneNumber;
         }
+
         public Seat getSeat() {
                 return seat;
         }
 
         public void NextPassengerButtonPress(ActionEvent event) throws ParseException {
-                if(passengersToBeAdded > 0 && AddPassenger())
-                {
+                if (passengersToBeAdded > 0 && AddPassenger()) {
                         passengersToBeAdded--;
-                        numOfPassengersDisplay.setText("Passenger " + (curPassenger + 1));
-                }
-                else
-                {
-                        nextPassengerWarningText.setText("Please Enter All the Information Correctly");
+                        if (curPassenger != initialPassengersToBeAdded) {
+                                numOfPassengersDisplay.setText("Passenger " + (curPassenger + 1));
+                        }
+                } else {
+                        if (passengersToBeAdded == 0) {
+                                informationWarningText.setText("Max Number of Passengers Reached");
+                        } else {
+                                informationWarningText.setText("Please Enter All the Information Correctly");
+                        }
                 }
         }
+
         public Boolean AddPassenger() throws ParseException {
 
                 passengers.add(new Passengers());
-
-                if(firstNameTextField.getText() != null)
-                {
+                if (firstNameTextField.getText() != null) {
                         passengers.get(curPassenger).name = firstNameTextField.getText();
                         passengers.get(curPassenger).name += " ";
-                }
-                else
-                {
+                } else {
                         return false;
                 }
 
-                if(middleNameTextField.getText() != null)
-                {
+                if (middleNameTextField.getText() != null) {
                         passengers.get(curPassenger).name = middleNameTextField.getText();
                         passengers.get(curPassenger).name += " ";
-                }
-                else
-                {
+                } else {
                         return false;
                 }
 
-                if(lastNameTextField.getText() != null)
-                {
+                if (lastNameTextField.getText() != null) {
                         passengers.get(curPassenger).name += lastNameTextField.getText();
-                }
-                else
-                {
+                } else {
                         return false;
                 }
 
-                try
-                {
+                DOBFormat.setLenient(false);
+                try {
+                        DOBFormat.parse(DOBTextField.getText());
                         passengers.get(curPassenger).DOB = DOBFormat.parse(DOBTextField.getText());
-                }
-                catch(ParseException e)
-                {
+                } catch (ParseException e) {
+                        informationWarningText.setText("Please Enter the Date in the Correct Format");
                         return false;
                 }
 
-                if(phoneNumberTextField.getText() != null)
-                {
+                if (phoneNumberTextField.getText() != null && validatePhoneNumber(phoneNumberTextField.getText())) {
                         passengers.get(curPassenger).phoneNumber = phoneNumberTextField.getText();
-                }
-                else
-                {
+                } else {
                         return false;
                 }
                 firstNameTextField.setText("");
@@ -147,7 +137,7 @@ public class Passengers {
                 DOBTextField.setText("");
                 phoneNumberTextField.setText("");
                 curPassenger++;
-                nextPassengerWarningText.setText("");
+                informationWarningText.setText("");
                 return true;
         }
 
@@ -155,12 +145,13 @@ public class Passengers {
         public void switchToSeatSelection(ActionEvent event) throws IOException, ParseException {
 
                 if (passengersToBeAdded > 0) {
-                        // show warning
-
-                        selectSeatsWarningText.setText("Missing passengers information");
+                        informationWarningText.setText("Missing passengers information");
                         return;
                 }
                 SceneController.switchToSeatSelection(event);
         }
 
+        private static Boolean validatePhoneNumber(String phoneNumber) {
+                return (phoneNumber.matches("\\d+")) && (phoneNumber.length() == 11);
+        }
 }

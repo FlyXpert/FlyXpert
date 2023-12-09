@@ -32,12 +32,8 @@ import java.util.ResourceBundle;
 
 public class SeatSelectionPageController implements Initializable {
 
-        private static final String lightPurple = new String("#E9E8FC");
         private static final String darkPurple = new String("#3F3CE0");
-       // private static final String lightBlue = new String("#66E4D9");
         private static final String green = new String("#4AD0B8");
-       // private static final String lightYellow = new String("#E9F108");
-        private static final String darkYellow = new String("#FDC506");
         private static final String red = new String("#F2588C");
 
         private Seat[][] economySeats = new Seat[200][200];
@@ -80,7 +76,11 @@ public class SeatSelectionPageController implements Initializable {
         @FXML
         ScrollPane scrollPane;
 
-
+        private ImageView imageView(String image) {
+                Image i = new Image(image);
+                ImageView iv = new ImageView(i);
+                return iv;
+        }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -100,9 +100,7 @@ public class SeatSelectionPageController implements Initializable {
 
                 dfsAddSeats(overlay, 960, 540, 0, 0);
 
-
                 scrollPane.setContent(overlay);
-
         }
 
 
@@ -135,6 +133,7 @@ public class SeatSelectionPageController implements Initializable {
                                 String fstHalf = String.valueOf(i + 1 + 4);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
                                 businessSeats[i][j] = seats[i][j];
+
                                 break;
                         }
                         case 1, 2, 3, 4 :  {
@@ -252,7 +251,6 @@ public class SeatSelectionPageController implements Initializable {
                 }
         }
         public void seatClicked(Seat seat) {
-                System.out.println("hellllllllll");
                 int row = seat.getRow();
                 int col = seat.getCol();
                 if (seat.getType().equals("economy")) {
@@ -272,11 +270,6 @@ public class SeatSelectionPageController implements Initializable {
                 }
         }
 
-        private ImageView imageView(String image) {
-                Image i = new Image(image);
-                ImageView iv = new ImageView(i);
-                return iv;
-        }
 
         public void nextSeatClicked() {
                 // can't do if hadn't chosen a seat
@@ -316,6 +309,4 @@ public class SeatSelectionPageController implements Initializable {
                 passengerName.setText(Passengers.passengers.get(index).getName());
                 nextSeat.setOpacity(.75);
         }
-
-        // TODO logic for proceedToPaymentClicked
 }
