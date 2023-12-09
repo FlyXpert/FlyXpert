@@ -91,7 +91,7 @@
       <Rectangle arcHeight="20" arcWidth="20" fill="WHITE" height="92.0" layoutX="584.0" layoutY="337.0" stroke="#cbd4e6" strokeType="INSIDE" width="915.0" />
       <ImageView fitHeight="53.0" fitWidth="76.0" layoutX="599.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@logo.png" />
+            <Image url="@JapanAirlineLogo.png" />
          </image>
       </ImageView>
       <Label layoutX="688.0" layoutY="363.0" text="timeOfTheTrip">
