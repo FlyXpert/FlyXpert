@@ -42,14 +42,15 @@ public class PaymentPageController {
 
     private String currentPaymentMethod = "card";
 
-    final Image CARD_LOGO_WHITE = new Image("CardIconWhite.png");
-    final Image CARD_LOGO_PURPLE = new Image("CardIconPurple.png");
-    final Image PAYPAL_LOGO_WHITE = new Image("PayPalIconWhite.png");
-    final Image PAYPAL_LOGO_PURPLE = new Image("PayPalIconPurple.png");
-    final String MAIN_BLUE_COLOR = "#605dff";
-    final String MAIN_WHITE_COLOR = "white";
-    final String HOVER_BLUE_COLOR = "#4743d1";
-    final String HOVER_GREY_COLOR = "#e0e0e0";
+    // Reading the constant image paths and the colors from an external configuration file (FlyXpert.properties) using class ReadExternalConfiguration
+    final Image CARD_LOGO_WHITE = new Image(ReadExternalConfig.config.getProperty("cardIconWhitePath"));
+    final Image CARD_LOGO_PURPLE = new Image(ReadExternalConfig.config.getProperty("cardIconPurplePath"));
+    final Image PAYPAL_LOGO_WHITE = new Image(ReadExternalConfig.config.getProperty("paypalIconWhitePath"));
+    final Image PAYPAL_LOGO_PURPLE = new Image(ReadExternalConfig.config.getProperty("paypalIconPurplePath"));
+    final String MAIN_BLUE_COLOR = ReadExternalConfig.config.getProperty("mainBlueColor");
+    final String MAIN_WHITE_COLOR = ReadExternalConfig.config.getProperty("mainWhiteColor");
+    final String HOVER_BLUE_COLOR = ReadExternalConfig.config.getProperty("hoverBlueColor");
+    final String HOVER_GREY_COLOR = ReadExternalConfig.config.getProperty("hoverGreyColor");
 
     public void onCardButtonClick(MouseEvent e){
         currentPaymentMethod = "card";
