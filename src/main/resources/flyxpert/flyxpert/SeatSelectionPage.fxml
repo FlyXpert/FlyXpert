@@ -74,7 +74,7 @@
             <Font name="Calibri" size="37.0" />
          </font>
       </Label>
-      <Label fx:id="passengerCount" layoutX="911.0" layoutY="688.0" prefHeight="51.0" prefWidth="155.0" text="Passernger 1" textFill="#6e7491">
+      <Label fx:id="passengerCount" layoutX="911.0" layoutY="688.0" prefHeight="51.0" prefWidth="155.0" text="Passenger 1" textFill="#6e7491">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
