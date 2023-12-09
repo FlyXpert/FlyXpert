@@ -1,9 +1,19 @@
 package flyxpert.flyxpert;
 
+import java.util.HashSet;
+
 public class Airport {
     private String code;
     private String name;
     private String location;
+
+    public static HashSet<Airport> airports = new HashSet<>();
+
+    public Airport(Airport airport) {
+        setCode(airport.getCode());
+        setName(airport.getName());
+        setLocation(airport.getLocation());
+    }
     public Airport(String code, String name, String location){
         setCode(code);
         setName(name);

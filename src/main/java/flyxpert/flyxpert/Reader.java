@@ -2,6 +2,7 @@ package flyxpert.flyxpert;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Reader {
@@ -34,7 +35,7 @@ public class Reader {
                 Flight flight = new Flight(departureAirport, arrivalAirport, airlineName, departureTime, arrivalTime, arrivalDay, economyPrice, businessPrice, firstClassPrice, availableSeats, flightNumber);
 
                 Flight.flights.add(flight);
-
+                Airport.airports.addAll(List.of(new Airport[]{departureAirport, arrivalAirport}));
             }
 
             scan.close();

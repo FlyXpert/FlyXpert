@@ -15,7 +15,6 @@ public class Main extends Application {
         Writer writer = new Writer();
         writer.writeToAllFiles();
     }
-
     public void start(Stage stage) throws IOException {
 
         try{
