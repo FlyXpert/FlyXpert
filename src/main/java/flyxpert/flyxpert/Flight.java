@@ -15,9 +15,9 @@ public class Flight {
     private int firstClassPrice;
     private int availableSeats;
     private int flightNumber;
+    private boolean[][] seatsAvailability;
 
-
-    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate arrivalDay, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber) {
+    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate arrivalDay, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber, boolean[][] seatsAvailability) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.airlineName = airlineName;
@@ -29,6 +29,7 @@ public class Flight {
         this.firstClassPrice = firstClassPrice;
         this.availableSeats = availableSeats;
         this.flightNumber = flightNumber;
+        this.seatsAvailability = seatsAvailability;
     }
 
     public static ArrayList<Flight>flights = new ArrayList<>();
@@ -118,5 +119,13 @@ public class Flight {
 
     public void setArrivalDay(NewDate arrivalDay) {
         this.arrivalDay = arrivalDay;
+    }
+
+    public boolean[][] getSeatsAvailability() {
+        return seatsAvailability;
+    }
+
+    public void setSeatsAvailability(boolean[][] seatsAvailability) {
+        this.seatsAvailability = seatsAvailability;
     }
 }

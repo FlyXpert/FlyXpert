@@ -30,12 +30,20 @@ public class Reader {
                 int businessPrice = Integer.parseInt(scan.next());
                 int firstClassPrice = Integer.parseInt(scan.next());
                 int availableSeats = Integer.parseInt(scan.next());
-                int flightNumber = Integer.parseInt(scan.next().replaceAll("\\s+", ""));
+                int flightNumber = Integer.parseInt(scan.next());
 
-                Flight flight = new Flight(departureAirport, arrivalAirport, airlineName, departureTime, arrivalTime, arrivalDay, economyPrice, businessPrice, firstClassPrice, availableSeats, flightNumber);
+                boolean [][] seatsAvailability = new boolean[12][4];
+
+                for(int i=0 ; i < 12 ; i++){
+                    for(int j=0 ; j < 4 ; j++){
+                        seatsAvailability[i][j] = Boolean.parseBoolean(scan.next().replaceAll("\\s+", ""));
+                    }
+                }
+
+                Flight flight = new Flight(departureAirport, arrivalAirport, airlineName, departureTime, arrivalTime, arrivalDay, economyPrice, businessPrice, firstClassPrice, availableSeats, flightNumber,seatsAvailability);
 
                 Flight.flights.add(flight);
-                Airport.airports.addAll(List.of(new Airport[]{departureAirport, arrivalAirport}));
+
             }
 
             scan.close();

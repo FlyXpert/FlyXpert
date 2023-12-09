@@ -9,6 +9,8 @@ import javafx.scene.layout.VBox;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FlightInformationController{
     @FXML
@@ -66,7 +68,7 @@ public class FlightInformationController{
         return hbox;
     }
 
-    private static Label setLabelStyle(Label label) {
+    private static Label setLabelStyle(Label label)  {
         label.setStyle("-fx-padding: 20;");
 
         return label;
@@ -99,47 +101,70 @@ public class FlightInformationController{
     @FXML
     private Button searchButton;
 
+    Map<String, Boolean> uniqueDepartureAirports = new HashMap<String, Boolean>();
+    Map<String, Boolean> uniqueArrivalAirports = new HashMap<String, Boolean>();
+    Map<String, Boolean> uniqueAirlines = new HashMap<String, Boolean>();
     public void fillMenuButtonsItems() {
 
-        for (Airport airport: Airport.airports) {
-
+        for (Flight flight : Flight.flights) {
 
             // filling the Departure Airport Code Button items
 
-            MenuItem deptAirportCode = new MenuItem(airport.getCode());
-            deptAirportCode.setOnAction(this::setFromWhereMenuButtonText);
-            fromWhereMenuButton.getItems().add(deptAirportCode);
+            if(uniqueDepartureAirports.get(flight.getDepartureAirport().getCode()) == null) {
+
+                MenuItem departureAirportCode = new MenuItem(flight.getDepartureAirport().getCode());
+                departureAirportCode.setOnAction(this::setFromWhereMenuButtonText);
+                fromWhereMenuButton.getItems().add(departureAirportCode);
+                uniqueDepartureAirports.put(flight.getDepartureAirport().getCode() , true);
+            }
 
 
             // filling the Arrival Airport Code Button items
 
-            MenuItem arrivalAirportCode = new MenuItem(airport.getCode());
-            arrivalAirportCode.setOnAction(this::setWhereToMenuButtonText);
-            whereToMenuButton.getItems().add(arrivalAirportCode);
+            if(uniqueArrivalAirports.get(flight.getArrivalAirport().getCode()) == null) {
 
-
-            // filling the Max Departure time Button items
-
-            MenuItem maxDepartTime = new MenuItem(airport.getCode());
-            maxDepartTime.setOnAction(this::setMaxDepartTimeMenuButtonText);
-            maxDepartTimeButton.getItems().add(maxDepartTime);
-
-
-            // filling the Max Arrival time Button items
-
-            MenuItem maxArrivalTime = new MenuItem(airport.getCode());
-            maxArrivalTime.setOnAction(this::setMaxArrivalTimeMenuButtonText);
-            maxArrivalTimeButton.getItems().add(maxArrivalTime);
+                MenuItem arrivalAirportCode = new MenuItem(flight.getArrivalAirport().getCode());
+                arrivalAirportCode.setOnAction(this::setWhereToMenuButtonText);
+                whereToMenuButton.getItems().add(arrivalAirportCode);
+                uniqueArrivalAirports.put(flight.getArrivalAirport().getCode() , true);
+            }
 
 
             // filling the Airlines Button items
 
-            MenuItem airlines = new MenuItem(airport.getCode());
-            airlines.setOnAction(this::setAirlinesMenuButtonText);
-            airlinesButton.getItems().add(airlines);
+            if(uniqueAirlines.get(flight.getAirlineName()) == null){
+
+                MenuItem airlines = new MenuItem(flight.getAirlineName());
+                airlines.setOnAction(this::setAirlinesMenuButtonText);
+                airlinesButton.getItems().add(airlines);
+                uniqueAirlines.put(flight.getAirlineName(), true);
+            }
 
         }
 
+        uniqueDepartureAirports.clear();
+        uniqueArrivalAirports.clear();
+        uniqueAirlines.clear();
+
+
+        for(int i=1 ; i <= 24 ; i++){
+
+            MenuItem time = new MenuItem();
+
+            if(i < 13){
+                time.setText(Integer.toString(i) + " AM");
+            }
+            else{
+                time.setText(Integer.toString(i-12) + " PM");
+            }
+
+            time.setOnAction(this::setMaxDepartTimeMenuButtonText);
+            maxDepartTimeButton.getItems().add(time);
+
+            time.setOnAction(this::setMaxArrivalTimeMenuButtonText);
+            maxArrivalTimeButton.getItems().add(time);
+
+        }
     }
     public void searchData() {
         getDepartureAirportCode();

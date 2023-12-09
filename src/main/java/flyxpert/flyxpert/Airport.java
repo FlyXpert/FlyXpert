@@ -7,7 +7,6 @@ public class Airport {
     private String name;
     private String location;
 
-    public static HashSet<Airport> airports = new HashSet<>();
 
     public Airport(Airport airport) {
         setCode(airport.getCode());

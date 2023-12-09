@@ -18,13 +18,24 @@ public class Writer {
             if(firstElement)
             writer.print(",");
 
-            writer.println(flight.getDepartureAirport().getCode()+ "," + flight.getDepartureAirport().getName() + "," + flight.getDepartureAirport().getLocation() + ","
+            writer.print(flight.getDepartureAirport().getCode()+ "," + flight.getDepartureAirport().getName() + "," + flight.getDepartureAirport().getLocation() + ","
                     + flight.getArrivalAirport().getCode()+ "," + flight.getArrivalAirport().getName() + "," + flight.getArrivalAirport().getLocation() + ","
                     + flight.getAirlineName()+ "," + flight.getDepartureTime().getHour() + "," +flight.getDepartureTime().getMinutes() + "," + flight.getDepartureTime().getPeriod() + ","
                     + flight.getArrivalTime().getHour() + "," + flight.getArrivalTime().getMinutes() + "," + flight.getArrivalTime().getPeriod() + ","
                     + flight.getArrivalDay().getDay() +  "," + flight.getArrivalDay().getMonth() +  "," + flight.getArrivalDay().getYear() +  ","
                     + flight.getEconomyPrice()+ "," + flight.getBusinessPrice() + "," + flight.getFirstClassPrice() + ","
-                    + flight.getAvailableSeats()+ "," + flight.getFlightNumber());
+                    + flight.getAvailableSeats()+ "," + flight.getFlightNumber() + ",");
+
+            for(int i=0 ; i < 12 ; i++){
+                for(int j=0 ; j < 4 ; j++){
+
+                    writer.print(flight.getSeatsAvailability()[i][j]);
+                    if(i == 11 && j == 3)
+                    writer.println();
+                    else
+                    writer.print(",");
+                }
+            }
 
             firstElement = true;
         }
