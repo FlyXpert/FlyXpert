@@ -106,72 +106,98 @@ public class SeatSelectionPageController implements Initializable {
 
         private Seat[][] seats = new Seat[200][200];
         private boolean[][] vis = new boolean[200][200];
+
+        /**
+         * Performs a Depth-First Search (DFS) traversal to add seat objects to a specified overlay Pane.
+         * The seats are represented as rectangles and are organized based on their type (business, economy, first class).
+         * The method recursively explores adjacent seats and initializes their properties such as type, color, and primary key.
+         *
+         * @param overlay The Pane where seat rectangles will be added.
+         * @param x       The starting x-coordinate for the seat rectangle.
+         * @param y       The starting y-coordinate for the seat rectangle.
+         * @param i       The row index of the seat in the seating arrangement.
+         * @param j       The column index of the seat in the seating arrangement.
+         */
         private void dfsAddSeats(Pane overlay, int x, int y, int i, int j) {
+                // Mark the current seat as visited
                 vis[i][j] = true;
+
+                // Base case: If the current seat is beyond the seating arrangement boundaries, return
                 if (i >= 24 || j >= 4)
                         return;
 
+                // Create a new seat object and initialize its properties
                 seats[i][j] = new Seat();
                 seats[i][j].setRec(new Rectangle(30, 40));
                 seats[i][j].setRow(i);
                 seats[i][j].setCol(j);
 
+                // Set the appearance of the seat rectangle
                 seats[i][j].getRec().setArcWidth(12);
                 seats[i][j].getRec().setArcHeight(12);
                 seats[i][j].getRec().setLayoutX(x);
                 seats[i][j].getRec().setLayoutY(y);
                 seats[i][j].getRec().setOnMouseClicked(event -> seatClicked(seats[i][j]));
 
+                // Determine the type and color of the seat based on its position in the seating arrangement
                 int d = i / 4;
                 Paint toBe = null;
 
                 switch (d) {
-                        case 0 :  {
+                        case 0: {
+                                // Business class seat
                                 toBe = Color.web(green);
                                 seats[i][j].setType("business");
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1 + 4);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
                                 businessSeats[i][j] = seats[i][j];
-
                                 break;
                         }
-                        case 1, 2, 3, 4 :  {
+                        case 1, 2, 3, 4: {
+                                // Economy class seat
                                 toBe = Color.web(darkPurple);
                                 seats[i][j].setType("economy");
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
                                 economySeats[i][j] = seats[i][j];
-
                                 break;
                         }
-                        case 5 :  {
+                        case 5: {
+                                // First-class seat
                                 toBe = Color.web(red);
                                 seats[i][j].setType("firstClass");
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1 + 8);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
                                 firstClassSeats[i][j] = seats[i][j];
-
                                 break;
                         }
                 }
 
+                // Add the seat rectangle to the overlay Pane
                 overlay.getChildren().add(seats[i][j].getRec());
 
+                // Recursive calls to explore adjacent seats in the downward and rightward directions
                 int add = 0;
-
                 if (i + 1 < 100 && !vis[i + 1][j]) {
+                        // Add additional space between rows if the current row is a multiple of 4
                         if ((i + 1) % 4 == 0) {
                                 add = 30;
+                                // Special case for row 3 to accommodate a larger gap
                                 if (i == 3)
                                         add = 60;
                         }
                         dfsAddSeats(overlay, x, y + 50 + add, i + 1, j);
                 }
+
+                // Reset the additional space for the next recursive call
                 add = 0;
+
+                // Recursive call to explore adjacent seats in the rightward direction
                 if (j + 1 < 100 && !vis[i][j + 1]) {
+                        // Add additional space for the second column
                         if (j + 1 == 2)
                                 add = 25;
                         dfsAddSeats(overlay, x + 40 + add, y, i, j + 1);
@@ -271,12 +297,24 @@ public class SeatSelectionPageController implements Initializable {
         }
 
 
+        /**
+         * Handles the click event when the "Next Seat" button is clicked. This method is responsible for managing the
+         * progression of passengers through the seat selection process and potentially transitioning to the payment phase.
+         */
         public void nextSeatClicked() {
-                // can't do if hadn't chosen a seat
-
+                // Check if a seat has been chosen
                 if (nextSeat.getOpacity() != 1)
                         return;
 
+                // Print debugging information
+                System.out.println(index);
+                System.out.println(size);
+
+                // If the current passenger has selected a seat, proceed
+                if (nextSeat.getOpacity() != 1)
+                        return;
+
+                // If the current passenger is the second to last one, update the button text and opacity
                 if (index == size - 2) {
                         nextSeat.setText("Proceed to Payment");
                         nextSeat.setOpacity(.75);
@@ -285,28 +323,33 @@ public class SeatSelectionPageController implements Initializable {
                 }
 
                 try {
+                        // Check if the current passenger has selected a seat
                         if (Passengers.passengers.get(index).getSeat() == null) {
-                                // show warning
+                                // Display a warning if no seat has been chosen for the current passenger
                                 noSeatChosen.setVisible(true);
                                 return;
                         }
-                }
-                catch(Exception e) {
+                } catch (Exception e) {
+                        // Handle the case when there are no more passengers
                         System.out.println("No more passengers!");
                 }
 
+                // Hide the "No Seat Chosen" warning
                 noSeatChosen.setVisible(false);
+
+                // If the current passenger is the last one, transition to the next scene (TODO: implement scene transition)
                 if (index == size - 1) {
-
-                      // TODO switch to next scene
-
-                      // System.out.println("don't click me, shithead");
-                       return;
+                        // TODO: Implement the logic to switch to the next scene
+                        return;
                 }
+
+                // Update the passenger count label
                 passengerCount.setText("Passenger " + (index + 1));
 
-                // display next passenger name
+                // Display the name of the next passenger
                 passengerName.setText(Passengers.passengers.get(index).getFirstName());
+
+                // Update the opacity of the "Next Seat" button
                 nextSeat.setOpacity(.75);
         }
 }
