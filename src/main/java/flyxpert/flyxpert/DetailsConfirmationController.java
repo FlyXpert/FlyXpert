@@ -34,9 +34,9 @@ public class DetailsConfirmationController {
 
         controller.airlineLabel.setText(flight.getAirlineName() + " Airlines");
 
-        controller.dayLabel.setText(flight.getArrivalDay().getDay()
-                + "-" + flight.getArrivalDay().getMonth()
-                + "-" + flight.getArrivalDay().getYear());
+        controller.dayLabel.setText(flight.getArrivalDate().getDay()
+                + "-" + flight.getArrivalDate().getMonth()
+                + "-" + flight.getArrivalDate().getYear());
 
         controller.timeLabel.setText(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
                 + " " + flight.getDepartureTime().getPeriod()

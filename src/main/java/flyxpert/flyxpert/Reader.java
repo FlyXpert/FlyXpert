@@ -25,7 +25,8 @@ public class Reader {
                 String airlineName = scan.next();
                 Time departureTime = new Time(scan.next(), scan.next(),scan.next());
                 Time arrivalTime = new Time(scan.next(), scan.next(),scan.next());
-                NewDate arrivalDay = new NewDate(scan.next(), scan.next(), scan.next());
+                NewDate departureDate = new NewDate(scan.next(), scan.next(), scan.next());
+                NewDate arrivalDate = new NewDate(scan.next(), scan.next(), scan.next());
                 int economyPrice = Integer.parseInt(scan.next());
                 int businessPrice = Integer.parseInt(scan.next());
                 int firstClassPrice = Integer.parseInt(scan.next());
@@ -40,7 +41,7 @@ public class Reader {
                     }
                 }
 
-                Flight flight = new Flight(departureAirport, arrivalAirport, airlineName, departureTime, arrivalTime, arrivalDay, economyPrice, businessPrice, firstClassPrice, availableSeats, flightNumber,seatsAvailability);
+                Flight flight = new Flight(departureAirport, arrivalAirport, airlineName, departureTime, arrivalTime, departureDate, arrivalDate, economyPrice, businessPrice, firstClassPrice, availableSeats, flightNumber,seatsAvailability);
 
                 Flight.flights.add(flight);
 

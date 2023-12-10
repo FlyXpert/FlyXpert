@@ -87,7 +87,7 @@
                </cursor>
             </DatePicker>
             <TextField fx:id="numOfPassengers" layoutX="800.0" layoutY="-3.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Number of passengers" style="-fx-background-insets: 0;" />
-            <Button fx:id="searchButton" disable="true" layoutX="1000.0" layoutY="-2.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
+            <Button fx:id="searchButton" disable="true" layoutX="1000.0" layoutY="-2.0" mnemonicParsing="false" onAction="#fillDataOfFlights" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
                <font>
                   <Font size="22.0" />
                </font>
@@ -114,7 +114,7 @@
                </cursor>
             </MenuButton>
             <Separator layoutX="478.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton fx:id="seatClassButton" layoutX="480.0" mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text=" Seat class">
+            <MenuButton fx:id="seatClassButton" layoutX="480.0" mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Seat class">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Economy class" />
                   <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Business class" />

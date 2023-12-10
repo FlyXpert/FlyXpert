@@ -9,7 +9,8 @@ public class Flight {
     private String airlineName;
     private Time departureTime;
     private Time arrivalTime;
-    private NewDate arrivalDay;
+    private NewDate arrivalDate;
+    private NewDate departureDate;
     private int economyPrice;
     private int businessPrice;
     private int firstClassPrice;
@@ -17,13 +18,14 @@ public class Flight {
     private int flightNumber;
     private boolean[][] seatsAvailability;
 
-    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate arrivalDay, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber, boolean[][] seatsAvailability) {
+    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate departureDate, NewDate arrivalDate, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber, boolean[][] seatsAvailability) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
         this.airlineName = airlineName;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        this.arrivalDay = arrivalDay;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
         this.economyPrice = economyPrice;
         this.businessPrice = businessPrice;
         this.firstClassPrice = firstClassPrice;
@@ -113,12 +115,18 @@ public class Flight {
         this.firstClassPrice = firstClassPrice;
     }
 
-    public NewDate getArrivalDay() {
-        return arrivalDay;
+    public NewDate getDepartureDate() {
+        return departureDate;
+    }
+    public void setDepartureDate(NewDate departureDate) {
+        this.departureDate = departureDate;
+    }
+    public NewDate getArrivalDate() {
+        return arrivalDate;
     }
 
-    public void setArrivalDay(NewDate arrivalDay) {
-        this.arrivalDay = arrivalDay;
+    public void setArrivalDate(NewDate arrivalDate) {
+        this.arrivalDate = arrivalDate;
     }
 
     public boolean[][] getSeatsAvailability() {
