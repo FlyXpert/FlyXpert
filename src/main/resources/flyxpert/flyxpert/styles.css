@@ -1,14 +1,14 @@
-#searchButton {
+.button {
     -fx-background-color: #605DEC; /* Green color */
     -fx-text-fill: white; /* Text color */
     -fx-border-color: black;
 }
-#searchButton:hover {
+.button:hover {
     -fx-background-color: #4422ac;
     -fx-text-fill: white;
     -fx-border-color: black;
 }
-#searchButton:pressed {
+.button:pressed {
     -fx-background-color: #4422ac;
     -fx-text-fill: white;
     -fx-border-color: white;
@@ -30,4 +30,16 @@
     -fx-pref-height: 150; /* Set the preferred height */
     -fx-font-size: 16px;
     -fx-background-radius: 10;
+}
+#scrollPane {
+    -fx-background-color: #605DEC;
+    -fx-border-width: 0;
+}
+
+#scrollPane .scroll-bar {
+    -fx-opacity: 0;
+}
+
+#scrollPane:hover .scroll-bar {
+    -fx-opacity: 0;
 }

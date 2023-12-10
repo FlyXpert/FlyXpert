@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="175.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.DetailsConfirmationController">
    <children>
-      <Button fx:id="confirmationButton" layoutX="20.0" layoutY="125.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="310.0" style="-fx-background-color: #605DEC; -fx-border-radius: 10PX;" text="Click to Confirm Details" textFill="#f7f7f7" />
+      <Button fx:id="confirmationButton" layoutX="20.0" layoutY="125.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="310.0" stylesheets="@styles.css" text="Click to Confirm Details" textFill="#f7f7f7" />
       <Label fx:id="dayLabel" layoutX="270.0" layoutY="22.0" prefHeight="26.0" prefWidth="65.0" text="07-01-2024" />
       <Label fx:id="airlineLabel" layoutX="20.0" layoutY="13.0" prefHeight="44.0" prefWidth="196.0" text="Emirates Airlines">
          <font>

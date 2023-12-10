@@ -48,6 +48,36 @@
             </LinearGradient>
          </textFill>
         </Label>
+      <Pane layoutX="1290.0" layoutY="220.0" prefHeight="500.0" prefWidth="200.0">
+         <children>
+            <MenuButton fx:id="maxDepartTimeButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#setMaxDepartTimeMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Max departure time">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <MenuButton fx:id="maxArrivalTimeButton" layoutY="100.0" mnemonicParsing="false" onAction="#setMaxArrivalTimeMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Max arrival time">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <MenuButton fx:id="airlinesButton" layoutY="200.0" mnemonicParsing="false" onAction="#setAirlinesMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Airlines">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <MenuButton fx:id="seatClassButton" layoutY="300.0" mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Seat class">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Economy class" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Business class" />
+                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="First class" />
+               </items>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </MenuButton>
+            <TextField fx:id="maxPrice" layoutY="400.0" onAction="#validNumForPrice" prefHeight="50.0" prefWidth="200.0" promptText="Max price " style="-fx-background-insets: 0;" />
+         </children>
+      </Pane>
       <Pane layoutX="70.0" layoutY="130.0" prefHeight="48.0" prefWidth="1200.0">
          <children>
               <MenuButton fx:id="fromWhereMenuButton" mnemonicParsing="false" onAction="#setFromWhereMenuButtonText" prefHeight="48.0" prefWidth="300.0" stylesheets="@styles.css" text="From Where ?">
@@ -81,7 +111,7 @@
                   </ImageView>
                </graphic>
               </MenuButton>
-              <DatePicker fx:id="datePicker" layoutX="600.0" layoutY="-4.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Depart" style="-fx-background-insets: 0;" stylesheets="@styles.css">
+              <DatePicker fx:id="datePicker" layoutX="600.0" layoutY="-4.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Depart" style="-fx-background-color: white;">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -94,47 +124,15 @@
             </Button>
          </children>
       </Pane>
-      <Pane layoutX="70.0" layoutY="220.0" prefHeight="35.0" prefWidth="800.0">
-         <children>
-            <MenuButton fx:id="maxDepartTimeButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#setMaxDepartTimeMenuButtonText" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Max departure time">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MenuButton>
-            <Separator layoutX="158.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton fx:id="maxArrivalTimeButton" layoutX="160.0" mnemonicParsing="false" onAction="#setMaxArrivalTimeMenuButtonText" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Max arrival time">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MenuButton>
-            <Separator layoutX="318.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton fx:id="airlinesButton" layoutX="320.0" mnemonicParsing="false" onAction="#setAirlinesMenuButtonText" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Airlines">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MenuButton>
-            <Separator layoutX="478.0" orientation="VERTICAL" prefHeight="35.0" prefWidth="0.0" />
-            <MenuButton fx:id="seatClassButton" layoutX="480.0" mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" prefHeight="35.0" prefWidth="160.0" style="-fx-background-color: white;" text="Seat class">
-               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Economy class" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Business class" />
-                  <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="First class" />
-               </items>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </MenuButton>
-            <TextField fx:id="maxPrice" layoutX="640.0" layoutY="-2.0" onAction="#validNumForPrice" prefHeight="38.0" prefWidth="160.0" promptText="Max price " style="-fx-background-insets: 0;" />
-         </children>
-      </Pane>
-        <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="279.0" opacity="0.5" prefHeight="498.0" prefWidth="1404.0">
+      <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="220.0" prefHeight="500.0" prefWidth="1200.0" stylesheets="@styles.css">
          <content>
-            <VBox fx:id="vbox" prefHeight="498.0" prefWidth="1390.0" style="-fx-padding: 10; -fx-background-color: white;">
+            <VBox fx:id="vbox" prefHeight="500.0" prefWidth="1200.0" stylesheets="@styles.css">
                <opaqueInsets>
                   <Insets top="10.0" />
-               </opaqueInsets></VBox>
+               </opaqueInsets>
+            </VBox>
          </content>
-        </ScrollPane>
+      </ScrollPane>
       <Pane layoutX="1332.0" layoutY="40.0">
          <children>
             <Label text="Flights" textFill="#605dec">

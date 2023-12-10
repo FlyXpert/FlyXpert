@@ -2,6 +2,8 @@ package flyxpert.flyxpert;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -12,9 +14,15 @@ import java.util.Map;
 public class FlightInformationController{
     @FXML
     private VBox vbox;
+    @FXML
+    private ScrollPane scrollPane;
     public static boolean programStarted = false;
 
     public void fillDataOfFlights(){
+
+        scrollPane.setPannable(true);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
         if(!programStarted) {
 
@@ -45,15 +53,25 @@ public class FlightInformationController{
                 e.printStackTrace();
             }
         }
+        vbox.setSpacing(20);
     }
 
     private HBox createFlight(Flight flight){
         HBox hbox = new HBox();
-        hbox.setStyle("-fx-border-color: black;");
+        /*hbox.setStyle("-fx-border-color: red;");
+        //hbox.setPrefHeight(10);*/
+       // hbox.setAlignment(Pos.CENTER);
+        //hbox.setStyle("fx-padding: 30");
+        //hbox.setSpacing(0);
+        //hbox.setStyle("-fx-radius: 10;");
 
         Label airLineLabel = new Label(flight.getAirlineName() + " Airlines");
 
-        FlightInformationController.setLabelStyle(airLineLabel);
+        //airLineLabel.setPrefWidth(500);
+
+        //HBox.setHgrow(airLineLabel, javafx.scene.layout.Priority.ALWAYS);
+
+        FlightInformationController.setLabelStyle(airLineLabel,"black");
         hbox.getChildren().add(airLineLabel);
 
         Label timeLabel = new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
@@ -61,7 +79,11 @@ public class FlightInformationController{
                 + " - " + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes()
                 + " " + flight.getArrivalTime().getPeriod());
 
-        FlightInformationController.setLabelStyle(timeLabel);
+        //timeLabel.setPrefWidth(500);
+
+        //HBox.setHgrow(timeLabel, javafx.scene.layout.Priority.ALWAYS);
+
+        FlightInformationController.setLabelStyle(timeLabel,"black");
         hbox.getChildren().add(timeLabel);
 
         Label dayLabel = new Label(flight.getDepartureDate().getDay()
@@ -69,10 +91,18 @@ public class FlightInformationController{
                 + "-" + flight.getDepartureDate().getYear());
 
 
-        FlightInformationController.setLabelStyle(dayLabel);
+        //dayLabel.setPrefWidth(500);
+
+        //HBox.setHgrow(dayLabel, javafx.scene.layout.Priority.ALWAYS);
+
+        FlightInformationController.setLabelStyle(dayLabel,"black");
         hbox.getChildren().add(dayLabel);
 
         Label priceLabel = new Label(Integer.toString(flight.getEconomyPrice()));
+
+        //priceLabel.setPrefWidth(500);
+
+        //HBox.setHgrow(priceLabel, javafx.scene.layout.Priority.ALWAYS);
 
         if (seatClassButton.getText().equals("Business class")) {
             priceLabel.setText(Integer.toString(flight.getBusinessPrice()));
@@ -81,8 +111,39 @@ public class FlightInformationController{
             priceLabel.setText(Integer.toString(flight.getFirstClassPrice()));
         }
 
-        FlightInformationController.setLabelStyle(priceLabel);
+
+
+        FlightInformationController.setLabelStyle(priceLabel,"black");
         hbox.getChildren().add(priceLabel);
+
+        hbox.setStyle("-fx-border-color: black;");
+        hbox.setOnMouseEntered(event ->{
+                    hbox.setStyle("-fx-background-color: #605DEC; -fx-border-color: black;");
+
+        });
+        hbox.setOnMouseExited(event ->{
+            hbox.setStyle("-fx-background-color: white; -fx-border-color: black;");
+
+        });
+        hbox.setOnMousePressed(event ->{
+            hbox.setStyle("-fx-background-color: #4422ac; -fx-border-color: white;");
+            hbox.getChildren().forEach(node -> {
+                if (node instanceof Label) {
+                    setLabelStyle((Label) node, "white");
+                }
+            });
+            //airLineLabel.setStyle("-fx-text-fill: white;");
+        });
+        hbox.setOnMouseReleased(event ->{
+            hbox.setStyle("-fx-background-color: #4422ac; -fx-border-color: white;");
+            hbox.getChildren().forEach(node -> {
+                if (node instanceof Label) {
+                    setLabelStyle((Label) node, "black");
+                }
+            });
+            //airLineLabel.setStyle("-fx-text-fill: white;");
+        });
+
 
         hbox.setOnMouseClicked(event -> {
             try {
@@ -94,9 +155,22 @@ public class FlightInformationController{
         return hbox;
     }
 
-    private static Label setLabelStyle(Label label)  {
-        label.setStyle("-fx-padding: 20;");
-
+    private static Label setLabelStyle(Label label, String color)  {
+        if(color.equals("white")) {
+            label.setStyle("-fx-pref-width: 300;" +
+                    " -fx-border-width: 0;" +
+                    " -fx-border-color: #605DEC;" +
+                    " -fx-alignment: center;" +
+                    " -fx-padding: 25;" +
+                    " -fx-font-size: 14; -fx-text-fill: white");
+            return label;
+        }
+        label.setStyle("-fx-pref-width: 300;" +
+                " -fx-border-width: 0;" +
+                " -fx-border-color: #605DEC;" +
+                " -fx-alignment: center;" +
+                " -fx-padding: 25;" +
+                " -fx-font-size: 14;");
         return label;
     }
 
