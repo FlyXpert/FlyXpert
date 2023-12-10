@@ -184,15 +184,15 @@ public class PaymentPageController {
 
             if(currentPaymentMethod.equals("card")){
                 Card card = new Card(cardOwnerName, cardNumber, cardExpirationDate, cardCcv);
-                bookingConfirmationController.displayTicketInfo("Test", "1", "Test Airline", "card", card.getNumber(), card.getExpirationDate(), "Test Destination", "100", "200", "300", "18/23");
+                bookingConfirmationController.displayTicketInfo(card.getOwnerName(), "Tokyo", card, "Japan", "1250", "11/11/111");
             }
             else{
                 Paypal paypal = new Paypal(paypalEmail);
-                bookingConfirmationController.displayTicketInfo("Test", "1", "Test Airline", "Paypal", paypal.getEmail(), "27/11", "Test Destination", "100", "200", "300", "18/23");
+                bookingConfirmationController.displayTicketInfo("Test", "Tokyo", paypal, "Paypal", "1250", "27/11");
             }
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
             bookingConfirmationScene = new Scene(bookingConfirmationRoot);
-            bookingConfirmationScene.getStylesheets().add(getClass().getResource("MoeStyle.css").toExternalForm());
+            bookingConfirmationScene.getStylesheets().add(getClass().getResource("ButtonBookingClassStyle.css").toExternalForm());
             bookingConfirmationStage.setTitle(ReadExternalConfig.config.getProperty("systemTitle"));
             bookingConfirmationStage.setResizable(false);
 

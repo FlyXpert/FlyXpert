@@ -175,7 +175,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="cardNumber" layoutX="1190.0" layoutY="669.0" prefHeight="23.0" prefWidth="137.0" text="CardNumber" textFill="WHITE">
+      <Label fx:id="cardNumber" layoutX="1190.0" layoutY="669.0" prefHeight="23.0" prefWidth="274.0" text="CardNumber" textFill="WHITE">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -185,7 +185,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1251.0" layoutY="724.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="183.0" style="-fx-background-color: #605DEC;" stylesheets="@MoeStyle.css" text="Confirm" textFill="WHITE">
+      <Button layoutX="1251.0" layoutY="724.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="183.0" style="-fx-background-color: #605DEC;" stylesheets="@ButtonBookingClassStyle.css" text="Confirm" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font></Button>
