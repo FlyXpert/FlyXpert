@@ -1,12 +1,20 @@
 package flyxpert.flyxpert;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
 public class PaymentPageController {
 
     @FXML
@@ -103,8 +111,25 @@ public class PaymentPageController {
     final String CARD_CCV_PATTERN = "\\d{3}";
     final String EMAIL_PATTERN = "\\w+@\\w+\\.com";
 
-    public void onPayButtonClick(MouseEvent e){
+    private Scene bookingConfirmationScene;
+    private Stage bookingConfirmationStage;
+    private Parent bookingConfirmationRoot;
+    boolean userInputIsCorrect;
+    public void onPayButtonClick(MouseEvent mouseEvent){
+        String cardOwnerName = cardOwnerNameTextField.getText();
+        String cardNumber = cardNumberTextField.getText();
+        String cardExpirationDate = cardExpirationDateTextField.getText();
+        String cardCcv = cardCcvTextField.getText();
+        String paypalEmail = paypalEmailTextField.getText();
+
         if(currentPaymentMethod.equals("card")){
+            // Checking if user input passes all validation tests
+            userInputIsCorrect = true;
+            userInputIsCorrect &= cardOwnerName.matches(CARD_NAME_PATTERN);
+            userInputIsCorrect &= cardNumber.matches(CARD_NUMBER_PATTERN);
+            userInputIsCorrect &= cardExpirationDate.matches(CARD_EXPIRATION_DATE_PATTERN);
+            userInputIsCorrect &= cardCcv.matches(CARD_CCV_PATTERN);
+
             if(!cardOwnerNameTextField.getText().matches(CARD_NAME_PATTERN)){
                 cardNameOrPaypalEmailError.setText("Please don't leave this field empty or enter a valid name with no special characters (Ex: Fly Xpert)");
                 cardNameOrPaypalEmailError.setVisible(true);
@@ -130,18 +155,49 @@ public class PaymentPageController {
             if(!cardCcvTextField.getText().matches(CARD_CCV_PATTERN)){
                 cardCcvError.setVisible(true);
             }
-            else{
+            else {
                 cardCcvError.setVisible(false);
             }
         }
         else{
-            if(!paypalEmailTextField.getText().matches(EMAIL_PATTERN)){
+            if(!paypalEmail.matches(EMAIL_PATTERN)){
                 cardNameOrPaypalEmailError.setText("Please don't leave this field empty or enter a valid email (Ex: FlyXpert@gmail.com)");
                 cardNameOrPaypalEmailError.setVisible(true);
+                userInputIsCorrect = false;
             }
             else{
                 cardNameOrPaypalEmailError.setVisible(false);
+                userInputIsCorrect = true;
             }
+        }
+
+        if(userInputIsCorrect){
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("BookingConfirmationController.fxml"));
+            try{
+                bookingConfirmationRoot = fxmlLoader.load();
+            }
+            catch(IOException ioException){
+                System.out.println("Unable to load BookingConfirmationController.fxml");
+            }
+
+            BookingConfirmationController bookingConfirmationController = fxmlLoader.getController();
+
+            if(currentPaymentMethod.equals("card")){
+                Card card = new Card(cardOwnerName, cardNumber, cardExpirationDate, cardCcv);
+                bookingConfirmationController.displayTicketInfo("Test", "1", "Test Airline", "card", card.getNumber(), card.getExpirationDate(), "Test Destination", "100", "200", "300", "18/23");
+            }
+            else{
+                Paypal paypal = new Paypal(paypalEmail);
+                bookingConfirmationController.displayTicketInfo("Test", "1", "Test Airline", "Paypal", paypal.getEmail(), "27/11", "Test Destination", "100", "200", "300", "18/23");
+            }
+            bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+            bookingConfirmationScene = new Scene(bookingConfirmationRoot);
+            bookingConfirmationScene.getStylesheets().add(getClass().getResource("MoeStyle.css").toExternalForm());
+            bookingConfirmationStage.setTitle(ReadExternalConfig.config.getProperty("systemTitle"));
+            bookingConfirmationStage.setResizable(false);
+
+            bookingConfirmationStage.setScene(bookingConfirmationScene);
+            bookingConfirmationStage.show();
         }
     }
 
