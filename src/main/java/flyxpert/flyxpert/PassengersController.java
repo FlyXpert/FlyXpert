@@ -35,8 +35,8 @@ public class PassengersController
     public Label informationWarningText;
 
     private final SimpleDateFormat DOBFormat = new SimpleDateFormat("dd/MM/yy");
-    static public int passengersToBeAdded = 2;
-    static public int initialPassengersToBeAdded = 2;
+    static public int passengersToBeAdded;
+    static public int initialPassengersToBeAdded;
     static private int curPassenger = 0;
 
 

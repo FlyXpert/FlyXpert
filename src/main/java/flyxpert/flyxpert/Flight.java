@@ -18,6 +18,24 @@ public class Flight {
     private int flightNumber;
     private boolean[][] seatsAvailability;
 
+    public static Flight selectedFlight;
+
+    public Flight(Flight flight) {
+        this.departureAirport = flight.departureAirport;
+        this.arrivalAirport = flight.arrivalAirport;
+        this.airlineName = flight.airlineName;
+        this.departureTime = flight.departureTime;
+        this.arrivalTime = flight.arrivalTime;
+        this.departureDate = flight.departureDate;
+        this.arrivalDate = flight.arrivalDate;
+        this.economyPrice = flight.economyPrice;
+        this.businessPrice = flight.businessPrice;
+        this.firstClassPrice = flight.firstClassPrice;
+        this.availableSeats = flight.availableSeats;
+        this.flightNumber = flight.flightNumber;
+        this.seatsAvailability = flight.seatsAvailability;
+    }
+
     public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate departureDate, NewDate arrivalDate, int economyPrice,int businessPrice,int firstClassPrice,int availableSeats , int flightNumber, boolean[][] seatsAvailability) {
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;

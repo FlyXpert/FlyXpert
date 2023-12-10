@@ -147,7 +147,7 @@ public class FlightInformationController{
 
         hbox.setOnMouseClicked(event -> {
             try {
-                DetailsConfirmationController.handleHBoxClick(flight);
+                DetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

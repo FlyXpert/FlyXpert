@@ -26,4 +26,12 @@ public class SceneController {
                 stage.setScene(scene);
                 stage.show();
         }
+        public static void switchToPassengerInfo(ActionEvent event) throws IOException, ParseException {
+
+                root = FXMLLoader.load(SeatSelectionPageController.class.getResource("Passengers.fxml"));
+                stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+        }
 }

@@ -1,15 +1,19 @@
 package flyxpert.flyxpert;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.text.ParseException;
+
+import static flyxpert.flyxpert.SceneController.switchToPassengerInfo;
 
 public class DetailsConfirmationController {
     @FXML
@@ -18,7 +22,7 @@ public class DetailsConfirmationController {
     private  Label dayLabel;
     @FXML
     private Label timeLabel;
-    public static void handleHBoxClick(Flight flight) throws IOException {
+    public static void handleHBoxClick(Flight flight, int numOfPassengers) throws IOException {
 
 
         Stage newStage = new Stage();
@@ -47,5 +51,13 @@ public class DetailsConfirmationController {
 
         newStage.setScene(newScene);
         newStage.show();
+        Flight.selectedFlight = new Flight(flight);
+        PassengersController.passengersToBeAdded = numOfPassengers;
+        PassengersController.initialPassengersToBeAdded = numOfPassengers;
     }
+
+    public void toPassengerInfoScene(ActionEvent actionEvent) throws IOException, ParseException {
+        switchToPassengerInfo(actionEvent);
+    }
+
 }
