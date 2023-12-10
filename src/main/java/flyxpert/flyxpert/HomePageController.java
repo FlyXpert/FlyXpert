@@ -13,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.text.ParseException;
 
 public class HomePageController {
     @FXML
@@ -56,7 +57,7 @@ public class HomePageController {
 
         //System.out.println("Signed In");
     }
-    public void internalOnSignInButton(ActionEvent e) {
+    public void internalOnSignInButton(ActionEvent e) throws IOException, ParseException {
         String userName = signInUsernameTextField.getText();
         String password = signInPasswordTextField.getText();
         User user = new User(userName, null, password);
@@ -68,6 +69,8 @@ public class HomePageController {
         else if(User.searchForUser(user) != null) {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
+            ((Stage) internalSignInButton.getScene().getWindow()).close();
+            SceneController.switchToSearchFlightPage(e);
             //System.out.println("You've successfully logged in");
         }
         else {
