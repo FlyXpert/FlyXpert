@@ -6,6 +6,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import java.util.HashMap;
@@ -45,6 +46,7 @@ public class FlightInformationController{
 
             try {
                 for(Flight flight : Flight.flights) {
+                    System.out.println("CALLED");
                     if(desiredSearchData(flight)) {
                         vbox.getChildren().add(createFlight(flight));
                     }
@@ -66,7 +68,6 @@ public class FlightInformationController{
         //hbox.setStyle("-fx-radius: 10;");
 
         Label airLineLabel = new Label(flight.getAirlineName() + " Airlines");
-
         //airLineLabel.setPrefWidth(500);
 
         //HBox.setHgrow(airLineLabel, javafx.scene.layout.Priority.ALWAYS);

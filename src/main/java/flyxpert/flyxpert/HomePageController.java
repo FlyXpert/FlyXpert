@@ -24,8 +24,20 @@ public class HomePageController {
     @FXML
     private Label signUpLabel, signUpUsernameValidator, emailVaidatorLabel, passwordValidatorLabel, signInPasswordValidator, signInUsernameValidator, signUpSuccessLabel;
     private Stage signInStage, signUpStage;
+    private static Stage mainStage;
 
     private final Color ERROR_COLOR = Color.RED;
+
+    public static void homePageScene(Stage stage) throws IOException
+    {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/HomePage/HomePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("FlyXpert!");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+        mainStage = stage;
+    }
     public void homePageOnSignUp(ActionEvent event) throws IOException {
         signUpStage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(HomePageController.class.getResource("/flyxpert/flyxpert/HomePage/HomePageSignUp.fxml"));
@@ -70,7 +82,7 @@ public class HomePageController {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
             ((Stage) internalSignInButton.getScene().getWindow()).close();
-            SceneController.switchToSearchFlightPage(e);
+            SceneController.switchToSearchFlightPage(e, mainStage);
             //System.out.println("You've successfully logged in");
         }
         else {
