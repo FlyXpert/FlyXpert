@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Card extends PaymentMethod{
     private final String ownerName;
-    private final int number;
+    private final String number;
     private final String expirationDate;
-    private final int ccv;
+    private final String ccv;
 
-    public Card(String ownerName, int number, String expirationDate, int ccv){
+    public Card(String ownerName, String number, String expirationDate, String ccv){
         super();
         this.ownerName = ownerName;
         this.number = number;
@@ -20,13 +20,13 @@ public class Card extends PaymentMethod{
     public String getOwnerName(){
         return ownerName;
     }
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
     public String getExpirationDate() {
         return expirationDate;
     }
-    public int getCcv() {
+    public String getCcv() {
         return ccv;
     }
 }
