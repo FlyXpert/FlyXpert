@@ -81,6 +81,7 @@ public class SeatSelectionPageController implements Initializable {
                 ImageView iv = new ImageView(i);
                 return iv;
         }
+
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -90,13 +91,12 @@ public class SeatSelectionPageController implements Initializable {
                         if (index >= size - 2) {
                                 nextSeat.setText("Proceed to Payment");
                         }
-                }
-                catch (ArrayIndexOutOfBoundsException e) {
+                } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Exception caught: " + e.getMessage());
                 }
 
                 Pane overlay = new Pane();
-                overlay.getChildren().add(imageView("totPlane.jpg"));
+                overlay.getChildren().add(imageView("Plane.jpg"));
 
                 dfsAddSeats(overlay, 960, 540, 0, 0);
 
@@ -138,6 +138,13 @@ public class SeatSelectionPageController implements Initializable {
                 seats[i][j].getRec().setLayoutX(x);
                 seats[i][j].getRec().setLayoutY(y);
                 seats[i][j].getRec().setOnMouseClicked(event -> seatClicked(seats[i][j]));
+                seats[i][j].getRec().setOnMouseEntered(event -> {
+                        seats[i][j].getRec().setOpacity(.75);
+                });
+
+                seats[i][j].getRec().setOnMouseExited(event -> {
+                        seats[i][j].getRec().setOpacity(1);
+                });
 
                 // Determine the type and color of the seat based on its position in the seating arrangement
                 int d = i / 4;
@@ -147,9 +154,12 @@ public class SeatSelectionPageController implements Initializable {
                         case 0: {
                                 // Business class seat
                                 toBe = Color.web(green);
-                                seats[i][j].setType("business");
+                                Type type = new Type();
+                                type.setColor(toBe);
+                                type.setName("business");
+                                seats[i][j].setType(type);
                                 seats[i][j].getRec().setFill(toBe);
-                                String fstHalf = String.valueOf(i + 1 + 4);
+                                String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
                                 businessSeats[i][j] = seats[i][j];
                                 break;
@@ -157,7 +167,10 @@ public class SeatSelectionPageController implements Initializable {
                         case 1, 2, 3, 4: {
                                 // Economy class seat
                                 toBe = Color.web(darkPurple);
-                                seats[i][j].setType("economy");
+                                Type type = new Type();
+                                type.setColor(toBe);
+                                type.setName("economy");
+                                seats[i][j].setType(type);
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
@@ -167,9 +180,12 @@ public class SeatSelectionPageController implements Initializable {
                         case 5: {
                                 // First-class seat
                                 toBe = Color.web(red);
-                                seats[i][j].setType("firstClass");
+                                Type type = new Type();
+                                type.setColor(toBe);
+                                type.setName("firstClass");
+                                seats[i][j].setType(type);
                                 seats[i][j].getRec().setFill(toBe);
-                                String fstHalf = String.valueOf(i + 1 + 8);
+                                String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
                                 firstClassSeats[i][j] = seats[i][j];
                                 break;
@@ -181,7 +197,18 @@ public class SeatSelectionPageController implements Initializable {
 
                 // Recursive calls to explore adjacent seats in the downward and rightward directions
                 int add = 0;
-                if (i + 1 < 100 && !vis[i + 1][j]) {
+
+                // Recursive call to explore adjacent seats in the rightward direction
+                if (j + 1 < 100 && !vis[i][j + 1]) {
+                        // Add additional space for the second column
+                        if (j + 1 == 2)
+                                add = 25;
+                        dfsAddSeats(overlay, x + 40 + add, y, i, j + 1);
+                }
+
+                // Reset the additional space for the next recursive call
+                add = 0;
+                if (i + 1 < 100 && !vis[i + 1][j] && (j % 4) == 0) {
                         // Add additional space between rows if the current row is a multiple of 4
                         if ((i + 1) % 4 == 0) {
                                 add = 30;
@@ -191,56 +218,39 @@ public class SeatSelectionPageController implements Initializable {
                         }
                         dfsAddSeats(overlay, x, y + 50 + add, i + 1, j);
                 }
-
-                // Reset the additional space for the next recursive call
-                add = 0;
-
-                // Recursive call to explore adjacent seats in the rightward direction
-                if (j + 1 < 100 && !vis[i][j + 1]) {
-                        // Add additional space for the second column
-                        if (j + 1 == 2)
-                                add = 25;
-                        dfsAddSeats(overlay, x + 40 + add, y, i, j + 1);
-                }
         }
-
 
 
         public void changeSeatColorAndAssignSeatToPassenger(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
                 try {
-                        if (s[row][col].getRec().getFill().equals(cmp) && Passengers.passengers.get(index).getSeat() == null) {
+                        if (s[row][col].getRec().getFill().equals(cmp)) {
 
                                 s[row][col].getRec().setFill(Color.GRAY);
+                                if (Passengers.passengers.get(index).getSeat() != null) {
+                                        Paint originalColor = Passengers.passengers.get(index).getSeat().getType().getColor();
+                                        Passengers.passengers.get(index).getSeat().getRec().setFill(originalColor);
+                                }
                                 Passengers.passengers.get(index).setSeat(seat);
                                 seatNumber.setText(seat.getPrimaryKey());
                                 nextSeat.setOpacity(1);
                         }
-                        else if (s[row][col].getRec().getFill().equals(Color.GRAY) && Passengers.passengers.get(index).getSeat() != null && Passengers.passengers.get(index).getSeat().getPrimaryKey().equals(s[row][col].getPrimaryKey())) {
-
-                                s[row][col].getRec().setFill(cmp);
-                                Passengers.passengers.get(index).setSeat(null);
-                                seatNumber.setText("--");
-                                nextSeat.setOpacity(.75);
-                        }
-                }
-                catch(Exception e) {
-                        System.out.println("No more passengers!");
+                } catch (Exception e) {
+                        System.out.println(e.getMessage());
                 }
         }
+
         public void seatClicked(Seat seat) {
                 int row = seat.getRow();
                 int col = seat.getCol();
-                if (seat.getType().equals("economy")) {
+                if (seat.getType().getName().equals("economy")) {
                         Paint cmp = Color.web(darkPurple);
                         // here, set passenger seat to this only if it is his seat i.e. his turn
                         changeSeatColorAndAssignSeatToPassenger(row, col, economySeats, cmp, seat);
-                }
-                else if (seat.getType().equals("business")) {
+                } else if (seat.getType().getName().equals("business")) {
                         Paint cmp = Color.web(green);
 
                         changeSeatColorAndAssignSeatToPassenger(row, col, businessSeats, cmp, seat);
-                }
-                else {
+                } else {
                         Paint cmp = Color.web(red);
 
                         changeSeatColorAndAssignSeatToPassenger(row, col, firstClassSeats, cmp, seat);
