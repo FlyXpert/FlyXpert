@@ -13,7 +13,8 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.text.ParseException;
 
-import static flyxpert.flyxpert.SceneController.switchToPassengerInfo;
+import static flyxpert.flyxpert.SceneController.stage;
+import static flyxpert.flyxpert.SceneController.switchScene;
 
 public class DetailsConfirmationController {
     @FXML
@@ -57,7 +58,7 @@ public class DetailsConfirmationController {
     }
 
     public void toPassengerInfoScene(ActionEvent actionEvent) throws IOException, ParseException {
-        switchToPassengerInfo(actionEvent);
+        switchScene(actionEvent, "Passengers", stage);
     }
 
 }

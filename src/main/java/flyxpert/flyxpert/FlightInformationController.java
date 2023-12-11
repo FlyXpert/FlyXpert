@@ -2,6 +2,7 @@ package flyxpert.flyxpert;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -9,10 +10,21 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
-public class FlightInformationController{
+public class FlightInformationController implements Initializable {
+    /**
+     * @param url
+     * @param resourceBundle
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fillDataOfFlights();
+    }
     @FXML
     private VBox vbox;
     @FXML
@@ -576,4 +588,6 @@ public class FlightInformationController{
     private int getMaxPrice() {
         return Integer.parseInt(maxPrice.getText());
     }
+
+
 }

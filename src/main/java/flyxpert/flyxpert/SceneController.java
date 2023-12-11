@@ -18,32 +18,19 @@ public class SceneController {
         static Stage stage = new Stage();
         static Scene scene;
         static Parent root;
-        public static void switchToSeatSelection(ActionEvent event) throws IOException, ParseException {
+        public static void switchScene(ActionEvent event, String newStage, Stage other) throws IOException, ParseException {
 
-                root = FXMLLoader.load(SeatSelectionPageController.class.getResource("SeatSelectionPage.fxml"));
-                stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                root = FXMLLoader.load(SeatSelectionPageController.class.getResource(newStage + ".fxml"));
+                if (other != null) {
+                        stage = other;
+                        Stage tmp = (Stage)((Node) event.getSource()).getScene().getWindow();
+                        tmp.close();
+                }
+                else
+                        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
                 scene = new Scene(root);
                 stage.setScene(scene);
-                stage.show();
-        }
-
-        public static void switchToPassengerInfo(ActionEvent event) throws IOException, ParseException {
-
-                root = FXMLLoader.load(SeatSelectionPageController.class.getResource("Passengers.fxml"));
-                stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-        }
-
-        public static void switchToSearchFlightPage(ActionEvent event, Stage currentStage) throws IOException, ParseException {
-                currentStage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("SearchFlightPage.fxml"));
-                stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(fxmlLoader.load());
-                FlightInformationController flightInformationController = fxmlLoader.getController();
-                flightInformationController.fillDataOfFlights();
-                stage.setScene(scene);
+                stage.centerOnScreen();
                 stage.show();
         }
 }

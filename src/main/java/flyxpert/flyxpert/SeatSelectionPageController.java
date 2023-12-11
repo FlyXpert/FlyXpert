@@ -220,7 +220,6 @@ public class SeatSelectionPageController implements Initializable {
                 }
         }
 
-
         public void changeSeatColorAndAssignSeatToPassenger(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
                 try {
                         if (s[row][col].getRec().getFill().equals(cmp)) {

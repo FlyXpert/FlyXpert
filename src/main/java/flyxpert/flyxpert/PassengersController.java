@@ -121,6 +121,6 @@ public class PassengersController
             informationWarningText.setText("Missing passengers information");
             return;
         }
-        SceneController.switchToSeatSelection(event);
+        SceneController.switchScene(event, "SeatSelectionPage", null);
     }
 }
