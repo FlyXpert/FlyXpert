@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class BookingConfirmationController {
     @FXML
-    private Label passengerName;
+    private Label userName;
     @FXML
     private Label bookingNumber;
     @FXML
@@ -51,35 +51,30 @@ public class BookingConfirmationController {
     @FXML
     private Label departingDate;
     private BookingConfirmation bookingConfirmation;
-// previous attempt
-//    public void displayTicketInfo(String passengerName, String bookingNumber, String airLineName, String paymentMethood, String cardNumber, String expirationDate, String destination, String economyClassPrice, String bussniessClassPrice, String firstClassPrice, String departingDate){
-//        setPassengerDetails(passengerName, economyClassPrice, airLineName, destination, bookingNumber);
-//        calculateTotalsAndSetPrices(economyClassPrice, bussniessClassPrice, firstClassPrice);
-//        setPaymentMethod(paymentMethood, cardNumber, expirationDate);
-//        setDepartingDate(departingDate);
-//    }
-    public void displayTicketInfo(String passengerName, String airLineName, PaymentMethod paymentMethood, String destination, String price, String departingDate){
-    this.bookingConfirmation = new BookingConfirmation(passengerName, price, airLineName, paymentMethood, destination, departingDate);
-    setPassengerDetails();
-    calculateTotalsAndSetPrices();
-    setPaymentMethod();
-    setDepartingDate();
-}
+
+    public void displayTicketInfo(String userName, String airLineName, Payment payment, String destination, String price, String departingDate){
+        this.bookingConfirmation = new BookingConfirmation(userName, price, airLineName, payment, destination, departingDate);
+        setPassengerDetails();
+        calculateTotalsAndSetPrices();
+        setPaymentMethod();
+        setDepartingDate();
+    }
     private void setPaymentMethod(){
-        if(bookingConfirmation.getPaypalPayment() != null){
+        if(bookingConfirmation.getPayment().getPaymentMethod() instanceof Paypal){
             Image image = new Image(getClass().getResourceAsStream("PaypalMethod.png"));
             this.paymentMethood.setImage(image);
+            Paypal paypal = (Paypal) bookingConfirmation.getPayment().getPaymentMethod();
             this.nameOnCard.setText("");
-            this.cardNumber.setText(bookingConfirmation.getPaypalPayment().getEmail());
+            this.cardNumber.setText(paypal.getEmail());
             this.expirationDate.setText("");
         }
-        else if(bookingConfirmation.getCardPayment() != null){
+        else if(bookingConfirmation.getPayment().getPaymentMethod() instanceof Card){
             Image image = new Image(getClass().getResourceAsStream("CardMethod.png"));
             this.paymentMethood.setImage(image);
-            this.nameOnCard.setText(bookingConfirmation.getCardPayment().getOwnerName());
-            this.expirationDate.setText(bookingConfirmation.getCardPayment().getExpirationDate());
-            hideCardNumber();
-            //this.cardNumber.setText(cardNumber);
+            Card card = (Card) bookingConfirmation.getPayment().getPaymentMethod();
+            this.nameOnCard.setText(card.getOwnerName());
+            this.expirationDate.setText(card.getExpirationDate());
+            hideCardNumber(card);
         }
     }
     private void calculateTotalsAndSetPrices(){
@@ -92,12 +87,12 @@ public class BookingConfirmationController {
         this.priceWithTaxes.setText("$" + taxes);
         this.amountTotal.setText("$" + (subToatl + taxes));
     }
-    private void hideCardNumber(){
-        String lastFourDigits = bookingConfirmation.getCardPayment().getNumber().substring(bookingConfirmation.getCardPayment().getNumber().length() - 4);
-        this.cardNumber.setText("*".repeat(bookingConfirmation.getCardPayment().getNumber().length() - 4) + lastFourDigits);
+    private void hideCardNumber(Card card){
+        String lastFourDigits = card.getNumber().substring(card.getNumber().length() - 4);
+        this.cardNumber.setText("*".repeat(card.getNumber().length() - 4) + lastFourDigits);
     }
     private void setPassengerDetails(){
-        this.passengerName.setText(bookingConfirmation.getName());
+        this.userName.setText(bookingConfirmation.getName());
         this.airLineName.setText(bookingConfirmation.getAirLineName());
         this.airLineName1.setText("Flying through " + bookingConfirmation.getAirLineName());
         this.destination.setText(bookingConfirmation.getDestination());

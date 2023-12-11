@@ -184,11 +184,13 @@ public class PaymentPageController {
 
             if(currentPaymentMethod.equals("card")){
                 Card card = new Card(cardOwnerName, cardNumber, cardExpirationDate, cardCcv);
-                bookingConfirmationController.displayTicketInfo(card.getOwnerName(), "Tokyo", card, "Japan", "1250", "11/11/111");
+                Payment payment = new Payment(1000, card);
+                bookingConfirmationController.displayTicketInfo(card.getOwnerName(), "Tokyo", payment, "Japan", "1250", "11/11/111");
             }
             else{
                 Paypal paypal = new Paypal(paypalEmail);
-                bookingConfirmationController.displayTicketInfo("Test", "Tokyo", paypal, "Paypal", "1250", "27/11");
+                Payment payment = new Payment(1000, paypal);
+                bookingConfirmationController.displayTicketInfo("Test", "Tokyo", payment, "Paypal", "1250", "27/11");
             }
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
             bookingConfirmationScene = new Scene(bookingConfirmationRoot);
@@ -220,7 +222,7 @@ public class PaymentPageController {
 
     public void onCardButtonMouseExited(MouseEvent e) {
         if(currentPaymentMethod.equals("card")){
-            cardPaymentButton.setStyle(String.format("-fx-background-color: %s", HOVER_BLUE_COLOR));
+            cardPaymentButton.setStyle(String.format("-fx-background-color: %s", MAIN_BLUE_COLOR));
         }
         else{
             cardPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_WHITE_COLOR, MAIN_BLUE_COLOR));
