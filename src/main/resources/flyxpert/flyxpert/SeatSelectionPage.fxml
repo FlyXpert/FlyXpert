@@ -20,7 +20,7 @@
     <children>
       <ImageView fitHeight="800.0" fitWidth="1307.0" layoutX="334.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../white2.jpg" />
+            <Image url="@../../White.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
@@ -30,7 +30,7 @@
                <children>
                   <ImageView fx:id="seatSelectionPlane" fitHeight="2500.0" fitWidth="2081.0" layoutX="-552.0" layoutY="-312.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../totPlane.jpg" />
+                        <Image url="@../../Plane.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -159,7 +159,7 @@
       </Label>
       <ImageView fx:id="sts" blendMode="MULTIPLY" cache="true" fitHeight="627.0" fitWidth="618.0" layoutX="977.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../flightWithPaleButtonCropped.jpg" />
+            <Image url="@../../SeatsAndClasses.jpg" />
          </image>
       </ImageView>
       <Button id="button" blendMode="MULTIPLY" layoutX="1399.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">

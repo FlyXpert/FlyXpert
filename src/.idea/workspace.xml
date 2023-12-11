@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="676ec495-d2ef-4771-a82a-be31fa197c98" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/flyxpert/flyxpert/FlightInformationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flyxpert/flyxpert/FlightInformationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/flyxpert/flyxpert/SeatSelectionPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flyxpert/flyxpert/SeatSelectionPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/DetailsConfirmation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/DetailsConfirmation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/Passengers.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/Passengers.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/Passengers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/Passengers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/Plane.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/Plane.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/SearchFlightPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/SearchFlightPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/SeatSelectionPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/SeatSelectionPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/bags.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bags.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/departure-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/departure-1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/icons8-airplane-landing-24.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icons8-airplane-landing-24.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/imageplaceholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/imageplaceholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Style/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/flyxpert/flyxpert/world.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/world.png" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2ZME8fVOaBwVvYC0PuPMtCCIwLD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mb261/OneDrive/Desktop/OOPproject/SceneBuilder-21.0.0.msi",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\mb261\OneDrive\Desktop\OOPproject\ProjecNew\FlyXpert\src\main\resources" />
+      <recent name="C:\Users\mb261\OneDrive\Desktop\OOPproject\ProjecNew\FlyXpert\src\main\resources\Style" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-3183f394aec4-7d648f2c" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="676ec495-d2ef-4771-a82a-be31fa197c98" name="Changes" comment="" />
+      <created>1702223391300</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1702223391300</updated>
+      <workItem from="1702223393317" duration="8808000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -204,56 +204,7 @@ public class SeatSelectionPageController implements Initializable {
                 }
         }
 
-        /*public void makeSeat(GridPane g, Seat[][] s, int col, int row, String colCode, String type, int val) {
-                int column = col + val;
-                s[row][column] = new Seat();
-                s[row][column].setRec(new Rectangle(30, 40, Color.web(colCode)));
-                s[row][column].setRow(row);
-                s[row][column].setCol(column);
-                s[row][column].setType(type);
 
-                s[row][column].getRec().setArcWidth(12);
-                s[row][column].getRec().setArcHeight(12);
-
-                String fstHalf = String.valueOf(row + 1 + 4 * (type.equals("business") ? 1 : 0) + 8 * (type.equals("first") ? 1 : 0));
-                s[row][column].setPrimaryKey(fstHalf + (char) (column + 'A'));
-
-                s[row][column].getRec().setOnMouseClicked(event -> seatClicked(s[row][column]));
-                g.add(s[row][column].getRec(), col, row);
-        }*/
-
-        // shall be replaced with real info coming
-       /* private static String getRandomString(String option1, String option2) {
-                Random random = new Random();
-                boolean randomBoolean = random.nextBoolean();
-                return randomBoolean ? option1 : option2;
-        }*/
-
-        /*public void fillSeatMap() {
-                for (int i = 0; i < 4; i++) {
-                        for (int j = 0; j < 2; j++) {
-
-                                String r = getRandomString(lightPurple, darkPurple);
-
-                                makeSeat(economyGridPane1, economySeats, j, i, r, "economy", 0);
-
-                                r = getRandomString(lightPurple, darkPurple);
-                                makeSeat(economyGridPane2, economySeats, j, i, r, "economy", 2);
-
-                                r = getRandomString(lightPurple, green);
-                                makeSeat(businessGridPane1, businessSeats, j, i, r, "business", 0);
-
-                                r = getRandomString(lightPurple, green);
-                                makeSeat(businessGridPane2, businessSeats, j, i, r, "business", 2);
-
-                                r = getRandomString(lightPurple, darkYellow);
-                                makeSeat(firstClassGridPane1, firstClassSeats, j, i, r, "first", 0);
-
-                                r = getRandomString(lightPurple, darkYellow);
-                                makeSeat(firstClassGridPane2, firstClassSeats, j, i, r, "first", 2);
-                        }
-                }
-        }*/
 
         public void changeSeatColorAndAssignSeatToPassenger(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
                 try {
