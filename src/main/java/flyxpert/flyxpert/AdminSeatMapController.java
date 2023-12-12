@@ -66,10 +66,8 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
         }
 
         public void discardClicked() {
-
         }
 
         public void saveClicked() {
-
         }
 }
