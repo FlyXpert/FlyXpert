@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -113,11 +114,11 @@
             </image>
         </ImageView>
         <TextField fx:id="firstNameTextField" layoutX="108.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="First Name" />
-        <TextField fx:id="lastNameTextField" layoutX="542.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Last Name" />
         <TextField fx:id="middleNameTextField" layoutX="326.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Middle Name" />
-        <TextField fx:id="DOBTextField" layoutX="108.0" layoutY="480.0" prefHeight="44.0" prefWidth="201.0" promptText="Date of Birth*" />
+        <TextField fx:id="lastNameTextField" layoutX="542.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Last Name" />
+      <DatePicker fx:id="dateOfBirthTextField" layoutX="107.0" layoutY="480.0" prefHeight="44.0" prefWidth="202.0" />
         <TextField fx:id="phoneNumberTextField" layoutX="326.0" layoutY="480.0" prefHeight="44.0" prefWidth="201.0" promptText="Phone Number" />
-        <Button id="button1" fx:id="nextPassengerButton" layoutX="108.0" layoutY="583.0" mnemonicParsing="false" onAction="#NextPassengerButtonPress" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Next Passenger" textFill="WHITE">
+        <Button id="button1" layoutX="108.0" layoutY="583.0" mnemonicParsing="false" onAction="#nextPassengerButtonPress" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
