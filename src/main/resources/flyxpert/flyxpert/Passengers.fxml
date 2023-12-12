@@ -98,7 +98,7 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="556.0" text="Enter the required information for each trveler and be sure that it exactly matcher the government-issued ID presented at the airport." textFill="#ababab" wrapText="true">
+        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="556.0" text="Enter the required information for each traveler and be sure that it exactly matches the government-issued ID presented at the airport." textFill="#ababab" wrapText="true">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
@@ -130,7 +130,7 @@
         </Button>
         <ImageView fitHeight="583.0" fitWidth="486.0" layoutX="1050.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@bags.jpeg" />
+                <Image url="@PassengerBags.png" />
             </image>
         </ImageView>
         <Label layoutX="108.0" layoutY="530.0" prefHeight="8.0" prefWidth="129.0" text="DD/MM/YY" textFill="#ababab" wrapText="true">
