@@ -6,10 +6,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -23,20 +19,7 @@
             <Image url="@../../White.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ScrollPane fx:id="scrollPane" hmax="3.0" hvalue="1.0" pannable="true" prefHeight="800.0" prefWidth="868.0" vmax="3.0">
-         <content>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fx:id="seatSelectionPlane" fitHeight="2500.0" fitWidth="2081.0" layoutX="-552.0" layoutY="-312.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Plane.jpg" />
-                     </image>
-                  </ImageView>
-               </children>
-            </Pane>
-         </content>
-      </ScrollPane>
+      <ScrollPane fx:id="scrollPane" hmax="3.0" hvalue="1.0" pannable="true" prefHeight="800.0" prefWidth="868.0" vmax="3.0" />
       <Rectangle arcHeight="17.0" arcWidth="20.0" fill="#fafafe" height="124.0" layoutX="867.0" layoutY="675.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="669.0" />
         <Label layoutX="13.0" layoutY="7.0" text="FlyXpert">
             <textFill>
@@ -79,78 +62,6 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <GridPane fx:id="economyGridPane1" hgap="5.0" layoutX="260.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
-      <GridPane fx:id="economyGridPane2" hgap="5.0" layoutX="345.0" layoutY="35.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <GridPane fx:id="businessGridPane1" hgap="5.0" layoutX="260.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <GridPane fx:id="businessGridPane2" hgap="5.0" layoutX="345.0" layoutY="300.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <GridPane fx:id="firstClassGridPane1" hgap="5.0" layoutX="260.0" layoutY="550.0" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <GridPane fx:id="firstClassGridPane2" hgap="5.0" layoutX="345.0" layoutY="550.0" prefHeight="224.0" prefWidth="74.0" vgap="5.0">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
       <Label fx:id="noSeatChosen" layoutX="1341.0" layoutY="686.0" prefHeight="17.0" prefWidth="98.0" text="No seat chosen !" textFill="RED" visible="false" />
       <Label fx:id="passengerName" layoutX="881.0" layoutY="723.0" prefHeight="54.0" prefWidth="255.0" text="Mahmoud Bassem" textFill="#6e7491">
          <font>
