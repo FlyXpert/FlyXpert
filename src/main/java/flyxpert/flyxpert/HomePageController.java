@@ -15,8 +15,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.text.ParseException;
 
-import static flyxpert.flyxpert.SceneController.stage;
-
 public class HomePageController {
     @FXML
     private TextField signUpUsernameTextField,
@@ -84,7 +82,7 @@ public class HomePageController {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
             ((Stage) internalSignInButton.getScene().getWindow()).close();
-            SceneController.switchScene(e, "SearchFlightPage" , mainStage);
+            SceneSwitcher.switchScene(e, "SearchFlightPage" , mainStage);
             //System.out.println("You've successfully logged in");
         }
         else {

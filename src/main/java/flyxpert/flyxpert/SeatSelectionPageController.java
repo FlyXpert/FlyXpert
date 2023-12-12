@@ -1,40 +1,28 @@
 package flyxpert.flyxpert;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 //import jdk.internal.access.JavaNetHttpCookieAccess;
 
-import java.io.IOException;
-import java.net.CookiePolicy;
 import java.net.URL;
-import java.security.spec.PSSParameterSpec;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 
 public class SeatSelectionPageController implements Initializable {
 
-        private static final String darkPurple = new String("#3F3CE0");
-        private static final String green = new String("#4AD0B8");
-        private static final String red = new String("#F2588C");
+        private static final String DARK_PURPLE = new String("#3F3CE0");
+        private static final String GREEN = new String("#4AD0B8");
+        private static final String RED = new String("#F2588C");
 
         private Seat[][] economySeats = new Seat[200][200];
         private Seat[][] businessSeats = new Seat[200][200];
@@ -153,7 +141,7 @@ public class SeatSelectionPageController implements Initializable {
                 switch (d) {
                         case 0: {
                                 // Business class seat
-                                toBe = Color.web(green);
+                                toBe = Color.web(GREEN);
                                 Type type = new Type();
                                 type.setColor(toBe);
                                 type.setName("business");
@@ -166,7 +154,7 @@ public class SeatSelectionPageController implements Initializable {
                         }
                         case 1, 2, 3, 4: {
                                 // Economy class seat
-                                toBe = Color.web(darkPurple);
+                                toBe = Color.web(DARK_PURPLE);
                                 Type type = new Type();
                                 type.setColor(toBe);
                                 type.setName("economy");
@@ -179,7 +167,7 @@ public class SeatSelectionPageController implements Initializable {
                         }
                         case 5: {
                                 // First-class seat
-                                toBe = Color.web(red);
+                                toBe = Color.web(RED);
                                 Type type = new Type();
                                 type.setColor(toBe);
                                 type.setName("firstClass");
@@ -242,15 +230,15 @@ public class SeatSelectionPageController implements Initializable {
                 int row = seat.getRow();
                 int col = seat.getCol();
                 if (seat.getType().getName().equals("economy")) {
-                        Paint cmp = Color.web(darkPurple);
+                        Paint cmp = Color.web(DARK_PURPLE);
                         // here, set passenger seat to this only if it is his seat i.e. his turn
                         changeSeatColorAndAssignSeatToPassenger(row, col, economySeats, cmp, seat);
                 } else if (seat.getType().getName().equals("business")) {
-                        Paint cmp = Color.web(green);
+                        Paint cmp = Color.web(GREEN);
 
                         changeSeatColorAndAssignSeatToPassenger(row, col, businessSeats, cmp, seat);
                 } else {
-                        Paint cmp = Color.web(red);
+                        Paint cmp = Color.web(RED);
 
                         changeSeatColorAndAssignSeatToPassenger(row, col, firstClassSeats, cmp, seat);
                 }
@@ -261,7 +249,7 @@ public class SeatSelectionPageController implements Initializable {
          * Handles the click event when the "Next Seat" button is clicked. This method is responsible for managing the
          * progression of passengers through the seat selection process and potentially transitioning to the payment phase.
          */
-        public void nextSeatClicked() {
+        public void nextSeatClicked(ActionEvent event) {
                 // Check if a seat has been chosen
                 if (nextSeat.getOpacity() != 1)
                         return;
@@ -299,7 +287,7 @@ public class SeatSelectionPageController implements Initializable {
 
                 // If the current passenger is the last one, transition to the next scene (TODO: implement scene transition)
                 if (index == size - 1) {
-                        // TODO: Implement the logic to switch to the next scene
+                        SceneSwitcher.switchScene(event, "PaymentPage/PaymentPage", null);
                         return;
                 }
 

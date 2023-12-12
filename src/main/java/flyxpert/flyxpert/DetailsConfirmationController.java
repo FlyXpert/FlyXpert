@@ -3,7 +3,6 @@ package flyxpert.flyxpert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Modality;
@@ -13,8 +12,8 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 import java.text.ParseException;
 
-import static flyxpert.flyxpert.SceneController.stage;
-import static flyxpert.flyxpert.SceneController.switchScene;
+import static flyxpert.flyxpert.SceneSwitcher.stage;
+import static flyxpert.flyxpert.SceneSwitcher.switchScene;
 
 public class DetailsConfirmationController {
     @FXML
