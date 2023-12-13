@@ -202,18 +202,10 @@ public class FlightInformationController implements Initializable {
     private void setHboxOnAction(HBox hbox, Flight flight) {
         hbox.setOnMouseClicked(event -> {
             try {
-                if(numOfPassengers.getText().isBlank()) {
-                    invalidInputOfPassengersMsg.setVisible(true);
-                }
-                else{
-                    invalidInputOfPassengersMsg.setVisible(false);
-                    if(validNum(maxPrice) || maxPrice.getText().isBlank()) {
-                        invalidInputForPriceMsg.setVisible(false);
-                        DetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
-                    }
-                    else {
-                        invalidInputForPriceMsg.setVisible(true);
-                    }
+                invalidInputForPriceMsg.setVisible(!validMaxPrice());
+                invalidInputOfPassengersMsg.setVisible(!validNum(numOfPassengers));
+                if(validMaxPrice() && validNum(numOfPassengers)) {
+                    DetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
@@ -442,27 +434,29 @@ public class FlightInformationController implements Initializable {
         return true;
     }
     public void enableSearchButton() {
+        invalidInputOfPassengersMsg.setVisible(!validNum(numOfPassengers));
+        invalidInputForPriceMsg.setVisible(!validMaxPrice());
         if(!fromWhereUsed()) {
-            searchButton.setDisable(false);
+            searchButton.setDisable(true);
             return;
         }
         if(!whereToUsed()) {
-            searchButton.setDisable(false);
+            searchButton.setDisable(true);
             return;
         }
         if(!datePickerUsed()) {
-            searchButton.setDisable(false);
+            searchButton.setDisable(true);
             return;
         }
         if(!validNum(numOfPassengers)) {
-            searchButton.setDisable(false);
+            searchButton.setDisable(true);
             return;
         }
         if(!validMaxPrice()) {
-            searchButton.setDisable(false);
+            searchButton.setDisable(true);
             return;
         }
-        searchButton.setDisable(true);
+        searchButton.setDisable(false);
     }
     private boolean datePickerUsed() {
         return datePicker.getValue() != null;
