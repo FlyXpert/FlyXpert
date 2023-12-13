@@ -1,6 +1,5 @@
 package flyxpert.flyxpert;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,30 +9,26 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.text.ParseException;
 
-import static flyxpert.flyxpert.SceneSwitcher.stage;
-import static flyxpert.flyxpert.SceneSwitcher.switchScene;
+public class AdminOptionsController {
 
-public class DetailsConfirmationController {
     @FXML
-    Label airlineLabel;
+    private Label airlineLabel;
     @FXML
-    Label dayLabel;
+    private  Label dayLabel;
     @FXML
-    Label timeLabel;
-    public static void handleHBoxClick(Flight flight, int numOfPassengers) throws IOException {
-
+    private Label timeLabel;
+    public static void handleHBoxClick(Flight flight) throws IOException {
 
         Stage newStage = new Stage();
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.initStyle(StageStyle.UTILITY);
-        newStage.setTitle("Flight Details");
+        newStage.setTitle("Admin Options");
         newStage.setResizable(false);
         newStage.setX(593.0);
         newStage.setY(312.5);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(DetailsConfirmationController.class.getResource("DetailsConfirmation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DetailsConfirmationController.class.getResource("AdminOptions.fxml"));
         Scene newScene = new Scene(fxmlLoader.load());
         DetailsConfirmationController controller = fxmlLoader.getController();
 
@@ -51,13 +46,6 @@ public class DetailsConfirmationController {
 
         newStage.setScene(newScene);
         newStage.show();
-        Flight.selectedFlight = new Flight(flight);
-        PassengersController.passengersToBeAdded = numOfPassengers;
-        PassengersController.initialPassengersToBeAdded = numOfPassengers;
-    }
-
-    public void toPassengerInfoScene(ActionEvent actionEvent) throws IOException, ParseException {
-        switchScene(actionEvent, "Passengers", stage);
     }
 
 }

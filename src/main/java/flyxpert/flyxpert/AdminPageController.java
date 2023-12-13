@@ -45,7 +45,7 @@ public class AdminPageController implements Initializable {
         HBox hbox = new HBox();
         setHboxLabels(hbox, flight);
         FlightInformationController.hboxStyling(hbox);
-        //setHboxOnAction(hbox, flight);
+        setHboxOnAction(hbox, flight);
         return hbox;
     }
 
@@ -68,5 +68,15 @@ public class AdminPageController implements Initializable {
         Label arrivalAirprotLabel = new Label(flight.getArrivalAirport().getCode());
         FlightInformationController.setLabelStyle(arrivalAirprotLabel,"black");
         hbox.getChildren().add(arrivalAirprotLabel);
+    }
+
+    private void setHboxOnAction(HBox hbox, Flight flight) {
+        hbox.setOnMouseClicked(event -> {
+            try {
+                AdminOptionsController.handleHBoxClick(flight);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }
