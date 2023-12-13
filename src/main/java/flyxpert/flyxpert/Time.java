@@ -3,7 +3,6 @@ package flyxpert.flyxpert;
 public class Time {
     private String hour;
     private String minutes;
-
     private String period;
 
     public Time(String hour,String minutes,String period){

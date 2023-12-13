@@ -32,8 +32,9 @@
     -fx-background-radius: 10;
 }
 #scrollPane {
-    -fx-background-color: #605DEC;
+    -fx-background-color: white;
     -fx-border-width: 0;
+    -fx-padding: 0;
 }
 
 #scrollPane .scroll-bar {

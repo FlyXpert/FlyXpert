@@ -48,24 +48,24 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Pane layoutX="1290.0" layoutY="220.0" prefHeight="500.0" prefWidth="200.0">
+        <Pane layoutX="1190.0" layoutY="220.0" prefHeight="500.0" prefWidth="200.0">
             <children>
-                <MenuButton fx:id="maxDepartTimeButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#setMaxDepartTimeMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Max departure time">
+                <MenuButton fx:id="maxDepartTimeButton" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#setMaxDepartTimeMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@styles.css" text="Max departure time">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </MenuButton>
-                <MenuButton fx:id="maxArrivalTimeButton" layoutY="100.0" mnemonicParsing="false" onAction="#setMaxArrivalTimeMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Max arrival time">
+                <MenuButton fx:id="maxArrivalTimeButton" layoutY="100.0" mnemonicParsing="false" onAction="#setMaxArrivalTimeMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@styles.css" text="Max arrival time">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </MenuButton>
-                <MenuButton fx:id="airlinesButton" layoutY="200.0" mnemonicParsing="false" onAction="#setAirlinesMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Airlines">
+                <MenuButton fx:id="airlinesButton" layoutY="200.0" mnemonicParsing="false" onAction="#setAirlinesMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@styles.css" text="Airlines">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </MenuButton>
-                <MenuButton fx:id="seatClassButton" layoutY="300.0" mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" text="Seat class">
+                <MenuButton fx:id="seatClassButton" layoutY="300.0" mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: white;" stylesheets="@styles.css" text="Seat class">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Economy class" />
                         <MenuItem mnemonicParsing="false" onAction="#setSeatClassMenuButtonText" text="Business class" />
@@ -75,7 +75,8 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </MenuButton>
-                <TextField fx:id="maxPrice" layoutY="400.0" onAction="#validNumForPrice" prefHeight="50.0" prefWidth="200.0" promptText="Max price " style="-fx-background-insets: 0;" />
+                <TextField fx:id="maxPrice" layoutY="400.0" onAction="#validNumForPrice" prefHeight="50.0" prefWidth="200.0" promptText="Max price " style="-fx-background-insets: 0;" stylesheets="@miniContextMenu.css" />
+              <Label fx:id="invalidInputForPriceMsg" layoutY="450.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
             </children>
         </Pane>
         <Pane layoutX="70.0" layoutY="130.0" prefHeight="48.0" prefWidth="1200.0">
@@ -111,22 +112,22 @@
                         </ImageView>
                     </graphic>
                 </MenuButton>
-                <DatePicker fx:id="datePicker" layoutX="600.0" layoutY="-4.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Depart" style="-fx-background-color: white;">
+                <DatePicker fx:id="datePicker" layoutX="600.0" onAction="#enableSearchButton" prefHeight="48.0" prefWidth="200.0" promptText="Depart" style="-fx-background-color: white;" stylesheets="@miniContextMenu.css">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </DatePicker>
-                <TextField fx:id="numOfPassengers" layoutX="800.0" layoutY="-3.0" onAction="#enableSearchButton" prefHeight="55.0" prefWidth="200.0" promptText="Number of passengers" style="-fx-background-insets: 0;" />
-                <Button fx:id="searchButton" disable="true" layoutX="1000.0" layoutY="-2.0" mnemonicParsing="false" onAction="#fillDataOfFlights" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
+                <TextField fx:id="numOfPassengers" layoutX="800.0" onAction="#enableSearchButton" prefHeight="48.0" prefWidth="200.0" promptText="Number of passengers" style="-fx-background-insets: 0;" stylesheets="@miniContextMenu.css" />
+                <Button fx:id="searchButton" disable="true" layoutX="1000.0" mnemonicParsing="false" onAction="#fillDataOfFlights" prefHeight="48.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
                     <font>
                         <Font size="22.0" />
                     </font>
                 </Button>
             </children>
         </Pane>
-        <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="220.0" prefHeight="500.0" prefWidth="1200.0" stylesheets="@styles.css">
+        <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="220.0" prefHeight="500.0" prefWidth="1000.0" stylesheets="@styles.css">
             <content>
-                <VBox fx:id="vbox" prefHeight="500.0" prefWidth="1200.0" stylesheets="@styles.css">
+                <VBox fx:id="vbox" prefHeight="500.0" prefWidth="1000.0" stylesheets="@styles.css">
                     <opaqueInsets>
                         <Insets top="10.0" />
                     </opaqueInsets>
@@ -158,6 +159,5 @@
             </cursor>
         </Pane>
         <Label fx:id="invalidInputOfPassengersMsg" layoutX="872.0" layoutY="178.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
-        <Label fx:id="invalidInputForPriceMsg" layoutX="712.0" layoutY="255.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
     </children>
 </AnchorPane>
