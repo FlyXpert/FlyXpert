@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -213,6 +215,7 @@ public class FlightInformationController implements Initializable {
     private TextField maxPrice;
     @FXML
     private Button searchButton;
+
 
     Map<String, Boolean> uniqueDepartureAirports = new HashMap<String, Boolean>();
     Map<String, Boolean> uniqueArrivalAirports = new HashMap<String, Boolean>();
@@ -588,6 +591,29 @@ public class FlightInformationController implements Initializable {
     private int getMaxPrice() {
         return Integer.parseInt(maxPrice.getText());
     }
+    @FXML
+    private Button logOutButton;
+    @FXML
+    private Label logOutLabel;
+
+    @FXML
+    private void onLogoutButtonPressed(ActionEvent e)
+    {
+        User.currentUser = null;
+        SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
+    }
+    @FXML
+    private void onLogOutButtonEntered(MouseEvent e)
+    {
+
+    }
+
+    public void onLogOutButtonExit(MouseEvent e)
+    {
+
+    }
+
+
 
 
 }

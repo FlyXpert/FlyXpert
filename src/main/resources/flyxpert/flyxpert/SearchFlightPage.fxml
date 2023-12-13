@@ -146,18 +146,20 @@
             </cursor>
         </Pane>
         <Pane layoutX="1414.0" layoutY="40.0">
-            <children>
-                <Label text="Log out" textFill="#7c8db0">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-            </children>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Pane>
         <Label fx:id="invalidInputOfPassengersMsg" layoutX="872.0" layoutY="178.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
         <Label fx:id="invalidInputForPriceMsg" layoutX="712.0" layoutY="255.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
+      <Label fx:id="logOutLabel" layoutX="1435.0" layoutY="33.0" prefHeight="44.0" prefWidth="89.0" stylesheets="@../../styles.css" text="Logout" textFill="#605dec">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="logOutButton" layoutX="1435.0" layoutY="33.0" mnemonicParsing="false" onAction="#onLogoutButtonPressed" onMouseEntered="#onLogOutButtonEntered" opacity="0.0" text="Logout" textFill="#2600bf">
+         <font>
+            <Font size="20.0" />
+         </font></Button>
     </children>
 </AnchorPane>

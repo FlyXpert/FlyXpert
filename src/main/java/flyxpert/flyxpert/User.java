@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class User {
     private String userName, password, email;
-
+    public static User currentUser;
     public static ArrayList<User> userList = new ArrayList<User>();
 
     public User(String userName, String email, String password) {
