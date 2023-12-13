@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class User {
     private String userName, password, email;
+    private boolean isAdmin;
     public static User currentUser;
     public static ArrayList<User> userList = new ArrayList<User>();
 
@@ -11,6 +12,7 @@ public class User {
         this.userName = userName;
         this.password = password;
         this.email = email;
+        this.isAdmin = false;
     }
     public static User searchForUser(User u) {
         for(User user : userList) {
@@ -51,5 +53,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setIsAdmin(boolean state)
+    {
+        this.isAdmin = state;
+    }
+    public boolean getIsAdmin()
+    {
+        return this.isAdmin;
     }
 }

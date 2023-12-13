@@ -82,6 +82,8 @@ public class HomePageController {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
             User.currentUser = user;
+            if(user.getUserName().equals("admin"))
+                User.currentUser.setIsAdmin(true);
             ((Stage) internalSignInButton.getScene().getWindow()).close();
             SceneSwitcher.switchScene(e, "SearchFlightPage" , mainStage);
             //System.out.println("You've successfully logged in");
