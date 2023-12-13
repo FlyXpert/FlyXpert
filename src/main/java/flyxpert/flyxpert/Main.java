@@ -13,8 +13,7 @@ public class Main extends Application {
         Writer writer = new Writer();
         writer.writeToAllFiles();
     }
-    public void start(Stage stage) throws IOException
-    {
+    public void start(Stage stage) throws IOException {
         HomePageController.homePageScene(stage);
     }
 }

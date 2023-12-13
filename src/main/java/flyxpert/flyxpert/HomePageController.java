@@ -78,7 +78,7 @@ public class HomePageController {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
             ((Stage) internalSignInButton.getScene().getWindow()).close();
-            SceneController.switchToAdminPage(e, mainStage);
+            SceneSwitcher.switchScene(e, "AdminPage" , mainStage);
         }
         else if(User.searchForUser(user) == null && User.exists(userName)) {
             signInPasswordValidator.setText("Incorrect Password!");

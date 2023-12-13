@@ -68,11 +68,11 @@ public class FlightInformationController implements Initializable {
             e.printStackTrace();
         }
     }
-    private void vboxStyling(VBox vbox) {
+    public static void vboxStyling(VBox vbox) {
         vbox.setSpacing(20);
         vbox.setStyle("-fx-background-color: white;");
     }
-    private void setScrollPane(ScrollPane scrollPane) {
+    public static void setScrollPane(ScrollPane scrollPane) {
         scrollPane.setPannable(true);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -84,17 +84,17 @@ public class FlightInformationController implements Initializable {
         setHboxOnAction(hbox, flight);
         return hbox;
     }
-    private void hboxStyling(HBox hbox) {
+    public static void hboxStyling(HBox hbox) {
         hboxStyle(hbox);
         hboxHover(hbox);
         hboxClicked(hbox);
     }
-    private void hboxStyle(HBox hbox) {
+    public static void hboxStyle(HBox hbox) {
         hbox.setStyle("-fx-background-color: white;" +
                 " -fx-border-width: 1;" +
                 " -fx-border-color: black;");
     }
-    private void hboxHover(HBox hbox) {
+    public static void hboxHover(HBox hbox) {
         hbox.setOnMouseEntered(event ->{
             hbox.setStyle("-fx-background-color: #605DEC; -fx-border-color: black;");
             hbox.getChildren().forEach(node -> {
@@ -113,7 +113,7 @@ public class FlightInformationController implements Initializable {
             });
         });
     }
-    private void hboxClicked(HBox hbox) {
+    public static void hboxClicked(HBox hbox) {
         hbox.setOnMousePressed(event ->{
             hbox.setStyle("-fx-background-color: #4422ac; -fx-border-color: white;");
             hbox.getChildren().forEach(node -> {
@@ -131,7 +131,7 @@ public class FlightInformationController implements Initializable {
             });
         });
     }
-    private static Label setLabelStyle(Label label, String color)  {
+    public static Label setLabelStyle(Label label, String color)  {
         if(color.equals("white")) {
             label.setStyle("-fx-pref-width: 250;" +
                     "-fx-padding: 25;" +
@@ -155,17 +155,17 @@ public class FlightInformationController implements Initializable {
         setDateLabel(hbox, flight);
         setPriceLabel(hbox, flight);
     }
-    private void setAirlineLabel(HBox hbox, Flight flight) {
+    public static void setAirlineLabel(HBox hbox, Flight flight) {
         Label airLineLabel = createAirlineLabel(flight);
         FlightInformationController.setLabelStyle(airLineLabel,"black");
         hbox.getChildren().add(airLineLabel);
     }
-    private void setTimeLabel(HBox hbox, Flight flight) {
+    public static void setTimeLabel(HBox hbox, Flight flight) {
         Label timeLabel = createTimeLabel(flight);
         FlightInformationController.setLabelStyle(timeLabel,"black");
         hbox.getChildren().add(timeLabel);
     }
-    private void setDateLabel(HBox hbox, Flight flight) {
+    public static void setDateLabel(HBox hbox, Flight flight) {
         Label dateLabel = createDateLabel(flight);
         FlightInformationController.setLabelStyle(dateLabel,"black");
         hbox.getChildren().add(dateLabel);
@@ -182,16 +182,16 @@ public class FlightInformationController implements Initializable {
         FlightInformationController.setLabelStyle(priceLabel,"black");
         hbox.getChildren().add(priceLabel);
     }
-    private Label createAirlineLabel(Flight flight) {
+    public static Label createAirlineLabel(Flight flight) {
         return new Label(flight.getAirlineName() + " Airlines");
     }
-    private Label createTimeLabel(Flight flight) {
+    public static Label createTimeLabel(Flight flight) {
         return new Label(flight.getDepartureTime().getHour() + ":" + flight.getDepartureTime().getMinutes()
                 + " " + flight.getDepartureTime().getPeriod()
                 + " - " + flight.getArrivalTime().getHour() + ":" + flight.getArrivalTime().getMinutes()
                 + " " + flight.getArrivalTime().getPeriod());
     }
-    private Label createDateLabel(Flight flight) {
+    public static Label createDateLabel(Flight flight) {
         return new Label(flight.getDepartureDate().getDay()
                 + "-" + flight.getDepartureDate().getMonth()
                 + "-" + flight.getDepartureDate().getYear());

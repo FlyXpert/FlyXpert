@@ -34,15 +34,4 @@ public class SceneController {
                 stage.show();
         }
 
-        public static void switchToAdminPage(ActionEvent event, Stage currentStage) throws IOException, ParseException {
-                currentStage.close();
-                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("AdminPage.fxml"));
-                stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(fxmlLoader.load());
-                //FlightInformationController flightInformationController = fxmlLoader.getController();
-                //flightInformationController.fillDataOfFlights();
-                stage.setTitle("Admin Window");
-                stage.setScene(scene);
-                stage.show();
-        }
 }
