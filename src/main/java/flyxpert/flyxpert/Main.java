@@ -18,12 +18,6 @@ public class Main extends Application {
     }
     public void start(Stage stage) throws IOException
     {
-        //HomePageController.homePageScene(stage);
-        Parent root;
-        root = FXMLLoader.load(AdminSeatMapController.class.getResource("AdminSeatMap.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
+        HomePageController.homePageScene(stage);
     }
 }
