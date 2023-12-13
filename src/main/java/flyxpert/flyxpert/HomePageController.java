@@ -73,7 +73,14 @@ public class HomePageController {
         String userName = signInUsernameTextField.getText();
         String password = signInPasswordTextField.getText();
         User user = new User(userName, null, password);
-        if(User.searchForUser(user) == null && User.exists(userName)) {
+
+        if(userName.equals("admin") && password.equals("123123123123")){
+            signInPasswordValidator.setText("");
+            signInUsernameValidator.setText("");
+            ((Stage) internalSignInButton.getScene().getWindow()).close();
+            SceneController.switchToAdminPage(e, mainStage);
+        }
+        else if(User.searchForUser(user) == null && User.exists(userName)) {
             signInPasswordValidator.setText("Incorrect Password!");
             signInPasswordValidator.setTextFill(ERROR_COLOR);
             signInPasswordTextField.setText("");
