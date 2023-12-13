@@ -304,7 +304,7 @@ public class FlightInformationController implements Initializable {
         }
     }
     private void setDepartureTimeItemOnAction(MenuItem time) {
-        time.setOnAction(this::setMaxArrivalTimeMenuButtonText);
+        time.setOnAction(this::setMaxDepartTimeMenuButtonText);
     }
     private void setArrivalTimeItemOnAction(MenuItem time) {
         time.setOnAction(this::setMaxArrivalTimeMenuButtonText);
@@ -313,10 +313,13 @@ public class FlightInformationController implements Initializable {
         menuButton.getItems().add(item);
     }
     private MenuItem setTime(int i) {
-        return new MenuItem(Integer.toString(i));
+        if (i < 13) {
+            return new MenuItem(Integer.toString(i));
+        }
+        return  new MenuItem(Integer.toString(i - 12));
     }
     private void prependZeroIfNeeded(MenuItem time, int i) {
-        if ((i % 13) < 10){
+        if (i != 10 && i != 11 && i != 12 && i != 22 && i != 23 && i != 24) {
             time.setText("0" + time.getText());
         }
     }
@@ -348,10 +351,18 @@ public class FlightInformationController implements Initializable {
         return getArrivalAirportCode().equals(flight.getArrivalAirport().getCode());
     }
     private boolean desiredDepartureDate(Flight flight) {
-        if(!getDepartureDate().getDay().equals(flight.getDepartureDate().getDay())) {
+        String day = getDepartureDate().getDay();
+        if (Integer.parseInt(day) < 10) {
+            day = "0" + day;
+        }
+        String month = getDepartureDate().getMonth();
+        if (Integer.parseInt(month) < 10) {
+            month = "0" + month;
+        }
+        if(!day.equals(flight.getDepartureDate().getDay())) {
             return false;
         }
-        if(!getDepartureDate().getMonth().equals(flight.getDepartureDate().getMonth())) {
+        if(!month.equals(flight.getDepartureDate().getMonth())) {
             return false;
         }
         if(!getDepartureDate().getYear().equals(flight.getDepartureDate().getYear())) {
@@ -400,7 +411,6 @@ public class FlightInformationController implements Initializable {
                 }
             }
             else if (getMaxPrice() < flight.getEconomyPrice()) {
-                System.out.println("return false");
                 return false;
             }
         }
@@ -428,14 +438,20 @@ public class FlightInformationController implements Initializable {
         if(!desiredAirline(flight)) {
             return false;
         }
-        if(!validMaxPrice(flight)) {
-            return false;
+        if(!maxPrice.getText().isEmpty()) {
+            if(!validNum(maxPrice.getText())) {
+                invalidInputForPriceMsg.setVisible(true);
+                return false;
+            }
+            invalidInputForPriceMsg.setVisible(false);
+            if(!validMaxPrice(flight)) {
+                return false;
+            }
         }
+        invalidInputForPriceMsg.setVisible(false);
         return true;
     }
     public void enableSearchButton() {
-        invalidInputOfPassengersMsg.setVisible(!validNum(numOfPassengers));
-        invalidInputForPriceMsg.setVisible(!validMaxPrice());
         if(!fromWhereUsed()) {
             searchButton.setDisable(true);
             return;
