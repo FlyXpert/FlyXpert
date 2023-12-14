@@ -12,7 +12,7 @@ public abstract class SeatMap {
          Seat[][] businessSeats = new Seat[200][200];
          Seat[][] firstClassSeats = new Seat[200][200];
 
-        private Seat[][] seats = new Seat[200][200];
+         Seat[][] seats = new Seat[200][200];
         private boolean[][] vis = new boolean[200][200];
 
 
@@ -28,7 +28,7 @@ public abstract class SeatMap {
          * @param i       The row index of the seat in the seating arrangement.
          * @param j       The column index of the seat in the seating arrangement.
          */
-        void dfsAddSeats(Pane overlay, int x, int y, int i, int j) {
+        void dfsAddSeats(Pane overlay, int x, int y, int i, int j, boolean[][] availability) {
                 // Mark the current seat as visited
                 vis[i][j] = true;
 
@@ -102,6 +102,9 @@ public abstract class SeatMap {
                         }
                 }
 
+                if (availability[i][j] == true)
+                        seats[i][j].getRec().setFill(Color.GRAY);
+
                 // Add the seat rectangle to the overlay Pane
                 overlay.getChildren().add(seats[i][j].getRec());
 
@@ -113,7 +116,7 @@ public abstract class SeatMap {
                         // Add additional space for the second column
                         if (j + 1 == 2)
                                 add = 25;
-                        dfsAddSeats(overlay, x + 40 + add, y, i, j + 1);
+                        dfsAddSeats(overlay, x + 40 + add, y, i, j + 1, availability);
                 }
 
                 // Reset the additional space for the next recursive call
@@ -126,7 +129,7 @@ public abstract class SeatMap {
                                 if (i == 3)
                                         add = 60;
                         }
-                        dfsAddSeats(overlay, x, y + 50 + add, i + 1, j);
+                        dfsAddSeats(overlay, x, y + 50 + add, i + 1, j, availability);
                 }
         }
 

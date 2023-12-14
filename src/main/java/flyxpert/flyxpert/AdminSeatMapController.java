@@ -13,6 +13,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AdminSeatMapController extends SeatMap implements Initializable {
+        boolean[][] availability;
+
+
         @FXML
         ScrollPane scrollPane;
         @FXML
@@ -29,7 +32,7 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
          */
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                dfsAddSeats(overlay, 363, 540, 0, 0);
+                dfsAddSeats(overlay, 363, 540, 0, 0, availability);
 
                 Button discard = new Button();
                 Button save = new Button();
