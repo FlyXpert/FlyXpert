@@ -12,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 //import jdk.internal.access.JavaNetHttpCookieAccess;
 
 import java.net.URL;
@@ -23,7 +22,7 @@ import static flyxpert.flyxpert.Pallete.*;
 
 public class SeatSelectionPageController extends SeatMap implements Initializable {
 
-        private int size = Passengers.passengers.size();
+        private int size = Passenger.passengers.size();
         private int index = 0;
 
 
@@ -69,7 +68,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
                 try {
                         seatNumber.setText("--");
-                        passengerName.setText(Passengers.passengers.get(0).getFirstName());
+                        passengerName.setText(Passenger.passengers.get(0).getFirstName());
                         if (index >= size - 2) {
                                 nextSeat.setText("Proceed to Payment");
                         }
@@ -93,11 +92,11 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                         if (s[row][col].getRec().getFill().equals(cmp)) {
 
                                 s[row][col].getRec().setFill(Color.GRAY);
-                                if (Passengers.passengers.get(index).getSeat() != null) {
-                                        Paint originalColor = Passengers.passengers.get(index).getSeat().getType().getColor();
-                                        Passengers.passengers.get(index).getSeat().getRec().setFill(originalColor);
+                                if (Passenger.passengers.get(index).getSeat() != null) {
+                                        Paint originalColor = Passenger.passengers.get(index).getSeat().getType().getColor();
+                                        Passenger.passengers.get(index).getSeat().getRec().setFill(originalColor);
                                 }
-                                Passengers.passengers.get(index).setSeat(seat);
+                                Passenger.passengers.get(index).setSeat(seat);
                                 seatNumber.setText(seat.getPrimaryKey());
                                 nextSeat.setOpacity(1);
                         }
@@ -148,7 +147,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
                 try {
                         // Check if the current passenger has selected a seat
-                        if (Passengers.passengers.get(index).getSeat() == null) {
+                        if (Passenger.passengers.get(index).getSeat() == null) {
                                 // Display a warning if no seat has been chosen for the current passenger
                                 noSeatChosen.setVisible(true);
                                 return;
@@ -171,7 +170,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                 passengerCount.setText("Passenger " + (index + 1));
 
                 // Display the name of the next passenger
-                passengerName.setText(Passengers.passengers.get(index).getFirstName());
+                passengerName.setText(Passenger.passengers.get(index).getFirstName());
 
                 // Update the opacity of the "Next Seat" button
                 nextSeat.setOpacity(.75);

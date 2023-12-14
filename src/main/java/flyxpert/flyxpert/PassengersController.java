@@ -65,10 +65,10 @@ public class PassengersController
 
     public Boolean addPassenger() throws ParseException {
 
-        Passengers.passengers.add(new Passengers());
+        Passenger.passengers.add(new Passenger());
 
         if (validateName.validateData(firstNameTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setFirstName(firstNameTextField.getText());
+            Passenger.passengers.get(curPassenger).setFirstName(firstNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
@@ -76,7 +76,7 @@ public class PassengersController
         }
 
         if (validateName.validateData(middleNameTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setMiddleName(middleNameTextField.getText());
+            Passenger.passengers.get(curPassenger).setMiddleName(middleNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
@@ -84,7 +84,7 @@ public class PassengersController
         }
 
         if (validateName.validateData(lastNameTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setLastName(lastNameTextField.getText());
+            Passenger.passengers.get(curPassenger).setLastName(lastNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
@@ -94,7 +94,7 @@ public class PassengersController
         try {
             LocalDate localDate = dateOfBirthTextField.getValue();
             dateOfBirthAsString = localDate.format(dateOfBirthFormatter);
-            Passengers.passengers.get(curPassenger).setDateOfBirth(dateOfBirthSDF.parse(dateOfBirthAsString));
+            Passenger.passengers.get(curPassenger).setDateOfBirth(dateOfBirthSDF.parse(dateOfBirthAsString));
         }
         catch (NullPointerException e) {
             informationWarningText.setText("Please Enter the Date");
@@ -102,7 +102,7 @@ public class PassengersController
         }
 
         if (validatePhoneNumber.validateData(phoneNumberTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setPhoneNumber(phoneNumberTextField.getText());
+            Passenger.passengers.get(curPassenger).setPhoneNumber(phoneNumberTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter a Correct Phone Number");

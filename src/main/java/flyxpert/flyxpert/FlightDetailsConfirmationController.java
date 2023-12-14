@@ -15,7 +15,7 @@ import java.text.ParseException;
 import static flyxpert.flyxpert.SceneSwitcher.stage;
 import static flyxpert.flyxpert.SceneSwitcher.switchScene;
 
-public class DetailsConfirmationController {
+public class FlightDetailsConfirmationController {
     @FXML
     private  Label airlineLabel;
     @FXML
@@ -33,9 +33,9 @@ public class DetailsConfirmationController {
         newStage.setX(593.0);
         newStage.setY(312.5);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(DetailsConfirmationController.class.getResource("DetailsConfirmation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FlightDetailsConfirmationController.class.getResource("DetailsConfirmation.fxml"));
         Scene newScene = new Scene(fxmlLoader.load());
-        DetailsConfirmationController controller = fxmlLoader.getController();
+        FlightDetailsConfirmationController controller = fxmlLoader.getController();
 
         controller.airlineLabel.setText(flight.getAirlineName() + " Airlines");
 

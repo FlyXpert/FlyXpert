@@ -3,15 +3,11 @@ package flyxpert.flyxpert;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import org.w3c.dom.Text;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -163,7 +159,7 @@ public class FlightInformationController {
 
         hbox.setOnMouseClicked(event -> {
             try {
-                DetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
+                FlightDetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
