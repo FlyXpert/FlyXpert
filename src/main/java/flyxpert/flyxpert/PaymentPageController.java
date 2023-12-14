@@ -2,6 +2,7 @@ package flyxpert.flyxpert;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class PaymentPageController {
+public class PaymentPageController implements Initializable{
 
     @FXML
     Button cardPaymentButton;
@@ -47,6 +50,75 @@ public class PaymentPageController {
     Label cardExpirationDateError;
     @FXML
     Label cardCcvError;
+    @FXML
+    Label airlineLabel;
+    @FXML
+    Label arrivalDayLabel;
+    @FXML
+    Label flightTimeLabel;
+    @FXML
+    Label economySeatsNumberLabel;
+    @FXML
+    Label businessSeatsNumberLabel;
+    @FXML
+    Label firstClassSeatsNumberLabel;
+    @FXML
+    Label economySeatPriceLabel;
+    @FXML
+    Label businessSeatPriceLabel;
+    @FXML
+    Label firstClassSeatPriceLabel;
+    @FXML
+    Label subtotalLabel;
+    @FXML
+    Label totalLabel;
+
+    private final Flight SELECTED_FLIGHT = Flight.flights.get(Flight.selectedFlightIndexInFlightsArray);
+    private int paymentSubtotal;
+    private int paymentTotal;
+    Card card = new Card();
+    Paypal paypal = new Paypal();
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        // Setting the flight summary box info from the selected flight
+        airlineLabel.setText(SELECTED_FLIGHT.getAirlineName());
+        arrivalDayLabel.setText(SELECTED_FLIGHT.getArrivalDate().getDay()
+                + "-" + SELECTED_FLIGHT.getArrivalDate().getMonth()
+                + "-" + SELECTED_FLIGHT.getArrivalDate().getYear());
+        flightTimeLabel.setText(SELECTED_FLIGHT.getDepartureTime().getHour() + ":" + SELECTED_FLIGHT.getDepartureTime().getMinutes()
+                + " " + SELECTED_FLIGHT.getDepartureTime().getPeriod()
+                + " - " + SELECTED_FLIGHT.getArrivalTime().getHour() + ":" + SELECTED_FLIGHT.getArrivalTime().getMinutes()
+                + " " + SELECTED_FLIGHT.getArrivalTime().getPeriod());
+
+        // Setting the payment summary from the passengers booked in the selected flight
+        int economySeatsCount = 0;
+        int businessSeatsCount = 0;
+        int firstClassSeatsCount = 0;
+
+        for (Passenger p : Passenger.passengers){
+            String currentPassengerSeatType = p.getSeat().getType().getName();
+            switch (currentPassengerSeatType) {
+                case "economy" -> economySeatsCount++;
+                case "business" -> businessSeatsCount++;
+                case "firstClass" -> firstClassSeatsCount++;
+            }
+        }
+
+        economySeatsNumberLabel.setText(String.valueOf(economySeatsCount));
+        businessSeatsNumberLabel.setText(String.valueOf(businessSeatsCount));
+        firstClassSeatsNumberLabel.setText(String.valueOf(firstClassSeatsCount));
+        economySeatPriceLabel.setText("$" + String.valueOf(SELECTED_FLIGHT.getEconomyPrice()));
+        businessSeatPriceLabel.setText("$" + String.valueOf(SELECTED_FLIGHT.getBusinessPrice()));
+        firstClassSeatPriceLabel.setText("$" + String.valueOf(SELECTED_FLIGHT.getFirstClassPrice()));
+
+        int economySubtotal = economySeatsCount * SELECTED_FLIGHT.getEconomyPrice();
+        int businessSubtotal = businessSeatsCount * SELECTED_FLIGHT.getBusinessPrice();
+        int firstClassSubtotal = firstClassSeatsCount * SELECTED_FLIGHT.getFirstClassPrice();
+        paymentSubtotal = economySubtotal + businessSubtotal + firstClassSubtotal;
+        subtotalLabel.setText("$" + String.valueOf(paymentSubtotal));
+
+        paymentTotal = (int) card.calculateTotalPriceWithFees(paymentSubtotal);
+        totalLabel.setText("$" + String.valueOf(paymentTotal));
+    }
 
     private String currentPaymentMethod = "card";
 
@@ -59,6 +131,7 @@ public class PaymentPageController {
     final String MAIN_WHITE_COLOR = ReadExternalConfig.config.getProperty("mainWhiteColor");
     final String HOVER_BLUE_COLOR = ReadExternalConfig.config.getProperty("hoverBlueColor");
     final String HOVER_GREY_COLOR = ReadExternalConfig.config.getProperty("hoverGreyColor");
+
 
     public void onCardButtonClick(MouseEvent e){
         currentPaymentMethod = "card";
@@ -80,6 +153,9 @@ public class PaymentPageController {
         cardNumberError.setVisible(false);
         cardExpirationDateError.setVisible(false);
         cardNameOrPaypalEmailError.setVisible(false);
+
+        paymentTotal = (int) card.calculateTotalPriceWithFees(paymentSubtotal);
+        totalLabel.setText("$" + String.valueOf(paymentTotal));
     }
 
     public void onPaypalButtonClick(MouseEvent e){
@@ -102,6 +178,9 @@ public class PaymentPageController {
         cardExpirationDateError.setVisible(false);
         cardNameOrPaypalEmailError.setVisible(false);
         paypalEmailTextField.setVisible(true);
+
+        paymentTotal = (int) paypal.calculateTotalPriceWithFees(paymentSubtotal);
+        totalLabel.setText("$" + String.valueOf(paymentTotal));
     }
 
     // Regex patterns for validation on user inputs
@@ -183,12 +262,15 @@ public class PaymentPageController {
             BookingConfirmationController bookingConfirmationController = fxmlLoader.getController();
 
             if(currentPaymentMethod.equals("card")){
-                Card card = new Card(cardOwnerName, cardNumber, cardExpirationDate, cardCcv);
+                card.setOwnerName(cardOwnerName);
+                card.setNumber(cardNumber);
+                card.setExpirationDate(cardExpirationDate);
+                card.setCcv(cardCcv);
                 Payment payment = new Payment(1000, card);
                 bookingConfirmationController.displayTicketInfo(card.getOwnerName(), "Tokyo", payment, "Japan", "1250", "11/11/111");
             }
             else{
-                Paypal paypal = new Paypal(paypalEmail);
+                paypal.setEmail(paypalEmail);
                 Payment payment = new Payment(1000, paypal);
                 bookingConfirmationController.displayTicketInfo("Test", "Tokyo", payment, "Paypal", "1250", "27/11");
             }

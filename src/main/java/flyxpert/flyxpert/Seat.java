@@ -1,6 +1,5 @@
 package flyxpert.flyxpert;
 
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
 public class Seat {
@@ -9,13 +8,13 @@ public class Seat {
          private String flightId;
          private int row;
          private int col;
-         private Type type;
+         private SeatType seatType;
 
-         void setType(Type type) {
-                 this.type = type;
+         void setType(SeatType seatType) {
+                 this.seatType = seatType;
          }
-         Type getType() {
-                 return this.type;
+         SeatType getType() {
+                 return this.seatType;
          }
         void setRec(Rectangle rec) {
                 this.rec = rec;

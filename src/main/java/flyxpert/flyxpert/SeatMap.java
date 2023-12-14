@@ -62,10 +62,10 @@ public abstract class SeatMap {
                         case 0: {
                                 // Business class seat
                                 toBe = Color.web(GREEN);
-                                Type type = new Type();
-                                type.setColor(toBe);
-                                type.setName("business");
-                                seats[i][j].setType(type);
+                                SeatType seatType = new SeatType();
+                                seatType.setColor(toBe);
+                                seatType.setName("business");
+                                seats[i][j].setType(seatType);
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
@@ -75,10 +75,10 @@ public abstract class SeatMap {
                         case 1, 2, 3, 4: {
                                 // Economy class seat
                                 toBe = Color.web(DARK_PURPLE);
-                                Type type = new Type();
-                                type.setColor(toBe);
-                                type.setName("economy");
-                                seats[i][j].setType(type);
+                                SeatType seatType = new SeatType();
+                                seatType.setColor(toBe);
+                                seatType.setName("economy");
+                                seats[i][j].setType(seatType);
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));
@@ -88,10 +88,10 @@ public abstract class SeatMap {
                         case 5: {
                                 // First-class seat
                                 toBe = Color.web(RED);
-                                Type type = new Type();
-                                type.setColor(toBe);
-                                type.setName("firstClass");
-                                seats[i][j].setType(type);
+                                SeatType seatType = new SeatType();
+                                seatType.setColor(toBe);
+                                seatType.setName("firstClass");
+                                seats[i][j].setType(seatType);
                                 seats[i][j].getRec().setFill(toBe);
                                 String fstHalf = String.valueOf(i + 1);
                                 seats[i][j].setPrimaryKey(fstHalf + (char) (j + 'A'));

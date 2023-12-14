@@ -9,6 +9,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1536.0" stylesheets="@../../../PaymentPage.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.PaymentPageController">
@@ -99,7 +100,7 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Button fx:id="payButton" layoutX="1247.0" layoutY="605.0" mnemonicParsing="false" onMouseClicked="#onPayButtonClick" onMouseEntered="#onPayButtonMouseEntered" onMouseExited="#onPayButtonMouseExited" prefHeight="46.0" prefWidth="211.0" text="Confirm and pay">
+      <Button fx:id="payButton" layoutX="1247.0" layoutY="608.0" mnemonicParsing="false" onMouseClicked="#onPayButtonClick" onMouseEntered="#onPayButtonMouseEntered" onMouseExited="#onPayButtonMouseExited" prefHeight="46.0" prefWidth="211.0" text="Confirm and pay">
          <font>
             <Font name="Arial" size="22.0" />
          </font>
@@ -118,5 +119,91 @@
       <Label fx:id="cardNumberError" layoutX="80.0" layoutY="422.0" text="Please don't leave this field empty or enter a valid card number (Ex: 1222414156789107)" textFill="RED" visible="false" />
       <Label fx:id="cardExpirationDateError" layoutX="80.0" layoutY="493.0" text="Please enter a valid date (Ex: 01/27)" textFill="RED" visible="false" />
       <Label fx:id="cardCcvError" layoutX="355.0" layoutY="493.0" text="Please enter a valid CCV, which can be found at the back of your card (Ex: 339)" textFill="RED" visible="false" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="109.0" layoutX="1138.0" layoutY="277.0" opacity="0.08" stroke="BLACK" strokeType="INSIDE" width="341.0" />
+      <Label fx:id="arrivalDayLabel" layoutX="1371.0" layoutY="291.0" prefHeight="26.0" prefWidth="94.0" text="07-01-2024">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="airlineLabel" layoutX="1153.0" layoutY="283.0" prefHeight="44.0" prefWidth="196.0" text="Emirates Airlines">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="1384.0" layoutY="350.0" opacity="0.6" prefHeight="21.0" prefWidth="82.0" text="Arrival Date">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="flightTimeLabel" layoutX="1301.0" layoutY="319.0" prefHeight="26.0" prefWidth="162.0" text="07:00 AM - 04:15 PM">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="economySeatsNumberLabel" layoutX="1276.0" layoutY="411.0" opacity="0.6" text="1 x">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="1302.0" layoutY="411.0" opacity="0.6" text="Economy">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="economySeatPriceLabel" layoutX="1423.0" layoutY="411.0" opacity="0.6" text="\$199">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="businessSeatsNumberLabel" layoutX="1280.0" layoutY="442.0" opacity="0.6" text="1 x">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="1306.0" layoutY="442.0" opacity="0.6" text="Business">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="businessSeatPriceLabel" layoutX="1424.0" layoutY="442.0" opacity="0.6" text="\$199">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="firstClassSeatsNumberLabel" layoutX="1273.0" layoutY="474.0" opacity="0.6" text="1 x">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="1299.0" layoutY="474.0" opacity="0.6" text="First Class">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="firstClassSeatPriceLabel" layoutX="1424.0" layoutY="474.0" opacity="0.6" text="\$199">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="airlineLabel1" layoutX="1290.0" layoutY="515.0" prefHeight="26.0" prefWidth="66.0" text="Subtotal">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="subtotalLabel" layoutX="1414.0" layoutY="515.0" prefHeight="26.0" prefWidth="66.0" text="\$1997">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="airlineLabel13" layoutX="1242.0" layoutY="546.0" prefHeight="26.0" prefWidth="115.0" text="Total with Fees">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalLabel" layoutX="1413.0" layoutY="546.0" prefHeight="26.0" prefWidth="49.0" text="\$2000">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
