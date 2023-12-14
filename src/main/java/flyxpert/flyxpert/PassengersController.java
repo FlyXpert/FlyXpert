@@ -14,6 +14,8 @@ import javafx.scene.control.DatePicker;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import Validators.*;
+import javafx.scene.input.MouseEvent;
+
 public class PassengersController
 {
     @FXML
@@ -124,5 +126,11 @@ public class PassengersController
             return;
         }
         SceneSwitcher.switchScene(event, "SeatSelectionPage", null);
+    }
+    @FXML
+    private void onLogoutButtonPressed(MouseEvent e)
+    {
+        User.currentUser = null;
+        SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
     }
 }

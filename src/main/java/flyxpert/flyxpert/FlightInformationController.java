@@ -18,20 +18,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class FlightInformationController implements Initializable {
+public class FlightInformationController {
     /**
      * @param url
      * @param resourceBundle
      */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillDataOfFlights();
-    }
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//        fillDataOfFlights();
+//    }
     @FXML
     private VBox vbox;
     @FXML
     private ScrollPane scrollPane;
-    public static boolean programStarted = false;
+    public boolean programStarted = false;
 
     public void fillDataOfFlights(){
 
@@ -50,8 +50,8 @@ public class FlightInformationController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
             fillMenuButtonsItems();
+
 
         }
         else {
@@ -60,7 +60,6 @@ public class FlightInformationController implements Initializable {
 
             try {
                 for(Flight flight : Flight.flights) {
-                    System.out.println("CALLED");
                     if(desiredSearchData(flight)) {
                         vbox.getChildren().add(createFlight(flight));
                     }
@@ -68,6 +67,7 @@ public class FlightInformationController implements Initializable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            fillMenuButtonsItems();
         }
         vbox.setSpacing(20);
     }
@@ -591,26 +591,15 @@ public class FlightInformationController implements Initializable {
     private int getMaxPrice() {
         return Integer.parseInt(maxPrice.getText());
     }
-    @FXML
-    private Button logOutButton;
+
     @FXML
     private Label logOutLabel;
 
     @FXML
-    private void onLogoutButtonPressed(ActionEvent e)
+    private void onLogoutButtonPressed(MouseEvent e)
     {
         User.currentUser = null;
         SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
-    }
-    @FXML
-    private void onLogOutButtonEntered(MouseEvent e)
-    {
-
-    }
-
-    public void onLogOutButtonExit(MouseEvent e)
-    {
-
     }
 
 

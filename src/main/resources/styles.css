@@ -13,11 +13,6 @@
     -fx-text-fill: white;
     -fx-border-color: white;
 }
-.label:hover {
-    -fx-background-color: #4422ac;
-    -fx-text-fill: white;
-    -fx-border-color: black;
-}
 #fromWhereMenuButton {
     -fx-background-color: white;
 }

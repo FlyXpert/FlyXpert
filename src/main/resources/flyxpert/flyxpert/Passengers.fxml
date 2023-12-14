@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -55,27 +56,6 @@
                     </stops>
                 </LinearGradient>
             </textFill>
-        </Button>
-        <Button id="button" layoutX="1329.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font size="20.0" />
-            </font>
         </Button>
         <Label layoutX="108.0" layoutY="162.0" prefHeight="93.0" prefWidth="318.0" text="Passenger information">
             <font>
@@ -142,6 +122,14 @@
             <font>
                 <Font name="System Bold" size="11.0" />
             </font>
+        </Label>
+        <Label fx:id="logOutLabel" layoutX="1351.0" layoutY="35.0" onMouseClicked="#onLogoutButtonPressed" prefHeight="44.0" prefWidth="63.0" stylesheets="@../../styles.css" text="Logout" textFill="#605dec">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
         </Label>
     </children>
 </AnchorPane>

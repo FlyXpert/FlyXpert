@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -178,5 +179,11 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
                 // Update the opacity of the "Next Seat" button
                 nextSeat.setOpacity(.75);
+        }
+        @FXML
+        private void onLogoutButtonPressed(MouseEvent e)
+        {
+                User.currentUser = null;
+                SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
         }
 }
