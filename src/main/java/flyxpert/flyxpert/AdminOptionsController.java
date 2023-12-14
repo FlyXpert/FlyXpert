@@ -2,15 +2,19 @@ package flyxpert.flyxpert;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class AdminOptionsController {
+public class AdminOptionsController implements Initializable {
 
     @FXML
     private Label airlineLabel;
@@ -18,6 +22,17 @@ public class AdminOptionsController {
     private  Label dayLabel;
     @FXML
     private Label timeLabel;
+    @FXML
+    private ImageView deleteIcon;
+    @FXML
+    private ImageView seatIcon;
+    @FXML
+    private ImageView editIcon;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        imagesViewStyling();
+    }
     public static void handleHBoxClick(Flight flight) throws IOException {
 
         Stage newStage = new Stage();
@@ -28,9 +43,9 @@ public class AdminOptionsController {
         newStage.setX(593.0);
         newStage.setY(312.5);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(DetailsConfirmationController.class.getResource("AdminOptions.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AdminOptionsController.class.getResource("AdminOptions.fxml"));
         Scene newScene = new Scene(fxmlLoader.load());
-        DetailsConfirmationController controller = fxmlLoader.getController();
+        AdminOptionsController controller = fxmlLoader.getController();
 
         controller.airlineLabel.setText(flight.getAirlineName() + " Airlines");
 
@@ -46,6 +61,20 @@ public class AdminOptionsController {
 
         newStage.setScene(newScene);
         newStage.show();
+    }
+    private void imagesViewStyling(){
+        AdminOptionsController.setImageViewHover(deleteIcon);
+        AdminOptionsController.setImageViewHover(seatIcon);
+        AdminOptionsController.setImageViewHover(editIcon);
+    }
+    private static void setImageViewHover(ImageView imageView) {
+        imageView.setOnMouseEntered(event ->{
+            imageView.setStyle("-fx-opacity: 0.5");
+        });
+
+        imageView.setOnMouseExited(event ->{
+            imageView.setStyle("-fx-opacity: 1");
+        });
     }
 
 }
