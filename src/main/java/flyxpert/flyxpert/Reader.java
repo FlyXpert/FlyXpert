@@ -35,9 +35,9 @@ public class Reader {
                 int availableSeats = Integer.parseInt(scan.next());
                 int flightNumber = Integer.parseInt(scan.next());
 
-                boolean [][] seatsAvailability = new boolean[12][4];
+                boolean [][] seatsAvailability = new boolean[24][4];
 
-                for(int i=0 ; i < 12 ; i++){
+                for(int i=0 ; i < 24 ; i++){
                     for(int j=0 ; j < 4 ; j++){
                         seatsAvailability[i][j] = Boolean.parseBoolean(scan.next().replaceAll("\\s+", ""));
                     }

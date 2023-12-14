@@ -2,21 +2,40 @@ package flyxpert.flyxpert;
 
 import java.util.Date;
 
-public class Card extends PaymentMethod{
-    private final String ownerName;
-    private final String number;
-    private final String expirationDate;
-    private final String ccv;
+public class Card implements PaymentMethod{
+    private String ownerName;
+    private String number;
+    private String expirationDate;
+    private String ccv;
+    public static final double feesPercentage = 0.03;
 
+    public Card(){
+        super();
+    }
     public Card(String ownerName, String number, String expirationDate, String ccv){
         super();
         this.ownerName = ownerName;
         this.number = number;
         this.expirationDate = expirationDate;
         this.ccv = ccv;
-        this.feesInDollars = 1;
     }
 
+    public double calculateTotalPriceWithFees(double subTotal){
+        return (subTotal * feesPercentage) + subTotal;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+    public void setNumber(String number) {
+        this.number = number;
+    }
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+    public void setCcv(String ccv) {
+        this.ccv = ccv;
+    }
     public String getOwnerName(){
         return ownerName;
     }

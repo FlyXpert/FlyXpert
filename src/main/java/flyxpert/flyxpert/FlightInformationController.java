@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -13,21 +14,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class FlightInformationController implements Initializable {
+public class FlightInformationController {
     /**
      * @param url
      * @param resourceBundle
      */
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillDataOfFlights();
-    }
 
     @FXML
     private VBox vbox;
     @FXML
     private ScrollPane scrollPane;
-    public static boolean programStarted = false;
+    public boolean programStarted = false;
 
     public void fillDataOfFlights() {
         setScrollPane(scrollPane);
@@ -76,6 +73,7 @@ public class FlightInformationController implements Initializable {
         scrollPane.setPannable(true);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+
     }
     private HBox createFlight(Flight flight){
         HBox hbox = new HBox();
@@ -205,8 +203,9 @@ public class FlightInformationController implements Initializable {
                 invalidInputForPriceMsg.setVisible(!validMaxPrice());
                 invalidInputOfPassengersMsg.setVisible(!validNum(numOfPassengers));
                 if(validMaxPrice() && validNum(numOfPassengers)) {
-                    DetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
+                    FlightDetailsConfirmationController.handleHBoxClick(flight, getNumberOfPassengers());
                 }
+
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -243,7 +242,6 @@ public class FlightInformationController implements Initializable {
     Map<String, Boolean> departureAirports = new HashMap<String, Boolean>();
     Map<String, Boolean> arrivalAirports = new HashMap<String, Boolean>();
     Map<String, Boolean> airlines = new HashMap<String, Boolean>();
-
 
     private void fillMaps() {
         for (Flight flight : Flight.flights) {
@@ -637,4 +635,16 @@ public class FlightInformationController implements Initializable {
     private int getMaxPrice() {
         return Integer.parseInt(maxPrice.getText());
     }
+
+
+    @FXML
+    private Label logOutLabel;
+
+    @FXML
+    private void onLogoutButtonPressed(MouseEvent e)
+    {
+        User.currentUser = null;
+        SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
+    }
+
 }

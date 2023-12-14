@@ -9,6 +9,13 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import Validators.ValidatePhoneNumber;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import Validators.*;
+import javafx.scene.input.MouseEvent;
+
 public class PassengersController
 {
     @FXML
@@ -20,20 +27,24 @@ public class PassengersController
     @FXML
     public TextField lastNameTextField;
     @FXML
-    public TextField DOBTextField;
+    public DatePicker dateOfBirthTextField = new DatePicker();
     @FXML
     public TextField phoneNumberTextField;
     @FXML
     public Label informationWarningText;
 
-    private final SimpleDateFormat DOBFormat = new SimpleDateFormat("dd/MM/yy");
+    private final DateTimeFormatter dateOfBirthFormatter = DateTimeFormatter.ofPattern("dd/MM/yy");
+    private final SimpleDateFormat dateOfBirthSDF = new SimpleDateFormat("dd/MM/yy");
+    public String dateOfBirthAsString;
     static public int passengersToBeAdded;
     static public int initialPassengersToBeAdded;
     static private int curPassenger = 0;
+    private ValidatePhoneNumber validatePhoneNumber = new ValidatePhoneNumber();
+    private ValidateName validateName = new ValidateName();
 
 
-    public void NextPassengerButtonPress(ActionEvent event) throws ParseException {
-        if (passengersToBeAdded > 0 && AddPassenger()) {
+    public void nextPassengerButtonPress(ActionEvent event) throws ParseException {
+        if (passengersToBeAdded > 0 && addPassenger()) {
             passengersToBeAdded--;
             if (curPassenger != initialPassengersToBeAdded) {
                 numOfPassengersDisplay.setText("Passenger " + (curPassenger + 1));
@@ -52,55 +63,56 @@ public class PassengersController
 
 
 
-    public Boolean AddPassenger() throws ParseException {
+    public Boolean addPassenger() throws ParseException {
 
-        Passengers.passengers.add(new Passengers());
+        Passenger.passengers.add(new Passenger());
 
-        if (Validators.validateName(firstNameTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setFirstName(firstNameTextField.getText());
+        if (validateName.validateData(firstNameTextField.getText())) {
+            Passenger.passengers.get(curPassenger).setFirstName(firstNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
             return false;
         }
 
-        if (Validators.validateName(middleNameTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setMiddleName(middleNameTextField.getText());
+        if (validateName.validateData(middleNameTextField.getText())) {
+            Passenger.passengers.get(curPassenger).setMiddleName(middleNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
             return false;
         }
 
-        if (Validators.validateName(lastNameTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setLastName(lastNameTextField.getText());
+        if (validateName.validateData(lastNameTextField.getText())) {
+            Passenger.passengers.get(curPassenger).setLastName(lastNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
             return false;
         }
 
-        DOBFormat.setLenient(false);
         try {
-            DOBFormat.parse(DOBTextField.getText());
-            Passengers.passengers.get(curPassenger).setDOB(DOBFormat.parse(DOBTextField.getText()));
+            LocalDate localDate = dateOfBirthTextField.getValue();
+            dateOfBirthAsString = localDate.format(dateOfBirthFormatter);
+            Passenger.passengers.get(curPassenger).setDateOfBirth(dateOfBirthSDF.parse(dateOfBirthAsString));
         }
-        catch (ParseException e) {
-            informationWarningText.setText("Please Enter the Date in the Correct Format");
+        catch (NullPointerException e) {
+            informationWarningText.setText("Please Enter the Date");
             return false;
         }
 
-        if (Validators.validatePhoneNumber(phoneNumberTextField.getText())) {
-            Passengers.passengers.get(curPassenger).setPhoneNumber(phoneNumberTextField.getText());
+        if (validatePhoneNumber.validateData(phoneNumberTextField.getText())) {
+            Passenger.passengers.get(curPassenger).setPhoneNumber(phoneNumberTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter a Correct Phone Number");
             return false;
         }
+
         firstNameTextField.setText("");
         middleNameTextField.setText("");
         lastNameTextField.setText("");
-        DOBTextField.setText("");
+        dateOfBirthTextField.setValue(null);
         phoneNumberTextField.setText("");
         curPassenger++;
         informationWarningText.setText("");
@@ -114,5 +126,11 @@ public class PassengersController
             return;
         }
         SceneSwitcher.switchScene(event, "SeatSelectionPage", null);
+    }
+    @FXML
+    private void onLogoutButtonPressed(MouseEvent e)
+    {
+        User.currentUser = null;
+        SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
     }
 }

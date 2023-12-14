@@ -1,32 +1,18 @@
 package flyxpert.flyxpert;
 
 
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
-public class Passengers {
+public class Passenger {
 
         private String firstName;
         private String middleName;
         private String lastName;
-        private Date DOB = new Date();
+        private Date dateOfBirth = new Date();
         private String phoneNumber;
         private Seat seat;
-        public static ArrayList<Passengers> passengers = new ArrayList<>();
+        public static ArrayList<Passenger> passengers = new ArrayList<>();
 
 
         public void setSeat(Seat seat) {
@@ -43,8 +29,8 @@ public class Passengers {
 
         public void setLastName(String name) { this.lastName = name; }
 
-        public void setDOB(Date DOB) {
-                this.DOB = DOB;
+        public void setDateOfBirth(Date DOB) {
+                this.dateOfBirth = DOB;
         }
 
         public void setPhoneNumber(String phoneNumber) {
@@ -62,8 +48,8 @@ public class Passengers {
                 return lastName;
         }
 
-        public Date getDOB() {
-                return DOB;
+        public Date getDateOfBirth() {
+                return dateOfBirth;
         }
 
         public String getPhoneNumber() {
@@ -73,6 +59,5 @@ public class Passengers {
         public Seat getSeat() {
                 return seat;
         }
-
 
 }

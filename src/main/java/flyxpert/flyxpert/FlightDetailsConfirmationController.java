@@ -15,7 +15,7 @@ import java.text.ParseException;
 import static flyxpert.flyxpert.SceneSwitcher.stage;
 import static flyxpert.flyxpert.SceneSwitcher.switchScene;
 
-public class DetailsConfirmationController {
+public class FlightDetailsConfirmationController {
     @FXML
     Label airlineLabel;
     @FXML
@@ -33,9 +33,9 @@ public class DetailsConfirmationController {
         newStage.setX(593.0);
         newStage.setY(312.5);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(DetailsConfirmationController.class.getResource("DetailsConfirmation.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FlightDetailsConfirmationController.class.getResource("DetailsConfirmation.fxml"));
         Scene newScene = new Scene(fxmlLoader.load());
-        DetailsConfirmationController controller = fxmlLoader.getController();
+        FlightDetailsConfirmationController controller = fxmlLoader.getController();
 
         controller.airlineLabel.setText(flight.getAirlineName() + " Airlines");
 
@@ -51,7 +51,12 @@ public class DetailsConfirmationController {
 
         newStage.setScene(newScene);
         newStage.show();
-        Flight.selectedFlight = new Flight(flight);
+        for(int i = 0; i < Flight.flights.size(); i++){
+            if(Flight.flights.get(i).getFlightNumber() == flight.getFlightNumber()){
+                Flight.selectedFlightIndexInFlightsArray = i;
+                break;
+            }
+        }
         PassengersController.passengersToBeAdded = numOfPassengers;
         PassengersController.initialPassengersToBeAdded = numOfPassengers;
     }

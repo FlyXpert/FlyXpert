@@ -17,13 +17,39 @@ import java.text.ParseException;
 
 public class HomePageController {
     @FXML
-    private TextField signUpUsernameTextField,
-            signUpEmailTextField, signUpPasswordTextField, signInUsernameTextField, signInPasswordTextField;
+    private TextField signUpUsernameTextField;
     @FXML
-    private Button homePageSignUpButton, homePageSignInButton, internalSignUpButton, internalSignInButton;
+    private TextField signUpEmailTextField;
     @FXML
-    private Label signUpLabel, signUpUsernameValidator, emailVaidatorLabel, passwordValidatorLabel, signInPasswordValidator, signInUsernameValidator, signUpSuccessLabel;
-    private Stage signInStage, signUpStage;
+    private TextField signUpPasswordTextField;
+    @FXML
+    TextField signInUsernameTextField;
+    @FXML
+    TextField signInPasswordTextField;
+    @FXML
+    private Button homePageSignUpButton;
+    @FXML
+    private Button homePageSignInButton;
+    @FXML
+    private Button internalSignUpButton;
+    @FXML
+    private Button internalSignInButton;
+    @FXML
+    private Label signUpLabel;
+    @FXML
+    private Label signUpUsernameValidator;
+    @FXML
+    private Label emailVaidatorLabel;
+    @FXML
+    private Label passwordValidatorLabel;
+    @FXML
+    private Label signInPasswordValidator;
+    @FXML
+    private Label signInUsernameValidator;
+    @FXML
+    private Label signUpSuccessLabel;
+    private Stage signInStage;
+    private Stage signUpStage;
     private static Stage mainStage;
 
     private final Color ERROR_COLOR = Color.RED;
@@ -88,6 +114,9 @@ public class HomePageController {
         else if(User.searchForUser(user) != null) {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
+            User.currentUser = user;
+            if(user.getUserName().equals("admin"))
+                User.currentUser.setIsAdmin(true);
             ((Stage) internalSignInButton.getScene().getWindow()).close();
             SceneSwitcher.switchScene(e, "SearchFlightPage" , mainStage);
             //System.out.println("You've successfully logged in");
@@ -160,7 +189,7 @@ public class HomePageController {
 
     public void onSignInButtonHoverEnter(MouseEvent e) {
         //System.out.println("HOVER ON");
-        homePageSignInButton.setStyle("-fx-background-color: #e2e2e2");
+        homePageSignInButton.setStyle("-fx-background-color: #e0e0e0; -fx-border-color: #605DEC; -fx-border-radius: 4px;");
     }
     public void onSignInButtonHoverExit(MouseEvent e) {
         //System.out.println("HOVER OFF");
@@ -168,8 +197,7 @@ public class HomePageController {
     }
 
     public void onSignUpButtonHoverEnter(MouseEvent e) {
-        homePageSignUpButton.setTextFill(Color.web("#605DEC"));
-        homePageSignUpButton.setStyle("-fx-background-color: #e2e2e2");
+        homePageSignUpButton.setStyle("-fx-background-color: #4743d1");
     }
 
     public void onSignUpButtonHoverExit(MouseEvent e) {
@@ -178,16 +206,14 @@ public class HomePageController {
     }
 
     public void internalOnSignInButtonHoverEnter(MouseEvent e) {
-        internalSignInButton.setTextFill(Color.web("#605DEC"));
-        internalSignInButton.setStyle("-fx-background-color: #e2e2e2");
+        internalSignInButton.setStyle("-fx-background-color: #4743d1");
     }
     public void internalOnSignInButtonHoverExit(MouseEvent e) {
         internalSignInButton.setTextFill(Color.WHITE);
         internalSignInButton.setStyle("-fx-background-color: #605DEC; -fx-border-radius: 4px");
     }
     public void internalOnSignUpButtonHoverEnter(MouseEvent e){
-        internalSignUpButton.setTextFill(Color.web("#605DEC"));
-        internalSignUpButton.setStyle("-fx-background-color: #e2e2e2");
+        internalSignUpButton.setStyle("-fx-background-color: #4743d1");
     }
 
     public void internalOnSignUpButtonHoverExit(MouseEvent e){

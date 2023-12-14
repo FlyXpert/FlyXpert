@@ -2,7 +2,7 @@ package flyxpert.flyxpert;
 
 import javafx.scene.paint.Paint;
 
-public class Type {
+public class SeatType {
         String name;
         Paint color;
 

@@ -43,6 +43,11 @@
           <version>13.0</version>
           <scope>compile</scope>
       </dependency>
+      <dependency>
+          <groupId>org.openjfx</groupId>
+          <artifactId>javafx-graphics</artifactId>
+          <version>21-ea+24</version>
+      </dependency>
   </dependencies>
 
   <build>

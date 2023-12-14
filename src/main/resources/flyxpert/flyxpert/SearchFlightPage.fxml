@@ -119,6 +119,7 @@
                 </DatePicker>
                 <TextField fx:id="numOfPassengers" layoutX="800.0" onAction="#enableSearchButton" prefHeight="48.0" prefWidth="200.0" promptText="Number of passengers" style="-fx-background-insets: 0;" stylesheets="@miniContextMenu.css" />
                 <Button fx:id="searchButton" disable="true" layoutX="1000.0" mnemonicParsing="false" onAction="#fillDataOfFlights" prefHeight="48.0" prefWidth="200.0" stylesheets="@styles.css" text="Search">
+
                     <font>
                         <Font size="22.0" />
                     </font>
@@ -147,13 +148,6 @@
             </cursor>
         </Pane>
         <Pane layoutX="1414.0" layoutY="40.0">
-            <children>
-                <Label text="Log out" textFill="#7c8db0">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-            </children>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
