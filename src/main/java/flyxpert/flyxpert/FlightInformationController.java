@@ -60,6 +60,7 @@ public class FlightInformationController {
 
             try {
                 for(Flight flight : Flight.flights) {
+                    //System.out.println("CALLED");
                     if(desiredSearchData(flight)) {
                         vbox.getChildren().add(createFlight(flight));
                     }
@@ -409,7 +410,7 @@ public class FlightInformationController {
 
             }
             else if (getMaxPrice() < flight.getEconomyPrice()) {
-                System.out.println("return false");
+                //System.out.println("return false");
                 return false;
             }
 

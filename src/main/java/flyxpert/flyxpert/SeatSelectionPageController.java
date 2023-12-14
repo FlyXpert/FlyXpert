@@ -130,13 +130,9 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
          * progression of passengers through the seat selection process and potentially transitioning to the payment phase.
          */
         public void nextSeatClicked(ActionEvent event) {
-                // Check if a seat has been chosen
-                if (nextSeat.getOpacity() != 1)
-                        return;
-
                 // Print debugging information
-                System.out.println(index);
-                System.out.println(size);
+                //System.out.println(index);
+                //System.out.println(size);
 
                 // If the current passenger has selected a seat, proceed
                 if (nextSeat.getOpacity() != 1)

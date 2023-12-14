@@ -51,7 +51,12 @@ public class DetailsConfirmationController {
 
         newStage.setScene(newScene);
         newStage.show();
-        Flight.selectedFlight = new Flight(flight);
+        for(Flight possibleSelectedFlight : Flight.flights){
+            if(possibleSelectedFlight.getFlightNumber() == flight.getFlightNumber()){
+                Flight.selectedFlightIndexInFlightsArray = flight.getFlightNumber();
+                break;
+            }
+        }
         PassengersController.passengersToBeAdded = numOfPassengers;
         PassengersController.initialPassengersToBeAdded = numOfPassengers;
     }
