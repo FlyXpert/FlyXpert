@@ -1,0 +1,46 @@
+.button {
+    -fx-background-color: #605DEC; /* Green color */
+    -fx-text-fill: white; /* Text color */
+    -fx-border-color: black;
+}
+.button:hover {
+    -fx-background-color: #4422ac;
+    -fx-text-fill: white;
+    -fx-border-color: black;
+}
+.button:pressed {
+    -fx-background-color: #4422ac;
+    -fx-text-fill: white;
+    -fx-border-color: white;
+}
+#fromWhereMenuButton {
+    -fx-background-color: white;
+}
+#whereToMenuButton {
+    -fx-background-color: white;
+}
+#calendarButton {
+    -fx-background-color: white;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+.context-menu {
+    -fx-pref-width: 200; /* Set the preferred width */
+    -fx-pref-height: 150; /* Set the preferred height */
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+}
+#scrollPane {
+    -fx-background-color: white;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+#scrollPane .scroll-bar {
+    -fx-opacity: 0;
+}
+
+#scrollPane:hover .scroll-bar {
+    -fx-opacity: 0;
+}

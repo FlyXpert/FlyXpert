@@ -16,6 +16,9 @@ import static flyxpert.flyxpert.SceneSwitcher.stage;
 import static flyxpert.flyxpert.SceneSwitcher.switchScene;
 
 public class FlightDetailsConfirmationController {
+    static Flight specifiedFlight;
+
+
     @FXML
     Label airlineLabel;
     @FXML
@@ -23,8 +26,7 @@ public class FlightDetailsConfirmationController {
     @FXML
     Label timeLabel;
     public static void handleHBoxClick(Flight flight, int numOfPassengers) throws IOException {
-
-
+        specifiedFlight = new Flight(flight);
         Stage newStage = new Stage();
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.initStyle(StageStyle.UTILITY);

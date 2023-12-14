@@ -15,6 +15,8 @@ public abstract class SeatMap {
         private Seat[][] seats = new Seat[200][200];
         private boolean[][] vis = new boolean[200][200];
 
+
+
         /**
          * Performs a Depth-First Search (DFS) traversal to add seat objects to a specified overlay Pane.
          * The seats are represented as rectangles and are organized based on their type (business, economy, first class).

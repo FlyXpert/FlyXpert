@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -20,8 +21,14 @@ public class AdminPageController implements Initializable {
     private VBox vbox;
     @FXML
     private ScrollPane scrollPane;
+
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillDataOfFlights();
+    }
+
+    public void adminSeatMap() {
+
     }
 
     public void fillDataOfFlights() {

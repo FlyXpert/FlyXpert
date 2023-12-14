@@ -100,7 +100,7 @@ public class HomePageController {
         String password = signInPasswordTextField.getText();
         User user = new User(userName, null, password);
 
-        if(userName.equals("admin") && password.equals("123123123123")){
+        if(userName.equals("admin") && password.equals("admin")){
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
             ((Stage) internalSignInButton.getScene().getWindow()).close();
