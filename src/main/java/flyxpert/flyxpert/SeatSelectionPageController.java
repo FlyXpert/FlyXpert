@@ -67,10 +67,11 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
                 try {
+                        nextSeat.setText("Next Passenger");
                         seatNumber.setText("--");
                         passengerName.setText(Passenger.passengers.get(0).getFirstName());
                         if (index >= size - 2) {
-                                nextSeat.setText("Next Passenger");
+                                nextSeat.setText("Proceed to Payment");
                         }
                 } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Exception caught: " + e.getMessage());

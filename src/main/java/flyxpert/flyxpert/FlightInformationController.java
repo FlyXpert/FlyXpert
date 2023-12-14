@@ -598,8 +598,4 @@ public class FlightInformationController {
         User.currentUser = null;
         SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
     }
-
-
-
-
 }
