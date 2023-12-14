@@ -70,7 +70,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                         seatNumber.setText("--");
                         passengerName.setText(Passenger.passengers.get(0).getFirstName());
                         if (index >= size - 2) {
-                                nextSeat.setText("Proceed to Payment");
+                                nextSeat.setText("Next Passenger");
                         }
                 } catch (ArrayIndexOutOfBoundsException e) {
                         System.out.println("Exception caught: " + e.getMessage());
@@ -129,44 +129,32 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
          * progression of passengers through the seat selection process and potentially transitioning to the payment phase.
          */
         public void nextSeatClicked(ActionEvent event) {
-                if (nextSeat.getOpacity() != 1)
-                        return;
+
                 // Print debugging information
                 System.out.println(index);
                 System.out.println(size);
 
-                // If the current passenger has selected a seat, proceed
-                if (nextSeat.getOpacity() != 1)
-                        return;
 
+                // Check if the current passenger hasn't selected a seat
+                if (nextSeat.getOpacity() != 1) {
+                        // Display a warning
+                        noSeatChosen.setVisible(true);
+                        return;
+                }
+                // If the current passenger is the last one, transition to the next scene
+                if (index == size - 1) {
+                        SceneSwitcher.switchScene(event, "PaymentPage/PaymentPage", null);
+                        return;
+                }
                 // If the current passenger is the second to last one, update the button text and opacity
                 if (index == size - 2) {
                         nextSeat.setText("Proceed to Payment");
-                        nextSeat.setOpacity(.75);
-                        ++index;
-                        return;
-                }
 
-                try {
-                        // Check if the current passenger has selected a seat
-                        if (Passenger.passengers.get(index).getSeat() == null) {
-                                // Display a warning if no seat has been chosen for the current passenger
-                                noSeatChosen.setVisible(true);
-                                return;
-                        }
-                } catch (Exception e) {
-                        // Handle the case when there are no more passengers
-                        System.out.println("No more passengers!");
                 }
 
                 // Hide the "No Seat Chosen" warning
                 noSeatChosen.setVisible(false);
 
-                // If the current passenger is the last one, transition to the next scene (TODO: implement scene transition)
-                if (index == size - 1) {
-                        SceneSwitcher.switchScene(event, "PaymentPage/PaymentPage", null);
-                        return;
-                }
 
                 // Update the passenger count label
                 passengerCount.setText("Passenger " + (index++));
