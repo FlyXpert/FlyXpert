@@ -169,7 +169,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                 }
 
                 // Update the passenger count label
-                passengerCount.setText("Passenger " + (index + 1));
+                passengerCount.setText("Passenger " + (index++));
 
                 // Display the name of the next passenger
                 passengerName.setText(Passenger.passengers.get(index).getFirstName());
@@ -178,8 +178,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                 nextSeat.setOpacity(.75);
         }
         @FXML
-        private void onLogoutButtonPressed(MouseEvent e)
-        {
+        private void onLogoutButtonPressed(MouseEvent e) {
                 User.currentUser = null;
                 SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
         }
