@@ -266,12 +266,12 @@ public class PaymentPageController implements Initializable{
                 card.setNumber(cardNumber);
                 card.setExpirationDate(cardExpirationDate);
                 card.setCcv(cardCcv);
-                Payment payment = new Payment(1000, card);
+                Payment payment = new Payment(paymentTotal, card);
                 bookingConfirmationController.displayTicketInfo(card.getOwnerName(), "Tokyo", payment, "Japan", "1250", "11/11/111");
             }
             else{
                 paypal.setEmail(paypalEmail);
-                Payment payment = new Payment(1000, paypal);
+                Payment payment = new Payment(paymentTotal, paypal);
                 bookingConfirmationController.displayTicketInfo("Test", "Tokyo", payment, "Paypal", "1250", "27/11");
             }
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
