@@ -17,13 +17,39 @@ import java.text.ParseException;
 
 public class HomePageController {
     @FXML
-    private TextField signUpUsernameTextField,
-            signUpEmailTextField, signUpPasswordTextField, signInUsernameTextField, signInPasswordTextField;
+    private TextField signUpUsernameTextField;
     @FXML
-    private Button homePageSignUpButton, homePageSignInButton, internalSignUpButton, internalSignInButton;
+    private TextField signUpEmailTextField;
     @FXML
-    private Label signUpLabel, signUpUsernameValidator, emailVaidatorLabel, passwordValidatorLabel, signInPasswordValidator, signInUsernameValidator, signUpSuccessLabel;
-    private Stage signInStage, signUpStage;
+    private TextField signUpPasswordTextField;
+    @FXML
+    TextField signInUsernameTextField;
+    @FXML
+    TextField signInPasswordTextField;
+    @FXML
+    private Button homePageSignUpButton;
+    @FXML
+    private Button homePageSignInButton;
+    @FXML
+    private Button internalSignUpButton;
+    @FXML
+    private Button internalSignInButton;
+    @FXML
+    private Label signUpLabel;
+    @FXML
+    private Label signUpUsernameValidator;
+    @FXML
+    private Label emailVaidatorLabel;
+    @FXML
+    private Label passwordValidatorLabel;
+    @FXML
+    private Label signInPasswordValidator;
+    @FXML
+    private Label signInUsernameValidator;
+    @FXML
+    private Label signUpSuccessLabel;
+    private Stage signInStage;
+    private Stage signUpStage;
     private static Stage mainStage;
 
     private final Color ERROR_COLOR = Color.RED;

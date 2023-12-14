@@ -3,7 +3,9 @@ package flyxpert.flyxpert;
 import java.util.ArrayList;
 
 public class User {
-    private String userName, password, email;
+    private String userName;
+    private String password;
+    private String email;
     private boolean isAdmin;
     public static User currentUser;
     public static ArrayList<User> userList = new ArrayList<User>();
