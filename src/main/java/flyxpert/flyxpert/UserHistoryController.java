@@ -3,7 +3,6 @@ package flyxpert.flyxpert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
@@ -16,20 +15,20 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
 import java.net.URL;
-import java.util.Random;
 import java.util.ResourceBundle;
+
+import static flyxpert.flyxpert.SceneSwitcher.stage;
 
 public class UserHistoryController implements Initializable {
 
-        Flight[] booked = new Flight[10];
+        static int size = Flight.flights.size();
+        Flight[] booked = new Flight[size];
         int positionX = 0;
         int positionY = 0;
         int width = 558;
         int height = 478 / 3;
-        int size = booked.length;
 
         @FXML
         ScrollPane scrollPane;
@@ -37,7 +36,7 @@ public class UserHistoryController implements Initializable {
         @FXML
         Button backButton;
 
-        Pane overlay = new Pane();
+        static Pane overlay = new Pane();
 
         /**
          * @param url
@@ -83,35 +82,12 @@ public class UserHistoryController implements Initializable {
                 }
         }
 
+        static UserHistoryFlight[] f = new UserHistoryFlight[size];
+        Button[] deleteButtons = new Button[size];
+
         public void addFlight(int index, Rectangle rec) {
                 double x = rec.getLayoutX() + 50;
                 double y = rec.getLayoutX() + 20;
-
-                Label airlineLabel = new Label();
-                Label arrivalDayLabel = new Label();
-                Label flightTimeLabel = new Label();
-
-                airlineLabel.setLayoutX(x);
-                airlineLabel.setLayoutY(y);
-
-                airlineLabel.setText(booked[index].getAirlineName());
-                airlineLabel.setFont(new Font(20));
-
-
-                arrivalDayLabel.setLayoutX(x + 300);
-                arrivalDayLabel.setLayoutY(y);
-                arrivalDayLabel.setText(booked[index].getArrivalDate().getDay()
-                        + "-" + booked[index].getArrivalDate().getMonth()
-                        + "-" + booked[index].getArrivalDate().getYear());
-
-
-                flightTimeLabel.setLayoutX(x + 300);
-                flightTimeLabel.setLayoutX(y + 100);
-                flightTimeLabel.setText(booked[index].getDepartureTime().getHour() + ":" + booked[index].getDepartureTime().getMinutes()
-                        + " " + booked[index].getDepartureTime().getPeriod()
-                        + " - " + booked[index].getArrivalTime().getHour() + ":" + booked[index].getArrivalTime().getMinutes()
-                        + " " + booked[index].getArrivalTime().getPeriod());
-
 
                 Text airlineText = createText(booked[index].getAirlineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
@@ -140,16 +116,26 @@ public class UserHistoryController implements Initializable {
 
 
                 ImageView closeImageView = new ImageView("closeImage.png");
-                Button delete = new Button();
-                delete.setBackground(null);
-                addDarkenEffect(delete, closeImageView);
-                delete.setGraphic(closeImageView);
-                delete.setLayoutX(positionX + width - 80);
-                delete.setLayoutY(positionY + 50);
+                deleteButtons[index] = new Button();
+                deleteButtons[index].setBackground(null);
+                addDarkenEffect(deleteButtons[index], closeImageView);
+                deleteButtons[index].setGraphic(closeImageView);
+                deleteButtons[index].setLayoutX(positionX + width - 80);
+                deleteButtons[index].setLayoutY(positionY + 50);
 
-                delete.setOnMouseClicked(mouseEvent -> onXClicked());
+                deleteButtons[index].setOnMouseClicked(event -> onXClicked(index));
 
-                overlay.getChildren().addAll(airlineText, dateText, timeText, arrivalDateText, delete);
+                f[index] = new UserHistoryFlight();
+                f[index].setRec(rec);
+                f[index].setX(closeImageView);
+                f[index].setDelete(deleteButtons[index]);
+                f[index].setAirlineText(airlineText);
+                f[index].setDateText(dateText);
+                f[index].setTimeText(timeText);
+                f[index].setArrivalDateText(arrivalDateText);
+
+                overlay.getChildren().addAll(f[index].getAirlineText(), f[index].getDateText(),
+                        f[index].getTimeText(), f[index].getArrivalDateText(), f[index].getDelete());
         }
 
         private Text createText(String content, double fontSize, Color color, FontWeight fontWeight, String fontFamily) {
@@ -177,9 +163,56 @@ public class UserHistoryController implements Initializable {
                 button.setOnMouseExited(event -> imageView.setEffect(blend2));
         }
 
+        static boolean confirmed = false;
 
-        public void onXClicked() {
-                // TODO : delete flight from user
+        public static void onXClicked(int index) {
+                // TODO : add a popup then delete flight from user
+
+                SceneSwitcher.createPopUp("ConfirmDelete", index);
+        }
+
+        public static void confirm(int index) {
+                // TODO : remove from Flight.flights
+
+                removeFlightFromScreen(index);
+                System.out.println(index);
+
+                confirmed = false;
+        }
+
+        public static void removeFlightFromScreen(int index) {
+                overlay.getChildren().remove(f[index].getX());
+
+                overlay.getChildren().remove(f[index].getRec());
+                overlay.getChildren().remove(f[index].getDelete());
+
+                overlay.getChildren().remove(f[index].getAirlineText());
+                overlay.getChildren().remove(f[index].getDateText());
+                overlay.getChildren().remove(f[index].getTimeText());
+                overlay.getChildren().remove(f[index].getArrivalDateText());
+
+                raiseBelowFlights(index + 1);
+
+                //--size;
+
+                // TODO : change the up label to curCnt
+        }
+
+        public static void raiseBelowFlights(int index) {
+                System.out.println(1000 * index);
+                System.out.println(1000 * size);
+                for (int i = index; i < size; ++i) {
+                        double tmpY = f[i].getRec().getLayoutY();
+                        f[i].getRec().setLayoutY(tmpY - (478 / 3 + 5));
+                        f[i].getX().setLayoutY(f[i].getX().getLayoutY() - (478 / 3 + 5));
+                        f[i].getDelete().setLayoutY(f[i].getDelete().getLayoutY() - (478 / 3 + 5));
+                        f[i].getAirlineText().setLayoutY(f[i].getAirlineText().getLayoutY() - (478 / 3 + 5));
+                        f[i].getDateText().setLayoutY(f[i].getDateText().getLayoutY() - (478 / 3 + 5));
+                        f[i].getTimeText().setLayoutY(f[i].getTimeText().getLayoutY() - (478 / 3 + 5));
+                        f[i].getArrivalDateText().setLayoutY(f[i].getArrivalDateText().getLayoutY() - (478 / 3 + 5));
+                }
+                // TODO : shorten the pane
+                overlay.setPrefHeight(overlay.getPrefHeight() - (478 / 3 + 5));
         }
 
         public void onBackClicked() {

@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -82,6 +83,23 @@ public class SceneSwitcher {
                 stage.setScene(scene);
                 stage.centerOnScreen();
                 stage.show();
+        }
+
+        public static void createPopUp(String newFxml, int index) {
+                try {
+                        root = FXMLLoader.load(SeatSelectionPageController.class.getResource(newFxml + ".fxml"));
+                } catch (IOException e) {
+                        System.out.printf("Unable to import %s.fxml", newFxml);
+                }
+                stage = new Stage();
+                scene = new Scene(root);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setOnShown(e -> stage.getScene().getRoot().requestFocus());
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.centerOnScreen();
+                stage.show();
+                ConfirmDeleteController.setData(index);
         }
 
 }

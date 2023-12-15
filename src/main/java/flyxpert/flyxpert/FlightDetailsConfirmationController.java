@@ -66,5 +66,4 @@ public class FlightDetailsConfirmationController {
     public void toPassengerInfoScene(ActionEvent actionEvent) throws IOException, ParseException {
         switchScene(actionEvent, "Passengers", stage);
     }
-
 }
