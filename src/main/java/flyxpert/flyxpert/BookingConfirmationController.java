@@ -69,43 +69,45 @@ public class BookingConfirmationController {
     int firstClassPriceMoney = 0;
 
     public void displayTicketInfo(User user, Flight currentFlight, Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){
-        this.bookingConfirmation = new BookingConfirmation(user, currentFlight, payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
-        setPassengerDetails();
-        calculateTotalsAndSetPrices(economySeatsCount, businessSeatsCount, firstClassSeatsCount);
-        setPaymentMethod();
-        setDepartingDate();
+        this.bookingConfirmation = new BookingConfirmation(user.getUserName(), String.valueOf(currentFlight.getFlightNumber()), currentFlight.getAirLineName(), currentFlight.getDepartureAirport().getName(), currentFlight.getArrivalAirport().getName(), currentFlight.getDepartureDate().toString(), currentFlight.getArrivalDate().toString(), currentFlight.getDepartureTime().toString(), currentFlight.getArrivalTime().toString(), String.valueOf(payment.getPaymentID()), payment.toString(), String.valueOf(payment.getPaymentAmount()), payment.getPaymentStatus(), economySeatsCount, businessSeatsCount, firstClassSeatsCount);
+        setPassengerDetails(user, currentFlight);
+        calculateTotalsAndSetPrices(economySeatsCount, businessSeatsCount, firstClassSeatsCount, currentFlight);
+        setPaymentMethod(payment.getPaymentMethod());
+        setDepartingDate(currentFlight);
         setPassengersSeatsCount();
         this.bookingConfirmation.setSubTotalMoney(this.subTotalMoney);
+        calculateTimeOfTheTrip(currentFlight);
+        setFromToTime(currentFlight);
+        setArrivalDate(currentFlight);
+        this.bookingConfirmation.setAvaliableSeats(currentFlight);
+        this.bookingConfirmation.setBoookingPassengers(Passenger.passengers);
         BookingConfirmation.bookingRecords.add(this.bookingConfirmation);
-        calculateTimeOfTheTrip();
-        setFromToTime();
-        setArrivalDate();
     }
-    private void setPaymentMethod(){
-        if(bookingConfirmation.getPayment().getPaymentMethod() instanceof Paypal){
+    private void setPaymentMethod(PaymentMethod payment){
+        if(payment instanceof Paypal){
             Image image = new Image(getClass().getResourceAsStream("PaypalMethod.png"));
             this.paymentMethood.setImage(image);
-            Paypal paypal = (Paypal) bookingConfirmation.getPayment().getPaymentMethod();
+            Paypal paypal = (Paypal) payment;
             this.nameOnCard.setText("");
             this.cardNumber.setText(paypal.getEmail());
             this.expirationDate.setText("");
             amountTotal.setText(Double.toString(paypal.calculateTotalPriceWithFees(subTotalMoney)));
 
         }
-        else if(bookingConfirmation.getPayment().getPaymentMethod() instanceof Card){
+        else if(payment instanceof Card){
             Image image = new Image(getClass().getResourceAsStream("CardMethod.png"));
             this.paymentMethood.setImage(image);
-            Card card = (Card) bookingConfirmation.getPayment().getPaymentMethod();
+            Card card = (Card) payment;
             this.nameOnCard.setText(card.getOwnerName());
             this.expirationDate.setText(card.getExpirationDate());
             hideCardNumber(card);
             amountTotal.setText(Double.toString(card.calculateTotalPriceWithFees(subTotalMoney)));
         }
     }
-    private void calculateTotalsAndSetPrices(int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){
-        economyPriceMoney = (economySeatsCount * bookingConfirmation.getFlight().getEconomyPrice());
-        businessPriceMoney = (businessSeatsCount * bookingConfirmation.getFlight().getBusinessPrice());
-        firstClassPriceMoney = (firstClassSeatsCount * bookingConfirmation.getFlight().getFirstClassPrice());
+    private void calculateTotalsAndSetPrices(int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount, Flight currentFlight){
+        economyPriceMoney = (economySeatsCount * currentFlight.getEconomyPrice());
+        businessPriceMoney = (businessSeatsCount * currentFlight.getBusinessPrice());
+        firstClassPriceMoney = (firstClassSeatsCount * currentFlight.getFirstClassPrice());
         this.economyClassPrice.setText("$" + (economyPriceMoney));
         this.bussniessClassPrice.setText("$" + (businessPriceMoney));
         this.firstClassPrice.setText("$" + (firstClassPriceMoney));
@@ -116,33 +118,32 @@ public class BookingConfirmationController {
         String lastFourDigits = card.getNumber().substring(card.getNumber().length() - 4);
         this.cardNumber.setText("*".repeat(card.getNumber().length() - 4) + lastFourDigits);
     }
-    private void setPassengerDetails(){
-        this.userName.setText(bookingConfirmation.getUser().getUserName());
-        this.airLineName.setText(bookingConfirmation.getFlight().getAirlineName());
-        this.airLineName1.setText("Flying through " + bookingConfirmation.getFlight().getAirlineName());
-        this.destination.setText(bookingConfirmation.getFlight().getArrivalAirport().getName());
-        this.price.setText("$" + bookingConfirmation.getFlight().getEconomyPrice());
+    private void setPassengerDetails(User user, Flight currentFlight){
+        this.userName.setText(user.getUserName());
+        this.airLineName.setText(currentFlight.getAirlineName());
+        this.airLineName1.setText("Flying through " + currentFlight.getAirlineName());
+        this.destination.setText(currentFlight.getArrivalAirport().getName());
+        this.price.setText("$" + currentFlight.getEconomyPrice());
         this.bookingNumber.setText(Integer.toString(bookingConfirmation.getBookingNumber()));
     }
-    private void setDepartingDate(){
-        this.departingDate.setText(bookingConfirmation.getFlight().getDepartureDate().getDay() + "/"
-                + bookingConfirmation.getFlight().getDepartureDate().getMonth() + "/"
-                + bookingConfirmation.getFlight().getDepartureDate().getYear());
+    private void setDepartingDate(Flight currentFlight){
+        this.departingDate.setText(currentFlight.getDepartureDate().toString());
     }
     private void setPassengersSeatsCount(){
         this.economySeatsCount.setText(String.valueOf(this.bookingConfirmation.getEconomySeatsCount()));
         this.businessSeatsCount.setText(String.valueOf(this.bookingConfirmation.getBusinessSeatsCount()));
         this.firstClassSeatsCount.setText(String.valueOf(this.bookingConfirmation.getFirstClassSeatsCount()));
     }
-    private void calculateTimeOfTheTrip(){
-        int timeTaken = (Integer.parseInt(bookingConfirmation.getFlight().getArrivalTime().getHour()))  + 12 - (Integer.parseInt(bookingConfirmation.getFlight().getDepartureTime().getHour()));
+    private void calculateTimeOfTheTrip(Flight currentFlight){
+        int timeTaken = (Integer.parseInt(currentFlight.getArrivalTime().getHour()))  + 12 - (Integer.parseInt(currentFlight.getDepartureTime().getHour()));
         this.timeOfTheTrip.setText(timeTaken + " Hours " + 0 + " minutes ");
     }
-    private void setFromToTime(){
-        this.FromTo.setText("From " + bookingConfirmation.getFlight().getDepartureTime().toString()
-            + " To " + bookingConfirmation.getFlight().getArrivalTime().toString());
+    private void setFromToTime(Flight currentFlight){
+        this.FromTo.setText("From " + currentFlight.getDepartureTime().toString()
+            + " To " + currentFlight.getArrivalTime().toString());
     }
-    private void setArrivalDate(){
-        arrivalDate.setText(bookingConfirmation.getFlight().getArrivalDate().toString());
+    private void setArrivalDate(Flight currentFlight){
+        arrivalDate.setText(currentFlight.getArrivalDate().toString());
     }
+
 }

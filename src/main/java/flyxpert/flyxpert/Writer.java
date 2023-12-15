@@ -10,6 +10,7 @@ public class Writer {
         writeUsers();
         writeToFlightInformationFile();
         writeBookingDataToFile();
+        WriteBookingNumber();
     }
 
 
@@ -63,15 +64,15 @@ public class Writer {
     }
     public void writeBookingDataToFile() throws FileNotFoundException{
         try{
-            PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("bookingRecords.txt", true));
+            PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("bookingRecords.txt"));
             for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
-                bookingRecordsWriter.println(bookingRecord.getUser().getUserName() + " " + " " + bookingRecord.getBookingNumber() + " " +
-                bookingRecord.getFlight().getAirlineName() + " " +
-                bookingRecord.getFlight().getDepartureAirport().getName() + " " + bookingRecord.getFlight().getArrivalAirport().getName() + " " + bookingRecord.getFlight().getFlightNumber()
-                + " " + bookingRecord.getFlight().getDepartureDate().toString() + " " + bookingRecord.getFlight().getArrivalDate().toString() + " " +
-                bookingRecord.getFlight().getDepartureTime().toString() + " " + bookingRecord.getFlight().getArrivalTime().toString()
-                + " " + bookingRecord.getPayment().getPaymentID() + " " + bookingRecord.getPayment().toString() + " " + bookingRecord.getPayment().getPaymentAmount() + " " + bookingRecord.getPayment().getPaymentStatus()
-                + printAllPassengers() + "%n");
+                bookingRecordsWriter.println(bookingRecord.getUserName()  + "," + bookingRecord.getBookingNumber() + "," +
+                bookingRecord.getFlightID() + "," + bookingRecord.getAirLineName() + "," +
+                bookingRecord.getDepartureAirportName() + "," + bookingRecord.getArrivalAirportName() + "," +
+                bookingRecord.getDepartureDate() + "," + bookingRecord.getArrivalDate() + "," +
+                bookingRecord.getDepartureTime() + "," + bookingRecord.getArrivalTime()
+                + "," + bookingRecord.getPaymentID() + "," + bookingRecord.getPaymentMethood() + "," + bookingRecord.getPaymentAmount() + "," + bookingRecord.getPaymentStatus() + "," + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + "," + bookingRecord.getFirstClassSeatsCount()
+                + printAllPassengers());
 
 
             }
@@ -86,12 +87,23 @@ public class Writer {
         String passengersDetails = null;
         String finalString = "";
         for (Passenger passengerRecords: Passenger.passengers) {
-            passengersDetails = " " + "passengerNumber" + " " + passengerNum + " " + passengerRecords.getSeat() + " " + passengerRecords.getFirstName() + " " + passengerRecords.getMiddleName() +
-            " " + passengerRecords.getLastName() + " " + passengerRecords.getPhoneNumber() + " " + passengerRecords.getDateOfBirth();
+            passengersDetails = "," + "passengerNumber" + "," + passengerNum + "," + passengerRecords.getSeat().getPrimaryKey() + "," + passengerRecords.getFirstName() + "," + passengerRecords.getMiddleName() +
+            "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirthAsAString();
             finalString = finalString + passengersDetails;
             passengerNum++;
         }
         return finalString;
+    }
+
+    public void WriteBookingNumber() throws FileNotFoundException{
+        try {
+            PrintWriter bookingNumberWriter = new PrintWriter(new FileWriter("bookingNumber.txt"));
+            bookingNumberWriter.println(BookingConfirmation.lastBookingNumber);
+            bookingNumberWriter.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package flyxpert.flyxpert;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,8 @@ public class Reader {
     public void readAllFiles() throws FileNotFoundException {
         readFlightInformationFile();
         readUsers();
+        readBookingRecords();
+        readBookingNumber();
     }
 
 
@@ -75,13 +78,79 @@ public class Reader {
         }
     }
 
-//    public void readBookingRecords() throws FileNotFoundException{
-//        try {
-//            File file = new File("bookingRecords.txt");
-//            Scanner scan = new Scanner(file);
-//            while (scan.hasNext()){
-//
-//            }
-//        }
-//    }
+    public void readBookingRecords() throws FileNotFoundException{
+        try {
+            File file = new File("bookingRecords.txt");
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()){
+                String line = scan.nextLine();
+                String[] bookingDetails  = line.split(",");
+                BookingConfirmation bookingConfirmation = new BookingConfirmation(
+                        bookingDetails[0], bookingDetails[2], bookingDetails[3],
+                        bookingDetails[4], bookingDetails[5], bookingDetails[6],
+                        bookingDetails[7], bookingDetails[8], bookingDetails[9],
+                        bookingDetails[10], bookingDetails[11], bookingDetails[12],
+                        bookingDetails[13], Integer.parseInt(bookingDetails[14]), Integer.parseInt(bookingDetails[15]),
+                        Integer.parseInt(bookingDetails[16]));
+                bookingConfirmation.setBookingNumber(Integer.parseInt(bookingDetails[1]));
+                int numberOfPassengers = bookingConfirmation.getEconomySeatsCount() + bookingConfirmation.getBusinessSeatsCount() + bookingConfirmation.getFirstClassSeatsCount();
+                bookingConfirmation.setBoookingPassengers(readPassengers(numberOfPassengers));
+                BookingConfirmation.bookingRecords.add(bookingConfirmation);
+            }
+
+
+            scan.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Passenger> readPassengers(int numberOfPassengers) throws FileNotFoundException{
+        ArrayList <Passenger> passengers = new ArrayList<>();
+        try {
+            File file = new File("bookingRecords.txt");
+            Scanner scan = new Scanner(file);
+            while (scan.hasNextLine()){
+                String line = scan.nextLine();
+                String[] bookingDetails  = line.split(",");
+                for (int i = 1; i <= numberOfPassengers; i++){
+                    if(i == 1) {
+                         passengers.add( new Passenger(
+                                bookingDetails[19], bookingDetails[20], bookingDetails[21],
+                                bookingDetails[22], bookingDetails[23], bookingDetails[24]));
+                    }
+                    else {
+                        passengers.add( new Passenger(
+                                bookingDetails[19 + ((i-1) * 6)], bookingDetails[20 + ((i-1) * 6)], bookingDetails[21 + ((i-1) * 6)],
+                                bookingDetails[22 + ((i-1) * 6)], bookingDetails[23 + ((i-1) * 6)], bookingDetails[24 + ((i-1) * 6)]));
+                    }
+                }
+            }
+
+
+            scan.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return passengers;
+    }
+
+    public void readBookingNumber() throws FileNotFoundException{
+        try{
+            File file = new File("bookingNumber.txt");
+            Scanner scanner = new Scanner(file);
+            if (scanner.hasNext()){
+                BookingConfirmation.lastBookingNumber = scanner.nextInt() + 1;
+                System.out.println(BookingConfirmation.lastBookingNumber);
+            }else{
+                System.out.println("File is empty");
+            }
+            scanner.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

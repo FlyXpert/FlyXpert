@@ -1,10 +1,3 @@
-aaa  1111234 Lufthansa Berlin Cairo 13 27/01/2023 28/01/2023 10:00 PM 04:00 AM 1 Paypal 629.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c gg gg g 12345678912 Sun Dec 24 00:00:00 EET 2023%n
-m4  1111234 Lufthansa Berlin Cairo 14 27/01/2023 28/01/2023 11:00 PM 03:00 AM 1 Paypal 577.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c r r r 12345678912 Sun Dec 17 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c a a a 12345678912 Tue Dec 12 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c a a a 12345678912 Tue Dec 05 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c a a a 12345678912 Mon Dec 11 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c A A A 12345678912 Fri Dec 01 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c a a a 12345678912 Fri Dec 01 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c a a a 12345678912 Fri Dec 01 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c a a a 12345678912 Fri Dec 01 00:00:00 EET 2023%n
-Parly  1111234 Egyptair Cairo Los Angeles 1 20/01/2023 21/01/2023 05:00 PM 06:00 AM 1 Paypal 733.0 Payed passengerNumber 1 flyxpert.flyxpert.Seat@731a74c b b b 12345678912 Sat Dec 02 00:00:00 EET 2023%n
+Parly,0,1,Egyptair,Cairo,Los Angeles,20/01/2023,21/01/2023,05:00 PM,06:00 AM,1,Paypal,733.0,Payed,0,1,0,passengerNumber,1,3B,a,a,a,12345678912,06/01/2024
+Parly,0,12,Nile Air,Cairo,Berlin,20/01/2023,20/01/2023,05:00 AM,09:00 AM,1,Paypal,317.0,Payed,0,1,0,passengerNumber,1,3B,a,a,a,12345678912,06/01/2024
+mostafa,0,1,Egyptair,Cairo,Los Angeles,20/01/2023,21/01/2023,05:00 PM,06:00 AM,1,Paypal,733.0,Payed,0,1,0,passengerNumber,1,3B,a,a,a,12345678912,06/01/2024

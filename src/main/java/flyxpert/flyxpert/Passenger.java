@@ -1,6 +1,8 @@
 package flyxpert.flyxpert;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,9 +13,23 @@ public class Passenger {
         private String lastName;
         private Date dateOfBirth = new Date();
         private String phoneNumber;
+        private String dateOfBirthasAString;
         private Seat seat;
         public static ArrayList<Passenger> passengers = new ArrayList<>();
 
+        public Passenger (){
+
+        }
+
+        public Passenger(String primarySeat, String firstName, String middleName, String lastName, String phoneNumber, String dateOfBirth) {
+                this.seat = new Seat();
+                this.seat.setPrimaryKey(primarySeat);
+                this.firstName = firstName;
+                this.middleName = middleName;
+                this.lastName = lastName;
+                this.dateOfBirthasAString = dateOfBirth;
+                this.phoneNumber = phoneNumber;
+        }
 
         public void setSeat(Seat seat) {
                 this.seat = seat;
@@ -51,7 +67,10 @@ public class Passenger {
         public Date getDateOfBirth() {
                 return dateOfBirth;
         }
-
+        public String getDateOfBirthAsAString(){
+                SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                return formatter.format(dateOfBirth);
+        }
         public String getPhoneNumber() {
                 return phoneNumber;
         }
