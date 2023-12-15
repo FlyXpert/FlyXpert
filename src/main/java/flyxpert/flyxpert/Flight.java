@@ -150,8 +150,10 @@ public class Flight {
     public boolean[][] getSeatsAvailability() {
         return seatsAvailability;
     }
-
     public void setSeatsAvailability(boolean[][] seatsAvailability) {
         this.seatsAvailability = seatsAvailability;
+    }
+    public void setSeatsAvailability(int row, int col) {
+        this.seatsAvailability[row][col] = true;
     }
 }

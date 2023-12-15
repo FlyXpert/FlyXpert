@@ -20,20 +20,24 @@ public class BookingConfirmation {
 
     public BookingConfirmation(User user, Flight currentFlight,  Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){;
         this.user = new User(user);
-        this.flight = new Flight(currentFlight);
 //        this.economyClassPrice = new Price(price);
         this.bookingNumber = lastBookingNumber++;
         this.payment = payment;
         this.economySeatsCount = economySeatsCount;
         this.businessSeatsCount = businessSeatsCount;
         this.firstClassSeatsCount = firstClassSeatsCount;
-        setBoookingPassengers();
+        setBoookingPassengers(currentFlight);
+        this.flight = new Flight(currentFlight);
     }
     public int getBookingNumber() {
         return bookingNumber;
     }
-    private void setBoookingPassengers(){
-        this.bookingPassengers.addAll(Passenger.passengers);
+    private void setBoookingPassengers(Flight currentFlight){
+        for (Passenger passenger : Passenger.passengers) {
+            currentFlight.setSeatsAvailability(passenger.getSeat().getRow(), passenger.getSeat().getCol());
+            currentFlight.setAvailableSeats(currentFlight.getAvailableSeats() - 1);
+            this.bookingPassengers.add(passenger);
+        }
     }
 //    public Price getPrice() {
 //        return this.economyClassPrice;

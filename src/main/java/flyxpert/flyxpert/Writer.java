@@ -67,7 +67,7 @@ public class Writer {
             for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
                 bookingRecordsWriter.println(bookingRecord.getUser().getUserName() + " " + " " + bookingRecord.getBookingNumber() + " " +
                 bookingRecord.getFlight().getAirlineName() + " " +
-                bookingRecord.getFlight().getDepartureAirport() + " " + bookingRecord.getFlight().getArrivalAirport() + " " + bookingRecord.getFlight().getFlightNumber()
+                bookingRecord.getFlight().getDepartureAirport().getName() + " " + bookingRecord.getFlight().getArrivalAirport().getName() + " " + bookingRecord.getFlight().getFlightNumber()
                 + " " + bookingRecord.getFlight().getDepartureDate().toString() + " " + bookingRecord.getFlight().getArrivalDate().toString() + " " +
                 bookingRecord.getFlight().getDepartureTime().toString() + " " + bookingRecord.getFlight().getArrivalTime().toString()
                 + " " + bookingRecord.getPayment().getPaymentID() + " " + bookingRecord.getPayment().toString() + " " + bookingRecord.getPayment().getPaymentAmount() + " " + bookingRecord.getPayment().getPaymentStatus()

@@ -272,7 +272,7 @@ public class PaymentPageController implements Initializable{
                 paypal.setEmail(paypalEmail);
                 payment = new Payment(paymentTotal, paypal);
             }
-            bookingConfirmationController.displayTicketInfo(User.currentUser, SELECTED_FLIGHT, payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
+            bookingConfirmationController.displayTicketInfo(User.currentUser, Flight.flights.get(Flight.selectedFlightIndexInFlightsArray), payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
             bookingConfirmationScene = new Scene(bookingConfirmationRoot);
             bookingConfirmationScene.getStylesheets().add(getClass().getResource("ButtonBookingClassStyle.css").toExternalForm());
