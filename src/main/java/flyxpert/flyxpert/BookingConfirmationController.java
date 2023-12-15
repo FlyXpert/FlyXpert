@@ -104,6 +104,7 @@ public class BookingConfirmationController {
             amountTotal.setText(Double.toString(card.calculateTotalPriceWithFees(subTotalMoney)));
         }
     }
+
     private void calculateTotalsAndSetPrices(int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount, Flight currentFlight){
         economyPriceMoney = (economySeatsCount * currentFlight.getEconomyPrice());
         businessPriceMoney = (businessSeatsCount * currentFlight.getBusinessPrice());
@@ -118,6 +119,7 @@ public class BookingConfirmationController {
         String lastFourDigits = card.getNumber().substring(card.getNumber().length() - 4);
         this.cardNumber.setText("*".repeat(card.getNumber().length() - 4) + lastFourDigits);
     }
+
     private void setPassengerDetails(User user, Flight currentFlight){
         this.userName.setText(user.getUserName());
         this.airLineName.setText(currentFlight.getAirlineName());
@@ -134,6 +136,7 @@ public class BookingConfirmationController {
         this.businessSeatsCount.setText(String.valueOf(this.bookingConfirmation.getBusinessSeatsCount()));
         this.firstClassSeatsCount.setText(String.valueOf(this.bookingConfirmation.getFirstClassSeatsCount()));
     }
+
     private void calculateTimeOfTheTrip(Flight currentFlight){
         int timeTaken = (Integer.parseInt(currentFlight.getArrivalTime().getHour()))  + 12 - (Integer.parseInt(currentFlight.getDepartureTime().getHour()));
         this.timeOfTheTrip.setText(timeTaken + " Hours " + 0 + " minutes ");
@@ -145,5 +148,4 @@ public class BookingConfirmationController {
     private void setArrivalDate(Flight currentFlight){
         arrivalDate.setText(currentFlight.getArrivalDate().toString());
     }
-
 }

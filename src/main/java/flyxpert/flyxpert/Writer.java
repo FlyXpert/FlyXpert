@@ -64,6 +64,7 @@ public class Writer {
     }
     public void writeBookingDataToFile() throws FileNotFoundException{
         try{
+
             PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("bookingRecords.txt"));
             for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
                 bookingRecordsWriter.println(bookingRecord.getUserName()  + "," + bookingRecord.getBookingNumber() + "," +
@@ -87,13 +88,16 @@ public class Writer {
         String passengersDetails = null;
         String finalString = "";
         for (Passenger passengerRecords: Passenger.passengers) {
+
             passengersDetails = "," + "passengerNumber" + "," + passengerNum + "," + passengerRecords.getSeat().getPrimaryKey() + "," + passengerRecords.getFirstName() + "," + passengerRecords.getMiddleName() +
             "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirthAsAString();
+
             finalString = finalString + passengersDetails;
             passengerNum++;
         }
         return finalString;
     }
+
 
     public void WriteBookingNumber() throws FileNotFoundException{
         try {
@@ -105,5 +109,4 @@ public class Writer {
             e.printStackTrace();
         }
     }
-
 }

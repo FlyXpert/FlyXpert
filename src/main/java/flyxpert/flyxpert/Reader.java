@@ -78,6 +78,7 @@ public class Reader {
         }
     }
 
+
     public void readBookingRecords() throws FileNotFoundException{
         try {
             File file = new File("bookingRecords.txt");
@@ -153,4 +154,5 @@ public class Reader {
             e.printStackTrace();
         }
     }
+
 }

@@ -49,11 +49,11 @@ public class BookingConfirmation {
 //        this.flight = new Flight(currentFlight);
 //    }
     public BookingConfirmation(String airLineName, String arrivalDate, String arrivalTime){
-
     }
     public int getBookingNumber() {
         return bookingNumber;
     }
+
     public void setAvaliableSeats(Flight currentFlight){
         for (Passenger passenger : Passenger.passengers) {
             currentFlight.setSeatsAvailability(passenger.getSeat().getRow(), passenger.getSeat().getCol());
@@ -129,5 +129,11 @@ public class BookingConfirmation {
 
     public void setBookingNumber(int bookingNumber) {
         this.bookingNumber = bookingNumber;
+    }
+    public User getUser() {
+        return user;
+    }
+    public Flight getFlight() {
+        return flight;
     }
 }
