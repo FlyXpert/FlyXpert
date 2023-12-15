@@ -166,7 +166,7 @@ public class UserHistoryController implements Initializable {
         static boolean confirmed = false;
 
         public static void onXClicked(int index) {
-                // TODO : add a popup then delete flight from user
+                // TODO : delete flight from user
 
                 SceneSwitcher.createPopUp("ConfirmDelete", index);
         }
