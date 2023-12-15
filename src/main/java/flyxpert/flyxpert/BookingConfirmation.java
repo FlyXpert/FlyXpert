@@ -18,6 +18,7 @@ public class BookingConfirmation {
     public ArrayList<Passenger> bookingPassengers = new ArrayList<>();
     public static ArrayList<BookingConfirmation> bookingRecords = new ArrayList<>();
 
+
     public BookingConfirmation(String userName, String flightID, String airLineName, String departureAirportName, String arrivalAirportName, String departureDate, String arrivalDate, String departureTime, String arrivalTime, String paymentID, String paymentMethood, String paymentAmount, String paymentStatus, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount) {
         this.userName = userName;
         this.flightID = flightID;
@@ -49,10 +50,12 @@ public class BookingConfirmation {
 //        this.flight = new Flight(currentFlight);
 //    }
     public BookingConfirmation(String airLineName, String arrivalDate, String arrivalTime){
+
     }
     public int getBookingNumber() {
         return bookingNumber;
     }
+
 
     public void setAvaliableSeats(Flight currentFlight){
         for (Passenger passenger : Passenger.passengers) {
@@ -62,6 +65,7 @@ public class BookingConfirmation {
     }
     public void setBoookingPassengers(ArrayList<Passenger> passengers){
         this.bookingPassengers.addAll(passengers);
+
     }
 //    public Price getPrice() {
 //        return this.economyClassPrice;

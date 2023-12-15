@@ -67,6 +67,7 @@ public class Writer {
 
             PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("bookingRecords.txt"));
             for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
+
                 bookingRecordsWriter.println(bookingRecord.getUserName()  + "," + bookingRecord.getBookingNumber() + "," +
                 bookingRecord.getFlightID() + "," + bookingRecord.getAirLineName() + "," +
                 bookingRecord.getDepartureAirportName() + "," + bookingRecord.getArrivalAirportName() + "," +
@@ -74,7 +75,6 @@ public class Writer {
                 bookingRecord.getDepartureTime() + "," + bookingRecord.getArrivalTime()
                 + "," + bookingRecord.getPaymentID() + "," + bookingRecord.getPaymentMethood() + "," + bookingRecord.getPaymentAmount() + "," + bookingRecord.getPaymentStatus() + "," + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + "," + bookingRecord.getFirstClassSeatsCount()
                 + printAllPassengers());
-
 
             }
             bookingRecordsWriter.close();

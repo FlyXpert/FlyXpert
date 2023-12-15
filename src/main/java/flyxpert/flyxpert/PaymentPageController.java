@@ -273,7 +273,9 @@ public class PaymentPageController implements Initializable{
                 payment = new Payment(paymentTotal, paypal);
             }
 
+
             bookingConfirmationController.displayTicketInfo(User.currentUser, Flight.flights.get(Flight.selectedFlightIndexInFlightsArray), payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
+
 
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
             bookingConfirmationScene = new Scene(bookingConfirmationRoot);
