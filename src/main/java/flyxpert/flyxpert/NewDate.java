@@ -1,5 +1,7 @@
 package flyxpert.flyxpert;
 
+import javafx.fxml.FXML;
+
 public class NewDate {
     private String day;
     private String month;
@@ -33,5 +35,11 @@ public class NewDate {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+
+    @Override
+    public String toString(){
+        return (day + "/" + month + "/" + year);
     }
 }

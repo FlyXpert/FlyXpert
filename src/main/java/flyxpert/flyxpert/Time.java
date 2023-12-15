@@ -34,4 +34,9 @@ public class Time {
     public void setPeriod(String period) {
         this.period = period;
     }
+
+    @Override
+    public String toString(){
+        return (hour + ":" + minutes + " " + period);
+    }
 }

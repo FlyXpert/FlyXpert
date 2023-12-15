@@ -56,7 +56,7 @@ public class Flight {
     public int getFlightNumber() {
         return flightNumber;
     }
-
+    public String getAirLineName(){return this.airlineName;};
     public void setFlightNumber(int flightNumber) {
         this.flightNumber = flightNumber;
     }
