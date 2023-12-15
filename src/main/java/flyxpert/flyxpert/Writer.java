@@ -88,7 +88,6 @@ public class Writer {
         String passengersDetails = null;
         String finalString = "";
         for (Passenger passengerRecords: Passenger.passengers) {
-
             passengersDetails = "," + "passengerNumber" + "," + passengerNum + "," + passengerRecords.getSeat().getPrimaryKey() + "," + passengerRecords.getFirstName() + "," + passengerRecords.getMiddleName() +
             "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirthAsAString();
 
