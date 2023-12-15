@@ -16,6 +16,12 @@ public class User {
         this.email = email;
         this.isAdmin = false;
     }
+    public User(User user){
+        this.userName = user.userName;
+        this.password = user.password;
+        this.email = user.email;
+        this.isAdmin = false;
+    }
     public static User searchForUser(User u) {
         for(User user : userList) {
             if(user.equals(u))

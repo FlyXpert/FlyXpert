@@ -78,7 +78,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Label fx:id="destination" layoutX="624.0" layoutY="191.0" prefHeight="23.0" prefWidth="106.0" text="Destination" textFill="#7c8db0">
+      <Label fx:id="destination" layoutX="624.0" layoutY="191.0" prefHeight="23.0" prefWidth="274.0" text="Destination" textFill="#7c8db0">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -94,7 +94,7 @@
             <Image url="@JapanAirlineLogo.png" />
          </image>
       </ImageView>
-      <Label layoutX="631.0" layoutY="363.0" text="timeOfTheTrip">
+      <Label fx:id="timeOfTheTrip" layoutX="631.0" layoutY="363.0" text="timeOfTheTrip">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -104,17 +104,17 @@
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="831.0" layoutY="363.0" text="From ..:.. To ..:..">
+      <Label fx:id="FromTo" layoutX="794.0" layoutY="363.0" text="From 05:45AMTo06:55PM ..:..">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="1010.0" layoutY="363.0" text="Date dd - mm - yyyy">
+      <Label fx:id="arrivalDate" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1091.0" layoutY="363.0" style="-fx-alignment: center-right;" text="22/22/2222">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Text fill="#7c8db0" layoutX="1067.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date">
+      <Text fill="#7c8db0" layoutX="1089.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date">
          <font>
             <Font size="15.0" />
          </font>
@@ -134,17 +134,17 @@
             <Font name="Arial Bold" size="30.0" />
          </font>
       </Text>
-      <Text fx:id="passengerName1" fill="#6e7491" layoutX="526.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num * Passenger (Economy)">
+      <Text fill="#6e7491" layoutX="571.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Economy">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Text fx:id="passengerName2" fill="#6e7491" layoutX="526.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num * Passenger (Busniess)">
+      <Text fill="#6e7491" layoutX="571.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Business">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Text fill="#6e7491" layoutX="526.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="num * Passenger (FirstClass)">
+      <Text fill="#6e7491" layoutX="571.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* First Class">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -154,8 +154,8 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Text>
-      <Line endX="253.0" layoutX="804.0" layoutY="681.0" startX="-288.0" />
-      <Text layoutX="532.0" layoutY="714.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AmountTotal">
+      <Line endX="253.0" layoutX="804.0" layoutY="662.0" startX="-288.0" />
+      <Text layoutX="526.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AmountTotal with fees">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -189,11 +189,6 @@
          <font>
             <Font size="23.0" />
          </font></Button>
-      <Text fill="#6e7491" layoutX="526.0" layoutY="659.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texes (9.4%)">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
       <Label fx:id="economyClassPrice" layoutX="982.0" layoutY="510.0" text="\$Price" textFill="#6e7491">
          <font>
             <Font name="Arial" size="20.0" />
@@ -214,12 +209,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="priceWithTaxes" layoutX="982.0" layoutY="640.0" text="\$Price" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="amountTotal" layoutX="982.0" layoutY="696.0" text="\$Price">
+      <Label fx:id="amountTotal" layoutX="982.0" layoutY="680.0" text="\$Price">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -229,7 +219,22 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="airLineName1" layoutX="526.0" layoutY="219.0" text="airLineName" textFill="#7c8db0">
+      <Label fx:id="airLineName1" layoutX="526.0" layoutY="219.0" prefHeight="23.0" prefWidth="285.0" text="airLineName" textFill="#7c8db0">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="economySeatsCount" layoutX="526.0" layoutY="509.0" text="num" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="businessSeatsCount" layoutX="526.0" layoutY="542.0" text="num" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="firstClassSeatsCount" layoutX="526.0" layoutY="575.0" text="num" textFill="#6e7491">
          <font>
             <Font name="Arial" size="20.0" />
          </font>

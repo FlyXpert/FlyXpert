@@ -76,6 +76,9 @@ public class PaymentPageController implements Initializable{
     private final Flight SELECTED_FLIGHT = Flight.flights.get(Flight.selectedFlightIndexInFlightsArray);
     private int paymentSubtotal;
     private int paymentTotal;
+    private int economySeatsCount = 0;
+    private int businessSeatsCount = 0;
+    private int firstClassSeatsCount = 0;
     Card card = new Card();
     Paypal paypal = new Paypal();
     public void initialize(URL url, ResourceBundle resourceBundle){
@@ -90,9 +93,6 @@ public class PaymentPageController implements Initializable{
                 + " " + SELECTED_FLIGHT.getArrivalTime().getPeriod());
 
         // Setting the payment summary from the passengers booked in the selected flight
-        int economySeatsCount = 0;
-        int businessSeatsCount = 0;
-        int firstClassSeatsCount = 0;
 
         for (Passenger p : Passenger.passengers){
             String currentPassengerSeatType = p.getSeat().getType().getName();
@@ -260,20 +260,19 @@ public class PaymentPageController implements Initializable{
             }
 
             BookingConfirmationController bookingConfirmationController = fxmlLoader.getController();
-
+            Payment payment;
             if(currentPaymentMethod.equals("card")){
                 card.setOwnerName(cardOwnerName);
                 card.setNumber(cardNumber);
                 card.setExpirationDate(cardExpirationDate);
                 card.setCcv(cardCcv);
-                Payment payment = new Payment(paymentTotal, card);
-                bookingConfirmationController.displayTicketInfo(card.getOwnerName(), "Tokyo", payment, "Japan", "1250", "11/11/111");
+                payment = new Payment(paymentTotal, card);
             }
             else{
                 paypal.setEmail(paypalEmail);
-                Payment payment = new Payment(paymentTotal, paypal);
-                bookingConfirmationController.displayTicketInfo("Test", "Tokyo", payment, "Paypal", "1250", "27/11");
+                payment = new Payment(paymentTotal, paypal);
             }
+            bookingConfirmationController.displayTicketInfo(User.currentUser, SELECTED_FLIGHT, payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
             bookingConfirmationScene = new Scene(bookingConfirmationRoot);
             bookingConfirmationScene.getStylesheets().add(getClass().getResource("ButtonBookingClassStyle.css").toExternalForm());

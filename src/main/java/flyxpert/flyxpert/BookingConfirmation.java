@@ -1,48 +1,62 @@
 package flyxpert.flyxpert;
 
+import java.util.ArrayList;
 import  java.util.Date;
 import java.util.Random;
 
 public class BookingConfirmation {
-    private String name; //might delete later
-    private static int lastBookingNumber = 1111234;
+    public static int lastBookingNumber = 1111234;
     private int bookingNumber;
-    private String airLineName;
     private Price economyClassPrice;
-    private String destination;
-    private String departingDate;
     private Payment payment;
-    public BookingConfirmation(String name, String price, String airLineName, Payment payment, String destination, String departingDate){;
-        this.name = name;
-        this.economyClassPrice = new Price(price);
-        this.airLineName = airLineName;
-        this.departingDate = departingDate;
-        this.destination = destination;
+    private User user;
+    private Flight flight;
+    int subTotalMoney = 0;
+    int economySeatsCount = 0;
+    int businessSeatsCount = 0;
+    int firstClassSeatsCount = 0;
+    public ArrayList<Passenger> bookingPassengers = new ArrayList<>();
+    public static ArrayList<BookingConfirmation> bookingRecords = new ArrayList<>();
+
+    public BookingConfirmation(User user, Flight currentFlight,  Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){;
+        this.user = new User(user);
+        this.flight = new Flight(currentFlight);
+//        this.economyClassPrice = new Price(price);
         this.bookingNumber = lastBookingNumber++;
         this.payment = payment;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getDepartingDate() {
-        return departingDate;
+        this.economySeatsCount = economySeatsCount;
+        this.businessSeatsCount = businessSeatsCount;
+        this.firstClassSeatsCount = firstClassSeatsCount;
+        setBoookingPassengers();
     }
     public int getBookingNumber() {
         return bookingNumber;
     }
-    public Price getPrice() {
-        return this.economyClassPrice;
+    private void setBoookingPassengers(){
+        this.bookingPassengers.addAll(Passenger.passengers);
     }
-    public String getAirLineName() {
-        return this.airLineName;
-    }
-    public String getDestination(){
-        return this.destination;
-    }
+//    public Price getPrice() {
+//        return this.economyClassPrice;
+//    }
     public Payment getPayment(){
         return payment;
+    }
+    public User getUser() {
+        return user;
+    }
+    public Flight getFlight() {
+        return flight;
+    }
+    public void setSubTotalMoney(int subTotalMoney){
+        this.subTotalMoney = subTotalMoney;
+    }
+    public int getEconomySeatsCount() {
+        return economySeatsCount;
+    }
+    public int getBusinessSeatsCount() {
+        return businessSeatsCount;
+    }
+    public int getFirstClassSeatsCount() {
+        return firstClassSeatsCount;
     }
 }

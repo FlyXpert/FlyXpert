@@ -74,4 +74,14 @@ public class Reader {
             e.printStackTrace();
         }
     }
+
+//    public void readBookingRecords() throws FileNotFoundException{
+//        try {
+//            File file = new File("bookingRecords.txt");
+//            Scanner scan = new Scanner(file);
+//            while (scan.hasNext()){
+//
+//            }
+//        }
+//    }
 }

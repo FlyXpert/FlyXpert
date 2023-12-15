@@ -9,6 +9,7 @@ public class Writer {
     public void writeToAllFiles() throws FileNotFoundException {
         writeUsers();
         writeToFlightInformationFile();
+        writeBookingDataToFile();
     }
 
 
@@ -60,4 +61,37 @@ public class Writer {
             e.printStackTrace();
         }
     }
+    public void writeBookingDataToFile() throws FileNotFoundException{
+        try{
+            PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("bookingRecords.txt", true));
+            for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
+                bookingRecordsWriter.println(bookingRecord.getUser().getUserName() + " " + " " + bookingRecord.getBookingNumber() + " " +
+                bookingRecord.getFlight().getAirlineName() + " " +
+                bookingRecord.getFlight().getDepartureAirport() + " " + bookingRecord.getFlight().getArrivalAirport() + " " + bookingRecord.getFlight().getFlightNumber()
+                + " " + bookingRecord.getFlight().getDepartureDate().toString() + " " + bookingRecord.getFlight().getArrivalDate().toString() + " " +
+                bookingRecord.getFlight().getDepartureTime().toString() + " " + bookingRecord.getFlight().getArrivalTime().toString()
+                + " " + bookingRecord.getPayment().getPaymentID() + " " + bookingRecord.getPayment().toString() + " " + bookingRecord.getPayment().getPaymentAmount() + " " + bookingRecord.getPayment().getPaymentStatus()
+                + printAllPassengers() + "%n");
+
+
+            }
+            bookingRecordsWriter.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public String printAllPassengers(){
+        int passengerNum = 1;
+        String passengersDetails = null;
+        String finalString = "";
+        for (Passenger passengerRecords: Passenger.passengers) {
+            passengersDetails = " " + "passengerNumber" + " " + passengerNum + " " + passengerRecords.getSeat() + " " + passengerRecords.getFirstName() + " " + passengerRecords.getMiddleName() +
+            " " + passengerRecords.getLastName() + " " + passengerRecords.getPhoneNumber() + " " + passengerRecords.getDateOfBirth();
+            finalString = finalString + passengersDetails;
+            passengerNum++;
+        }
+        return finalString;
+    }
+
 }

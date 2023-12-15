@@ -39,7 +39,7 @@ public class NewDate {
 
 
     @Override
-    public String toString(){
+    public String toString() {
         return (day + "/" + month + "/" + year);
     }
 }

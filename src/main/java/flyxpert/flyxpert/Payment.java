@@ -30,4 +30,14 @@ public class Payment {
     public String getPaymentStatus() {
         return paymentStatus;
     }
+
+    @Override
+    public String toString() {
+        if(paymentMethod instanceof Card){
+            return ("Card");
+        }
+        else{
+            return ("Paypal");
+        }
+    }
 }
