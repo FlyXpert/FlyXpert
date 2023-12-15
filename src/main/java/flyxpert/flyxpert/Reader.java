@@ -115,7 +115,7 @@ public class Reader {
                 String[] bookingDetails  = line.split(",");
                 for (int i = 1; i <= numberOfPassengers; i++){
                     if(i == 1) {
-                         passengers.add( new Passenger(
+                        passengers.add( new Passenger(
 
                                 bookingDetails[19], bookingDetails[20], bookingDetails[21],
                                 bookingDetails[22], bookingDetails[23], bookingDetails[24]));
@@ -151,4 +151,3 @@ public class Reader {
         }
     }
 }
-

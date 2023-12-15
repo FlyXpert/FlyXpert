@@ -109,7 +109,7 @@
                 <Image url="@imageplaceholder.png" />
             </image>
         </ImageView>
-        <Button id="button1" disable="true" layoutX="108.0" layoutY="692.0" mnemonicParsing="false" onAction="#AdminAddFlight" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
+        <Button id="button1" disable="true" layoutX="108.0" layoutY="692.0" mnemonicParsing="false" onAction="#AdminEditFlightAction" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>

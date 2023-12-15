@@ -69,12 +69,12 @@ public class Writer {
             for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
 
                 bookingRecordsWriter.println(bookingRecord.getUserName()  + "," + bookingRecord.getBookingNumber() + "," +
-                bookingRecord.getFlightID() + "," + bookingRecord.getAirLineName() + "," +
-                bookingRecord.getDepartureAirportName() + "," + bookingRecord.getArrivalAirportName() + "," +
-                bookingRecord.getDepartureDate() + "," + bookingRecord.getArrivalDate() + "," +
-                bookingRecord.getDepartureTime() + "," + bookingRecord.getArrivalTime()
-                + "," + bookingRecord.getPaymentID() + "," + bookingRecord.getPaymentMethood() + "," + bookingRecord.getPaymentAmount() + "," + bookingRecord.getPaymentStatus() + "," + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + "," + bookingRecord.getFirstClassSeatsCount()
-                + printAllPassengers());
+                        bookingRecord.getFlightID() + "," + bookingRecord.getAirLineName() + "," +
+                        bookingRecord.getDepartureAirportName() + "," + bookingRecord.getArrivalAirportName() + "," +
+                        bookingRecord.getDepartureDate() + "," + bookingRecord.getArrivalDate() + "," +
+                        bookingRecord.getDepartureTime() + "," + bookingRecord.getArrivalTime()
+                        + "," + bookingRecord.getPaymentID() + "," + bookingRecord.getPaymentMethood() + "," + bookingRecord.getPaymentAmount() + "," + bookingRecord.getPaymentStatus() + "," + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + "," + bookingRecord.getFirstClassSeatsCount()
+                        + printAllPassengers());
 
             }
             bookingRecordsWriter.close();
@@ -89,7 +89,7 @@ public class Writer {
         String finalString = "";
         for (Passenger passengerRecords: Passenger.passengers) {
             passengersDetails = "," + "passengerNumber" + "," + passengerNum + "," + passengerRecords.getSeat().getPrimaryKey() + "," + passengerRecords.getFirstName() + "," + passengerRecords.getMiddleName() +
-            "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirthAsAString();
+                    "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirthAsAString();
 
             finalString = finalString + passengersDetails;
             passengerNum++;
