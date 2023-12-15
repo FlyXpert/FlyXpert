@@ -239,9 +239,9 @@ public class FlightInformationController {
     @FXML
     private Button searchButton;
 
-    Map<String, Boolean> departureAirports = new HashMap<String, Boolean>();
-    Map<String, Boolean> arrivalAirports = new HashMap<String, Boolean>();
-    Map<String, Boolean> airlines = new HashMap<String, Boolean>();
+    public static Map<String, Boolean> departureAirports = new HashMap<String, Boolean>();
+    public static Map<String, Boolean> arrivalAirports = new HashMap<String, Boolean>();
+    public static Map<String, Boolean> airlines = new HashMap<String, Boolean>();
 
     private void fillMaps() {
         for (Flight flight : Flight.flights) {

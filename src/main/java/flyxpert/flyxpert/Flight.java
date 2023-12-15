@@ -51,6 +51,18 @@ public class Flight {
         this.flightNumber = flightNumber;
         this.seatsAvailability = seatsAvailability;
     }
+    public Flight(Airport departureAirport, Airport arrivalAirport,String airlineName, Time departureTime, Time arrivalTime, NewDate departureDate, NewDate arrivalDate, int economyPrice,int businessPrice,int firstClassPrice) {
+        this.departureAirport = departureAirport;
+        this.arrivalAirport = arrivalAirport;
+        this.airlineName = airlineName;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.economyPrice = economyPrice;
+        this.businessPrice = businessPrice;
+        this.firstClassPrice = firstClassPrice;
+    }
 
     public static ArrayList<Flight>flights = new ArrayList<>();
     public int getFlightNumber() {

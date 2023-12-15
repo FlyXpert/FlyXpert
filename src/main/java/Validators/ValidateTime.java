@@ -1,0 +1,15 @@
+package Validators;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+public class ValidateTime extends ValidatorAbstract{
+
+    String timePattern = "^(1[0-2]|0?[1-9]):([0-5][0-9])\\s([AP]M)$";
+    Pattern pattern = Pattern.compile(timePattern);
+
+    @Override
+    public Boolean validateData(String time) {
+        Matcher matcher = pattern.matcher(time);
+        return matcher.matches();
+    }
+}

@@ -20,7 +20,6 @@ public class Passenger {
         public Passenger (){
 
         }
-
         public Passenger(String primarySeat, String firstName, String middleName, String lastName, String phoneNumber, String dateOfBirth) {
                 this.seat = new Seat();
                 this.seat.setPrimaryKey(primarySeat);

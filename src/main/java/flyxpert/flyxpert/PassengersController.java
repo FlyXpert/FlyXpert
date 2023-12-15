@@ -2,19 +2,15 @@ package flyxpert.flyxpert;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import Validators.ValidatePhoneNumber;
-import javafx.scene.control.DatePicker;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import Validators.*;
-import javafx.scene.input.MouseEvent;
 
 public class PassengersController
 {
@@ -39,7 +35,7 @@ public class PassengersController
     static public int passengersToBeAdded;
     static public int initialPassengersToBeAdded;
     static private int curPassenger = 0;
-    private ValidatePhoneNumber validatePhoneNumber = new ValidatePhoneNumber();
+    private ValidateNumber validatePhoneNumber = new ValidateNumber();
     private ValidateName validateName = new ValidateName();
 
 
@@ -63,7 +59,7 @@ public class PassengersController
 
 
 
-    public Boolean addPassenger() throws ParseException {
+    public boolean addPassenger() throws ParseException {
 
         Passenger.passengers.add(new Passenger());
 
@@ -101,7 +97,7 @@ public class PassengersController
             return false;
         }
 
-        if (validatePhoneNumber.validateData(phoneNumberTextField.getText())) {
+        if (validatePhoneNumber.validateData(phoneNumberTextField.getText()) && phoneNumberTextField.getText().length() == 11) {
             Passenger.passengers.get(curPassenger).setPhoneNumber(phoneNumberTextField.getText());
         }
         else {
@@ -126,11 +122,5 @@ public class PassengersController
             return;
         }
         SceneSwitcher.switchScene(event, "SeatSelectionPage", null);
-    }
-    @FXML
-    private void onLogoutButtonPressed(MouseEvent e)
-    {
-        User.currentUser = null;
-        SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
     }
 }
