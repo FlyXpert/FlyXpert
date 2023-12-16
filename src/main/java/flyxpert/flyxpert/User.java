@@ -22,17 +22,16 @@ public class User {
         this.email = user.email;
         this.isAdmin = false;
     }
-    public static User searchForUser(User u) {
-        for(User user : userList) {
-            if(user.equals(u))
-                return u;
-        }
-        return null;
+    public static String searchForUser(String username) {
+        UserTrie userTrie = UserTrie.getInstance();
+        return userTrie.getPassword(username);
     }
 
     public static boolean exists(String userName) {
-        for(User user : userList)
-            if(user.userName.equals(userName) || user.email.equals(userName))
+        if (userName == null)
+            return false;
+        UserTrie userTrie = UserTrie.getInstance();
+            if(userTrie.search(userName) != null)
                 return true;
         return false;
     }

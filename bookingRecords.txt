@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 mostafa,0,1,Egyptair,Cairo,Los Angeles,20/01/2023,21/01/2023,05:00 PM,06:00 AM,1,Paypal,629.0,Payed,1,0,0,5D,a,a,a,12345678912,Mon Dec 18 01:34:47 EET 2023
 mostafa,1,1,Egyptair,Cairo,Los Angeles,20/01/2023,21/01/2023,05:00 PM,06:00 AM,1,Paypal,733.0,Payed,0,1,0,4B,a,a,a,12345678912,Mon Dec 18 01:34:47 EET 2023
 mostafa,2,13,Lufthansa,Berlin,Cairo,27/01/2023,28/01/2023,10:00 PM,04:00 AM,1,Paypal,629.0,Payed,1,0,0,9A,a,a,a,45612378945,Mon Dec 18 01:34:47 EET 2023
 mostafa,3,12,Nile Air,Cairo,Berlin,20/01/2023,20/01/2023,05:00 AM,09:00 AM,1,Paypal,265.0,Payed,1,0,0,12C,a,a,a,12345678912,Mon Dec 18 01:34:47 EET 2023
+=======
+Parly,0,7,Nile Air,Cairo,Los Angeles,20/01/2023,21/01/2023,11:00 PM,10:00 AM,1,Paypal,837.0,Payed,0,1,0
+Parly,0,6,Egyptair,Cairo,Los Angeles,21/01/2023,22/01/2023,11:00 PM,10:00 AM,1,Paypal,837.0,Payed,0,1,0
+>>>>>>> ee617c1 (Used Trie to optimize search on user everywhere)
