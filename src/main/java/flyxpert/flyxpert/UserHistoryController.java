@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static flyxpert.flyxpert.BookingConfirmation.bookingRecords;
+
+import static flyxpert.flyxpert.SceneSwitcher.stage;
 import static flyxpert.flyxpert.User.currentUser;
 
 public class UserHistoryController implements Initializable {

@@ -93,6 +93,7 @@ public class AdminOptionsController implements Initializable {
                 Stage stage = new Stage();
                 Parent root = null;
                 try {
+
                         root = FXMLLoader.load(SeatSelectionPageController.class.getResource("AdminEditFlightScene.fxml"));
                 } catch (IOException e) {
                         System.out.printf("Unable to import AdminEditFlightScene.fxml");
