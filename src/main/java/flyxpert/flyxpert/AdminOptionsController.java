@@ -85,6 +85,7 @@ public class AdminOptionsController implements Initializable {
                 Stage stage = new Stage();
                 Parent root = null;
                 try {
+                        System.out.println(System.getProperty("java.class.path"));
                         root = FXMLLoader.load(SeatSelectionPageController.class.getResource("AdminSeatMap.fxml"));
                 } catch (IOException e) {
                         System.out.printf("Unable to import AdminSeatMap.fxml");

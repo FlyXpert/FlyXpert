@@ -19,6 +19,7 @@ public class Flight {
     private boolean[][] seatsAvailability;
 
     public static int selectedFlightIndexInFlightsArray;
+    public Flight(){};
 
     public Flight(Flight flight) {
         this.departureAirport = flight.departureAirport;
