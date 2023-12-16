@@ -61,7 +61,8 @@ public class Reader {
     }
 
     // User data is written in which each line contains all the data for one user, seperated by spaces (Username Email Password)
-    public void readUsers() {
+    public void readUsers()
+    {
         try {
             File file = new File("users.txt");
             Scanner scan = new Scanner(file);

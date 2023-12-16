@@ -18,7 +18,7 @@ public class Encryption
         {
             constantEncryption += (char)(password.charAt(i) + 'a');
         }
-        System.out.println(constantEncryption);
+      //  System.out.println(constantEncryption);
         return constantEncryption;
     }
     public static String constantDecryption(String password)
@@ -28,7 +28,7 @@ public class Encryption
         {
             constantDecryption += (char)(password.charAt(i) - 'a');
         }
-        System.out.println(constantDecryption);
+      //  System.out.println(constantDecryption);
         return constantDecryption;
 
     }
