@@ -76,6 +76,8 @@ public class UserHistoryController implements Initializable {
                 }
                 youHaveXFlights.setText("You have " + userBookingsCount + " flights");
 
+                youHaveXFlights.setText("You have " + userBookingsCount + " flights");
+
                 overlay.setPrefSize(scrollPane.getPrefWidth(), height * size);
                 overlay.setMaxWidth(scrollPane.getMaxWidth());
 
