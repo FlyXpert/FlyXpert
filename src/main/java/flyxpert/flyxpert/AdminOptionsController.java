@@ -85,8 +85,9 @@ public class AdminOptionsController implements Initializable {
                 });
         }
 
+        static Stage stage;
         public void switchToAdminSeatMap()  {
-                Stage stage = new Stage();
+                stage = new Stage();
                 Parent root = null;
                 try {
                         root = FXMLLoader.load(getClass().getResource("AdminSeatMap.fxml"));

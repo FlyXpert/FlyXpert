@@ -8,6 +8,7 @@ import javafx.scene.shape.Rectangle;
 import static flyxpert.flyxpert.Pallete.*;
 
 public abstract class SeatMap {
+
          Seat[][] economySeats = new Seat[200][200];
          Seat[][] businessSeats = new Seat[200][200];
          Seat[][] firstClassSeats = new Seat[200][200];
@@ -99,6 +100,9 @@ public abstract class SeatMap {
                                 break;
                         }
                 }
+
+                if (Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability()[i][j] == false)
+                        seats[i][j].getRec().setFill(Color.GRAY);
 
                 // Add the seat rectangle to the overlay Pane
                 overlay.getChildren().add(seats[i][j].getRec());
