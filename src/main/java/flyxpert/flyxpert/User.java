@@ -3,17 +3,11 @@ package flyxpert.flyxpert;
 import java.util.ArrayList;
 
 public class User {
-<<<<<<< HEAD
     private String userName;
     private String password;
     private String email;
     private boolean isAdmin;
     public static User currentUser;
-=======
-    private String userName, password, email;
-    private int encryptionCode;
-
->>>>>>> 87855e3 (Password Encryption added)
     public static ArrayList<User> userList = new ArrayList<User>();
 
     public User(String userName, String email, String password) {
@@ -68,23 +62,12 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-<<<<<<< HEAD
 
     public void setIsAdmin(boolean state)
     {
         this.isAdmin = state;
     }
-    public boolean getIsAdmin()
-    {
+    public boolean getIsAdmin() {
         return this.isAdmin;
-=======
-    public void setEncryptionCode(int code)
-    {
-        this.encryptionCode = code;
-    }
-    public int getEncryptionCode()
-    {
-        return encryptionCode;
->>>>>>> 87855e3 (Password Encryption added)
     }
 }
