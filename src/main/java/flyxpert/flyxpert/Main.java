@@ -16,12 +16,12 @@ public class Main extends Application {
         writer.writeToAllFiles();
     }
     public void start(Stage stage) throws IOException {
-      //  HomePageController.homePageScene(stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/UserHistory.fxml"));
+        HomePageController.homePageScene(stage);
+       /* FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/UserHistory.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("FlyXpert!");
         stage.setResizable(false);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
     }
 }

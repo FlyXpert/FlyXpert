@@ -17,7 +17,6 @@ import javafx.scene.paint.Paint;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static flyxpert.flyxpert.FlightDetailsConfirmationController.specifiedFlight;
 import static flyxpert.flyxpert.Pallete.*;
 
 
@@ -67,7 +66,6 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
-                boolean[][] availability = specifiedFlight.getSeatsAvailability();
 
                 try {
                         nextSeat.setText("Next Passenger");
@@ -83,7 +81,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                 Pane overlay = new Pane();
                 overlay.getChildren().add(imageView("Plane.jpg"));
 
-                dfsAddSeats(overlay, 960, 540, 0, 0, availability);
+                dfsAddSeats(overlay, 960, 540, 0, 0);
 
                 scrollPane.setContent(overlay);
         }

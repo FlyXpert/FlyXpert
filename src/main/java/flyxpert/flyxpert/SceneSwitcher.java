@@ -99,7 +99,9 @@ public class SceneSwitcher {
                 stage.setScene(scene);
                 stage.centerOnScreen();
                 stage.show();
-                ConfirmDeleteController.setData(index);
+
+                if (newFxml.equals("AdminSeatMap"))
+                        ConfirmDeleteController.setData(index);
         }
 
 }
