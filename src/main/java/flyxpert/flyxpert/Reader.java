@@ -66,7 +66,8 @@ public class Reader {
                 String user = scan.nextLine();
                 //System.out.println(user);
                 String[] userCredentials = user.split(" ");
-                User.userList.add(new User(userCredentials[0], userCredentials[1], userCredentials[2]));
+                int code = Integer.parseInt(Encryption.constantDecryption(userCredentials[3]));
+                User.userList.add(new User(userCredentials[0], userCredentials[1], Encryption.decryption(userCredentials[2], code)));
             }
             scan.close();
         }
