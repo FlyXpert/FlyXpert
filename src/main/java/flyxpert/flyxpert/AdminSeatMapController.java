@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AdminSeatMapController extends SeatMap implements Initializable {
+public class AdminSeatMapController extends SeatMap implements Initializable { D
         ArrayList<Integer> adminReservedSeats = new ArrayList<>();
         boolean[][] justBeenReserved = new boolean[24][4];
 
@@ -48,6 +48,7 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
                 flightName.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureAirport().getName()
                  + " to " +
                         Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getName());
+                dfsAddSeats(overlay, 363, 540, 0, 0);
 
                 Button discard = new Button();
                 Button save = new Button();

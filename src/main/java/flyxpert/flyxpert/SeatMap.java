@@ -16,6 +16,7 @@ public abstract class SeatMap {
          Seat[][] seats = new Seat[200][200];
          private boolean[][] vis = new boolean[200][200];
 
+
         /**
          * Performs a Depth-First Search (DFS) traversal to add seat objects to a specified overlay Pane.
          * The seats are represented as rectangles and are organized based on their type (business, economy, first class).
@@ -101,9 +102,9 @@ public abstract class SeatMap {
                         }
                 }
 
+
                 if (Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability()[i][j] == false)
                         seats[i][j].getRec().setFill(Color.GRAY);
-
                 // Add the seat rectangle to the overlay Pane
                 overlay.getChildren().add(seats[i][j].getRec());
 

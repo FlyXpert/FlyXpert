@@ -16,7 +16,7 @@
                <children>
                   <ImageView fitHeight="2500.0" fitWidth="900.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@PlaneCropped.jpg" />
+                        <Image url="@../../PlaneCropped.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="flightName" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="56.0" prefWidth="836.0" text="Los Angeles, CA to San Jose Del Cabo, Mexico" textFill="#946dff">
