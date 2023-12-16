@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class User {
     private String userName, password, email;
-    private int encryptionCode;
 
     public static ArrayList<User> userList = new ArrayList<User>();
 
@@ -52,13 +51,5 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-    public void setEncryptionCode(int code)
-    {
-        this.encryptionCode = code;
-    }
-    public int getEncryptionCode()
-    {
-        return encryptionCode;
     }
 }
