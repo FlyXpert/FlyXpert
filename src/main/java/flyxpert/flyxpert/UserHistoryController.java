@@ -3,6 +3,7 @@ package flyxpert.flyxpert;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.Blend;
 import javafx.scene.effect.BlendMode;
@@ -40,6 +41,9 @@ public class UserHistoryController implements Initializable {
         @FXML
         Button backButton;
 
+        @FXML
+        Label youHaveXFlights;
+
         static Pane overlay = new Pane();
 
         /**
@@ -60,11 +64,15 @@ public class UserHistoryController implements Initializable {
 
                 backButton.setOnMouseClicked(mouseEvent -> onBackClicked());
 
+                int userBookingsCount = 0;
                 for (int i = 0; i < size; i++) {
                         if (bookingRecords.get(i).getUser().equals(currentUser)) {
                                 userBookings.add(bookingRecords.get(i));
+                                ++userBookingsCount;
                         }
                 }
+
+                youHaveXFlights.setText("You have " + userBookingsCount + " flights");
 
                 overlay.setPrefSize(scrollPane.getPrefWidth(), height * size);
                 overlay.setMaxWidth(scrollPane.getMaxWidth());
