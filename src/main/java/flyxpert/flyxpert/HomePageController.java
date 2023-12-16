@@ -106,12 +106,12 @@ public class HomePageController {
             ((Stage) internalSignInButton.getScene().getWindow()).close();
             SceneSwitcher.switchScene(e, "AdminPage" , mainStage);
         }
-        else if(User.searchForUser(user) == null && User.exists(userName)) {
+        else if(User.exists(userName) == true && User.searchForUser(userName).equals(password) == false) {
             signInPasswordValidator.setText("Incorrect Password!");
             signInPasswordValidator.setTextFill(ERROR_COLOR);
             signInPasswordTextField.setText("");
         }
-        else if(User.searchForUser(user) != null) {
+        else if(User.exists(userName) == true && User.searchForUser(userName).equals(password) == true) {
             signInPasswordValidator.setText("");
             signInUsernameValidator.setText("");
             User.currentUser = user;
@@ -119,7 +119,10 @@ public class HomePageController {
                 User.currentUser.setIsAdmin(true);
             ((Stage) internalSignInButton.getScene().getWindow()).close();
             SceneSwitcher.switchScene(e, "SearchFlightPage" , mainStage);
-            //System.out.println("You've successfully logged in");
+            System.out.println("You've successfully logged in");
+
+            UserTrie userTrie = UserTrie.getInstance();
+            userTrie.insertUser(user.getUserName(), user.getPassword());
         }
         else {
             signInUsernameValidator.setText("Incorrect username/email");

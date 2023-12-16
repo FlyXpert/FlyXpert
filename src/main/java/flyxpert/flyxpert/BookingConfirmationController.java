@@ -82,6 +82,10 @@ public class BookingConfirmationController {
         this.bookingConfirmation.setAvaliableSeats(currentFlight);
         this.bookingConfirmation.setBoookingPassengers(Passenger.passengers);
         BookingConfirmation.bookingRecords.add(this.bookingConfirmation);
+
+        UserTrie userTrie = UserTrie.getInstance();
+        userTrie.insertBooking(user.getUserName(), BookingConfirmation.bookingRecords.size() - 1);
+
     }
     private void setPaymentMethod(PaymentMethod payment){
         if(payment instanceof Paypal){

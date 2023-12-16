@@ -17,7 +17,10 @@ public class Main extends Application {
     }
     public void start(Stage stage) throws IOException {
         HomePageController.homePageScene(stage);
-       /* FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/UserHistory.fxml"));
+
+        /*User.currentUser = new User("Parly", "malekwa3er99@gmail.com", "123456789012");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/UserHistory.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("FlyXpert!");
         stage.setResizable(false);

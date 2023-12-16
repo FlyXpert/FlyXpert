@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static flyxpert.flyxpert.BookingConfirmation.bookingRecords;
-import static flyxpert.flyxpert.SceneSwitcher.stage;
 import static flyxpert.flyxpert.User.currentUser;
 
 public class UserHistoryController implements Initializable {
@@ -45,6 +44,7 @@ public class UserHistoryController implements Initializable {
         Label youHaveXFlights;
 
         static Pane overlay = new Pane();
+        private int userBookingsCount = 0;
 
         /**
          * @param url
@@ -64,12 +64,26 @@ public class UserHistoryController implements Initializable {
 
                 backButton.setOnMouseClicked(mouseEvent -> onBackClicked());
 
-                int userBookingsCount = 0;
-                for (int i = 0; i < size; i++) {
+                /*for (int i = 0; i < size; i++) {
+
+                        // if (
+
+
                         if (bookingRecords.get(i).getUser().equals(currentUser)) {
                                 userBookings.add(bookingRecords.get(i));
                                 ++userBookingsCount;
                         }
+                }*/
+
+                UserTrie userTrie = UserTrie.getInstance();
+
+                ArrayList<Integer> bookingsIndices = userTrie.getBookings(currentUser.getUserName());
+
+                if (bookingsIndices != null) {
+                        for (int index : bookingsIndices) {
+                                userBookings.add(bookingRecords.get(index));
+                        }
+                        userBookingsCount = bookingsIndices.size();
                 }
 
                 youHaveXFlights.setText("You have " + userBookingsCount + " flights");
@@ -85,7 +99,7 @@ public class UserHistoryController implements Initializable {
         }
 
         public void generateBookedFlights() {
-                for (int i = 0; i < size; ++i) {
+                for (int i = 0; i < userBookingsCount; ++i) {
                         Rectangle rec = new Rectangle(positionX, positionY, width, height);
                         rec.setFill(Color.WHITE);
                         overlay.getChildren().add(rec);
@@ -104,11 +118,11 @@ public class UserHistoryController implements Initializable {
                 double y = rec.getLayoutX() + 20;
 
                // Text airlineText = createText(booked[index].getAirlineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
-                Text airlineText = createText(bookingRecords.get(index).getAirLineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text airlineText = createText(userBookings.get(index).getAirLineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
-                Text dateText = createText(bookingRecords.get(index).getArrivalDate(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text dateText = createText(userBookings.get(index).getArrivalDate(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
-                Text timeText = createText(bookingRecords.get(index).getDepartureTime(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text timeText = createText(userBookings.get(index).getDepartureTime(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
                 Text arrivalDateText = createText("Arrival Date", 16, Color.GRAY, FontWeight.NORMAL, "Segoe UI");
                 // Set the positions of the text elements

@@ -1,0 +1,2 @@
+Parly,0,7,Nile Air,Cairo,Los Angeles,20/01/2023,21/01/2023,11:00 PM,10:00 AM,1,Paypal,837.0,Payed,0,1,0
+Parly,0,6,Egyptair,Cairo,Los Angeles,21/01/2023,22/01/2023,11:00 PM,10:00 AM,1,Paypal,837.0,Payed,0,1,0

@@ -13,6 +13,16 @@ public class Reader {
         readUsers();
         readBookingRecords();
         readBookingNumber();
+        fillTrie();
+    }
+
+    public void fillTrie () {
+        UserTrie userTrie = UserTrie.getInstance();
+        for (int i = 0; i < User.userList.size(); ++i)
+            userTrie.insertUser(User.userList.get(i).getUserName(), User.userList.get(i).getPassword());
+
+        for (int i = 0; i < BookingConfirmation.bookingRecords.size(); ++i)
+            userTrie.insertBooking(BookingConfirmation.bookingRecords.get(i).getUserName(), i);
     }
 
 
