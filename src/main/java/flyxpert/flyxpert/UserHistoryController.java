@@ -17,18 +17,22 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static flyxpert.flyxpert.BookingConfirmation.bookingRecords;
 import static flyxpert.flyxpert.SceneSwitcher.stage;
+import static flyxpert.flyxpert.User.currentUser;
 
 public class UserHistoryController implements Initializable {
 
-        static int size = Flight.flights.size();
-        Flight[] booked = new Flight[size];
+        //Flight[] booked = new Flight[size];
         int positionX = 0;
         int positionY = 0;
         int width = 558;
         int height = 478 / 3;
+        ArrayList<BookingConfirmation> userBookings = new ArrayList<>();
+        static int size = bookingRecords.size();
 
         @FXML
         ScrollPane scrollPane;
@@ -57,7 +61,9 @@ public class UserHistoryController implements Initializable {
                 backButton.setOnMouseClicked(mouseEvent -> onBackClicked());
 
                 for (int i = 0; i < size; i++) {
-                        booked[i] = new Flight(Flight.flights.get(i));
+                        if (bookingRecords.get(i).getUser().equals(currentUser)) {
+                                userBookings.add(bookingRecords.get(i));
+                        }
                 }
 
                 overlay.setPrefSize(scrollPane.getPrefWidth(), height * size);
@@ -89,16 +95,12 @@ public class UserHistoryController implements Initializable {
                 double x = rec.getLayoutX() + 50;
                 double y = rec.getLayoutX() + 20;
 
-                Text airlineText = createText(booked[index].getAirlineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+               // Text airlineText = createText(booked[index].getAirlineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text airlineText = createText(bookingRecords.get(index).getAirLineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
-                Text dateText = createText(booked[index].getArrivalDate().getDay()
-                        + "-" + booked[index].getArrivalDate().getMonth()
-                        + "-" + booked[index].getArrivalDate().getYear(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text dateText = createText(bookingRecords.get(index).getArrivalDate(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
-                Text timeText = createText(booked[index].getDepartureTime().getHour() + ":" + booked[index].getDepartureTime().getMinutes()
-                        + " " + booked[index].getDepartureTime().getPeriod()
-                        + " - " + booked[index].getArrivalTime().getHour() + ":" + booked[index].getArrivalTime().getMinutes()
-                        + " " + booked[index].getArrivalTime().getPeriod(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text timeText = createText(bookingRecords.get(index).getDepartureTime(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
                 Text arrivalDateText = createText("Arrival Date", 16, Color.GRAY, FontWeight.NORMAL, "Segoe UI");
                 // Set the positions of the text elements
@@ -166,13 +168,11 @@ public class UserHistoryController implements Initializable {
         static boolean confirmed = false;
 
         public static void onXClicked(int index) {
-                // TODO : add a popup then delete flight from user
-
                 SceneSwitcher.createPopUp("ConfirmDelete", index);
         }
 
         public static void confirm(int index) {
-                // TODO : remove from Flight.flights
+                // TODO : remove from bookingRecords
 
                 removeFlightFromScreen(index);
                 System.out.println(index);
