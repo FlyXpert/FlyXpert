@@ -35,6 +35,7 @@ public class AdminOptionsController implements Initializable {
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 imagesViewStyling();
                 seatIcon.setOnMouseClicked(mouseEvent -> switchToAdminSeatMap());
+                editIcon.setOnMouseClicked(mouseEvent -> switchToAdminEditFlight());
         }
 
         public static void handleHBoxClick(Flight flight,int indexOfFlight) throws IOException {
@@ -101,5 +102,20 @@ public class AdminOptionsController implements Initializable {
                 }
         }
 
+        public void switchToAdminEditFlight()  {
+                Stage stage = new Stage();
+                Parent root = null;
+                try {
+                        root = FXMLLoader.load(SeatSelectionPageController.class.getResource("AdminEditFlightScene.fxml"));
+                } catch (IOException e) {
+                        System.out.printf("Unable to import AdminEditFlightScene.fxml");
+                }
+                if (root != null) {
+                        Scene scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.centerOnScreen();
+                        stage.show();
+                }
+        }
 
 }

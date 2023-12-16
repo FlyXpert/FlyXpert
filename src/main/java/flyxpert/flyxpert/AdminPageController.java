@@ -1,9 +1,12 @@
 package flyxpert.flyxpert;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -21,11 +24,14 @@ public class AdminPageController implements Initializable {
     private VBox vbox;
     @FXML
     private ScrollPane scrollPane;
+    @FXML
+    private Button addFlightButton;
 
-
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillDataOfFlights();
     }
+
 
     public void adminSeatMap() {
 
@@ -87,5 +93,9 @@ public class AdminPageController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
+    }
+
+    public void switchToAdminAddFlight(ActionEvent event)  {
+        SceneSwitcher.switchScene(event,"AdminAddFlightScene", ((Stage) addFlightButton.getScene().getWindow()));
     }
 }

@@ -63,7 +63,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Pane>
-        <Button fx:id="searchButton" disable="true" layoutX="70.0" layoutY="125.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Add a Flight">
+        <Button fx:id="addFlightButton" layoutX="70.0" layoutY="125.0" mnemonicParsing="false" onAction="#switchToAdminAddFlight" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Add a Flight">
             <font>
                 <Font size="22.0" />
             </font>
