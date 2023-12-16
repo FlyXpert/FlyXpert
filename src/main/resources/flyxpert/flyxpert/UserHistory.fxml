@@ -50,7 +50,7 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
         </content>
       </ScrollPane>
-      <Label layoutX="107.0" layoutY="96.0" prefHeight="35.0" prefWidth="351.0" text="You have 0 flights" textFill="#8c9bba">
+      <Label fx:id="youHaveXFlights" layoutX="107.0" layoutY="96.0" prefHeight="35.0" prefWidth="351.0" text="You have 0 flights" textFill="#8c9bba">
          <font>
             <Font name="System Bold" size="22.0" />
          </font>
