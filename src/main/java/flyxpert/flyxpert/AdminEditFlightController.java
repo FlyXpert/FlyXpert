@@ -241,10 +241,10 @@ public class AdminEditFlightController {
         warningLabel.setText("");
 
         flightToEdit = new Flight(departureAirportToEdit,arrivalAirportToEdit,airlineNameToEdit,departureTimeToEdit,arrivalTimeToEdit,departureDateToEdit,arrivalDateToEdit,economyPriceToEdit,bussinessPriceToEdit,firstClassPriceToEdit);
-        /*Flight.flights.add(flightToBeAdded);
-        FlightInformationController.uniqueAirlines.put(airlineNameToBeAdded,true);
-        FlightInformationController.uniqueArrivalAirports.put(arrivalAirportCodeToBeAdded,true);
-        FlightInformationController.uniqueDepartureAirports.put(departureAirportCodeToBeAdded,true);*/
+        Flight.flights.set(AdminOptionsController.selectedFlight,flightToEdit);
+        FlightInformationController.airlines.put(airlineNameToEdit,true);
+        FlightInformationController.arrivalAirports.put(arrivalAirportCodeToEdit,true);
+        FlightInformationController.departureAirports.put(departureAirportCodeToEdit,true);
         return true;
     }
 }
