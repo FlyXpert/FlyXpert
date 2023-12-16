@@ -43,9 +43,9 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="212.0" opacity="0.5" prefHeight="566.0" prefWidth="1404.0">
+        <ScrollPane fx:id="scrollPane" layoutX="70.0" layoutY="212.0" prefHeight="566.0" prefWidth="1404.0">
             <content>
-                <VBox fx:id="vbox" prefHeight="563.0" prefWidth="1390.0" style="-fx-padding: 10; -fx-background-color: white;">
+                <VBox fx:id="vbox" prefHeight="563.0" prefWidth="1402.0" style="-fx-padding: 10; -fx-background-color: white;">
                     <opaqueInsets>
                         <Insets top="10.0" />
                     </opaqueInsets></VBox>
@@ -63,10 +63,15 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Pane>
-        <Button fx:id="addFlightButton" layoutX="70.0" layoutY="125.0" mnemonicParsing="false" onAction="#switchToAdminAddFlight" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Add a Flight">
+        <Button fx:id="addFlightButton" layoutX="70.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToAdminAddFlight" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Add a Flight">
             <font>
                 <Font size="22.0" />
             </font>
         </Button>
+      <Label layoutX="561.0" layoutY="177.0" text="Press on any of the below flights to edit their info">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

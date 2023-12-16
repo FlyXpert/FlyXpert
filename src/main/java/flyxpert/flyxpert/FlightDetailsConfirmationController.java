@@ -55,7 +55,7 @@ public class FlightDetailsConfirmationController {
         newStage.show();
         for(int i = 0; i < Flight.flights.size(); i++){
             if(Flight.flights.get(i).getFlightNumber() == flight.getFlightNumber()){
-                Flight.selectedFlightIndexInFlightsArray = i;
+                Flight.selectedFlightIndex = i;
                 break;
             }
         }

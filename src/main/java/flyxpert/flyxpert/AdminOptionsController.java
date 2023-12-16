@@ -30,7 +30,6 @@ public class AdminOptionsController implements Initializable {
         @FXML
         private ImageView editIcon;
 
-        public static int selectedFlight;
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 imagesViewStyling();
@@ -40,7 +39,7 @@ public class AdminOptionsController implements Initializable {
 
         public static void handleHBoxClick(Flight flight,int indexOfFlight) throws IOException {
 
-                selectedFlight = indexOfFlight;
+                Flight.selectedFlightIndex = indexOfFlight;
 
                 Stage newStage = new Stage();
                 newStage.initModality(Modality.APPLICATION_MODAL);
@@ -90,9 +89,10 @@ public class AdminOptionsController implements Initializable {
                 Stage stage = new Stage();
                 Parent root = null;
                 try {
-                        root = FXMLLoader.load(SeatSelectionPageController.class.getResource("AdminSeatMap.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("AdminSeatMap.fxml"));
                 } catch (IOException e) {
                         System.out.printf("Unable to import AdminSeatMap.fxml");
+                        e.printStackTrace();
                 }
                 if (root != null) {
                         Scene scene = new Scene(root);

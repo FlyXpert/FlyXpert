@@ -241,7 +241,7 @@ public class AdminEditFlightController {
         warningLabel.setText("");
 
         flightToEdit = new Flight(departureAirportToEdit,arrivalAirportToEdit,airlineNameToEdit,departureTimeToEdit,arrivalTimeToEdit,departureDateToEdit,arrivalDateToEdit,economyPriceToEdit,bussinessPriceToEdit,firstClassPriceToEdit);
-        Flight.flights.set(AdminOptionsController.selectedFlight,flightToEdit);
+        Flight.flights.set(Flight.selectedFlightIndex,flightToEdit);
         FlightInformationController.airlines.put(airlineNameToEdit,true);
         FlightInformationController.arrivalAirports.put(arrivalAirportCodeToEdit,true);
         FlightInformationController.departureAirports.put(departureAirportCodeToEdit,true);

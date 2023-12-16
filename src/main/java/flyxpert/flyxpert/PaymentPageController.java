@@ -73,7 +73,7 @@ public class PaymentPageController implements Initializable{
     @FXML
     Label totalLabel;
 
-    private final Flight SELECTED_FLIGHT = Flight.flights.get(Flight.selectedFlightIndexInFlightsArray);
+    private final Flight SELECTED_FLIGHT = Flight.flights.get(Flight.selectedFlightIndex);
     private int paymentSubtotal;
     private int paymentTotal;
     private int economySeatsCount = 0;
@@ -274,7 +274,7 @@ public class PaymentPageController implements Initializable{
             }
 
 
-            bookingConfirmationController.displayTicketInfo(User.currentUser, Flight.flights.get(Flight.selectedFlightIndexInFlightsArray), payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
+            bookingConfirmationController.displayTicketInfo(User.currentUser, Flight.flights.get(Flight.selectedFlightIndex), payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
 
 
             bookingConfirmationStage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();

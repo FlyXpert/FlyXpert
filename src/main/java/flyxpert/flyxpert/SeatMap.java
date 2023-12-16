@@ -13,7 +13,7 @@ public abstract class SeatMap {
          Seat[][] firstClassSeats = new Seat[200][200];
 
          Seat[][] seats = new Seat[200][200];
-        private boolean[][] vis = new boolean[200][200];
+         private boolean[][] vis = new boolean[200][200];
 
 
 

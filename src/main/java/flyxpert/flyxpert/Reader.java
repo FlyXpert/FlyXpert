@@ -141,9 +141,9 @@ public class Reader {
             Scanner scanner = new Scanner(file);
             if (scanner.hasNext()) {
                 BookingConfirmation.lastBookingNumber = scanner.nextInt() + 1;
-                System.out.println(BookingConfirmation.lastBookingNumber);
+                //System.out.println(BookingConfirmation.lastBookingNumber);
             } else {
-                System.out.println("File is empty");
+                //System.out.println("File is empty");
             }
             scanner.close();
         } catch (Exception e) {
