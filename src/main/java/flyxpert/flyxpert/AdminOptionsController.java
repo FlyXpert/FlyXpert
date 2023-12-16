@@ -30,13 +30,17 @@ public class AdminOptionsController implements Initializable {
         @FXML
         private ImageView editIcon;
 
+        public static int selectedFlight;
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 imagesViewStyling();
                 seatIcon.setOnMouseClicked(mouseEvent -> switchToAdminSeatMap());
         }
 
-        public static void handleHBoxClick(Flight flight) throws IOException {
+        public static void handleHBoxClick(Flight flight,int indexOfFlight) throws IOException {
+
+                selectedFlight = indexOfFlight;
+
                 Stage newStage = new Stage();
                 newStage.initModality(Modality.APPLICATION_MODAL);
                 newStage.initStyle(StageStyle.UTILITY);
@@ -96,4 +100,6 @@ public class AdminOptionsController implements Initializable {
                         stage.show();
                 }
         }
+
+
 }

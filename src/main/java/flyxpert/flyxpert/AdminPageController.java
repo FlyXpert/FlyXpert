@@ -39,8 +39,10 @@ public class AdminPageController implements Initializable {
 
     private void showAllFlights() {
         try {
+            int indexOfFlight = 0;
             for(Flight flight : Flight.flights) {
-                vbox.getChildren().add(createFlight(flight));
+                vbox.getChildren().add(createFlight(flight,indexOfFlight));
+                indexOfFlight++;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,11 +50,11 @@ public class AdminPageController implements Initializable {
     }
 
 
-    private HBox createFlight(Flight flight){
+    private HBox createFlight(Flight flight,int indexOfFlight){
         HBox hbox = new HBox();
         setHboxLabels(hbox, flight);
         FlightInformationController.hboxStyling(hbox);
-        setHboxOnAction(hbox, flight);
+        setHboxOnAction(hbox, flight,indexOfFlight);
         return hbox;
     }
 
@@ -77,10 +79,10 @@ public class AdminPageController implements Initializable {
         hbox.getChildren().add(arrivalAirprotLabel);
     }
 
-    private void setHboxOnAction(HBox hbox, Flight flight) {
+    private void setHboxOnAction(HBox hbox, Flight flight,int indexOfFlight) {
         hbox.setOnMouseClicked(event -> {
             try {
-                AdminOptionsController.handleHBoxClick(flight);
+                AdminOptionsController.handleHBoxClick(flight,indexOfFlight);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
