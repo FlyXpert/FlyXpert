@@ -36,27 +36,6 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Button id="button" layoutX="1229.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-        </Button>
         <Label layoutX="108.0" layoutY="162.0" prefHeight="93.0" prefWidth="318.0" text="Passenger information">
             <font>
                 <Font name="System Bold" size="29.0" />
@@ -88,11 +67,6 @@
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <ImageView fitHeight="93.0" fitWidth="71.0" layoutX="1444.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@imageplaceholder.png" />
-            </image>
-        </ImageView>
         <TextField fx:id="firstNameTextField" layoutX="108.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="First Name" />
         <TextField fx:id="middleNameTextField" layoutX="326.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Middle Name" />
         <TextField fx:id="lastNameTextField" layoutX="542.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Last Name" />
@@ -108,7 +82,7 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <ImageView fitHeight="583.0" fitWidth="486.0" layoutX="1050.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="583.0" fitWidth="426.0" layoutX="1050.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@PassengerBags.png" />
             </image>
@@ -123,13 +97,13 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Label>
-        <Label fx:id="logOutLabel" layoutX="1351.0" layoutY="35.0" onMouseClicked="#onLogoutButtonPressed" prefHeight="44.0" prefWidth="63.0" stylesheets="@styles.css" text="Logout" textFill="#605dec">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </Label>
+      <Label layoutX="1411.0" layoutY="35.0" onMouseClicked="#onFlightsButtonClicked" text="Flights" textFill="#605dec">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
     </children>
 </AnchorPane>

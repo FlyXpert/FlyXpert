@@ -1,7 +1,5 @@
 package flyxpert.flyxpert;
 
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;

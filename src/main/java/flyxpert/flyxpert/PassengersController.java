@@ -35,7 +35,7 @@ public class PassengersController
     public String dateOfBirthAsString;
     static public int passengersToBeAdded;
     static public int initialPassengersToBeAdded;
-    static private int curPassenger = 0;
+    static public int curPassenger = 0;
     private ValidateNumber validatePhoneNumber = new ValidateNumber();
     private ValidateName validateName = new ValidateName();
 
@@ -124,10 +124,12 @@ public class PassengersController
         }
         SceneSwitcher.switchScene(event, "SeatSelectionPage", null);
     }
-    @FXML
-    private void onLogoutButtonPressed(MouseEvent e)
-    {
-        User.currentUser = null;
-        SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
+
+    public void onFlightsButtonClicked(MouseEvent event){
+        // Reset passengers data
+        Passenger.passengers.clear();
+        curPassenger = 0;
+
+        SceneSwitcher.switchScene(event, "SearchFlightPage", null);
     }
 }

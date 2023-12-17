@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1536.0" stylesheets="@Passengers.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="flyxpert.flyxpert.SeatSelectionPageController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1536.0" stylesheets="@Passengers.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.SeatSelectionPageController">
     <children>
       <ImageView fitHeight="800.0" fitWidth="1307.0" layoutX="334.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -69,40 +69,19 @@
             <Font name="Calibri" size="25.0" />
          </font>
       </Label>
-      <ImageView fx:id="sts" blendMode="MULTIPLY" cache="true" fitHeight="627.0" fitWidth="618.0" layoutX="977.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sts" blendMode="MULTIPLY" cache="true" fitHeight="683.0" fitWidth="610.0" layoutX="859.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../SeatsAndClasses.jpg" />
          </image>
       </ImageView>
-      <Button id="button" blendMode="MULTIPLY" layoutX="1299.0" layoutY="20.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
+      <Label layoutX="1441.0" layoutY="27.0" onMouseClicked="#onFlightsButtonClicked" text="Flights" textFill="#605dec">
          <font>
             <Font size="20.0" />
          </font>
-         <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </textFill>
-      </Button>
-        <Label fx:id="logOutLabel" layoutX="1414.0" layoutY="20.0" onMouseClicked="#onLogoutButtonPressed" prefHeight="44.0" prefWidth="63.0" stylesheets="@styles.css" text="Logout" textFill="#605dec">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <cursor>
-                <Cursor fx:constant="HAND" />
-            </cursor>
-        </Label>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
     </children>
 
 </AnchorPane>

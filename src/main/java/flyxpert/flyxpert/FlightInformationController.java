@@ -2,17 +2,14 @@ package flyxpert.flyxpert;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 public class FlightInformationController {
     /**
@@ -649,5 +646,9 @@ public class FlightInformationController {
 
     public void onProfileLogoClicked(MouseEvent event){
         SceneSwitcher.switchScene(event, "UserHistory", null);
+    }
+
+    public void onFlightsButtonClicked(MouseEvent event){
+        SceneSwitcher.switchScene(event, "SearchFlightPage", null);
     }
 }

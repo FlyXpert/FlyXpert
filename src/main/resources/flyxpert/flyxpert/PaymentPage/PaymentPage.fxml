@@ -124,7 +124,7 @@
       <Label fx:id="cardExpirationDateError" layoutX="80.0" layoutY="493.0" text="Please enter a valid date (Ex: 01/27)" textFill="RED" visible="false" />
       <Label fx:id="cardCcvError" layoutX="355.0" layoutY="493.0" text="Please enter a valid CCV, which can be found at the back of your card (Ex: 339)" textFill="RED" visible="false" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="109.0" layoutX="1138.0" layoutY="277.0" opacity="0.08" stroke="BLACK" strokeType="INSIDE" width="341.0" />
-      <Label fx:id="arrivalDayLabel" layoutX="1371.0" layoutY="291.0" prefHeight="26.0" prefWidth="94.0" text="07-01-2024">
+      <Label fx:id="arrivalDayLabel" layoutX="1371.0" layoutY="319.0" prefHeight="26.0" prefWidth="94.0" text="07-01-2024">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -139,7 +139,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="flightTimeLabel" layoutX="1301.0" layoutY="319.0" prefHeight="26.0" prefWidth="162.0" text="07:00 AM - 04:15 PM">
+      <Label fx:id="flightTimeLabel" layoutX="1301.0" layoutY="291.0" prefHeight="26.0" prefWidth="162.0" text="07:00 AM - 04:15 PM">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

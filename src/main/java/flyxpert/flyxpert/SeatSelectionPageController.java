@@ -21,10 +21,8 @@ import static flyxpert.flyxpert.Pallete.*;
 
 
 public class SeatSelectionPageController extends SeatMap implements Initializable {
-
         private int size = Passenger.passengers.size();
         private int index = 0;
-
 
         // for manual tests
         /*void creatArbitrary() throws ParseException {
@@ -86,9 +84,6 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
                 scrollPane.setContent(overlay);
         }
-
-
-
 
         public void changeSeatColorAndAssignSeatToPassenger(int row, int col, Seat[][] s, Paint cmp, Seat seat) {
                 try {
@@ -169,10 +164,5 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
                 // Update the opacity of the "Next Seat" button
                 nextSeat.setOpacity(.75);
-        }
-        @FXML
-        private void onLogoutButtonPressed(MouseEvent e) {
-                User.currentUser = null;
-                SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
         }
 }

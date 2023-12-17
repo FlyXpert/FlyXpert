@@ -137,10 +137,13 @@
         </ScrollPane>
         <Pane layoutX="1332.0" layoutY="40.0">
             <children>
-                <Label text="Flights" textFill="#605dec">
+                <Label onMouseClicked="#onFlightsButtonClicked" text="Flights" textFill="#605dec">
                     <font>
                         <Font size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Label>
             </children>
             <cursor>
