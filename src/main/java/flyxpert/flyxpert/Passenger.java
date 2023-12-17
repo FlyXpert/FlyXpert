@@ -66,7 +66,7 @@ public class Passenger {
         }
         public String getDateOfBirthAsAString(){
                 SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-                return formatter.format(dateOfBirth);
+                return formatter.format(dateOfBirth.toString());
         }
         public String getPhoneNumber() {
                 return phoneNumber;

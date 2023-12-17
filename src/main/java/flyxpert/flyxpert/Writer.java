@@ -10,7 +10,7 @@ public class Writer {
         writeUsers();
         writeToFlightInformationFile();
         writeBookingDataToFile();
-        WriteBookingNumber();
+//        WriteBookingNumber();
     }
 
 
@@ -77,8 +77,7 @@ public class Writer {
                         bookingRecord.getDepartureDate() + "," + bookingRecord.getArrivalDate() + "," +
                         bookingRecord.getDepartureTime() + "," + bookingRecord.getArrivalTime()
                         + "," + bookingRecord.getPaymentID() + "," + bookingRecord.getPaymentMethood() + "," + bookingRecord.getPaymentAmount() + "," + bookingRecord.getPaymentStatus() + "," + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + "," + bookingRecord.getFirstClassSeatsCount()
-                        + printAllPassengers());
-
+                        + printAllPassengers(bookingRecord));
             }
             bookingRecordsWriter.close();
         }
@@ -86,29 +85,15 @@ public class Writer {
             e.printStackTrace();
         }
     }
-    public String printAllPassengers(){
-        int passengerNum = 1;
+    public String printAllPassengers(BookingConfirmation bookingConfirmation){
         String passengersDetails = null;
         String finalString = "";
-        for (Passenger passengerRecords: Passenger.passengers) {
-            passengersDetails = "," + "passengerNumber" + "," + passengerNum + "," + passengerRecords.getSeat().getPrimaryKey() + "," + passengerRecords.getFirstName() + "," + passengerRecords.getMiddleName() +
-                    "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirthAsAString();
-
+        for (Passenger passengerRecords: bookingConfirmation.getBookingPassengers()) {
+            passengersDetails = "," + passengerRecords.getSeat().getPrimaryKey() + "," + passengerRecords.getFirstName() + "," + passengerRecords.getMiddleName() +
+                    "," + passengerRecords.getLastName() + "," + passengerRecords.getPhoneNumber() + "," + passengerRecords.getDateOfBirth().toString();
             finalString = finalString + passengersDetails;
-            passengerNum++;
         }
         return finalString;
     }
 
-
-    public void WriteBookingNumber() throws FileNotFoundException{
-        try {
-            PrintWriter bookingNumberWriter = new PrintWriter(new FileWriter("bookingNumber.txt"));
-            bookingNumberWriter.println(BookingConfirmation.lastBookingNumber);
-            bookingNumberWriter.close();
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }

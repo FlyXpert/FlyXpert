@@ -82,17 +82,12 @@
          </font>
       </Text>
       <Rectangle arcHeight="20" arcWidth="20" fill="WHITE" height="92.0" layoutX="527.0" layoutY="337.0" stroke="#cbd4e6" strokeType="INSIDE" width="915.0" />
-      <ImageView fitHeight="53.0" fitWidth="76.0" layoutX="542.0" layoutY="363.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@JapanAirlineLogo.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="timeOfTheTrip" layoutX="631.0" layoutY="363.0" text="timeOfTheTrip">
+      <Label fx:id="timeOfTheTrip" layoutX="558.0" layoutY="363.0" text="timeOfTheTrip">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="airLineName" layoutX="631.0" layoutY="392.0" text="airLineName" textFill="#7c8db0">
+      <Label fx:id="airLineName" layoutX="558.0" layoutY="392.0" text="airLineName" textFill="#7c8db0">
          <font>
             <Font name="Arial" size="15.0" />
          </font>
@@ -148,7 +143,7 @@
          </font>
       </Text>
       <Line endX="253.0" layoutX="804.0" layoutY="662.0" startX="-288.0" />
-      <Text layoutX="526.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AmountTotal with fees">
+      <Text layoutX="526.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total with fees">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
@@ -232,5 +227,10 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
+      <Text fill="#7c8db0" layoutX="917.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Time">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
