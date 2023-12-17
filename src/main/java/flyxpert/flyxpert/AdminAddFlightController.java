@@ -46,7 +46,10 @@ public class AdminAddFlightController {
     @FXML
     public Label warningLabel;
     @FXML
+    public Label successfullLabel;
+    @FXML
     public Button submitButton;
+
 
 
     private Flight flightToBeAdded;
@@ -80,6 +83,7 @@ public class AdminAddFlightController {
     {
         if(AdminAddFlight())
         {
+            successfullLabel.setText("Added Flight Successfully");
             //go back to the previous scene
         }
     }

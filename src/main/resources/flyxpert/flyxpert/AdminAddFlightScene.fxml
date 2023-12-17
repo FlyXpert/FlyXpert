@@ -78,7 +78,7 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="670.0" text="kindly ensure that all flight details are thoroughly reviewed and accurately updated" textFill="#ababab" wrapText="true">
+        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="670.0" text="Kindly ensure that all flight details are thoroughly reviewed and accurately updated" textFill="#ababab" wrapText="true">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
@@ -182,5 +182,6 @@
       <Label layoutX="327.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="Business" textFill="#838383" />
       <Label layoutX="546.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="First Class" textFill="#838383" />
       <Label fx:id="warningLabel" layoutX="108.0" layoutY="666.0" prefHeight="18.0" prefWidth="335.0" textFill="RED" />
+      <Label fx:id="successfullLabel" layoutX="108.0" layoutY="666.0" prefHeight="18.0" prefWidth="335.0" textFill="#31c600" />
     </children>
 </AnchorPane>

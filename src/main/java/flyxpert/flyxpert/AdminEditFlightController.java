@@ -53,6 +53,8 @@ public class AdminEditFlightController implements Initializable {
     public DatePicker arrivalDateDatePicker;
     @FXML
     public Label warningLabel;
+    @FXML
+    public Label successfullLabel;
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,6 +95,7 @@ public class AdminEditFlightController implements Initializable {
         if(AdminEditFlight())
         {
             warningLabel.setText("");
+            successfullLabel.setText("Flight Edited Successfully");
             FlightInformationController.airlines.put(airlineNameToEdit,true);
             FlightInformationController.arrivalAirports.put(arrivalAirportCodeToEdit,true);
             FlightInformationController.departureAirports.put(departureAirportCodeToEdit,true);
