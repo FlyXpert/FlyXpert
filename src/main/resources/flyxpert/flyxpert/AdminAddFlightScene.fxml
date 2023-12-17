@@ -36,28 +36,7 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Button id="button" layoutX="1229.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Back">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-        </Button>
-        <Button id="button" layoutX="1329.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
+        <Button id="button" layoutX="1329.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Back">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>
@@ -109,7 +88,7 @@
                 <Image url="@imageplaceholder.png" />
             </image>
         </ImageView>
-        <Button id="button1" disable="true" layoutX="108.0" layoutY="692.0" mnemonicParsing="false" onAction="#AdminAddFlightAction" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
+        <Button id="button1" fx:id="submitButton" layoutX="108.0" layoutY="692.0" mnemonicParsing="false" onAction="#AdminAddFlightAction" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
@@ -155,12 +134,12 @@
         </Label>
       <Pane layoutX="355.0" layoutY="392.0" prefHeight="43.0" prefWidth="414.0">
          <children>
-            <TextField fx:id="arrivalAirportNameTextFieldAdd" layoutX="138.0" prefHeight="43.0" prefWidth="138.0" promptText="Name">
+            <TextField fx:id="arrivalAirportCodeTextFieldAdd" prefHeight="43.0" prefWidth="138.0" promptText="Code">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <TextField fx:id="arrivalAirportCodeTextFieldAdd" prefHeight="43.0" prefWidth="138.0" promptText="Code">
+            <TextField fx:id="arrivalAirportNameTextFieldAdd" layoutX="138.0" prefHeight="43.0" prefWidth="138.0" promptText="Name">
                <font>
                   <Font size="20.0" />
                </font>
@@ -202,6 +181,6 @@
       <Label layoutX="108.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="Economy" textFill="#838383" />
       <Label layoutX="327.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="Business" textFill="#838383" />
       <Label layoutX="546.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="First Class" textFill="#838383" />
-      <Label fx:id="warningLabel" layoutX="108.0" layoutY="666.0" prefHeight="18.0" prefWidth="218.0" textFill="#838383" />
+      <Label fx:id="warningLabel" layoutX="108.0" layoutY="666.0" prefHeight="18.0" prefWidth="335.0" textFill="RED" />
     </children>
 </AnchorPane>

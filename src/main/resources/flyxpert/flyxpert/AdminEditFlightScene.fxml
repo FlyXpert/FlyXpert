@@ -36,28 +36,7 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Button id="button" layoutX="1229.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Back">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-        </Button>
-        <Button id="button" layoutX="1329.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
+        <Button id="button" layoutX="1329.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Back">
             <textFill>
                 <LinearGradient endX="1.0" endY="1.0">
                     <stops>

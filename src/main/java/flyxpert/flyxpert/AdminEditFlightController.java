@@ -282,8 +282,8 @@ public class AdminEditFlightController implements Initializable {
         arrivalAirportNameTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getName());
         arrivalAirportLocationTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getLocation());
 
-        departureTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getMinutes() + " " + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getPeriod());
-        arrivalTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getMinutes() + " " + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getPeriod());
+        departureTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getMinutes() + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getPeriod());
+        arrivalTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getMinutes() + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getPeriod());
 
         economySeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getEconomyPrice()+"");
         businessSeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getBusinessPrice()+"");

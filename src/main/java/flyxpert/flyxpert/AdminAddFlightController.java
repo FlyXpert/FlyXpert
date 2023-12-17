@@ -1,7 +1,10 @@
 package flyxpert.flyxpert;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -42,6 +45,9 @@ public class AdminAddFlightController {
     public DatePicker arrivalDateDatePicker;
     @FXML
     public Label warningLabel;
+    @FXML
+    public Button submitButton;
+
 
     private Flight flightToBeAdded;
     private Airport departureAirportToBeAdded;
@@ -66,8 +72,9 @@ public class AdminAddFlightController {
     private ValidateName validateStrings = new ValidateName();
     private ValidateAirports validateAirports = new ValidateAirports();
     private ValidateTime validateTime = new ValidateTime();
-    String timePattern = "^(1[0-2]|0?[1-9]):([0-5][0-9])\\s([AP]M)$";
-    Pattern pattern = Pattern.compile(timePattern);
+    String pattern = "^(1[0-2]|0?[1-9]):([0-5][0-9])(AM|PM)$";
+    Pattern timePattern = Pattern.compile(pattern);
+    private boolean[][] tmpSeatsAvailability = new boolean[24][4];
 
     public void AdminAddFlightAction(ActionEvent event) throws ParseException
     {
@@ -98,7 +105,7 @@ public class AdminAddFlightController {
             return false;
         }
 
-        if(validateAirports.validateData(departureAirportNameTextFieldAdd.getText()))
+        if(validateStrings.validateData(departureAirportNameTextFieldAdd.getText()))
         {
             departureAirportNameToBeAdded = departureAirportNameTextFieldAdd.getText();
         }
@@ -108,7 +115,7 @@ public class AdminAddFlightController {
             return false;
         }
 
-        if(validateAirports.validateData(departureAirportLocationTextFieldAdd.getText()))
+        if(validateStrings.validateData(departureAirportLocationTextFieldAdd.getText()))
         {
             departureAirportLocationToBeAdded = departureAirportLocationTextFieldAdd.getText();
         }
@@ -130,7 +137,7 @@ public class AdminAddFlightController {
             return false;
         }
 
-        if(validateAirports.validateData(arrivalAirportNameTextFieldAdd.getText()))
+        if(validateStrings.validateData(arrivalAirportNameTextFieldAdd.getText()))
         {
             arrivalAirportNameToBeAdded = arrivalAirportNameTextFieldAdd.getText();
         }
@@ -140,7 +147,7 @@ public class AdminAddFlightController {
             return false;
         }
 
-        if(validateAirports.validateData(arrivalAirportLocationTextFieldAdd.getText()))
+        if(validateStrings.validateData(arrivalAirportLocationTextFieldAdd.getText()))
         {
             arrivalAirportLocationToBeAdded = arrivalAirportLocationTextFieldAdd.getText();
         }
@@ -178,7 +185,9 @@ public class AdminAddFlightController {
 
         if(validateTime.validateData(departureTimeTextFieldAdd.getText()))
         {
-            Matcher matcher = pattern.matcher(departureTimeTextFieldAdd.getText());
+
+            Matcher matcher = timePattern.matcher(departureTimeTextFieldAdd.getText());
+            matcher.find();
             String hours = matcher.group(1);
             String minutes = matcher.group(2);
             String period = matcher.group(3);
@@ -186,13 +195,14 @@ public class AdminAddFlightController {
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Time (HH:MM AM/PM)");
+            warningLabel.setText("Please Enter a Correct Time (HH:MMAM/PM)");
             return false;
         }
 
         if(validateTime.validateData(arrivalTimeTextFieldAdd.getText()))
         {
-            Matcher matcher = pattern.matcher(arrivalTimeTextFieldAdd.getText());
+            Matcher matcher = timePattern.matcher(arrivalTimeTextFieldAdd.getText());
+            matcher.find();
             String hours = matcher.group(1);
             String minutes = matcher.group(2);
             String period = matcher.group(3);
@@ -200,7 +210,7 @@ public class AdminAddFlightController {
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Time (HH:MM AM/PM)");
+            warningLabel.setText("Please Enter a Correct Time (HH:MMAM/PM)");
             return false;
         }
 
@@ -235,11 +245,30 @@ public class AdminAddFlightController {
         }
         warningLabel.setText("");
 
-        flightToBeAdded = new Flight(departureAirportToBeAdded,arrivalAirportToBeAdded,airlineNameToBeAdded,departureTimeToBeAdded,arrivalTimeToBeAdded,departureDateToBeAdded,arrivalDateToBeAdded,economyPriceToBeAdded,bussinessPriceToBeAdded,firstClassPriceToBeAdded);
+        for (int i = 0; i < 24; i++) {
+            for (int j = 0; j < 4; j++) {
+                tmpSeatsAvailability[i][j] = false;
+            }
+        }
+
+        flightToBeAdded = new Flight(departureAirportToBeAdded,arrivalAirportToBeAdded,airlineNameToBeAdded,departureTimeToBeAdded,arrivalTimeToBeAdded,departureDateToBeAdded,arrivalDateToBeAdded,economyPriceToBeAdded,bussinessPriceToBeAdded,firstClassPriceToBeAdded, 96,0,tmpSeatsAvailability);
         Flight.flights.add(flightToBeAdded);
         FlightInformationController.airlines.put(airlineNameToBeAdded,true);
         FlightInformationController.arrivalAirports.put(arrivalAirportCodeToBeAdded,true);
         FlightInformationController.departureAirports.put(departureAirportCodeToBeAdded,true);
         return true;
     }
+    /*private void checkIfNotNull()
+    {
+        if(airlineTextFieldAdd.getText() != null && departureAirportCodeTextFieldAdd.getText() != null && departureAirportNameTextFieldAdd.getText() != null && departureAirportLocationTextFieldAdd.getText() != null && arrivalAirportCodeTextFieldAdd.getText() != null && arrivalAirportNameTextFieldAdd.getText() != null && arrivalAirportLocationTextFieldAdd.getText() != null && departureDateDatePicker.getValue() != null && arrivalDateDatePicker.getValue() != null && departureTimeTextFieldAdd.getText() != null && arrivalTimeTextFieldAdd.getText() != null && economySeatPriceTextFieldAdd.getText() != null && businessSeatPriceTextFieldAdd.getText() != null && firstClassSeatPriceTextFieldAdd.getText() != null)
+        {
+            submitButton.setDisable(false);
+            System.out.println("no null values\n");
+        }
+        else
+        {
+            submitButton.setDisable(true);
+            System.out.println("null values\n");
+        }
+    }*/
 }
