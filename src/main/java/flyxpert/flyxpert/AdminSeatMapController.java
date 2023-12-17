@@ -34,7 +34,14 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
          */
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+                for (int i = 0; i < 24; ++i)
+                        for (int j = 0; j < 4; ++j)
+                                justBeenReserved[i][j] = false;
                 dfsAddSeats(overlay, 363, 540, 0, 0);
+
+                flightName.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureAirport().getName()
+                 + " to " +
+                        Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getName());
 
                 Button discard = new Button();
                 Button save = new Button();
@@ -91,6 +98,9 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
         public void saveClicked() {
                 int size = adminReservedSeats.size();
                 boolean[][] a = new boolean[24][4];
+                for (int i = 0; i < 24; ++i)
+                        for (int j = 0; j < 4; ++j)
+                                justBeenReserved[i][j] = true;
                 for (int i = 0; i < size; ++i) {
                         a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = false;
                 }
