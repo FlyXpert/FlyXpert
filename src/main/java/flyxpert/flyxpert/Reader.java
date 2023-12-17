@@ -86,7 +86,7 @@ public class Reader {
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] bookingDetails = line.split(",");
-                System.out.println(bookingDetails.length);
+                //System.out.println(bookingDetails.length);
                 BookingConfirmation bookingConfirmation = new BookingConfirmation(bookingDetails);
                 BookingConfirmation.bookingRecords.add(bookingConfirmation);
             }

@@ -160,6 +160,9 @@
          <image>
             <Image url="@../../UserProfileLogo.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
     </children>
 </AnchorPane>

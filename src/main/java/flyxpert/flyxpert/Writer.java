@@ -10,7 +10,6 @@ public class Writer {
         writeUsers();
         writeToFlightInformationFile();
         writeBookingDataToFile();
-//        WriteBookingNumber();
     }
 
 

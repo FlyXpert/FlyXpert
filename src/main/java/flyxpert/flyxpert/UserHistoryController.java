@@ -65,7 +65,7 @@ public class UserHistoryController implements Initializable {
 
                 int userBookingsCount = 0;
                 for (int i = 0; i < size; i++) {
-                        if (bookingRecords.get(i).getUser().equals(currentUser)) {
+                        if (bookingRecords.get(i).getUserName().equals(currentUser.getUserName())) {
                                 userBookings.add(bookingRecords.get(i));
                                 ++userBookingsCount;
                         }

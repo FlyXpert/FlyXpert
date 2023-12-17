@@ -53,7 +53,7 @@ public class BookingConfirmation {
         this.businessSeatsCount = Integer.parseInt(details[15]);
         this.firstClassSeatsCount = Integer.parseInt(details[16]);
         int sum = this.economySeatsCount + this.businessSeatsCount + this.firstClassSeatsCount;
-        System.out.println(sum);
+        //System.out.println(sum);
         readPassengers(details, sum);
     }
 //    public BookingConfirmation(User user, Flight currentFlight, Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){;
