@@ -31,6 +31,7 @@ public class Dijkstra
             int v = scanner.nextInt();
             int w = scanner.nextInt();
             adj.get(u).add(new Node(v, w));
+            adj.get(v).add(new Node(u, w));
         }
     }
     void run(int source)
