@@ -3,6 +3,6 @@ package Validators;
 public class ValidateName extends ValidatorAbstract{
     @Override
     public Boolean validateData(String name) {
-        return name != null && name.matches("^[a-zA-Z]*$");
+        return name != null && name.matches("^[a-zA-Z\\p{Punct}]+$");
     }
 }

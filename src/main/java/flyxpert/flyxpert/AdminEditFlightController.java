@@ -6,15 +6,20 @@ import Validators.ValidateNumber;
 import Validators.ValidateTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AdminEditFlightController {
+
+public class AdminEditFlightController implements Initializable {
+
 
     @FXML
     public TextField airlineTextFieldEdit;
@@ -47,7 +52,13 @@ public class AdminEditFlightController {
     @FXML
     public Label warningLabel;
 
-    private Flight flightToBeEdit;
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setValues();
+        flightToEdit = Flight.flights.get(Flight.selectedFlightIndex);
+    }
+
+    private Flight flightToEdit;
     private Airport departureAirportToEdit;
     private Airport arrivalAirportToEdit;
     private String departureAirportCodeToEdit;
@@ -66,26 +77,32 @@ public class AdminEditFlightController {
     private int firstClassPriceToEdit;
     private String departureDateAsString;
     private String arrivalDateAsString;
+
     private ValidateNumber validateNumber = new ValidateNumber();
     private ValidateName validateStrings = new ValidateName();
     private ValidateAirports validateAirports = new ValidateAirports();
     private ValidateTime validateTime = new ValidateTime();
-    String timePattern = "^(1[0-2]|0?[1-9]):([0-5][0-9])\\s([AP]M)$";
-    Pattern pattern = Pattern.compile(timePattern);
+    String pattern = "^(1[0-2]|0?[1-9]):([0-5][0-9])(AM|PM)$";
+    Pattern timePattern = Pattern.compile(pattern);
+
 
     public void AdminEditFlightAction(ActionEvent event) throws ParseException
     {
         if(AdminEditFlight())
         {
-            //go back to the previous scene
+            FlightInformationController.airlines.put(airlineNameToEdit,true);
+            FlightInformationController.arrivalAirports.put(arrivalAirportCodeToEdit,true);
+            FlightInformationController.departureAirports.put(departureAirportCodeToEdit,true);
+            System.out.println("DONE");
         }
     }
     private boolean AdminEditFlight()
     {
-        Flight flightToEdit;
+
         if(validateStrings.validateData(airlineTextFieldEdit.getText()))
         {
             airlineNameToEdit = airlineTextFieldEdit.getText();
+            flightToEdit.setAirlineName(airlineTextFieldEdit.getText());
         }
         else
         {
@@ -99,31 +116,32 @@ public class AdminEditFlightController {
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Airport");
+            warningLabel.setText("Please Enter a Correct Airport Code");
             return false;
         }
 
-        if(validateAirports.validateData(departureAirportNameTextFieldEdit.getText()))
+        if(validateStrings.validateData(departureAirportNameTextFieldEdit.getText()))
         {
             departureAirportNameToEdit = departureAirportNameTextFieldEdit.getText();
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Airport");
+            warningLabel.setText("Please Enter a Correct Airport Name");
             return false;
         }
 
-        if(validateAirports.validateData(departureAirportLocationTextFieldEdit.getText()))
+        if(validateStrings.validateData(departureAirportLocationTextFieldEdit.getText()))
         {
             departureAirportLocationToEdit = departureAirportLocationTextFieldEdit.getText();
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Airport");
+            warningLabel.setText("Please Enter a Correct Airport Location");
             return false;
         }
 
         departureAirportToEdit = new Airport(departureAirportCodeToEdit,departureAirportNameToEdit,departureAirportLocationToEdit);
+        flightToEdit.setDepartureAirport(departureAirportToEdit);
 
         if(validateAirports.validateData(arrivalAirportCodeTextFieldEdit.getText()))
         {
@@ -131,31 +149,32 @@ public class AdminEditFlightController {
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Airport");
+            warningLabel.setText("Please Enter a Correct Airport Code");
             return false;
         }
 
-        if(validateAirports.validateData(arrivalAirportNameTextFieldEdit.getText()))
+        if(validateStrings.validateData(arrivalAirportNameTextFieldEdit.getText()))
         {
             arrivalAirportNameToEdit = arrivalAirportNameTextFieldEdit.getText();
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Airport");
+            warningLabel.setText("Please Enter a Correct Airport Name");
             return false;
         }
 
-        if(validateAirports.validateData(arrivalAirportLocationTextFieldEdit.getText()))
+        if(validateStrings.validateData(arrivalAirportLocationTextFieldEdit.getText()))
         {
             arrivalAirportLocationToEdit = arrivalAirportLocationTextFieldEdit.getText();
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Airport");
+            warningLabel.setText("Please Enter a Correct Airport Location");
             return false;
         }
 
         arrivalAirportToEdit = new Airport(arrivalAirportCodeToEdit,arrivalAirportNameToEdit,arrivalAirportLocationToEdit);
+        flightToEdit.setArrivalAirport(arrivalAirportToEdit);
 
         try {
             LocalDate selectedDate = departureDateDatePicker.getValue();
@@ -163,6 +182,7 @@ public class AdminEditFlightController {
             String month = String.valueOf(selectedDate.getMonthValue());
             String year = String.valueOf(selectedDate.getYear());
             departureDateToEdit = new NewDate(day,month,year);
+            flightToEdit.setDepartureDate(departureDateToEdit);
         }
         catch (NullPointerException e) {
             warningLabel.setText("Please Enter a Correct Date");
@@ -175,6 +195,7 @@ public class AdminEditFlightController {
             String month = String.valueOf(selectedDate.getMonthValue());
             String year = String.valueOf(selectedDate.getYear());
             arrivalDateToEdit = new NewDate(day,month,year);
+            flightToEdit.setArrivalDate(arrivalDateToEdit);
         }
         catch (NullPointerException e) {
             warningLabel.setText("Please Enter a Correct Date");
@@ -183,35 +204,41 @@ public class AdminEditFlightController {
 
         if(validateTime.validateData(departureTimeTextFieldEdit.getText()))
         {
-            Matcher matcher = pattern.matcher(departureTimeTextFieldEdit.getText());
+
+            Matcher matcher = timePattern.matcher(departureTimeTextFieldEdit.getText());
+            matcher.find();
             String hours = matcher.group(1);
             String minutes = matcher.group(2);
             String period = matcher.group(3);
             departureTimeToEdit = new Time(hours,minutes,period);
+            flightToEdit.setDepartureTime(departureTimeToEdit);
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Time (HH:MM AM/PM)");
+            warningLabel.setText("Please Enter a Correct Time (HH:MMAM/PM)");
             return false;
         }
 
         if(validateTime.validateData(arrivalTimeTextFieldEdit.getText()))
         {
-            Matcher matcher = pattern.matcher(arrivalTimeTextFieldEdit.getText());
+            Matcher matcher = timePattern.matcher(arrivalTimeTextFieldEdit.getText());
+            matcher.find();
             String hours = matcher.group(1);
             String minutes = matcher.group(2);
             String period = matcher.group(3);
             arrivalTimeToEdit = new Time(hours,minutes,period);
+            flightToEdit.setArrivalTime(arrivalTimeToEdit);
         }
         else
         {
-            warningLabel.setText("Please Enter a Correct Time (HH:MM AM/PM)");
+            warningLabel.setText("Please Enter a Correct Time (HH:MMAM/PM)");
             return false;
         }
 
         if(validateNumber.validateData(economySeatPriceTextFieldEdit.getText()))
         {
             economyPriceToEdit = Integer.parseInt(economySeatPriceTextFieldEdit.getText());
+            flightToEdit.setEconomyPrice(economyPriceToEdit);
         }
         else
         {
@@ -222,6 +249,7 @@ public class AdminEditFlightController {
         if(validateNumber.validateData(businessSeatPriceTextFieldEdit.getText()))
         {
             bussinessPriceToEdit = Integer.parseInt(businessSeatPriceTextFieldEdit.getText());
+            flightToEdit.setBusinessPrice(bussinessPriceToEdit);
         }
         else
         {
@@ -232,6 +260,7 @@ public class AdminEditFlightController {
         if(validateNumber.validateData(firstClassSeatPriceTextFieldEdit.getText()))
         {
             firstClassPriceToEdit = Integer.parseInt(firstClassSeatPriceTextFieldEdit.getText());
+            flightToEdit.setFirstClassPrice(firstClassPriceToEdit);
         }
         else
         {
@@ -239,12 +268,26 @@ public class AdminEditFlightController {
             return false;
         }
         warningLabel.setText("");
-
-        flightToEdit = new Flight(departureAirportToEdit,arrivalAirportToEdit,airlineNameToEdit,departureTimeToEdit,arrivalTimeToEdit,departureDateToEdit,arrivalDateToEdit,economyPriceToEdit,bussinessPriceToEdit,firstClassPriceToEdit);
-        Flight.flights.set(Flight.selectedFlightIndex,flightToEdit);
-        FlightInformationController.airlines.put(airlineNameToEdit,true);
-        FlightInformationController.arrivalAirports.put(arrivalAirportCodeToEdit,true);
-        FlightInformationController.departureAirports.put(departureAirportCodeToEdit,true);
         return true;
+    }
+    public void setValues()
+    {
+        airlineTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getAirLineName());
+
+        departureAirportCodeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureAirport().getCode());
+        departureAirportNameTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureAirport().getName());
+        departureAirportLocationTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureAirport().getLocation());
+
+        arrivalAirportCodeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getCode());
+        arrivalAirportNameTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getName());
+        arrivalAirportLocationTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getLocation());
+
+        departureTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getMinutes() + " " + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getPeriod());
+        arrivalTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getMinutes() + " " + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getPeriod());
+
+        economySeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getEconomyPrice()+"");
+        businessSeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getBusinessPrice()+"");
+        firstClassSeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getFirstClassPrice()+"");
+
     }
 }
