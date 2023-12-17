@@ -10,6 +10,7 @@ import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.ColorInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -61,16 +62,16 @@ public class UserHistoryController implements Initializable {
 
                 backButton.setBackground(null);
 
-                backButton.setOnMouseClicked(mouseEvent -> onBackClicked());
+                backButton.setOnMouseClicked(mouseEvent -> onBackClicked(mouseEvent));
 
                 int userBookingsCount = 0;
                 for (int i = 0; i < size; i++) {
                         if (bookingRecords.get(i).getUserName().equals(currentUser.getUserName())) {
                                 userBookings.add(bookingRecords.get(i));
                                 ++userBookingsCount;
+                                System.out.println(currentUser.getUserName());
                         }
                 }
-
                 youHaveXFlights.setText("You have " + userBookingsCount + " flights");
 
                 overlay.setPrefSize(scrollPane.getPrefWidth(), height * size);
@@ -81,6 +82,8 @@ public class UserHistoryController implements Initializable {
                 scrollPane.setContent(overlay);
 
                 System.out.println(size);
+
+
         }
 
         public void generateBookedFlights() {
@@ -223,7 +226,7 @@ public class UserHistoryController implements Initializable {
                 overlay.setPrefHeight(overlay.getPrefHeight() - (478 / 3 + 5));
         }
 
-        public void onBackClicked() {
-                // TODO : switch to previous scene
+        public void onBackClicked(MouseEvent event) {
+                SceneSwitcher.switchScene(event, "SearchFlightPage", null);
         }
 }
