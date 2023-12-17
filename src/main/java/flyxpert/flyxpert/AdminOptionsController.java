@@ -87,20 +87,7 @@ public class AdminOptionsController implements Initializable {
 
         static Stage stage;
         public void switchToAdminSeatMap()  {
-                stage = new Stage();
-                Parent root = null;
-                try {
-                        root = FXMLLoader.load(getClass().getResource("AdminSeatMap.fxml"));
-                } catch (IOException e) {
-                        System.out.printf("Unable to import AdminSeatMap.fxml");
-                        e.printStackTrace();
-                }
-                if (root != null) {
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.centerOnScreen();
-                        stage.show();
-                }
+                SceneSwitcher.createPopUp("AdminSeatMap");
         }
 
         public void switchToAdminEditFlight()  {

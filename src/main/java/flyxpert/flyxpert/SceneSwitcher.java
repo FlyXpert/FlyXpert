@@ -17,12 +17,6 @@ public class SceneSwitcher {
         static Scene scene;
         static Parent root;
 
-        /**
-         * A function to switch between 2 scenes
-         * @param event The Action event (The one passed to your function) which occurred to trigger scene switching (Button press, etc.)
-         * @param newFxml The FXML you are going to switch to (without the .fxml part) (Ex: PaymentPage)
-         * @param mainStageIfPopUpExist IF you are switching from a pop-up window, then pass your main stage, IF NOT then pass null
-         */
         public static void switchScene(ActionEvent event, String newFxml, Stage mainStageIfPopUpExist) {
 
                 if (newFxml.equals("SearchFlightPage")) {
@@ -65,6 +59,12 @@ public class SceneSwitcher {
                         stage.show();
                 }
         }
+        /**
+         * A function to switch between 2 scenes
+         * @param event The Action event (The one passed to your function) which occurred to trigger scene switching (Button press, etc.)
+         * @param newFxml The FXML you are going to switch to (without the .fxml part) (Ex: PaymentPage)
+         * @param mainStageIfPopUpExist IF you are switching from a pop-up window, then pass your main stage, IF NOT then pass null
+         */
         public static void switchScene(MouseEvent event, String newFxml, Stage mainStageIfPopUpExist) {
                 try {
                         root = FXMLLoader.load(SeatSelectionPageController.class.getResource(newFxml + ".fxml"));
@@ -82,10 +82,11 @@ public class SceneSwitcher {
                 scene = new Scene(root);
                 stage.setScene(scene);
                 stage.centerOnScreen();
+                stage.setResizable(false);
                 stage.show();
         }
 
-        public static void createPopUp(String newFxml, int index) {
+        public static void createPopUp(String newFxml) {
                 try {
                         root = FXMLLoader.load(SeatSelectionPageController.class.getResource(newFxml + ".fxml"));
                 } catch (IOException e) {
@@ -99,9 +100,5 @@ public class SceneSwitcher {
                 stage.setScene(scene);
                 stage.centerOnScreen();
                 stage.show();
-
-                if (newFxml.equals("AdminSeatMap"))
-                        ConfirmDeleteController.setData(index);
         }
-
 }

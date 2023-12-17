@@ -26,7 +26,7 @@
             <Image url="@../../AdminSeatIcon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="editIcon" fitHeight="44.0" fitWidth="40.0" layoutX="118.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="editIcon" fitHeight="44.0" fitWidth="40.0" layoutX="118.0" layoutY="106.0" onMouseClicked="#switchToAdminEditFlight" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../AdminEditIcon.png" />
          </image>

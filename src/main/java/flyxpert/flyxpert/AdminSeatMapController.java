@@ -85,14 +85,12 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
 
                 else if (justBeenReserved[row][col] == true) {
                         seats[row][col].getRec().setFill(seats[row][col].getType().color);
-                        adminReservedSeats.remove(row * 100 + col);
+                        adminReservedSeats.remove((Integer) (row * 100 + col));
                 }
         }
 
-
-        // TODO : close stage
         public void discardClicked() {
-                AdminOptionsController.stage.close();
+                SceneSwitcher.stage.close();
         }
 
         public void saveClicked() {
@@ -105,6 +103,6 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
                         a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = false;
                 }
                 Flight.flights.get(Flight.selectedFlightIndex).setSeatsAvailability(a);
-                AdminOptionsController.stage.close();
+                SceneSwitcher.stage.close();
         }
 }

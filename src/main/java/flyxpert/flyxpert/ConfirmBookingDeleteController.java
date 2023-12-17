@@ -1,12 +1,10 @@
 package flyxpert.flyxpert;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.stage.Stage;
 
-
-public class ConfirmDeleteController {
+public class ConfirmBookingDeleteController {
 
         private static int index = -1;
         public static void setData(int indx) {

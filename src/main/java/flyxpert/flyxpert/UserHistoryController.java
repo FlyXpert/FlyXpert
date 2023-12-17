@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static flyxpert.flyxpert.BookingConfirmation.bookingRecords;
-import static flyxpert.flyxpert.SceneSwitcher.stage;
 import static flyxpert.flyxpert.User.currentUser;
 
 public class UserHistoryController implements Initializable {
@@ -176,7 +175,8 @@ public class UserHistoryController implements Initializable {
         static boolean confirmed = false;
 
         public static void onXClicked(int index) {
-                SceneSwitcher.createPopUp("ConfirmDelete", index);
+                SceneSwitcher.createPopUp("ConfirmDelete");
+                ConfirmBookingDeleteController.setData(index);
         }
 
         public static void confirm(int index) {
