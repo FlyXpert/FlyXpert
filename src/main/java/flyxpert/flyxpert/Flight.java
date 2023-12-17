@@ -165,7 +165,7 @@ public class Flight {
     public void setSeatsAvailability(boolean[][] seatsAvailability) {
         this.seatsAvailability = seatsAvailability;
     }
-    public void setSeatsAvailability(int row, int col) {
-        this.seatsAvailability[row][col] = true;
+    public void reserveSeat(int row, int col) {
+        this.seatsAvailability[row][col] = false;
     }
 }

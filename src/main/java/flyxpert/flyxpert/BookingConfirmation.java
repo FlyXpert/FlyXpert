@@ -1,8 +1,6 @@
 package flyxpert.flyxpert;
 
 import java.util.ArrayList;
-import  java.util.Date;
-import java.util.Random;
 
 public class BookingConfirmation {
     public static int lastBookingNumber;
@@ -59,7 +57,7 @@ public class BookingConfirmation {
 
     public void setAvaliableSeats(Flight currentFlight){
         for (Passenger passenger : Passenger.passengers) {
-            currentFlight.setSeatsAvailability(passenger.getSeat().getRow(), passenger.getSeat().getCol());
+            currentFlight.reserveSeat(passenger.getSeat().getRow(), passenger.getSeat().getCol());
             currentFlight.setAvailableSeats(currentFlight.getAvailableSeats() - 1);
         }
     }

@@ -10,13 +10,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
-import javax.net.ssl.TrustManager;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 
 public class AdminSeatMapController extends SeatMap implements Initializable {
@@ -106,7 +104,9 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
                 int size = adminReservedSeats.size();
                 boolean[][] a = new boolean[24][4];
 
-                a = Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability();
+                Flight currentFlight = Flight.flights.get(Flight.selectedFlightIndex);
+                currentFlight.setAvailableSeats(currentFlight.getAvailableSeats() - size);
+                a = currentFlight.getSeatsAvailability();
 
                 for (int i = 0; i < size; ++i) {
                         a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = false;
