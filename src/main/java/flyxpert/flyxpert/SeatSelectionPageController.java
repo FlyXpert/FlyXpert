@@ -68,6 +68,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
 
                 try {
+                        passengerCount.setText("Passenger 1");
                         nextSeat.setText("Next Passenger");
                         seatNumber.setText("--");
                         passengerName.setText(Passenger.passengers.get(0).getFirstName());
@@ -159,7 +160,9 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
 
                 // Update the passenger count label
-                passengerCount.setText("Passenger " + (index++));
+                passengerCount.setText("Passenger " + (index + 2));
+                ++index;
+                seatNumber.setText("--");
 
                 // Display the name of the next passenger
                 passengerName.setText(Passenger.passengers.get(index).getFirstName());

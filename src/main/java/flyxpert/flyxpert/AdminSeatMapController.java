@@ -10,8 +10,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import javax.net.ssl.TrustManager;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.ResourceBundle;
 
 public class AdminSeatMapController extends SeatMap implements Initializable {
@@ -27,6 +32,9 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
 
         @FXML
         Label flightName;
+
+        public AdminSeatMapController() throws NoSuchAlgorithmException {
+        }
 
         /**
          * @param url
@@ -85,6 +93,7 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
 
                 else if (justBeenReserved[row][col] == true) {
                         seats[row][col].getRec().setFill(seats[row][col].getType().color);
+
                         adminReservedSeats.remove((Integer) (row * 100 + col));
                 }
         }
@@ -96,13 +105,18 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
         public void saveClicked() {
                 int size = adminReservedSeats.size();
                 boolean[][] a = new boolean[24][4];
-                for (int i = 0; i < 24; ++i)
-                        for (int j = 0; j < 4; ++j)
-                                justBeenReserved[i][j] = true;
+
+                a = Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability();
+
                 for (int i = 0; i < size; ++i) {
-                        a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = false;
+                        a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = true;
                 }
                 Flight.flights.get(Flight.selectedFlightIndex).setSeatsAvailability(a);
                 SceneSwitcher.stage.close();
         }
+
+        String s = new String();
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+        byte[] hash = digest.digest(s.getBytes(StandardCharsets.UTF_8));
 }

@@ -101,7 +101,7 @@ public abstract class SeatMap {
                         }
                 }
 
-                if (Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability()[i][j] == false)
+                if (Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability()[i][j] == true)
                         seats[i][j].getRec().setFill(Color.GRAY);
 
                 // Add the seat rectangle to the overlay Pane
