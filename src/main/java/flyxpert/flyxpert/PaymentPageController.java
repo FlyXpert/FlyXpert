@@ -331,4 +331,12 @@ public class PaymentPageController implements Initializable{
             paypalPaymentButton.setStyle(String.format("-fx-background-color: %s; -fx-text-fill: %s;", MAIN_WHITE_COLOR, MAIN_BLUE_COLOR));
         }
     }
+
+    public void onFlightButtonPressed(MouseEvent event){
+        // Reset passengers data
+        Passenger.passengers.clear();
+        PassengersController.curPassenger = 0;
+
+        SceneSwitcher.switchScene(event, "SearchFlightPage", null);
+    }
 }

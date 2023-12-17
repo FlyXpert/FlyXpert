@@ -69,12 +69,12 @@
             <Font name="Calibri" size="25.0" />
          </font>
       </Label>
-      <ImageView fx:id="sts" blendMode="MULTIPLY" cache="true" fitHeight="683.0" fitWidth="610.0" layoutX="859.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sts" blendMode="MULTIPLY" cache="true" fitHeight="683.0" fitWidth="600.0" layoutX="869.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../SeatsAndClasses.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="1441.0" layoutY="27.0" onMouseClicked="#onFlightsButtonClicked" text="Flights" textFill="#605dec">
+      <Label layoutX="1441.0" layoutY="27.0" onMouseClicked="#onFlightButtonPressed" text="Flights" textFill="#605dec">
          <font>
             <Font size="20.0" />
          </font>

@@ -8,7 +8,6 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -47,12 +46,6 @@
             <Image url="@ThankYouGuy.png" />
          </image>
       </ImageView>
-      <Text fill="#605dec" layoutX="1342.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flights">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
-      <Circle fill="#1f93ff" layoutX="1475.0" layoutY="50.0" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
       <Text fill="#605dec" layoutX="526.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bon voyage, ">
          <font>
             <Font name="Arial" size="30.0" />
@@ -185,7 +178,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="1236.0" layoutY="724.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="183.0" style="-fx-background-color: #605DEC;" stylesheets="@ButtonBookingClassStyle.css" text="Confirm" textFill="WHITE">
+      <Button layoutX="1236.0" layoutY="724.0" mnemonicParsing="false" onAction="#onYourBookingsButtonClicked" prefHeight="50.0" prefWidth="183.0" style="-fx-background-color: #605DEC;" stylesheets="@ButtonBookingClassStyle.css" text="Your Bookings" textFill="WHITE">
          <font>
             <Font size="23.0" />
          </font></Button>

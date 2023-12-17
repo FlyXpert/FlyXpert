@@ -63,8 +63,6 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-
-
                 try {
                         passengerCount.setText("Passenger 1");
                         nextSeat.setText("Next Passenger");
@@ -164,5 +162,13 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
 
                 // Update the opacity of the "Next Seat" button
                 nextSeat.setOpacity(.75);
+        }
+
+        public void onFlightButtonPressed(MouseEvent event){
+                // Reset passengers data
+                Passenger.passengers.clear();
+                PassengersController.curPassenger = 0;
+
+                SceneSwitcher.switchScene(event, "SearchFlightPage", null);
         }
 }

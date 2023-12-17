@@ -109,7 +109,7 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
                 a = Flight.flights.get(Flight.selectedFlightIndex).getSeatsAvailability();
 
                 for (int i = 0; i < size; ++i) {
-                        a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = true;
+                        a[adminReservedSeats.get(i) / 100][adminReservedSeats.get(i) % 10] = false;
                 }
                 Flight.flights.get(Flight.selectedFlightIndex).setSeatsAvailability(a);
                 SceneSwitcher.stage.close();

@@ -148,4 +148,8 @@ public class BookingConfirmationController {
     private void setArrivalDate(Flight currentFlight){
         arrivalDate.setText(currentFlight.getArrivalDate().toString());
     }
+
+    public void onYourBookingsButtonClicked(ActionEvent event){
+        SceneSwitcher.switchScene(event, "UserHistory" , null);
+    }
 }
