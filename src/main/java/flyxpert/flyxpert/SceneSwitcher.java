@@ -69,7 +69,8 @@ public class SceneSwitcher {
                 try {
                         root = FXMLLoader.load(SeatSelectionPageController.class.getResource(newFxml + ".fxml"));
                 } catch (IOException e) {
-                        System.out.printf("Unable to import %s.fxml", newFxml);
+                        System.out.printf("Unable to import %s.fxml in SceneSwitcher", newFxml);
+                        e.printStackTrace();
                 }
 
                 if (mainStageIfPopUpExist != null) {
@@ -90,7 +91,8 @@ public class SceneSwitcher {
                 try {
                         root = FXMLLoader.load(SeatSelectionPageController.class.getResource(newFxml + ".fxml"));
                 } catch (IOException e) {
-                        System.out.printf("Unable to import %s.fxml", newFxml);
+                        System.out.printf("Unable to import %s.fxml in SceneSwitcher", newFxml);
+                        e.printStackTrace();
                 }
                 stage = new Stage();
                 scene = new Scene(root);

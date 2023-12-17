@@ -153,5 +153,10 @@
             </cursor>
         </Pane>
         <Label fx:id="invalidInputOfPassengersMsg" layoutX="872.0" layoutY="178.0" prefHeight="18.0" prefWidth="98.0" text="Must enter digits..." textFill="#cc0202" visible="false" />
+      <ImageView fitHeight="60.0" fitWidth="58.0" layoutX="1435.0" layoutY="25.0" onMouseClicked="#onProfileLogoClicked" opacity="0.6" pickOnBounds="true" preserveRatio="true" smooth="false">
+         <image>
+            <Image url="@../../UserProfileLogo.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

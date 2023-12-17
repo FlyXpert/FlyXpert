@@ -647,4 +647,7 @@ public class FlightInformationController {
         SceneSwitcher.switchScene(e, "/flyxpert/flyxpert/HomePage/HomePage", null);
     }
 
+    public void onProfileLogoClicked(MouseEvent event){
+        SceneSwitcher.switchScene(event, "UserHistory", null);
+    }
 }

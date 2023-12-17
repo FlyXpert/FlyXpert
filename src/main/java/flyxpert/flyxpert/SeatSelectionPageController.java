@@ -133,8 +133,8 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
         public void nextSeatClicked(ActionEvent event) {
 
                 // Print debugging information
-                System.out.println(index);
-                System.out.println(size);
+                //System.out.println(index);
+                //System.out.println(size);
 
 
                 // Check if the current passenger hasn't selected a seat
