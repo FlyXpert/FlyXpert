@@ -13,6 +13,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,10 +92,10 @@ public class AdminEditFlightController implements Initializable {
     {
         if(AdminEditFlight())
         {
+            warningLabel.setText("");
             FlightInformationController.airlines.put(airlineNameToEdit,true);
             FlightInformationController.arrivalAirports.put(arrivalAirportCodeToEdit,true);
             FlightInformationController.departureAirports.put(departureAirportCodeToEdit,true);
-            System.out.println("DONE");
         }
     }
     private boolean AdminEditFlight()
@@ -267,7 +269,6 @@ public class AdminEditFlightController implements Initializable {
             warningLabel.setText("Please Enter a Correct Price");
             return false;
         }
-        warningLabel.setText("");
         return true;
     }
     public void setValues()
@@ -281,6 +282,11 @@ public class AdminEditFlightController implements Initializable {
         arrivalAirportCodeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getCode());
         arrivalAirportNameTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getName());
         arrivalAirportLocationTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalAirport().getLocation());
+
+        LocalDate departureDate = LocalDate.of(Integer.parseInt(Flight.flights.get(Flight.selectedFlightIndex).getDepartureDate().getYear()), Integer.parseInt(Flight.flights.get(Flight.selectedFlightIndex).getDepartureDate().getMonth()), Integer.parseInt(Flight.flights.get(Flight.selectedFlightIndex).getDepartureDate().getDay()));
+        departureDateDatePicker.setValue(departureDate);
+        LocalDate arrivalDate = LocalDate.of(Integer.parseInt(Flight.flights.get(Flight.selectedFlightIndex).getArrivalDate().getYear()), Integer.parseInt(Flight.flights.get(Flight.selectedFlightIndex).getArrivalDate().getMonth()), Integer.parseInt(Flight.flights.get(Flight.selectedFlightIndex).getArrivalDate().getDay()));
+        arrivalDateDatePicker.setValue(arrivalDate);
 
         departureTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getMinutes() + Flight.flights.get(Flight.selectedFlightIndex).getDepartureTime().getPeriod());
         arrivalTimeTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getHour() + ":" + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getMinutes() + Flight.flights.get(Flight.selectedFlightIndex).getArrivalTime().getPeriod());
