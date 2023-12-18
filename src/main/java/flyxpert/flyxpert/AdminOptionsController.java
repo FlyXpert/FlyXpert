@@ -30,6 +30,8 @@ public class AdminOptionsController implements Initializable {
         private ImageView seatIcon;
         @FXML
         private ImageView editIcon;
+        @FXML
+        private Label warningLabel;
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,6 +43,7 @@ public class AdminOptionsController implements Initializable {
 
         public static void handleHBoxClick(Flight flight,int indexOfFlight, Stage mainStage) throws IOException {
 
+                Flight.selectedFlight = flight;
                 Flight.selectedFlightIndex = indexOfFlight;
                 adminMainStage = mainStage;
 
@@ -97,7 +100,14 @@ public class AdminOptionsController implements Initializable {
         }
 
         public void deleteFlight(MouseEvent event){
-             Flight.flights.remove(Flight.selectedFlightIndex);
-             SceneSwitcher.switchScene(event, "AdminPage", adminMainStage);
+
+             if(Flight.selectedFlight.getAvailableSeats() == 96){
+                  warningLabel.setText("");
+                  Flight.flights.remove(Flight.selectedFlightIndex);
+                  SceneSwitcher.switchScene(event, "AdminPage", adminMainStage);
+             }
+             else{
+                   warningLabel.setText("The flight is filled with passengers");
+             }
         }
 }

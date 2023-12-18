@@ -31,5 +31,6 @@
             <Image url="@../../AdminEditIcon.png" />
          </image>
       </ImageView>
+      <Label fx:id="warningLabel" layoutX="20.0" layoutY="153.0" prefHeight="18.0" prefWidth="318.0" textFill="RED" />
     </children>
 </AnchorPane>

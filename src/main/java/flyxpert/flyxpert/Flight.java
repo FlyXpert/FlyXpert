@@ -18,6 +18,7 @@ public class Flight {
     private int flightNumber;
     private boolean[][] seatsAvailability;
     public static int selectedFlightIndex;
+    public static Flight selectedFlight;
     public static int flightsCount;
     public Flight(){};
 
