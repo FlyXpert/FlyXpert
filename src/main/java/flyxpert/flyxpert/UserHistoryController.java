@@ -66,12 +66,12 @@ public class UserHistoryController implements Initializable {
 
                 backButton.setOnMouseClicked(mouseEvent -> onBackClicked(mouseEvent));
 
-                int userBookingsCount = 0;
+                /*int userBookingsCount = 0;
                 for (int i = 0; i < size; i++) {
                         if (bookingRecords.get(i).getUserName().equals(currentUser.getUserName())) {
 
                         }
-                }
+                }*/
                 UserTrie userTrie = UserTrie.getInstance();
 
                 ArrayList<Integer> bookingsIndices = userTrie.getBookings(currentUser.getUserName());
@@ -82,9 +82,7 @@ public class UserHistoryController implements Initializable {
                         }
                         userBookingsCount = bookingsIndices.size();
                 }
-                youHaveXFlights.setText("You have " + userBookingsCount + " flights");
-
-                youHaveXFlights.setText("You have " + userBookingsCount + " flights");
+                youHaveXFlights.setText("Your Flights ");
 
                 overlay.setPrefSize(scrollPane.getPrefWidth(), height * size);
                 overlay.setMaxWidth(scrollPane.getMaxWidth());
@@ -187,20 +185,18 @@ public class UserHistoryController implements Initializable {
                 button.setOnMouseExited(event -> imageView.setEffect(blend2));
         }
 
-        static boolean confirmed = false;
+        // static boolean confirmed = false;
 
         public static void onXClicked(int index) {
-                SceneSwitcher.createPopUp("ConfirmDelete");
-                ConfirmBookingDeleteController.setData(index);
+                SceneSwitcher.createPopUp("ConfirmDelete", index);
         }
 
         public static void confirm(int index) {
-                // TODO : remove from bookingRecords
-
+                bookingRecords.remove(index);
                 removeFlightFromScreen(index);
                 System.out.println(index);
-
-                confirmed = false;
+              //  youHaveXFlights.setText("You have " + userBookingsCount + " flights");
+             //   confirmed = false;
         }
 
         public static void removeFlightFromScreen(int index) {

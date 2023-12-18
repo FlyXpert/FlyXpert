@@ -51,7 +51,7 @@ public class SceneSwitcher {
                 stage.show();
         }
 
-        public static void createPopUp(String newFxml) {
+        public static void createPopUp(String newFxml, int index) {
                 try {
                         root = FXMLLoader.load(Main.class.getResource(newFxml + ".fxml"));
                 } catch (IOException e) {
@@ -67,7 +67,7 @@ public class SceneSwitcher {
                 stage.centerOnScreen();
                 stage.show();
 
-                if (newFxml.equals("AdminSeatMap"))
-                        ConfirmDeleteController.setData(index);
+                if (newFxml.equals("ConfirmDelete"))
+                        ConfirmBookingDeleteController.setData(index);
         }
 }

@@ -68,7 +68,7 @@ public class SeatSelectionPageController extends SeatMap implements Initializabl
                         nextSeat.setText("Next Passenger");
                         seatNumber.setText("--");
                         passengerName.setText(Passenger.passengers.get(0).getFirstName());
-                        if (index >= size - 2) {
+                        if (index > size - 2) {
                                 nextSeat.setText("Proceed to Payment");
                         }
                 } catch (ArrayIndexOutOfBoundsException e) {

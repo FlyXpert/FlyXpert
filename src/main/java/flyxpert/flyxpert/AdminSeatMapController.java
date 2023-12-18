@@ -17,7 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AdminSeatMapController extends SeatMap implements Initializable { D
+public class AdminSeatMapController extends SeatMap implements Initializable {
         ArrayList<Integer> adminReservedSeats = new ArrayList<>();
         boolean[][] justBeenReserved = new boolean[24][4];
 

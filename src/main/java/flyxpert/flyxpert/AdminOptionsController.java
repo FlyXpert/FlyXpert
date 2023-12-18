@@ -86,7 +86,7 @@ public class AdminOptionsController implements Initializable {
 
         static Stage stage;
         public void switchToAdminSeatMap()  {
-                SceneSwitcher.createPopUp("AdminSeatMap");
+                SceneSwitcher.createPopUp("AdminSeatMap", 0);
         }
 
         public void switchToAdminEditFlight()  {
