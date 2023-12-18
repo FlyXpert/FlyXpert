@@ -16,7 +16,7 @@
         </Label>
         <Label layoutX="275.0" layoutY="70.0" opacity="0.6" prefHeight="18.0" prefWidth="65.0" text="Arrival Day" />
         <Label fx:id="timeLabel" layoutX="219.0" layoutY="23.0" prefHeight="26.0" prefWidth="112.0" text="07:00 AM - 04:15 PM" />
-      <ImageView fx:id="deleteIcon" fitHeight="44.0" fitWidth="40.0" layoutX="20.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="deleteIcon" fitHeight="44.0" fitWidth="40.0" layoutX="20.0" layoutY="106.0" onMouseClicked="#deleteFlight" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../AdminDeleteIcon.png" />
          </image>

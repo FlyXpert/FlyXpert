@@ -35,6 +35,7 @@ public class AdminOptionsController implements Initializable {
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 imagesViewStyling();
                 seatIcon.setOnMouseClicked(mouseEvent -> switchToAdminSeatMap());
+                //deleteIcon.setOnMouseClicked(mouseEvent -> deleteFlight());
         }
         static Stage adminMainStage;
 
@@ -91,7 +92,12 @@ public class AdminOptionsController implements Initializable {
                 SceneSwitcher.createPopUp("AdminSeatMap");
         }
 
-        public void switchToAdminEditFlight(MouseEvent event)  {
+        public void switchToAdminEditFlight(MouseEvent event) {
                 SceneSwitcher.switchScene(event, "AdminEditFlightScene", adminMainStage);
+        }
+
+        public void deleteFlight(MouseEvent event){
+             Flight.flights.remove(Flight.selectedFlightIndex);
+             SceneSwitcher.switchScene(event, "AdminPage", adminMainStage);
         }
 }

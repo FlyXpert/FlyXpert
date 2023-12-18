@@ -23,6 +23,8 @@ public class Reader {
             Scanner scan = new Scanner(file);
             scan.useDelimiter(",");
 
+            Flight.flightsCount = 0;
+
             while (scan.hasNext()) {
                 Airport departureAirport = new Airport(scan.next(), scan.next(), scan.next());
                 Airport arrivalAirport = new Airport(scan.next(), scan.next(), scan.next());
