@@ -88,7 +88,7 @@ public class BookingConfirmation {
     public int getBookingNumber() {
         return bookingNumber;
     }
-    public void setAvaliableSeats(Flight currentFlight){
+    public void setAvailableSeats(Flight currentFlight){
         for (Passenger passenger : Passenger.passengers) {
             currentFlight.reserveSeat(passenger.getSeat().getRow(), passenger.getSeat().getCol());
             currentFlight.setAvailableSeats(currentFlight.getAvailableSeats() - 1);

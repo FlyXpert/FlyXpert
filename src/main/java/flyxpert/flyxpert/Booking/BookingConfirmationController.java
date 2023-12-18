@@ -78,7 +78,7 @@ public class BookingConfirmationController {
         calculateTimeOfTheTrip(currentFlight);
         setFromToTime(currentFlight);
         setArrivalDate(currentFlight);
-        this.bookingConfirmation.setAvaliableSeats(currentFlight);
+        this.bookingConfirmation.setAvailableSeats(currentFlight);
         this.bookingConfirmation.setBoookingPassengers(Passenger.passengers);
         BookingConfirmation.bookingRecords.add(this.bookingConfirmation);
     }
