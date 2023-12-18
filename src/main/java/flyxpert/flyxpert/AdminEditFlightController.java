@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+
 import java.net.URL;
 import java.text.ParseException;
 import java.time.LocalDate;
@@ -298,5 +300,9 @@ public class AdminEditFlightController implements Initializable {
         businessSeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getBusinessPrice()+"");
         firstClassSeatPriceTextFieldEdit.setText(Flight.flights.get(Flight.selectedFlightIndex).getFirstClassPrice()+"");
 
+    }
+
+    public void onBackButtonClicked(MouseEvent event){
+        SceneSwitcher.switchScene(event, "AdminPage", null);
     }
 }

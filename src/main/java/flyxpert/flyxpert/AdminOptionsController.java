@@ -7,9 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,12 +35,13 @@ public class AdminOptionsController implements Initializable {
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 imagesViewStyling();
                 seatIcon.setOnMouseClicked(mouseEvent -> switchToAdminSeatMap());
-                editIcon.setOnMouseClicked(mouseEvent -> switchToAdminEditFlight());
         }
+        static Stage adminMainStage;
 
-        public static void handleHBoxClick(Flight flight,int indexOfFlight) throws IOException {
+        public static void handleHBoxClick(Flight flight,int indexOfFlight, Stage mainStage) throws IOException {
 
                 Flight.selectedFlightIndex = indexOfFlight;
+                adminMainStage = mainStage;
 
                 Stage newStage = new Stage();
                 newStage.initModality(Modality.APPLICATION_MODAL);
@@ -84,25 +87,11 @@ public class AdminOptionsController implements Initializable {
                 });
         }
 
-        static Stage stage;
         public void switchToAdminSeatMap()  {
                 SceneSwitcher.createPopUp("AdminSeatMap");
         }
 
-        public void switchToAdminEditFlight()  {
-                Stage stage = new Stage();
-                Parent root = null;
-                try {
-                        root = FXMLLoader.load(SeatSelectionPageController.class.getResource("AdminEditFlightScene.fxml"));
-                } catch (IOException e) {
-                        System.out.printf("Unable to import AdminEditFlightScene.fxml");
-                }
-                if (root != null) {
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.centerOnScreen();
-                        stage.show();
-                }
+        public void switchToAdminEditFlight(MouseEvent event)  {
+                SceneSwitcher.switchScene(event, "AdminEditFlightScene", adminMainStage);
         }
-
 }

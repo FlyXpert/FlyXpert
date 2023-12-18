@@ -15,6 +15,7 @@ public class Flight {
     private int businessPrice;
     private int firstClassPrice;
     private int availableSeats;
+    public static int flightsCount;
     private int flightNumber;
     private boolean[][] seatsAvailability;
     public static int selectedFlightIndex;

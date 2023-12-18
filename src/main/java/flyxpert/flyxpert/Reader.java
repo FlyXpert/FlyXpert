@@ -24,7 +24,6 @@ public class Reader {
             scan.useDelimiter(",");
 
             while (scan.hasNext()) {
-
                 Airport departureAirport = new Airport(scan.next(), scan.next(), scan.next());
                 Airport arrivalAirport = new Airport(scan.next(), scan.next(), scan.next());
                 String airlineName = scan.next();
@@ -37,6 +36,8 @@ public class Reader {
                 int firstClassPrice = Integer.parseInt(scan.next());
                 int availableSeats = Integer.parseInt(scan.next());
                 int flightNumber = Integer.parseInt(scan.next());
+                // So that flightsCount will have the number of the last flight in the file, which is equal to the flights count
+                Flight.flightsCount = flightNumber;
 
                 boolean[][] seatsAvailability = new boolean[24][4];
 

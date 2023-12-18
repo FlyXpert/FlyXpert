@@ -24,17 +24,10 @@ public class AdminPageController implements Initializable {
     private VBox vbox;
     @FXML
     private ScrollPane scrollPane;
-    @FXML
-    private Button addFlightButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillDataOfFlights();
-    }
-
-
-    public void adminSeatMap() {
-
     }
 
     public void fillDataOfFlights() {
@@ -85,10 +78,13 @@ public class AdminPageController implements Initializable {
         hbox.getChildren().add(arrivalAirprotLabel);
     }
 
+    Stage currentStage;
+
     private void setHboxOnAction(HBox hbox, Flight flight,int indexOfFlight) {
         hbox.setOnMouseClicked(event -> {
             try {
-                AdminOptionsController.handleHBoxClick(flight,indexOfFlight);
+                currentStage = (Stage) hbox.getScene().getWindow();
+                AdminOptionsController.handleHBoxClick(flight,indexOfFlight,currentStage);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -96,6 +92,6 @@ public class AdminPageController implements Initializable {
     }
 
     public void switchToAdminAddFlight(ActionEvent event)  {
-        SceneSwitcher.switchScene(event,"AdminAddFlightScene", ((Stage) addFlightButton.getScene().getWindow()));
+        SceneSwitcher.switchScene(event,"AdminAddFlightScene", null);
     }
 }

@@ -13,6 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.time.LocalDate;
 import Validators.*;
+import javafx.scene.input.MouseEvent;
+
 public class AdminAddFlightController {
 
     @FXML
@@ -46,7 +48,7 @@ public class AdminAddFlightController {
     @FXML
     public Label warningLabel;
     @FXML
-    public Label successfullLabel;
+    public Label successfulLabel;
     @FXML
     public Button submitButton;
 
@@ -69,8 +71,6 @@ public class AdminAddFlightController {
     private int economyPriceToBeAdded;
     private int bussinessPriceToBeAdded;
     private int firstClassPriceToBeAdded;
-    private String departureDateAsString;
-    private String arrivalDateAsString;
     private ValidateNumber validateNumber = new ValidateNumber();
     private ValidateName validateStrings = new ValidateName();
     private ValidateAirports validateAirports = new ValidateAirports();
@@ -83,7 +83,7 @@ public class AdminAddFlightController {
     {
         if(AdminAddFlight())
         {
-            successfullLabel.setText("Added Flight Successfully");
+            successfulLabel.setText("Added Flight Successfully");
             //go back to the previous scene
         }
     }
@@ -251,11 +251,11 @@ public class AdminAddFlightController {
 
         for (int i = 0; i < 24; i++) {
             for (int j = 0; j < 4; j++) {
-                tmpSeatsAvailability[i][j] = false;
+                tmpSeatsAvailability[i][j] = true;
             }
         }
 
-        flightToBeAdded = new Flight(departureAirportToBeAdded,arrivalAirportToBeAdded,airlineNameToBeAdded,departureTimeToBeAdded,arrivalTimeToBeAdded,departureDateToBeAdded,arrivalDateToBeAdded,economyPriceToBeAdded,bussinessPriceToBeAdded,firstClassPriceToBeAdded, 96,0,tmpSeatsAvailability);
+        flightToBeAdded = new Flight(departureAirportToBeAdded,arrivalAirportToBeAdded,airlineNameToBeAdded,departureTimeToBeAdded,arrivalTimeToBeAdded,departureDateToBeAdded,arrivalDateToBeAdded,economyPriceToBeAdded,bussinessPriceToBeAdded,firstClassPriceToBeAdded, 96,Flight.flightsCount + 1,tmpSeatsAvailability);
         Flight.flights.add(flightToBeAdded);
         FlightInformationController.airlines.put(airlineNameToBeAdded,true);
         FlightInformationController.arrivalAirports.put(arrivalAirportCodeToBeAdded,true);
@@ -275,4 +275,8 @@ public class AdminAddFlightController {
             System.out.println("null values\n");
         }
     }*/
+
+    public void onBackButtonClicked(MouseEvent event){
+        SceneSwitcher.switchScene(event, "AdminPage", null);
+    }
 }
