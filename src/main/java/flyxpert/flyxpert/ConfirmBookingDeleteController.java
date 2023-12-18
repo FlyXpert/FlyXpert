@@ -14,15 +14,15 @@ public class ConfirmBookingDeleteController {
         public void confirmed(ActionEvent e) {
                 //UserHistoryController.confirmed = true;
 
-                UserHistoryController.confirm(index);
-                Stage s = new Stage();
+               // UserHistoryController.confirm(index);
+                Stage s;
                 s = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 s.close();
 
         }
 
         public void discarded(ActionEvent e) {
-                Stage s = new Stage();
+                Stage s;
                 s = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 s.close();
         }

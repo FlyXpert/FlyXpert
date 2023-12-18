@@ -10,6 +10,7 @@ public class BookingConfirmation {
     private int economySeatsCount = 0;
     private int businessSeatsCount = 0;
     private int firstClassSeatsCount = 0;
+    private boolean cancelled = false;
     public ArrayList<Passenger> bookingPassengers = new ArrayList<>();
     public static ArrayList<BookingConfirmation> bookingRecords = new ArrayList<>();
 
@@ -66,6 +67,13 @@ public class BookingConfirmation {
 //        setBoookingPassengers(currentFlight);
 //        this.flight = new Flight(currentFlight);
     //    }
+
+    public boolean getCancelled () {
+        return this.cancelled;
+    }
+    public void setCancelled (boolean cancelled) {
+        this.cancelled = cancelled;
+    }
     private void readPassengers(String[] bookingDetails, int numberOfPassengers){
     Passenger passenger;
     for (int i = 1; i <= numberOfPassengers; i++){
