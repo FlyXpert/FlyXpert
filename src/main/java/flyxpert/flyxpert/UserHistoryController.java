@@ -46,7 +46,7 @@ public class UserHistoryController implements Initializable {
         Label youHaveXFlights;
 
         static Pane overlay = new Pane();
-        private int userBookingsCount = 0;
+        private static int userBookingsCount = 0;
 
         /**
          * @param url
@@ -220,7 +220,7 @@ public class UserHistoryController implements Initializable {
         public static void raiseBelowFlights(int index) {
                 System.out.println(1000 * index);
                 System.out.println(1000 * size);
-                for (int i = index; i < size; ++i) {
+                for (int i = index; i < userBookingsCount; ++i) {
                         double tmpY = f[i].getRec().getLayoutY();
                         f[i].getRec().setLayoutY(tmpY - (478 / 3 + 5));
                         f[i].getX().setLayoutY(f[i].getX().getLayoutY() - (478 / 3 + 5));
