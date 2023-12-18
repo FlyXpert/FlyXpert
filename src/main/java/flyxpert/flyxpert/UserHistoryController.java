@@ -87,12 +87,12 @@ public class UserHistoryController implements Initializable {
         }
 
         public void generateBookedFlights() {
-                for (int i = 0; i < size; ++i) {
+                for (int i = 0; i < userBookings.size(); ++i) {
                         Rectangle rec = new Rectangle(positionX, positionY, width, height);
                         rec.setFill(Color.WHITE);
                         overlay.getChildren().add(rec);
 
-                        addFlight(i, rec);
+                        addFlight(i, rec, userBookings);
 
                         positionY += height + 5;
                 }
@@ -101,16 +101,16 @@ public class UserHistoryController implements Initializable {
         static UserHistoryFlight[] f = new UserHistoryFlight[size];
         Button[] deleteButtons = new Button[size];
 
-        public void addFlight(int index, Rectangle rec) {
+        public void addFlight(int index, Rectangle rec, ArrayList<BookingConfirmation> userBookings) {
                 double x = rec.getLayoutX() + 50;
                 double y = rec.getLayoutX() + 20;
 
                // Text airlineText = createText(booked[index].getAirlineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
-                Text airlineText = createText(bookingRecords.get(index).getAirLineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text airlineText = createText(userBookings.get(index).getAirLineName(), 20, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
-                Text dateText = createText(bookingRecords.get(index).getArrivalDate(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text dateText = createText(userBookings.get(index).getArrivalDate(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
-                Text timeText = createText(bookingRecords.get(index).getDepartureTime(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
+                Text timeText = createText(userBookings.get(index).getDepartureTime(), 16, Color.BLACK, FontWeight.BOLD, "Segoe UI");
 
                 Text arrivalDateText = createText("Arrival Date", 16, Color.GRAY, FontWeight.NORMAL, "Segoe UI");
                 // Set the positions of the text elements
