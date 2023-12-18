@@ -51,12 +51,12 @@ public class HomePageController {
     private Stage signInStage;
     private Stage signUpStage;
     private static Stage mainStage;
-
+    private static FXMLLoader fxmlLoader;
     private final Color ERROR_COLOR = Color.RED;
 
     public static void homePageScene(Stage stage) throws IOException
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/HomePage/HomePage.fxml"));
+        fxmlLoader = new FXMLLoader(Main.class.getResource("/flyxpert/flyxpert/HomePage/HomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("FlyXpert!");
         stage.setResizable(false);
@@ -178,11 +178,12 @@ public class HomePageController {
             User.userList.add(user);
 
             try {
-                signUpSuccessLabel.setText("You've successfully signed up!");
-                signUpSuccessLabel.setTextFill(Color.GREEN);
+                HomePageController homePageController = fxmlLoader.getController();
+                homePageController.signUpSuccessLabel.setText("You've successfully signed up!");
+                homePageController.signUpSuccessLabel.setTextFill(Color.GREEN);
             }
             catch (NullPointerException exception) {
-                //System.out.println("Null..");
+                System.out.println("Null..");
             }
         }
     }
