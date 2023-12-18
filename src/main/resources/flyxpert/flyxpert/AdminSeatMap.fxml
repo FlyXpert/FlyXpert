@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="900.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.AdminSeatMapController">
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="900.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Admin.AdminSeatMapController">
    <children>
       <ScrollPane fx:id="scrollPane" prefHeight="700.0" prefWidth="900.0">
          <content>

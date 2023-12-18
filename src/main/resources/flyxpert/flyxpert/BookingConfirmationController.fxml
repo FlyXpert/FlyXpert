@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="mpane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: white;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.BookingConfirmationController">
+<AnchorPane id="mpane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: white;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Booking.BookingConfirmationController">
    <children>
       <Text fx:id="FlyXpertLabel" layoutX="19.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlyXpert">
          <font>

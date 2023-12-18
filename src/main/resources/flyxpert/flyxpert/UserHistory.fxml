@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="FlyXpertLabel" prefHeight="800.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.UserHistoryController">
+<AnchorPane fx:id="FlyXpertLabel" prefHeight="800.0" prefWidth="1536.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.User.UserHistoryController">
    <children>
       <ImageView fitHeight="624.0" fitWidth="604.0" layoutX="804.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>

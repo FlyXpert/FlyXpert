@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1536.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.AdminPageController">
+<AnchorPane prefHeight="800.0" prefWidth="1536.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Admin.AdminPageController">
     <children>
         <ImageView fx:id="worldImageView" fitHeight="873.0" fitWidth="1536.0" layoutX="-12.0" layoutY="20.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
             <image>

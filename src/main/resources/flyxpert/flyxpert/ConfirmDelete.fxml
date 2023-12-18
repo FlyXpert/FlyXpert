@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="172.0" prefWidth="342.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.ConfirmBookingDeleteController">
+<AnchorPane prefHeight="172.0" prefWidth="342.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Booking.ConfirmBookingDeleteController">
    <children>
       <Text fill="#4f5683" layoutX="11.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please confirm flight cancellation" textAlignment="CENTER" wrappingWidth="337.13671875">
          <font>
