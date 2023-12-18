@@ -52,13 +52,6 @@
             </content>
         </ScrollPane>
         <Pane layoutX="1414.0" layoutY="40.0">
-            <children>
-                <Label text="Log out" textFill="#7c8db0">
-                    <font>
-                        <Font size="20.0" />
-                    </font>
-                </Label>
-            </children>
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -72,6 +65,14 @@
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
+      </Label>
+      <Label layoutX="1424.0" layoutY="45.0" onMouseClicked="#onLogoutButtonClicked" text="Logout" textFill="#605dec">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Label>
     </children>
 </AnchorPane>
