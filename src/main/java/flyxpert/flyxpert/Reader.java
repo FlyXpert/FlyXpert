@@ -2,7 +2,6 @@ package flyxpert.flyxpert;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Reader {
@@ -66,8 +65,8 @@ public class Reader {
                 String user = scan.nextLine();
                 //System.out.println(user);
                 String[] userCredentials = user.split(" ");
-                int code = Integer.parseInt(Encryption.constantDecryption(userCredentials[3]));
-                User.userList.add(new User(userCredentials[0], userCredentials[1], Encryption.decryption(userCredentials[2], code)));
+                int code = Integer.parseInt(Encryption.constantDecrypt(userCredentials[3]));
+                User.userList.add(new User(userCredentials[0], userCredentials[1], Encryption.decrypt(userCredentials[2], code)));
             }
             scan.close();
         }

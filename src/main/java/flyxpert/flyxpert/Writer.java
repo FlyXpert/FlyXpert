@@ -2,7 +2,6 @@ package flyxpert.flyxpert;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Writer {
@@ -57,7 +56,7 @@ public class Writer {
                 int code = Encryption.generateCode();
                 String password = user.getPassword();
                 writer.println(user.getUserName() + ' ' + user.getEmail() + ' ' +
-                        Encryption.encryption(password, code) + ' ' + Encryption.constantEncryption(Integer.toString(code)));
+                        Encryption.encrypt(password, code) + ' ' + Encryption.constantEncrypt(Integer.toString(code)));
             }
             writer.close();
         }

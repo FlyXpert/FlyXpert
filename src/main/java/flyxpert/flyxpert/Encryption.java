@@ -2,7 +2,7 @@ package flyxpert.flyxpert;
 import java.util.Random;
 public class Encryption
 {
-    public static String encryption(String password, int code)
+    public static String encrypt(String password, int code)
     {
         String encrypted = "";
         for(int i = 0; i < password.length(); i++)
@@ -11,7 +11,7 @@ public class Encryption
         }
         return encrypted;
     }
-    public static String constantEncryption(String password)
+    public static String constantEncrypt(String password)
     {
         String constantEncryption = "";
         for(int i = 0; i < password.length(); i++)
@@ -21,7 +21,7 @@ public class Encryption
         System.out.println(constantEncryption);
         return constantEncryption;
     }
-    public static String constantDecryption(String password)
+    public static String constantDecrypt(String password)
     {
         String constantDecryption = "";
         for(int i = 0; i < password.length(); i++)
@@ -33,7 +33,7 @@ public class Encryption
 
     }
 
-    public static String decryption(String password, int code)
+    public static String decrypt(String password, int code)
     {
         String decrypted = "";
         for(int i = 0; i < password.length(); i++)
