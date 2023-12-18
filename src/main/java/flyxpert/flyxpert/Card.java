@@ -1,13 +1,11 @@
 package flyxpert.flyxpert;
 
-import java.util.Date;
-
 public class Card implements PaymentMethod{
     private String ownerName;
     private String number;
     private String expirationDate;
     private String ccv;
-    public static final double feesPercentage = 0.03;
+    public static final double FEES_PERCENTAGE = 0.03;
 
     public Card(){
         super();
@@ -21,7 +19,11 @@ public class Card implements PaymentMethod{
     }
 
     public double calculateTotalPriceWithFees(double subTotal){
-        return (subTotal * feesPercentage) + subTotal;
+        return subTotal + (subTotal * FEES_PERCENTAGE);
+    }
+
+    public String getPaymentMethodName(){
+        return "Card";
     }
 
     public void setOwnerName(String ownerName) {

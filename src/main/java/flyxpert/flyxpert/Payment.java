@@ -1,18 +1,22 @@
 package flyxpert.flyxpert;
 
 public class Payment {
-    private static int allPaymentsMadeCount;
+    public static int allPaymentsMadeCount;
     private final int paymentID;
     private final double paymentAmount;
     private final PaymentMethod paymentMethod;
     // Takes 2 values (Payed or Refunded)
-    private final String paymentStatus;
+    private String paymentStatus;
 
     Payment(double paymentAmount, PaymentMethod paymentMethod){
         this.paymentID = ++allPaymentsMadeCount;
         this.paymentAmount = paymentAmount;
         this.paymentMethod = paymentMethod;
         paymentStatus = "Payed";
+    }
+
+    public String toString() {
+        return paymentMethod.getPaymentMethodName();
     }
 
     public int getPaymentID() {
@@ -31,13 +35,7 @@ public class Payment {
         return paymentStatus;
     }
 
-    @Override
-    public String toString() {
-        if(paymentMethod instanceof Card){
-            return ("Card");
-        }
-        else{
-            return ("Paypal");
-        }
+    public void setPaymentStatus(String paymentStatus){
+        this.paymentStatus = paymentStatus;
     }
 }

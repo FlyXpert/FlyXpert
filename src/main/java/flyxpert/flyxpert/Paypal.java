@@ -2,8 +2,8 @@ package flyxpert.flyxpert;
 
 public class Paypal implements PaymentMethod{
     private String email;
-    private final double FEES_PERCENTAGE = 0.04;
-    private final double CONSTANT_FEE = 5;
+    private final static double FEES_PERCENTAGE = 0.04;
+    private final static double CONSTANT_FEE = 5;
 
     public Paypal(){
         super();
@@ -14,15 +14,19 @@ public class Paypal implements PaymentMethod{
         this.email = email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public double calculateTotalPriceWithFees(double subTotal){
+        return subTotal + (subTotal * FEES_PERCENTAGE) + CONSTANT_FEE;
     }
 
-    public double calculateTotalPriceWithFees(double subTotal){
-        return (subTotal * FEES_PERCENTAGE) + subTotal + CONSTANT_FEE;
+    public String getPaymentMethodName(){
+        return "Paypal";
     }
 
     public String getEmail() {
         return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

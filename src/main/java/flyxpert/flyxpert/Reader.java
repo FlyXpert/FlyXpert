@@ -91,6 +91,7 @@ public class Reader {
                 String[] bookingDetails = line.split(",");
                 BookingConfirmation bookingConfirmation = new BookingConfirmation(bookingDetails);
                 BookingConfirmation.bookingRecords.add(bookingConfirmation);
+                Payment.allPaymentsMadeCount = Integer.parseInt(bookingDetails[10]);
             }
             scan.close();
         } catch (Exception e) {
