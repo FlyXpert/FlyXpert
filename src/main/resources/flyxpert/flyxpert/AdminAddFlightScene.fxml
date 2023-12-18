@@ -14,9 +14,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.AdminAddFlightController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.AdminAddFlightController">
     <children>
-        <Label layoutX="14.0" text="FlyXpert">
+        <Label fx:id="FlyXpertLabel" layoutX="14.0" text="FlyXpert">
             <font>
                 <Font name="System Bold" size="64.0" />
             </font>
@@ -63,11 +63,6 @@
                 <Font name="System Bold" size="17.0" />
             </font>
         </Label>
-        <ImageView fitHeight="93.0" fitWidth="71.0" layoutX="1444.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@imageplaceholder.png" />
-            </image>
-        </ImageView>
         <Button id="button1" fx:id="submitButton" layoutX="108.0" layoutY="692.0" mnemonicParsing="false" onAction="#AdminAddFlightAction" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
             <font>
                 <Font size="20.0" />

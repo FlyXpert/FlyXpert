@@ -14,9 +14,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.AdminEditFlightController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.AdminEditFlightController">
     <children>
-        <Label layoutX="14.0" text="FlyXpert">
+        <Label fx:id="FlyXpertLabel" layoutX="14.0" text="FlyXpert">
             <font>
                 <Font name="System Bold" size="64.0" />
             </font>

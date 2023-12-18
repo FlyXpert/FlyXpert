@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 
-import static flyxpert.flyxpert.Pallete.*;
+import static flyxpert.flyxpert.Palette.*;
 
 public abstract class SeatMap {
 

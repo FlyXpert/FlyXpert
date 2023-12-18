@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="mpane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.BookingConfirmationController">
+<AnchorPane id="mpane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: white;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.BookingConfirmationController">
    <children>
-      <Text layoutX="19.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlyXpert">
+      <Text fx:id="FlyXpertLabel" layoutX="19.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlyXpert">
          <font>
             <Font name="Arial Black" size="42.0" />
          </font>
@@ -29,12 +29,12 @@
                   </Stop>
                   <Stop offset="0.006711409395973154">
                      <color>
-                        <Color red="0.33000001311302185" green="0.8149523735046387" blue="1.0" />
+                        <Color red="0.3294117748737335" green="0.8156862854957581" blue="1.0" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.5615984201431274" green="0.08162768185138702" blue="0.8815789222717285" />
+                        <Color red="0.5607843399047852" green="0.08235294371843338" blue="0.8823529481887817" />
                      </color>
                   </Stop>
                </stops>

@@ -17,7 +17,7 @@ import javafx.scene.paint.Paint;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static flyxpert.flyxpert.Pallete.*;
+import static flyxpert.flyxpert.Palette.*;
 
 
 public class SeatSelectionPageController extends SeatMap implements Initializable {
