@@ -167,7 +167,7 @@ public class HomePageController {
             signUpUsernameValidator.setText("");
 
         if(!User.exists(email) && !User.exists(userName) && password.length() >= 12
-                && email.endsWith(".com") && email.contains("@") && !userName.isEmpty()) {
+                && email != null && email.matches("\\w+@\\w+\\.com") && userName != null && !userName.isEmpty()) {
             //System.out.println(signUpEmailTextField.getText());
             //System.out.println(signUpUsernameTextField.getText());
             //System.out.println(signUpPasswordTextField.getText());
