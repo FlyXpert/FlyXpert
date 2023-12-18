@@ -136,7 +136,7 @@ public class HomePageController {
         String email = signUpEmailTextField.getText();
         String password = signUpPasswordTextField.getText();
         //Some validations to be done
-        if(!(email.endsWith(".com") && email.contains("@"))) {
+        if(email == null || !email.matches("\\w+@\\w+\\.com")) {
             emailVaidatorLabel.setText("Incorrect email, follow this format [John-Doe@gmail.com]");
             emailVaidatorLabel.setTextFill(ERROR_COLOR);
         }
@@ -153,10 +153,10 @@ public class HomePageController {
         else
             passwordValidatorLabel.setText("");
 
-        if(userName.isEmpty()) {
+        if(userName == null || !userName.matches("[a-zA-Z ,.-]+")) {
             //System.out.println("IT's empty");
             signUpUsernameValidator.setTextFill(ERROR_COLOR);
-            signUpUsernameValidator.setText("Username cannot be empty");
+            signUpUsernameValidator.setText("Incorrect username");
         }
 
         else if(User.exists(userName)) {
