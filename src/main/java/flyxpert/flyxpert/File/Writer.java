@@ -59,8 +59,10 @@ public class Writer {
         try {
             PrintWriter writer = new PrintWriter(new FileWriter("users.txt"));
             for(User user : User.userList) {
-                //System.out.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
-                writer.println(user.getUserName() + ' ' + user.getEmail() + ' ' + user.getPassword());
+                int code = Encryption.generateCode();
+                String password = user.getPassword();
+                writer.println(user.getUserName() + ' ' + user.getEmail() + ' ' +
+                        Encryption.encrypt(password, code) + ' ' + Encryption.constantEncrypt(Integer.toString(code)));
             }
             writer.close();
         }
