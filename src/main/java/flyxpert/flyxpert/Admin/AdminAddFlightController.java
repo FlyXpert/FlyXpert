@@ -265,19 +265,7 @@ public class AdminAddFlightController {
         FlightInformationController.departureAirports.put(departureAirportCodeToBeAdded,true);
         return true;
     }
-    /*private void checkIfNotNull()
-    {
-        if(airlineTextFieldAdd.getText() != null && departureAirportCodeTextFieldAdd.getText() != null && departureAirportNameTextFieldAdd.getText() != null && departureAirportLocationTextFieldAdd.getText() != null && arrivalAirportCodeTextFieldAdd.getText() != null && arrivalAirportNameTextFieldAdd.getText() != null && arrivalAirportLocationTextFieldAdd.getText() != null && departureDateDatePicker.getValue() != null && arrivalDateDatePicker.getValue() != null && departureTimeTextFieldAdd.getText() != null && arrivalTimeTextFieldAdd.getText() != null && economySeatPriceTextFieldAdd.getText() != null && businessSeatPriceTextFieldAdd.getText() != null && firstClassSeatPriceTextFieldAdd.getText() != null)
-        {
-            submitButton.setDisable(false);
-            System.out.println("no null values\n");
-        }
-        else
-        {
-            submitButton.setDisable(true);
-            System.out.println("null values\n");
-        }
-    }*/
+
 
     public void onBackButtonClicked(MouseEvent event){
         SceneSwitcher.switchScene(event, "AdminPage", null);

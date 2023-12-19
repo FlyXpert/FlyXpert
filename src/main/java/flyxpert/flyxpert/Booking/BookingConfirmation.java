@@ -68,17 +68,6 @@ public class BookingConfirmation {
         int sum = this.economySeatsCount + this.businessSeatsCount + this.firstClassSeatsCount;
         readPassengers(details, sum);
     }
-//    public BookingConfirmation(User user, Flight currentFlight, Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){;
-//        this.user = new User(user);
-////        this.economyClassPrice = new Price(price);
-//        this.bookingNumber = lastBookingNumber++;
-//        this.payment = payment;
-//        this.economySeatsCount = economySeatsCount;
-//        this.businessSeatsCount = businessSeatsCount;
-//        this.firstClassSeatsCount = firstClassSeatsCount;
-//        setBoookingPassengers(currentFlight);
-//        this.flight = new Flight(currentFlight);
-    //    }
     private void readPassengers(String[] bookingDetails, int numberOfPassengers){
     Passenger passenger;
     for (int i = 1; i <= numberOfPassengers; i++){
@@ -106,7 +95,6 @@ public class BookingConfirmation {
     }
     public void setBoookingPassengers(ArrayList<Passenger> passengers){
         this.bookingPassengers.addAll(passengers);
-
     }
     public void setSubTotalMoney(int subTotalMoney){
         this.subTotalMoney = subTotalMoney;

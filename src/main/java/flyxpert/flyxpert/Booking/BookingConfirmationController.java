@@ -21,16 +21,12 @@ public class BookingConfirmationController {
     private Label userName;
     @FXML
     private Label bookingNumber;
-//    @FXML
-//    private Label numberOfPassenger;
     @FXML
     private Label economyClassPrice;
     @FXML
     private Label bussniessClassPrice;
     @FXML
     private Label firstClassPrice;
-//    @FXML
-//    private Label priceWithTaxes;
     @FXML
     private Label price;
     @FXML
@@ -80,7 +76,6 @@ public class BookingConfirmationController {
         setPassengerDetails(user, currentFlight);
         setPaymentMethod(payment.getPaymentMethod());
         setDepartingDate(currentFlight);
-        // setPassengersSeatsCount();
         this.bookingConfirmation.setSubTotalMoney(this.subTotalMoney);
         calculateTimeOfTheTrip(currentFlight);
         setFromToTime(currentFlight);
@@ -92,8 +87,6 @@ public class BookingConfirmationController {
         {
             bookingVBox.getChildren().add(addPassenger(passenger));
         }
-        //calculateTotalsAndSetPrices(economySeatsCount, businessSeatsCount, firstClassSeatsCount, currentFlight);
-
     }
     private void setPaymentMethod(PaymentMethod payment){
         if(payment instanceof Paypal){
@@ -128,7 +121,6 @@ public class BookingConfirmationController {
         String lastFourDigits = card.getNumber().substring(card.getNumber().length() - 4);
         this.cardNumber.setText("*".repeat(card.getNumber().length() - 4) + lastFourDigits);
     }
-
     private void setPassengerDetails(User user, Flight currentFlight){
         this.userName.setText(user.getUserName());
         this.airLineName.setText(currentFlight.getAirlineName());
@@ -163,8 +155,6 @@ public class BookingConfirmationController {
     }
     private HBox addPassenger(Passenger passengerInfo){
         HBox hBox = new HBox();
-       // passengerInfo.getFirstName(), passengerInfo.getSeat().getPrimaryKey(), passengerInfo.getSeat().getType().getName(),
-        // Flight.flights.get(Flight.selectedFlightIndex).getEconomyPrice()
 
         Label passengerName = new Label(passengerInfo.getFirstName());
 
