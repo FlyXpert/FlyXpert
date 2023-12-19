@@ -281,7 +281,11 @@ public class PaymentPageController implements Initializable{
                 payment = new Payment(paymentTotal, paypal);
             }
 
-
+            for(int i = 0; i < Passenger.passengers.size(); i++)
+            {
+                Ticket ticket = new Ticket(i + 1,paymentTotal, "Not Expired", Passenger.passengers.get(i), Flight.flights.get(Flight.selectedFlightIndex));
+                ticket.readTicket(ticket);
+            }
             bookingConfirmationController.displayTicketInfo(User.currentUser, Flight.flights.get(Flight.selectedFlightIndex), payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
 
 

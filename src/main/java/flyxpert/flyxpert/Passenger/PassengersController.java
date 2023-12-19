@@ -44,12 +44,14 @@ public class PassengersController
     public void nextPassengerButtonPress(ActionEvent event) throws ParseException {
         if (passengersToBeAdded > 0 && addPassenger()) {
             passengersToBeAdded--;
+            curPassenger++;
             if (curPassenger != initialPassengersToBeAdded) {
                 numOfPassengersDisplay.setText("Passenger " + (curPassenger + 1));
             }
             else
             {
                 numOfPassengersDisplay.setText("Press Select Seat");
+                System.out.println(Passenger.passengers.size());
             }
         }
         else {
@@ -63,10 +65,10 @@ public class PassengersController
 
     public boolean addPassenger() throws ParseException {
 
-        Passenger.passengers.add(new Passenger());
+        Passenger tmpPassenger = new Passenger();
 
         if (validateName.validateData(firstNameTextField.getText())) {
-            Passenger.passengers.get(curPassenger).setFirstName(firstNameTextField.getText());
+           tmpPassenger.setFirstName(firstNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
@@ -74,7 +76,7 @@ public class PassengersController
         }
 
         if (validateName.validateData(middleNameTextField.getText())) {
-            Passenger.passengers.get(curPassenger).setMiddleName(middleNameTextField.getText());
+            tmpPassenger.setMiddleName(middleNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
@@ -82,7 +84,7 @@ public class PassengersController
         }
 
         if (validateName.validateData(lastNameTextField.getText())) {
-            Passenger.passengers.get(curPassenger).setLastName(lastNameTextField.getText());
+            tmpPassenger.setLastName(lastNameTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter Your Name");
@@ -92,28 +94,30 @@ public class PassengersController
         try {
             LocalDate localDate = dateOfBirthTextField.getValue();
             dateOfBirthAsString = localDate.format(dateOfBirthFormatter);
-            Passenger.passengers.get(curPassenger).setDateOfBirth(dateOfBirthSDF.parse(dateOfBirthAsString));
+            tmpPassenger.setDateOfBirth(dateOfBirthSDF.parse(dateOfBirthAsString));
         }
-        catch (NullPointerException e) {
+        catch (NullPointerException | ParseException e) {
             informationWarningText.setText("Please Enter the Date");
             return false;
         }
 
         if (validatePhoneNumber.validateData(phoneNumberTextField.getText()) && phoneNumberTextField.getText().length() == 11) {
-            Passenger.passengers.get(curPassenger).setPhoneNumber(phoneNumberTextField.getText());
+            tmpPassenger.setPhoneNumber(phoneNumberTextField.getText());
         }
         else {
             informationWarningText.setText("Please Enter a Correct Phone Number");
             return false;
         }
 
+        Passenger.passengers.add(tmpPassenger);
+
         firstNameTextField.setText("");
         middleNameTextField.setText("");
         lastNameTextField.setText("");
         dateOfBirthTextField.setValue(null);
         phoneNumberTextField.setText("");
-        curPassenger++;
         informationWarningText.setText("");
+
         return true;
     }
 

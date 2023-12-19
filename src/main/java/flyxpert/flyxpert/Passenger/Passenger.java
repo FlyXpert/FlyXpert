@@ -1,11 +1,9 @@
 package flyxpert.flyxpert.Passenger;
 
 import flyxpert.flyxpert.Seat.Seat;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import flyxpert.flyxpert.Seat.*;
 
 public class Passenger {
 
