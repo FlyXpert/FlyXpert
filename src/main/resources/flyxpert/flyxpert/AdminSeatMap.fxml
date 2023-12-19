@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="700.0" prefWidth="900.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Admin.AdminSeatMapController">
+   <children>
+      <ScrollPane fx:id="scrollPane" prefHeight="700.0" prefWidth="900.0">
+         <content>
+            <Pane fx:id="overlay" prefHeight="2500.0" prefWidth="900.0">
+               <children>
+                  <ImageView fitHeight="2500.0" fitWidth="900.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../PlaneCropped.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="flightName" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" prefHeight="56.0" prefWidth="836.0" text="Los Angeles, CA to San Jose Del Cabo, Mexico" textFill="#946dff">
+                     <font>
+                        <Font size="31.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

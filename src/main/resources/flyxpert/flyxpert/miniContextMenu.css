@@ -1,0 +1,17 @@
+.context-menu {
+    -fx-pref-width: 100; /* Set the preferred width */
+    -fx-pref-height: 75; /* Set the preferred height */
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+}
+
+.text-field {
+    -fx-effect: null;
+    -fx-background-color: white; /* Set background color to ensure no shadows are visible */
+    -fx-border-color: transparent; /* Set border color to transparent */
+    -fx-border-width: 0; /* Set border width to 0 to remove any borders */
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: transparent;
+}

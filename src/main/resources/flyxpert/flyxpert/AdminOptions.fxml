@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="175.0" prefWidth="350.0" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Admin.AdminOptionsController">
+    <children>
+        <Label fx:id="dayLabel" layoutX="270.0" layoutY="44.0" prefHeight="26.0" prefWidth="65.0" text="07-01-2024" />
+        <Label fx:id="airlineLabel" layoutX="20.0" layoutY="13.0" prefHeight="44.0" prefWidth="196.0" text="Emirates Airlines">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </Label>
+        <Label layoutX="275.0" layoutY="70.0" opacity="0.6" prefHeight="18.0" prefWidth="65.0" text="Arrival Day" />
+        <Label fx:id="timeLabel" layoutX="219.0" layoutY="23.0" prefHeight="26.0" prefWidth="112.0" text="07:00 AM - 04:15 PM" />
+      <ImageView fx:id="deleteIcon" fitHeight="44.0" fitWidth="40.0" layoutX="20.0" layoutY="106.0" onMouseClicked="#deleteFlight" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../AdminDeleteIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="seatIcon" fitHeight="44.0" fitWidth="40.0" layoutX="67.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../AdminSeatIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="editIcon" fitHeight="44.0" fitWidth="40.0" layoutX="118.0" layoutY="106.0" onMouseClicked="#switchToAdminEditFlight" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../AdminEditIcon.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="warningLabel" layoutX="20.0" layoutY="153.0" prefHeight="18.0" prefWidth="318.0" textFill="RED" />
+    </children>
+</AnchorPane>

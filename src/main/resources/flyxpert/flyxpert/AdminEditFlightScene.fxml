@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Admin.AdminEditFlightController">
+    <children>
+        <Label fx:id="FlyXpertLabel" layoutX="14.0" text="FlyXpert">
+            <font>
+                <Font name="System Bold" size="64.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="108.0" layoutY="162.0" prefHeight="93.0" prefWidth="318.0" text="Edit Flight">
+            <font>
+                <Font name="System Bold" size="29.0" />
+            </font>
+            <textFill>
+                <LinearGradient endX="1.0" endY="1.0">
+                    <stops>
+                        <Stop>
+                            <color>
+                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
+                            </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                            <color>
+                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
+                            </color>
+                        </Stop>
+                    </stops>
+                </LinearGradient>
+            </textFill>
+        </Label>
+        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="670.0" text="Kindly ensure that all flight details are thoroughly reviewed and accurately updated" textFill="#ababab" wrapText="true">
+            <font>
+                <Font name="System Bold" size="17.0" />
+            </font>
+        </Label>
+        <Button id="button1" layoutX="108.0" layoutY="692.0" mnemonicParsing="false" onAction="#AdminEditFlightAction" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Button>
+        <ImageView fitHeight="435.0" fitWidth="608.0" layoutX="893.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Airplane.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="airlineTextFieldEdit" layoutX="108.0" layoutY="353.0" prefHeight="50.0" prefWidth="183.0" promptText="Airline">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+        <Label fx:id="informationWarningText1" layoutX="299.0" layoutY="345.0" prefHeight="16.0" prefWidth="55.0" text="Departure" textFill="#717171" wrapText="true">
+            <font>
+                <Font name="System Bold" size="11.0" />
+            </font>
+        </Label>
+        <Pane layoutX="355.0" layoutY="331.0" prefHeight="43.0" prefWidth="414.0">
+            <children>
+                <TextField fx:id="departureAirportCodeTextFieldEdit" prefHeight="14.0" prefWidth="137.0" promptText="Code">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="departureAirportNameTextFieldEdit" layoutX="137.0" prefHeight="14.0" prefWidth="137.0" promptText="Name">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="departureAirportLocationTextFieldEdit" layoutX="274.0" prefHeight="14.0" prefWidth="137.0" promptText="Location">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+            </children>
+        </Pane>
+        <Label fx:id="informationWarningText" layoutX="307.0" layoutY="406.0" prefHeight="16.0" prefWidth="40.0" text="Arrival" textFill="#717171" wrapText="true">
+            <font>
+                <Font name="System Bold" size="11.0" />
+            </font>
+        </Label>
+        <Pane layoutX="355.0" layoutY="392.0" prefHeight="43.0" prefWidth="414.0">
+            <children>
+                <TextField fx:id="arrivalAirportNameTextFieldEdit" layoutX="138.0" prefHeight="43.0" prefWidth="138.0" promptText="Name">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="arrivalAirportCodeTextFieldEdit" prefHeight="43.0" prefWidth="138.0" promptText="Code">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="arrivalAirportLocationTextFieldEdit" layoutX="276.0" prefHeight="43.0" prefWidth="138.0" promptText="Location">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </TextField>
+            </children>
+        </Pane>
+        <DatePicker fx:id="departureDateDatePicker" layoutX="108.0" layoutY="445.0" prefHeight="50.0" prefWidth="156.0" promptText="Departure Date" />
+        <DatePicker fx:id="arrivalDateDatePicker" layoutX="274.0" layoutY="445.0" prefHeight="50.0" prefWidth="156.0" promptText="Arival Date" />
+        <TextField fx:id="departureTimeTextFieldEdit" layoutX="445.0" layoutY="445.0" prefHeight="50.0" prefWidth="174.0" promptText="Departure Time?">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="arrivalTimeTextFieldEdit" layoutX="637.0" layoutY="445.0" prefHeight="50.0" prefWidth="183.0" promptText="Arrival Time?">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="economySeatPriceTextFieldEdit" layoutX="104.0" layoutY="533.0" prefHeight="50.0" prefWidth="183.0" promptText="\$ Seat Price">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="businessSeatPriceTextFieldEdit" layoutX="327.0" layoutY="533.0" prefHeight="50.0" prefWidth="183.0" promptText="\$ Seat Price">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="firstClassSeatPriceTextFieldEdit" layoutX="546.0" layoutY="533.0" prefHeight="50.0" prefWidth="183.0" promptText="\$ Seat Price">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </TextField>
+        <Label layoutX="108.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="Economy" textFill="#838383" />
+        <Label layoutX="327.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="Business" textFill="#838383" />
+        <Label layoutX="546.0" layoutY="597.0" prefHeight="17.0" prefWidth="183.0" text="First Class" textFill="#838383" />
+        <Label fx:id="warningLabel" layoutX="108.0" layoutY="666.0" prefHeight="18.0" prefWidth="297.0" textFill="RED" />
+      <Label fx:id="successfullLabel" layoutX="108.0" layoutY="666.0" prefHeight="18.0" prefWidth="297.0" textFill="#31c600" />
+      <Label layoutX="1414.0" layoutY="35.0" onMouseClicked="#onBackButtonClicked" text="Back" textFill="#605dec">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+    </children>
+</AnchorPane>

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="514.0" prefWidth="544.0" style="-fx-border-size: 4px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
+<AnchorPane prefHeight="514.0" prefWidth="544.0" style="-fx-border-size: 4px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.User.HomePageController">
     <children>
         <Button fx:id="internalSignUpButton" layoutX="28.0" layoutY="391.0" mnemonicParsing="false" onAction="#internalOnSignUpButton" onMouseEntered="#internalOnSignUpButtonHoverEnter" onMouseExited="#internalOnSignUpButtonHoverExit" prefHeight="40.0" prefWidth="462.0" style="-fx-background-color: #605DEC; -fx-border-size: 4px;" text="Create account" textFill="WHITE" />
         <Label fx:id="signUpLabel" layoutX="38.0" layoutY="48.0" text="Sign Up for FlyXpert">

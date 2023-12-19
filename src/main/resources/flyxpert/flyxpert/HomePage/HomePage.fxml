@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="container" prefHeight="800" prefWidth="1536" style="-fx-border-radius: 4px;;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.HomePageController">
+<AnchorPane fx:id="container" prefHeight="800" prefWidth="1536" style="-fx-border-radius: 4px;;" stylesheets="@../../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.User.HomePageController">
     <children>
         <ImageView fitHeight="800.0" fitWidth="1536.0" layoutX="1.0" layoutY="-2.0" pickOnBounds="true">
          <image>
@@ -25,17 +25,12 @@
                <stops>
                   <Stop>
                      <color>
-                        <Color red="0.6941176652908325" green="0.0784313753247261" blue="1.0" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.9932885906040269">
-                     <color>
-                        <Color red="0.37720000743865967" green="0.36800000071525574" blue="0.9200000166893005" />
+                        <Color red="0.08235294371843338" green="0.6980392336845398" blue="0.8196078538894653" />
                      </color>
                   </Stop>
                   <Stop offset="1.0">
                      <color>
-                        <Color red="0.4493333399295807" green="0.4399999976158142" blue="1.0" opacity="0.8969465494155884" />
+                        <Color red="0.5607843399047852" green="0.08235294371843338" blue="0.8823529481887817" opacity="0.8999999761581421" />
                      </color>
                   </Stop>
                </stops>

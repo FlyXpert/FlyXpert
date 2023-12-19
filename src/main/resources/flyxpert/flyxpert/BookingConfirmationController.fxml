@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="mpane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: white;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Booking.BookingConfirmationController">
+   <children>
+      <Text fx:id="FlyXpertLabel" layoutX="19.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FlyXpert">
+         <font>
+            <Font name="Arial Black" size="42.0" />
+         </font>
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.33000001311302185" green="0.8149523735046387" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.3294117748737335" green="0.8156862854957581" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.5607843399047852" green="0.08235294371843338" blue="0.8823529481887817" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Text>
+      <ImageView fitHeight="587.0" fitWidth="692.0" layoutX="-19.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ThankYouGuy.png" />
+         </image>
+      </ImageView>
+      <Text fill="#605dec" layoutX="526.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bon voyage, ">
+         <font>
+            <Font name="Arial" size="30.0" />
+         </font>
+      </Text>
+      <Label fx:id="userName" layoutX="698.0" layoutY="83.0" text="Name" textFill="#605dec">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Text fill="#6e7491" layoutX="526.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Booking number: #">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="bookingNumber" layoutX="700.0" layoutY="138.0" text="123456" textFill="#6e7491">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Text fill="#7c8db0" layoutX="526.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you for booking your travel with FlyXpert! Below is a summary of your trip to" wrappingWidth="630.41650390625">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="destination" layoutX="624.0" layoutY="191.0" prefHeight="23.0" prefWidth="274.0" text="Destination" textFill="#7c8db0">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Text fill="#6e7491" layoutX="525.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Flight Summary">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="20" arcWidth="20" fill="WHITE" height="92.0" layoutX="527.0" layoutY="337.0" stroke="#cbd4e6" strokeType="INSIDE" width="915.0" />
+      <Label fx:id="timeOfTheTrip" layoutX="558.0" layoutY="363.0" text="timeOfTheTrip">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="airLineName" layoutX="558.0" layoutY="392.0" text="airLineName" textFill="#7c8db0">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="FromTo" layoutX="794.0" layoutY="363.0" text="From 05:45AMTo06:55PM ..:..">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="arrivalDate" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1091.0" layoutY="363.0" style="-fx-alignment: center-right;" text="22/22/2222">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Text fill="#7c8db0" layoutX="1089.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Date">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Label fx:id="price" alignment="CENTER_RIGHT" layoutX="1295.0" layoutY="363.0" text="economyClassPrice" AnchorPane.rightAnchor="108.0">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <Text fill="#7c8db0" layoutX="1361.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Economy">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <Text fill="#6e7491" layoutX="522.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers Info">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="#6e7491" layoutX="1153.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method">
+         <font>
+            <Font name="Arial Bold" size="30.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="paymentMethood" fitHeight="200.0" fitWidth="319.0" layoutX="1147.0" layoutY="509.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CardMethod.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nameOnCard" layoutX="1176.0" layoutY="634.0" text="PayerName" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="cardNumber" layoutX="1175.0" layoutY="669.0" prefHeight="23.0" prefWidth="274.0" text="CardNumber" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="expirationDate" layoutX="1372.0" layoutY="671.0" text="ExpDate" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="1236.0" layoutY="724.0" mnemonicParsing="false" onAction="#onYourBookingsButtonClicked" prefHeight="50.0" prefWidth="183.0" style="-fx-background-color: #605DEC;" stylesheets="@ButtonBookingClassStyle.css" text="Your Bookings" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font></Button>
+      <Label fx:id="departingDate" layoutX="527.0" layoutY="299.0" text="Departing Date" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="airLineName1" layoutX="526.0" layoutY="219.0" prefHeight="23.0" prefWidth="285.0" text="airLineName" textFill="#7c8db0">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Text fill="#7c8db0" layoutX="917.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Time">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <ScrollPane layoutX="525.0" layoutY="513.0" prefHeight="192.0" prefWidth="554.0">
+         <content>
+            <VBox fx:id="bookingVBox" prefHeight="191.0" prefWidth="539.0" />
+         </content>
+      </ScrollPane>
+      <Label fx:id="departingDate1" layoutX="570.0" layoutY="469.0" text="Passenger Name" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="departingDate11" layoutX="843.0" layoutY="469.0" text="Passenger Seat" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

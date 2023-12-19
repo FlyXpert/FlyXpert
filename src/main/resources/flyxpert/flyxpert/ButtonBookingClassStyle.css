@@ -1,0 +1,15 @@
+.root {
+    -fx-background-color: #ffffff; /* White color in hexadecimal */
+}
+.button {
+    -fx-background-color: #605DEC;
+    -fx-text-fill: white;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 18px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #605DEC;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.4s ease;
+}

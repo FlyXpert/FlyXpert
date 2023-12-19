@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,9 +13,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.PassengersController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1536.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../../SystemGlobal.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="flyxpert.flyxpert.Passenger.PassengersController">
     <children>
-        <Label layoutX="14.0" text="FlyXpert">
+        <Label fx:id="FlyXpertLabel" layoutX="14.0" text="FlyXpert">
             <font>
                 <Font name="System Bold" size="64.0" />
             </font>
@@ -34,48 +36,6 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Button id="button" layoutX="1229.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Flights">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-        </Button>
-        <Button id="button" layoutX="1329.0" layoutY="35.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" stylesheets="@Passengers.css" text="Log out">
-            <textFill>
-                <LinearGradient endX="1.0" endY="1.0">
-                    <stops>
-                        <Stop>
-                            <color>
-                                <Color red="0.6925926208496094" green="0.07777778059244156" blue="1.0" />
-                            </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                            <color>
-                                <Color red="0.3764705955982208" green="0.364705890417099" blue="0.9254902005195618" />
-                            </color>
-                        </Stop>
-                    </stops>
-                </LinearGradient>
-            </textFill>
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Button>
         <Label layoutX="108.0" layoutY="162.0" prefHeight="93.0" prefWidth="318.0" text="Passenger information">
             <font>
                 <Font name="System Bold" size="29.0" />
@@ -97,7 +57,7 @@
                 </LinearGradient>
             </textFill>
         </Label>
-        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="556.0" text="Enter the required information for each trveler and be sure that it exactly matcher the government-issued ID presented at the airport." textFill="#ababab" wrapText="true">
+        <Label layoutX="108.0" layoutY="255.0" prefHeight="56.0" prefWidth="556.0" text="Enter the required information for each traveler and be sure that it exactly matches the government-issued ID presented at the airport." textFill="#ababab" wrapText="true">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
@@ -107,17 +67,12 @@
                 <Font name="System Bold" size="20.0" />
             </font>
         </Label>
-        <ImageView fitHeight="93.0" fitWidth="71.0" layoutX="1444.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@imageplaceholder.png" />
-            </image>
-        </ImageView>
         <TextField fx:id="firstNameTextField" layoutX="108.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="First Name" />
-        <TextField fx:id="lastNameTextField" layoutX="542.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Last Name" />
         <TextField fx:id="middleNameTextField" layoutX="326.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Middle Name" />
-        <TextField fx:id="DOBTextField" layoutX="108.0" layoutY="480.0" prefHeight="44.0" prefWidth="201.0" promptText="Date of Birth*" />
+        <TextField fx:id="lastNameTextField" layoutX="542.0" layoutY="400.0" prefHeight="44.0" prefWidth="201.0" promptText="Last Name" />
+      <DatePicker fx:id="dateOfBirthTextField" layoutX="107.0" layoutY="480.0" prefHeight="44.0" prefWidth="202.0" />
         <TextField fx:id="phoneNumberTextField" layoutX="326.0" layoutY="480.0" prefHeight="44.0" prefWidth="201.0" promptText="Phone Number" />
-        <Button id="button1" fx:id="nextPassengerButton" layoutX="108.0" layoutY="583.0" mnemonicParsing="false" onAction="#NextPassengerButtonPress" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Next Passenger" textFill="WHITE">
+        <Button id="button1" layoutX="108.0" layoutY="583.0" mnemonicParsing="false" onAction="#nextPassengerButtonPress" prefHeight="44.0" prefWidth="166.0" stylesheets="@Passengers.css" text="Submit" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
@@ -127,9 +82,9 @@
                 <Font size="20.0" />
             </font>
         </Button>
-        <ImageView fitHeight="583.0" fitWidth="486.0" layoutX="1050.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="583.0" fitWidth="426.0" layoutX="1050.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@bags.jpeg" />
+                <Image url="@PassengerBags.png" />
             </image>
         </ImageView>
         <Label layoutX="108.0" layoutY="530.0" prefHeight="8.0" prefWidth="129.0" text="DD/MM/YY" textFill="#ababab" wrapText="true">
@@ -142,5 +97,13 @@
                 <Font name="System Bold" size="11.0" />
             </font>
         </Label>
+      <Label layoutX="1411.0" layoutY="35.0" onMouseClicked="#onFlightsButtonClicked" text="Flights" textFill="#605dec">
+         <font>
+            <Font size="20.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
     </children>
 </AnchorPane>
