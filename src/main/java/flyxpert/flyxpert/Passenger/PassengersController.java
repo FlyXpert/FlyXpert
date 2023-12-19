@@ -51,7 +51,7 @@ public class PassengersController
             else
             {
                 numOfPassengersDisplay.setText("Press Select Seat");
-                System.out.println(Passenger.passengers.size());
+                //System.out.println(Passenger.passengers.size());
             }
         }
         else {
