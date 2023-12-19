@@ -165,4 +165,7 @@ public class BookingConfirmation {
     public ArrayList<Passenger> getBookingPassengers() {
         return bookingPassengers;
     }
+    public void setPaymentStatus(String paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
 }
