@@ -2,6 +2,9 @@ package flyxpert.flyxpert.Booking;
 
 import flyxpert.flyxpert.Flight.Flight;
 import flyxpert.flyxpert.Passenger.Passenger;
+import flyxpert.flyxpert.Payment.Card;
+import flyxpert.flyxpert.Payment.Payment;
+import flyxpert.flyxpert.Payment.Paypal;
 
 import java.util.ArrayList;
 
@@ -13,11 +16,17 @@ public class BookingConfirmation {
     private int economySeatsCount = 0;
     private int businessSeatsCount = 0;
     private int firstClassSeatsCount = 0;
+    public Payment payment;
     public ArrayList<Passenger> bookingPassengers = new ArrayList<>();
     public static ArrayList<BookingConfirmation> bookingRecords = new ArrayList<>();
 
 
-    public BookingConfirmation(String userName, String flightID, String airLineName, String departureAirportName, String arrivalAirportName, String departureDate, String arrivalDate, String departureTime, String arrivalTime, String paymentID, String paymentMethood, String paymentAmount, String paymentStatus, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount) {
+    public BookingConfirmation(String userName, String flightID, String airLineName,
+                               String departureAirportName, String arrivalAirportName,
+                               String departureDate, String arrivalDate, String departureTime,
+                               String arrivalTime, Payment payment,
+                               int economySeatsCount, int businessSeatsCount,
+                               int firstClassSeatsCount) {
         this.userName = userName;
         this.bookingNumber = BookingConfirmation.lastBookingNumber++;
         this.flightID = flightID;
@@ -28,13 +37,10 @@ public class BookingConfirmation {
         this.arrivalDate = arrivalDate;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        this.paymentID = paymentID;
-        this.paymentMethood = paymentMethood;
-        this.paymentAmount = paymentAmount;
-        this.paymentStatus = paymentStatus;
         this.economySeatsCount = economySeatsCount;
         this.businessSeatsCount = businessSeatsCount;
         this.firstClassSeatsCount = firstClassSeatsCount;
+        this.payment = payment;
     }
     public BookingConfirmation(String[] details){
         this.userName = details[0];
@@ -48,10 +54,12 @@ public class BookingConfirmation {
         this.arrivalDate = details[7];
         this.departureTime = details[8];
         this.arrivalTime = details[9];
-        this.paymentID = details[10];
-        this.paymentMethood = details[11];
-        this.paymentAmount = details[12];
-        this.paymentStatus = details[13];
+        if(details[11].equals("Paypal"))
+            this.payment = new Payment(Double.parseDouble(details[12]), new Paypal());
+        else
+            this.payment = new Payment(Double.parseDouble(details[12]), new Card());
+        this.payment.setPaymentID(Integer.parseInt(details[10]));
+        this.payment.setPaymentStatus(details[13]);
         this.economySeatsCount = Integer.parseInt(details[14]);
         this.businessSeatsCount = Integer.parseInt(details[15]);
         this.firstClassSeatsCount = Integer.parseInt(details[16]);

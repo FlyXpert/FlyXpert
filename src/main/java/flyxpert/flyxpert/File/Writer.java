@@ -79,7 +79,9 @@ public class Writer {
                         bookingRecord.getDepartureAirportName() + "," + bookingRecord.getArrivalAirportName() + "," +
                         bookingRecord.getDepartureDate() + "," + bookingRecord.getArrivalDate() + "," +
                         bookingRecord.getDepartureTime() + "," + bookingRecord.getArrivalTime()
-                        + "," + bookingRecord.getPaymentID() + "," + bookingRecord.getPaymentMethood() + "," + bookingRecord.getPaymentAmount() + "," + bookingRecord.getPaymentStatus() + "," + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + "," + bookingRecord.getFirstClassSeatsCount()
+                        + "," + bookingRecord.payment.getPaymentID() + "," + bookingRecord.payment.getPaymentMethod() + "," + bookingRecord.payment.getPaymentAmount() + "," + bookingRecord.payment.getPaymentStatus() + ","
+                        + bookingRecord.getEconomySeatsCount() + "," + bookingRecord.getBusinessSeatsCount() + ","
+                        + bookingRecord.getFirstClassSeatsCount()
                         + printAllPassengers(bookingRecord));
             }
             bookingRecordsWriter.close();

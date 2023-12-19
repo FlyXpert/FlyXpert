@@ -2,7 +2,7 @@ package flyxpert.flyxpert.Payment;
 
 public class Payment {
     public static int allPaymentsMadeCount;
-    private final int paymentID;
+    private int paymentID;
     private final double paymentAmount;
     private final PaymentMethod paymentMethod;
     // Takes 2 values (Payed or Refunded)
@@ -37,5 +37,9 @@ public class Payment {
 
     public void setPaymentStatus(String paymentStatus){
         this.paymentStatus = paymentStatus;
+    }
+    public void setPaymentID(int paymentID)
+    {
+        this.paymentID = paymentID;
     }
 }

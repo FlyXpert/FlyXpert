@@ -68,7 +68,14 @@ public class BookingConfirmationController {
     int firstClassPriceMoney = 0;
 
     public void displayTicketInfo(User user, Flight currentFlight, Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){
-        this.bookingConfirmation = new BookingConfirmation(user.getUserName(), String.valueOf(currentFlight.getFlightNumber()), currentFlight.getAirLineName(), currentFlight.getDepartureAirport().getName(), currentFlight.getArrivalAirport().getName(), currentFlight.getDepartureDate().toString(), currentFlight.getArrivalDate().toString(), currentFlight.getDepartureTime().toString(), currentFlight.getArrivalTime().toString(), String.valueOf(payment.getPaymentID()), payment.toString(), String.valueOf(payment.getPaymentAmount()), payment.getPaymentStatus(), economySeatsCount, businessSeatsCount, firstClassSeatsCount);
+        this.bookingConfirmation = new BookingConfirmation(user.getUserName(),
+                String.valueOf(currentFlight.getFlightNumber()), currentFlight.getAirLineName(),
+                currentFlight.getDepartureAirport().getName(), currentFlight.getArrivalAirport().getName(),
+                currentFlight.getDepartureDate().toString(), currentFlight.getArrivalDate().toString(),
+                currentFlight.getDepartureTime().toString(), currentFlight.getArrivalTime().toString(),
+                payment, economySeatsCount, businessSeatsCount, firstClassSeatsCount);
+
+
         setPassengerDetails(user, currentFlight);
         calculateTotalsAndSetPrices(economySeatsCount, businessSeatsCount, firstClassSeatsCount, currentFlight);
         setPaymentMethod(payment.getPaymentMethod());
