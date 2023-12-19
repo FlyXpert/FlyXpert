@@ -39,9 +39,9 @@ public class Writer {
                 for(int j=0 ; j < 4 ; j++){
 
                     // To set all flights' seats to be available
-                    //writer.print("true");
+                    writer.print("true");
 
-                    writer.print(flight.getSeatsAvailability()[i][j]);
+                    //writer.print(flight.getSeatsAvailability()[i][j]);
                     if(i == 23 && j == 3)
                         writer.println();
                     else
