@@ -5,6 +5,8 @@ import flyxpert.flyxpert.Passenger.Passenger;
 import flyxpert.flyxpert.Payment.Card;
 import flyxpert.flyxpert.Payment.Payment;
 import flyxpert.flyxpert.Payment.Paypal;
+import javafx.fxml.FXML;
+import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 

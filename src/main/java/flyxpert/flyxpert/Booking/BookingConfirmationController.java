@@ -12,6 +12,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import flyxpert.flyxpert.Payment.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+
 public class BookingConfirmationController {
     @FXML
     private Label userName;
@@ -44,10 +48,6 @@ public class BookingConfirmationController {
     @FXML
     ImageView paymentMethood;
     @FXML
-    private Label subTotal;
-    @FXML
-    private Label amountTotal;
-    @FXML
     private Label departingDate;
     @FXML
     Label economySeatsCount;
@@ -66,7 +66,8 @@ public class BookingConfirmationController {
     int economyPriceMoney = 0;
     int businessPriceMoney = 0;
     int firstClassPriceMoney = 0;
-
+    @FXML
+    private VBox bookingVBox;
     public void displayTicketInfo(User user, Flight currentFlight, Payment payment, int economySeatsCount, int businessSeatsCount, int firstClassSeatsCount){
         this.bookingConfirmation = new BookingConfirmation(user.getUserName(),
                 String.valueOf(currentFlight.getFlightNumber()), currentFlight.getAirLineName(),
@@ -77,10 +78,9 @@ public class BookingConfirmationController {
 
 
         setPassengerDetails(user, currentFlight);
-        calculateTotalsAndSetPrices(economySeatsCount, businessSeatsCount, firstClassSeatsCount, currentFlight);
         setPaymentMethod(payment.getPaymentMethod());
         setDepartingDate(currentFlight);
-        setPassengersSeatsCount();
+        // setPassengersSeatsCount();
         this.bookingConfirmation.setSubTotalMoney(this.subTotalMoney);
         calculateTimeOfTheTrip(currentFlight);
         setFromToTime(currentFlight);
@@ -88,6 +88,12 @@ public class BookingConfirmationController {
         this.bookingConfirmation.setAvailableSeats(currentFlight);
         this.bookingConfirmation.setBoookingPassengers(Passenger.passengers);
         BookingConfirmation.bookingRecords.add(this.bookingConfirmation);
+        for(Passenger passenger : BookingConfirmation.bookingRecords.getLast().bookingPassengers)
+        {
+            bookingVBox.getChildren().add(addPassenger(passenger));
+        }
+        //calculateTotalsAndSetPrices(economySeatsCount, businessSeatsCount, firstClassSeatsCount, currentFlight);
+
     }
     private void setPaymentMethod(PaymentMethod payment){
         if(payment instanceof Paypal){
@@ -97,7 +103,6 @@ public class BookingConfirmationController {
             this.nameOnCard.setText("");
             this.cardNumber.setText(paypal.getEmail());
             this.expirationDate.setText("");
-            amountTotal.setText(Double.toString(paypal.calculateTotalPriceWithFees(subTotalMoney)));
 
         }
         else if(payment instanceof Card){
@@ -107,7 +112,6 @@ public class BookingConfirmationController {
             this.nameOnCard.setText(card.getOwnerName());
             this.expirationDate.setText(card.getExpirationDate());
             hideCardNumber(card);
-            amountTotal.setText(Double.toString(card.calculateTotalPriceWithFees(subTotalMoney)));
         }
     }
 
@@ -119,7 +123,6 @@ public class BookingConfirmationController {
         this.bussniessClassPrice.setText("$" + (businessPriceMoney));
         this.firstClassPrice.setText("$" + (firstClassPriceMoney));
         subTotalMoney = economyPriceMoney + businessPriceMoney + firstClassPriceMoney;
-        this.subTotal.setText("$" + (subTotalMoney));
     }
     private void hideCardNumber(Card card){
         String lastFourDigits = card.getNumber().substring(card.getNumber().length() - 4);
@@ -157,5 +160,39 @@ public class BookingConfirmationController {
 
     public void onYourBookingsButtonClicked(ActionEvent event){
         SceneSwitcher.switchScene(event, "UserHistory" , null);
+    }
+    private HBox addPassenger(Passenger passengerInfo){
+        HBox hBox = new HBox();
+       // passengerInfo.getFirstName(), passengerInfo.getSeat().getPrimaryKey(), passengerInfo.getSeat().getType().getName(),
+        // Flight.flights.get(Flight.selectedFlightIndex).getEconomyPrice()
+
+        Label passengerName = new Label(passengerInfo.getFirstName());
+
+        passengerName.setStyle("-fx-pref-width: 300;" +
+                "-fx-padding: 20;" +
+                " -fx-border-width: 5;" +
+                " -fx-alignment: center;" +
+                " -fx-font-size: 20; " +
+                "-fx-text-fill: black");
+
+
+        Label passengerSeat = new Label(passengerInfo.getSeat().getPrimaryKey());
+        passengerSeat.setStyle("-fx-pref-width: 300;" +
+                "-fx-padding: 20;" +
+                " -fx-border-width: 5;" +
+                " -fx-alignment: center;" +
+                " -fx-font-size: 20; " +
+                "-fx-text-fill: black");
+
+
+        hBox.setStyle("-fx-background-color: white;" +
+                " -fx-border-width: 1;" +
+                " -fx-border-color: grey;");
+
+        hBox.getChildren().add(passengerName);
+        hBox.getChildren().add(passengerSeat);
+
+        // String           string              string
+        return hBox;
     }
 }

@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -117,35 +118,9 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text fill="#6e7491" layoutX="525.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price Breakdown">
+      <Text fill="#6e7491" layoutX="522.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Passengers Info">
          <font>
             <Font name="Arial Bold" size="30.0" />
-         </font>
-      </Text>
-      <Text fill="#6e7491" layoutX="571.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Economy">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
-      <Text fill="#6e7491" layoutX="571.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Business">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
-      <Text fill="#6e7491" layoutX="571.0" layoutY="594.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* First Class">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
-      <Text fill="#6e7491" layoutX="526.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub Total">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Text>
-      <Line endX="253.0" layoutX="804.0" layoutY="662.0" startX="-288.0" />
-      <Text layoutX="526.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total with fees">
-         <font>
-            <Font name="Arial" size="20.0" />
          </font>
       </Text>
       <Text fill="#6e7491" layoutX="1153.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payment Method">
@@ -177,31 +152,6 @@
          <font>
             <Font size="23.0" />
          </font></Button>
-      <Label fx:id="economyClassPrice" layoutX="982.0" layoutY="510.0" text="\$Price" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="bussniessClassPrice" layoutX="982.0" layoutY="542.0" text="\$Price" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="firstClassPrice" layoutX="982.0" layoutY="576.0" text="\$Price" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="subTotal" layoutX="982.0" layoutY="608.0" text="\$Price" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="amountTotal" layoutX="982.0" layoutY="680.0" text="\$Price">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
       <Label fx:id="departingDate" layoutX="527.0" layoutY="299.0" text="Departing Date" textFill="#6e7491">
          <font>
             <Font name="Arial" size="20.0" />
@@ -212,25 +162,25 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="economySeatsCount" layoutX="526.0" layoutY="509.0" text="num" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="businessSeatsCount" layoutX="526.0" layoutY="542.0" text="num" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="firstClassSeatsCount" layoutX="526.0" layoutY="575.0" text="num" textFill="#6e7491">
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
       <Text fill="#7c8db0" layoutX="917.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrival Time">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
+      <ScrollPane layoutX="525.0" layoutY="513.0" prefHeight="192.0" prefWidth="554.0">
+         <content>
+            <VBox fx:id="bookingVBox" prefHeight="191.0" prefWidth="539.0" />
+         </content>
+      </ScrollPane>
+      <Label fx:id="departingDate1" layoutX="570.0" layoutY="469.0" text="Passenger Name" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="departingDate11" layoutX="843.0" layoutY="469.0" text="Passenger Seat" textFill="#6e7491">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
