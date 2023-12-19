@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class BookingConfirmation {
     public static int lastBookingNumber;
     private int bookingNumber;
-    private String userName, flightID, airLineName, departureAirportName, arrivalAirportName, departureDate, arrivalDate, departureTime, arrivalTime, paymentID, paymentMethood, paymentAmount, paymentStatus;
+    private String userName, flightID, airLineName, departureAirportName, arrivalAirportName, departureDate, arrivalDate, departureTime, arrivalTime;
     private int subTotalMoney = 0;
     private int economySeatsCount = 0;
     private int businessSeatsCount = 0;
@@ -147,25 +147,10 @@ public class BookingConfirmation {
     public String getArrivalTime() {
         return arrivalTime;
     }
-    public String getPaymentID() {
-        return paymentID;
-    }
-    public String getPaymentMethood() {
-        return paymentMethood;
-    }
-    public String getPaymentAmount() {
-        return paymentAmount;
-    }
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
     public void setBookingNumber(int bookingNumber) {
         this.bookingNumber = bookingNumber;
     }
     public ArrayList<Passenger> getBookingPassengers() {
         return bookingPassengers;
-    }
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
     }
 }

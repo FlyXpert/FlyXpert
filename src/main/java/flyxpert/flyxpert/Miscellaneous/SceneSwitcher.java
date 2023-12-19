@@ -35,7 +35,8 @@ public class SceneSwitcher {
                                 flightInformationController.fillDataOfFlights();
                         }
                 } catch (IOException e) {
-                        System.out.printf("Unable to import %s.fxml in SceneSwitcher OR there is an error in %s.fxml or it's controller!", newFxml);
+                        System.out.printf("Unable to import %s.fxml in SceneSwitcher OR there is an error in %s.fxml or it's controller!", newFxml, newFxml);
+                        e.printStackTrace();
                 }
 
                 if (mainStageIfPopUpExist != null) {

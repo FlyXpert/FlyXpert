@@ -32,7 +32,7 @@ public class UserHistoryController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         for(BookingConfirmation booking : BookingConfirmation.bookingRecords){
             //System.out.println(booking.getUserName() + " " + User.currentUser.name + " " + booking.getPaymentStatus());
-            if(booking.getUserName().equals(User.currentUser.getUserName()) && booking.getPaymentStatus().equals("Payed")) {
+            if(booking.getUserName().equals(User.currentUser.getUserName()) && booking.payment.getPaymentStatus().equals("Payed")) {
                 userBookingsCount++;
                 HBox bookingHbox = new HBox(5);
                 bookingHbox.setAlignment(Pos.CENTER);
@@ -75,7 +75,7 @@ public class UserHistoryController implements Initializable {
                 bookingCancelIcon.setStyle("-fx-padding: 30;");
 
                 bookingCancelIcon.setOnMousePressed(event -> {
-                    booking.setPaymentStatus("Refunded");
+                    booking.payment.setPaymentStatus("Refunded");
                     bookingsVbox.getChildren().remove(bookingHbox);
                     youHaveXFlights.setText("You have " + --userBookingsCount + " Flights");
                 });
