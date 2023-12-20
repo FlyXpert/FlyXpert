@@ -8,7 +8,10 @@
         <img src="https://img.shields.io/badge/Made%20with-Java-15b2d1.svg">
     </a>
     <a href="https://openjfx.io/">
-        <img src="https://img.shields.io/badge/GUI%20Made%20with-JavaFX-8f15e1.svg">
+        <img src="https://img.shields.io/badge/GUI%20Made%20with-JavaFX-4c67d2.svg">
+    </a>
+  <a href="https://en.wikipedia.org/wiki/CSS">
+        <img src="https://img.shields.io/badge/Styling%20Made%20with-CSS-8f15e1.svg">
     </a>
 </div>
 
@@ -48,6 +51,7 @@ With a special interface for **admins to**
 ![](https://i.imgur.com/Qo9TqvB.png)
 ![](https://i.imgur.com/dB9qSvU.png)
 ![](https://i.imgur.com/a7lC66Z.png)
+![](https://i.imgur.com/WTVbK0f.png)
 ![](https://i.imgur.com/3U9Egkw.png)
 
 #### 💻 Admin Perspective

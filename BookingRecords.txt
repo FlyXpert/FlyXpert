@@ -1,2 +1,0 @@
-akayiz,0,5,Egyptair,Cairo,Los Angeles,20/01/2023,21/01/2023,07:00 PM,05:00 AM,1,Card,1751.0,Refunded,1,1,0,1A,Akayiz,das,das,01110480949,Tue Dec 19 07:49:28 EET 2023,20D,Moh,sa,sa,01110480949,Tue Dec 19 07:49:28 EET 2023
-akayiz,1,3,Lufthansa,Berlin,Cairo,27/01/2023,28/01/2023,10:00 PM,04:00 AM,2,Paypal,733.0,Refunded,0,1,0,1A,dasdas,dasdas,dasdas,01110480949,Tue Dec 19 07:49:28 EET 2023
