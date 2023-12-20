@@ -13,15 +13,15 @@
 </div>
 
 ## 📒 Table Of Contents
-- [About](#📝-about)
-- [Screenshots](#📷-screenshots)
-    * [User Perspective](#👤-user-perspective)
-    * [Admin Perspective](#💻-admin-perspective)
+- [About](#-about)
+- [Screenshots](#-screenshots)
+    * [User Perspective](#-user-perspective)
+    * [Admin Perspective](#-admin-perspective)
 - [Acknowledgments](#acknowledgments)
 
 ### 📝 About
-FlyXpert is an **academic project** related to the 2023 **OOP (Object-oriented programming)** course in [Faculty of Computer Science - Ain shams university](https://cis.asu.edu.eg/) 
-to demonstrate the understanding of OOP concepts.
+FlyXpert is an **academic project** related to the 2023 **OOP (Object-oriented programming)** course in [Faculty of Computer Science - Ain Shams University](https://cis.asu.edu.eg/) 
+to demonstrate an understanding of OOP concepts.
 
 It is a Desktop flight booking system that **allows users to**
 - Sign Up/Sign In
@@ -33,14 +33,14 @@ It is a Desktop flight booking system that **allows users to**
 
 With a special interface for **admins to**
 - Add new flights
-- Edit existing flights' information
+- Edit existing flights information
 - Delete existing flights
 
 ### 📷 Screenshots
 
 ![](https://i.imgur.com/WYhIzkg.png)
 
-#### 👤 User Perspective 
+#### 👤 User Perspective
 
 ![](https://i.imgur.com/VBoGS88.png)
 ![](https://i.imgur.com/eNtbdD8.png)
@@ -50,7 +50,7 @@ With a special interface for **admins to**
 ![](https://i.imgur.com/a7lC66Z.png)
 ![](https://i.imgur.com/3U9Egkw.png)
 
-#### 💻 Admin Perspective 
+#### 💻 Admin Perspective
 
 ![](https://i.imgur.com/v69FEnr.png)
 ![](https://i.imgur.com/gr7jab2.png)
@@ -58,5 +58,5 @@ With a special interface for **admins to**
 
 ### Acknowledgments
 Special thanks to the designers who created [Tripma](https://www.figma.com/community/file/911320742349428744/tripma-flight-booking-web-app), 
-all of our designs are inspired from them
+all of our designs are inspired by them
 
