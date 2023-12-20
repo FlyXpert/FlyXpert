@@ -71,7 +71,7 @@ public class Reader {
     // User data is written in which each line contains all the data for one user, seperated by spaces (Username Email Password)
     public void readUsers() {
         try {
-            File file = new File("users.txt");
+            File file = new File("Users.txt");
             Scanner scan = new Scanner(file);
             while (scan.hasNextLine()) {
                 String user = scan.nextLine();
@@ -89,7 +89,7 @@ public class Reader {
     public void readBookingRecords() throws FileNotFoundException{
 
         try {
-            File file = new File("bookingRecords.txt");
+            File file = new File("BookingRecords.txt");
             Scanner scan = new Scanner(file);
             scan.useDelimiter(",");
             while (scan.hasNextLine()) {

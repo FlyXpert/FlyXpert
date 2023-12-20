@@ -12,12 +12,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <Button layoutX="27.0" layoutY="119.0" mnemonicParsing="false" onAction="#discarded" prefHeight="41.0" prefWidth="130.0" stylesheets="@../../styles.css" text="No, keep it">
+      <Button layoutX="27.0" layoutY="119.0" mnemonicParsing="false" onAction="#discarded" prefHeight="41.0" prefWidth="130.0" stylesheets="@../../Styles.css" text="No, keep it">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="173.0" layoutY="119.0" mnemonicParsing="false" onAction="#confirmed" prefHeight="41.0" prefWidth="160.0" stylesheets="@../../styles.css" text="Yes, I confirm">
+      <Button layoutX="173.0" layoutY="119.0" mnemonicParsing="false" onAction="#confirmed" prefHeight="41.0" prefWidth="160.0" stylesheets="@../../Styles.css" text="Yes, I confirm">
          <font>
             <Font size="16.0" />
          </font>

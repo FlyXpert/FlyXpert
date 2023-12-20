@@ -75,8 +75,8 @@ public class AdminSeatMapController extends SeatMap implements Initializable {
 
                 discard.setOnMouseClicked(mouseEvent -> discardClicked());
                 save.setOnMouseClicked(mouseEvent -> saveClicked());
-                discard.getStylesheets().add("styles.css");
-                save.getStylesheets().add("styles.css");
+                discard.getStylesheets().add("Styles.css");
+                save.getStylesheets().add("Styles.css");
         }
 
         /**

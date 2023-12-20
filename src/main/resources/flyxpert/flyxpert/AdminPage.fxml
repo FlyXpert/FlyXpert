@@ -19,7 +19,7 @@
     <children>
         <ImageView fx:id="worldImageView" fitHeight="873.0" fitWidth="1536.0" layoutX="-12.0" layoutY="20.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@world.png" />
+                <Image url="@World.png" />
             </image>
         </ImageView>
         <Label fx:id="FlyXpertLabel" layoutX="14.0" text="FlyXpert">
@@ -56,7 +56,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Pane>
-        <Button fx:id="addFlightButton" layoutX="70.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToAdminAddFlight" prefHeight="55.0" prefWidth="200.0" stylesheets="@styles.css" text="Add a Flight">
+        <Button fx:id="addFlightButton" layoutX="70.0" layoutY="122.0" mnemonicParsing="false" onAction="#switchToAdminAddFlight" prefHeight="55.0" prefWidth="200.0" stylesheets="@Styles.css" text="Add a Flight">
             <font>
                 <Font size="22.0" />
             </font>

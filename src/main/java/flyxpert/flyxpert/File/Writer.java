@@ -57,7 +57,7 @@ public class Writer {
     public void writeUsers() throws FileNotFoundException {
 
         try {
-            PrintWriter writer = new PrintWriter(new FileWriter("users.txt"));
+            PrintWriter writer = new PrintWriter(new FileWriter("Users.txt"));
             for(User user : User.userList) {
                 int code = Encryption.generateCode();
                 String password = user.getPassword();
@@ -73,7 +73,7 @@ public class Writer {
     public void writeBookingDataToFile() throws FileNotFoundException{
         try{
 
-            PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("bookingRecords.txt"));
+            PrintWriter bookingRecordsWriter = new PrintWriter(new FileWriter("BookingRecords.txt"));
             for (BookingConfirmation bookingRecord : BookingConfirmation.bookingRecords) {
 
                 bookingRecordsWriter.println(bookingRecord.getUserName()  + "," + bookingRecord.getBookingNumber() + "," +
