@@ -83,7 +83,7 @@ public class BookingConfirmationController {
         this.bookingConfirmation.setAvailableSeats(currentFlight);
         this.bookingConfirmation.setBoookingPassengers(Passenger.passengers);
         BookingConfirmation.bookingRecords.add(this.bookingConfirmation);
-        for(Passenger passenger : BookingConfirmation.bookingRecords.getLast().bookingPassengers)
+        for(Passenger passenger : BookingConfirmation.bookingRecords.get(BookingConfirmation.bookingRecords.size()-1).bookingPassengers)
         {
             bookingVBox.getChildren().add(addPassenger(passenger));
         }
